@@ -82,10 +82,10 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message: 'نام باید بین 2 تا 20 کاراکتر باشد!'
+                                message:'{% trans "Password must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
-                                message: 'وارد کردن نام الزامی است!'
+                                message: '{% trans "This Field is required" %}'
                             },
                         }
                     },
@@ -94,10 +94,10 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message: 'نام باید بین 2 تا 20 کاراکتر باشد!'
+                                message:'{% trans "Password must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
-                                message: 'وارد کردن نام خانوادگی الزامی است!'
+                                message: '{% trans "This Field is required" %}'
                             },
                         }
                     }
@@ -112,6 +112,7 @@
 
         $('#form').submit(function (e) {
             e.preventDefault()
+            const button = $(this).find('button');
             formV.validate().then(function (status) {
                 if (status === 'Valid') {
                     ApiAjax({
@@ -126,9 +127,9 @@
                     })
                 } else {
                     Swal.fire({
-                        text: "به نظر می رسد تعدادی خطا در اطلاعات شما وجود دارد، لطفا دوباره تلاش کنید.",
+                        text: '{% trans "Seems some error exists" %}',
                         icon: "error",
-                        confirmButtonText: "متوجه شدم!",
+                        confirmButtonText: '{% trans "Got it" %}',
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-secondary"
                         }

@@ -3,8 +3,10 @@ from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
 from django.forms.models import ModelForm
 
-from plugins.dynamic import dynamic_form
-from user.models import User
+from badi_utils.dynamic import dynamic_form
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 def user_form(fields=None, update=False):

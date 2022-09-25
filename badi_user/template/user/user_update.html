@@ -9,7 +9,7 @@
                     <div class="card card-custom">
                         <div class="card-header">
                             <h3 class="card-title">
-                                ویرایش
+                                {% trans "Update" %}
                                 {{ object }}
                             </h3>
                         </div>
@@ -17,35 +17,45 @@
                             {% csrf_token %}
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="col-form-label">نام کاربری:</label>
+                                            <label class="col-form-label">{{ form.username.label }}:</label>
                                             {{ form.username }}
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="col-form-label">نام:</label>
+                                            <label class="col-form-label">{{ form.first_name.label }}:</label>
                                             {{ form.first_name }}
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
+                                    <div class="col-md-4">
                                         <div class="form-group">
-                                            <label class="col-form-label">نام خانوادگی:</label>
+                                            <label class="col-form-label">{{ form.last_name.label }}:</label>
                                             {{ form.last_name }}
                                         </div>
                                     </div>
-                                    <div class="col-md-3">
-                                        <div class="form-group">
-                                            <label class="col-form-label">شماره تماس:</label>
-                                            {{ form.mobile_number }}
+                                    {% if form.mobile_number %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.mobile_number.label }}:</label>
+                                                {{ form.mobile_number }}
+                                            </div>
                                         </div>
-                                    </div>
+                                    {% endif %}
+                                    {% if form.email %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.email.label }}:</label>
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ back }}" class="btn ml-2 btn-secondary">بازگشت</a>
-                                <button type="button" id="submitter" class="btn btn-primary">ویرایش کاربر</button>
+                                <a href="{{ back }}" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+                                <button id="submitter" class="btn btn-primary">{% trans "Submit" %}</button>
                             </div>
                         </form>
                         <!--end::Form-->
@@ -72,10 +82,10 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message: 'نام باید بین 2 تا 20 کاراکتر باشد!'
+                                message: '{% trans "Password must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
-                                message: 'وارد کردن نام الزامی است!'
+                                message: '{% trans "This Field is required" %}'
                             },
                         }
                     },
@@ -84,10 +94,10 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message: 'نام باید بین 2 تا 20 کاراکتر باشد!'
+                                message: '{% trans "Password must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
-                                message: 'وارد کردن نام خانوادگی الزامی است!'
+                                message: '{% trans "This Field is required" %}'
                             },
                         }
                     }
@@ -100,9 +110,9 @@
             }
         );
 
-        $('#submitter').click(function (e) {
-            console.log('asd')
-            const button = this;
+        $('#form').submit(function (e) {
+            e.preventDefault()
+            const button = $(this).find('button');
             formV.validate().then(function (status) {
                 if (status === 'Valid') {
                     ApiAjax({
@@ -112,13 +122,13 @@
                         method: 'PUT',
                         pk: '{{object.id}}',
                         button: button,
-                        success_message: 'کاربر ({{ form.first_name.value }} {{ form.last_name.value }}) با موفقیت ویرایش شد!',
+                        success_message: '{% trans "User" %} ({{ form.first_name.value }} {{ form.last_name.value }}) {% trans "Updated Successfully" %}!',
                     })
                 } else {
                     Swal.fire({
-                        text: "به نظر می رسد تعدادی خطا در اطلاعات شما وجود دارد، لطفا دوباره تلاش کنید.",
+                        text:'{% trans "Seems some error exists" %}',
                         icon: "error",
-                        confirmButtonText: "متوجه شدم!",
+                        confirmButtonText: '{% trans "Got it" %}',
                         customClass: {
                             confirmButton: "btn font-weight-bold btn-secondary"
                         }

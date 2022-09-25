@@ -22,10 +22,12 @@ from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
 from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer
 from badi_user.filter import UserListFilter, MemberListFilter
-from badi_user.models import User, Token
+from badi_user.models import Token
 from django.utils.translation import gettext_lazy as _
-
 from badi_utils.sms import IpPanelSms
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class UserViewSet(DynamicModelApi):

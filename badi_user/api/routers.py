@@ -1,6 +1,4 @@
-from user.api.api import UserViewSet, AuthViewSet, GroupViewSet, MemberViewSet
-from user.ui.views import *
-
+from badi_user.api.api import UserViewSet, AuthViewSet, GroupViewSet, MemberViewSet
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()

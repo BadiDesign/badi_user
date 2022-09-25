@@ -1,5 +1,6 @@
 from datetime import timedelta, datetime
 
+from badi_utils.dynamic_models import BadiModel
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxLengthValidator
 from django.db import models
@@ -26,7 +27,7 @@ class Token(models.Model):
         return True
 
 
-class User(AbstractUser):
+class User(AbstractUser, BadiModel):
     class Meta:
         verbose_name = _('کاربر')
         verbose_name_plural = _('کاربران')
@@ -61,6 +62,12 @@ class User(AbstractUser):
 
     def get_full_name(self):
         return super().get_full_name() if self.first_name else self.username
+
+    @classmethod
+    def get_form_fields(cls, action, *args):
+        if action == 'member_create':
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
+        return ['first_name', 'last_name', 'mobile_number', 'picture']
 
 
 class Notification(models.Model):

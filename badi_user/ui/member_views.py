@@ -1,7 +1,10 @@
-from plugins.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
-from user.filter import UserListFilter
-from user.models import User
-from user.ui.forms import user_form
+from badi_utils.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
+from badi_user.filter import UserListFilter
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
+from badi_user.ui.forms import user_form
 
 
 class MemberListView(DynamicListView):
@@ -18,8 +21,7 @@ class MemberListView(DynamicListView):
 class MemberCreateView(DynamicCreateView):
     model = User
     model_name = 'عضو'
-    form = user_form(
-        ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number'])
+    form = user_form(User.get_form_fields('member_create'))
     template_name = 'member/member_create.html'
     datatableEnable = False
 
@@ -40,8 +42,7 @@ class MemberUpdateView(DynamicUpdateView):
 class MemberSelfUpdateView(DynamicUpdateView):
     model = User
     model_name = 'عضو'
-    form = user_form(
-        ['first_name', 'last_name', 'city', 'mobile_number', 'picture'], update=True)
+    form = user_form(User.get_form_fields('member_create'), update=True)
     success_url = '/user/member/list'
     template_name = 'member/member_self_update.html'
 

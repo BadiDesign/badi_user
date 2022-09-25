@@ -1,8 +1,11 @@
-from plugins.dynamic import *
-from user.ui.member_views import *
-from user.ui.views import *
+from badi_utils.dynamic import *
+from badi_user.ui.member_views import *
+from badi_user.ui.views import *
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 urlpatterns = [
+    path('login/', UserLoginView.as_view(), name='custom_login'),
     generate_url(User(), create=UserCreateView, add_model_to_url=False),
     generate_url(User(), view=UserListView, add_model_to_url=False),
     # generate_url(User(), delete=UserDeleteView),

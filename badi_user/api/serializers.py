@@ -2,8 +2,11 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import Group
 from rest_framework import serializers
 
-from plugins.dynamic_api import api_error_creator, DynamicSerializer
-from user.models import User, Notification
+from badi_utils.dynamic_api import api_error_creator, DynamicSerializer
+from badi_user.models import Notification
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class UserSerializer(DynamicSerializer):

@@ -1,15 +1,10 @@
 import datetime
 
+from badi_utils.rss import CONFIG_JSON
 from django import template
 from django.utils.text import slugify
 
-from advertisement.models import Page, PostCategory
-from blog.models import BlogNews
-from plugins.dynamic_models import gregorian_to_jalali
-from plugins.project_config import CONFIG_JSON
-from plugins.utils import custom_change_date
-from setting.models import CategoryNews
-from ticket.models import Ticket
+from badi_utils.date_calc import custom_change_date, gregorian_to_jalali
 from random import shuffle
 
 register = template.Library()
@@ -109,12 +104,6 @@ def user_fullname(context):
     if user.is_authenticated:
         return user.get_full_name()
     return ''
-
-
-@register.simple_tag()
-def car_categories():
-    cars = PostCategory.objects.filter(title="ماشین").first()
-    return cars.children.all()
 
 
 @register.simple_tag()

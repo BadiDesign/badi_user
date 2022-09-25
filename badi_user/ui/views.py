@@ -1,12 +1,15 @@
 # Create your views here.
+from django.contrib.auth import logout
+from django.contrib.auth.views import LoginView
+from django.http import Http404
 from django.shortcuts import render
 from django.views import View
 
-from plugins.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
-from plugins.utils import LoginRequiredMixin
-from user.filter import UserListFilter
-from user.models import User
-from user.ui.forms import user_form
+from badi_utils.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
+from badi_utils.utils import LoginRequiredMixin
+from badi_user.filter import UserListFilter
+from badi_user.models import User
+from badi_user.ui.forms import user_form
 
 
 class UserListView(DynamicListView):
@@ -19,17 +22,6 @@ class UserListView(DynamicListView):
 
 
 class UserCreateView(DynamicCreateView):
-    """
-    برای ایجاد یک کاربرجدید که عضو کاشف هست  در سامانه از این کلاس استفاده میشود
-
-    Arguments:
-        form_class(UserCreateForm):
-          فرمی که کلاس از آن استفاده میشود
-        template_name(str):
-           آردس تمپلت مورد استفاده در کلاس
-        success_url(str):
-           آدرس url که در صورت موفق بودن فرم، کاربر به آن هدایت خواهد شد
-    """
     model = User
     form = user_form(
         ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', ])
@@ -41,9 +33,6 @@ class UserCreateView(DynamicCreateView):
 
 
 class UserUpdateView(DynamicUpdateView):
-    """
-    این کلاس برای ویرایش کاربران کاشف استفاده می شود
-    """
     model = User
     form = user_form(
         ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', ], update=True)
@@ -57,3 +46,10 @@ class ChangePasswordViewTemplateView(LoginRequiredMixin, View):
             'title': 'تغییر رمز عبور'
         }
         return render(request, 'user/change_password.html', context)
+
+
+class UserLoginView(LoginView):
+    template_name = 'login.html'
+
+    def form_valid(self, form):
+        return Http404
