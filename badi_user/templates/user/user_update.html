@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-{% load static %}
 {% block body %}
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
@@ -10,7 +9,7 @@
                     <div class="card card-custom">
                         <div class="card-header">
                             <h3 class="card-title">
-                                ویرایش
+                                {% trans "Update" %}
                                 {{ object }}
                             </h3>
                         </div>
@@ -18,43 +17,45 @@
                             {% csrf_token %}
                             <div class="card-body">
                                 <div class="row">
-                                    <div class="col-lg-3">
-                                        {% include 'components/image-field.html' with field=form.picture label='آواتار' %}
-                                    </div>
-                                    <div class="col-md-9">
-                                        <div class="row">
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label class="col-form-label">نام کاربری:</label>
-                                                    {{ form.username }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label class="col-form-label">نام:</label>
-                                                    {{ form.first_name }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label class="col-form-label">نام خانوادگی:</label>
-                                                    {{ form.last_name }}
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-4">
-                                                <div class="form-group">
-                                                    <label class="col-form-label">شماره تماس:</label>
-                                                    {{ form.mobile_number }}
-                                                </div>
-                                            </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.username.label }}:</label>
+                                            {{ form.username }}
                                         </div>
                                     </div>
-
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.first_name.label }}:</label>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.last_name.label }}:</label>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    {% if form.mobile_number %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.mobile_number.label }}:</label>
+                                                {{ form.mobile_number }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if form.email %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.email.label }}:</label>
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ back }}" class="btn ml-2 btn-secondary">بازگشت</a>
-                                <button class="btn btn-primary">ویرایش کاربر</button>
+                                <a href="{{ back }}" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+                                <button id="submitter" class="btn btn-primary">{% trans "Submit" %}</button>
                             </div>
                         </form>
                         <!--end::Form-->
@@ -70,7 +71,6 @@
 {% endblock %}
 
 {% block script %}
-    <script src="{% static 'custom/image-field.js' %}"></script>
     <script>
 
         const formV = FormValidation.formValidation(
@@ -82,7 +82,7 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message:'{% trans "Password must be between 2 and 20 character" %}'
+                                message: '{% trans "must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
                                 message: '{% trans "This Field is required" %}'
@@ -94,7 +94,7 @@
                             stringLength: {
                                 max: 20,
                                 min: 2,
-                                message:'{% trans "Password must be between 2 and 20 character" %}'
+                                message: '{% trans "must be between 2 and 20 character" %}'
                             },
                             notEmpty: {
                                 message: '{% trans "This Field is required" %}'
@@ -116,18 +116,17 @@
             formV.validate().then(function (status) {
                 if (status === 'Valid') {
                     ApiAjax({
-                        success_url: MEMBER_LIST_TEMPLATE,
-                        url: MEMBER_API_WITH_PK_URL,
+                        success_url: USER_LIST_TEMPLATE,
+                        url: USER_WITH_PK_API_URL,
                         form: 'form',
                         method: 'PUT',
-                        file:true,
                         pk: '{{object.id}}',
-                        button: document.querySelector('#form button'),
-                        success_message: 'کاربر ({{ form.first_name.value }} {{ form.last_name.value }}) با موفقیت ویرایش شد!',
+                        button: button,
+                        success_message: '{% trans "User" %} ({{ form.first_name.value }} {{ form.last_name.value }}) {% trans "Updated Successfully" %}!',
                     })
                 } else {
                     Swal.fire({
-                        text: '{% trans "Seems some error exists" %}',
+                        text:'{% trans "Seems some error exists" %}',
                         icon: "error",
                         confirmButtonText: '{% trans "Got it" %}',
                         customClass: {

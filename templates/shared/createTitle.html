@@ -1,0 +1,64 @@
+<style>
+    #holder {
+        display: flex;
+        text-align: left;
+        width: fit-content;
+        transition: 1s;
+    }
+
+    #holder:hover > button, #holder > input:focus + button {
+        border-bottom-right-radius: 0;
+        border-top-right-radius: 0;
+        transition-delay: 0s;
+        background: #fff;
+    }
+
+    #holder > button {
+        border-radius: 10px;
+        transition: 1s;
+        transition-delay: 1.3s;
+        color: #fff !important;
+        background: var(--menu_rev) !important;
+    }
+
+    @media only screen and (max-width: 768px) {
+        #holder:hover > input, #holder > input:focus {
+            width: 120px;
+            height: auto;
+            opacity: 1;
+            visibility: unset;
+            transition-delay: 0s;
+        }
+    }
+
+    @media only screen and (min-width: 768px) {
+        #holder:hover > input, #holder > input:focus {
+            width: 170px;
+            height: auto;
+            opacity: 1;
+            visibility: unset;
+            transition-delay: 0s;
+        }
+    }
+
+    #holder > input {
+        border: 1.5px solid var(--menu_rev);
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        border-left: none;
+        transition: 1s;
+        width: 0;
+        height: auto;
+        opacity: 0;
+        visibility: hidden;
+        transition-delay: 1s;
+    }
+
+</style>
+<form class="kt-form filters" method="post">
+    {% csrf_token %}
+    <div id="holder">
+        {{ form.title }}
+        <button type="submit" class="btn btn-success">Create</button>
+    </div>
+</form>

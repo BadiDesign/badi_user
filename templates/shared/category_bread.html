@@ -1,0 +1,18 @@
+{% load appfilter %}
+<div class="pb-5">
+    <a href="/" class=" text-dark-75 text-hover-primary">
+        <i class="fa fa-sm fa-home text-dark-75"></i>
+        Home
+    </a>
+    <i class="fa fa-sm fa-angle-left mx-2 text-dark"></i>
+    <a href="/category" class=" text-dark-75 text-hover-primary">
+        <i class="fa fa-sm fa-layer-group text-dark-75"></i>
+        Categories
+    </a>
+    {% for cat in parents %}
+        <i class="fa fa-sm fa-angle-left mx-2 text-dark"></i>
+        <a href="/category/{{ cat.id }}" class=" text-dark-75 text-hover-primary">
+            {{ cat.title }}
+        </a>
+    {% endfor %}
+</div>

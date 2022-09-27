@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load widget_tweaks %}
+{% load i18n %}
+{% load badi_utils %}
 {% block body %}
 <div class="d-flex flex-column-fluid">
 	<!--begin::Container-->
@@ -38,19 +40,19 @@
 								</div>
 								<div class="col-lg-3 col-md-6">
 									<div class="form-group">
-										<label class="col-form-label">{% trans "Repeat Password" %}:</label>
+										<label class="col-form-label">{{ form.first_name.label }}</label>
 										{{ form.first_name }}
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-6">
 									<div class="form-group">
-										<label class="col-form-label">{% trans "Repeat Password" %}:</label>
+										<label class="col-form-label">{{ form.last_name.label }}</label>
 										{{ form.last_name }}
 									</div>
 								</div>
 								<div class="col-lg-3 col-md-6">
 									<div class="form-group">
-										<label class="col-form-label">{% trans "Repeat Password" %}:</label>
+										<label class="col-form-label">{{ form.mobile_number.label }}</label>
 										{{ form.mobile_number }}
 									</div>
 								</div>
@@ -84,7 +86,7 @@
                         stringLength: {
                             max: 20,
                             min: 2,
-                            message:'{% trans "Password must be between 2 and 20 character" %}'
+                            message:'{% trans "must be between 2 and 20 character" %}'
                         },
                         notEmpty: {
                             message: '{% trans "This Field is required" %}'
@@ -96,7 +98,7 @@
                         stringLength: {
                             max: 20,
                             min: 2,
-                            message: '{% trans "Password must be between 2 and 20 character" %}'
+                            message: '{% trans "must be between 2 and 20 character" %}'
                         },
                         notEmpty: {
                             message: '{% trans "This Field is required" %}'
@@ -108,7 +110,7 @@
                         stringLength: {
                             min: 6,
                             max: 20,
-                            message: '{% trans "Password must be between 6 and 20 character" %}'
+                            message: '{% trans "must be between 6 and 20 character" %}'
                         },
                         notEmpty: {
                             message: '{% trans "This Field is required" %}'

@@ -1,0 +1,23 @@
+{% if form.errors %}
+    <div class="alert alert-solid-danger alert-bold" role="alert">
+        <div class="alert-icon">
+            <i class="flaticon-warning"></i>
+        </div>
+        <div class="alert-text">
+        <ul>
+            {% for index,field in form.errors.items %}
+
+                {% for error in field %}
+                    <li>{{ error }}</li>
+                {% endfor %}
+
+            {% endfor %}
+        </ul>
+        </div>
+        <div class="alert-close">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"><i class="la la-close"></i></span>
+            </button>
+        </div>
+    </div>
+{% endif %}

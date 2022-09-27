@@ -1,0 +1,28 @@
+<div id="kt_header" class="header bg-white header-fixed">
+    <!--begin::Container-->
+    <div class="container-fluid d-flex align-items-stretch justify-content-between container">
+        <!--begin::Left-->
+        {% include 'shared/menu.html' %}
+        <!--end::Left-->
+        <!--begin::Topbar-->
+        <div class="topbar">
+            <!--begin::Search-->
+            <div class="topbar-item">
+                <div class="btn btn-icon w-auto btn-clean d-flex align-items-center btn-lg px-2"
+                     id="kt_quick_user_toggle">
+                                <span class="symbol symbol-35 symbol-light-primary">
+											<span class="symbol-label font-size-h5 font-weight-bold">{{ request.user.username|make_list|slice:":1"|join:''|upper }}</span>
+										</span>
+                    <div class="d-flex flex-column text-left pl-3">
+                        <span class="text-muted font-weight-bold font-size-base d-none d-md-inline">{{ request.user.username|upper|slice:":1" }}{{ request.user.username|slice:"1:" }}</span>
+                        <span class="text-dark-75 font-weight-bolder font-size-base d-none d-md-inline">{{ request.user.get_full_name }}</span>
+                    </div>
+                </div>
+            </div>
+            <!--begin::User-->
+            <!--end::User-->
+        </div>
+        <!--end::Topbar-->
+    </div>
+    <!--end::Container-->
+</div>

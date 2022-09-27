@@ -49,7 +49,7 @@ class ChangePasswordViewTemplateView(LoginRequiredMixin, View):
 
 
 class UserLoginView(LoginView):
-    template_name = 'login.html'
+    template_name = 'login-theme/login-1.html'
 
     def form_valid(self, form):
         return Http404

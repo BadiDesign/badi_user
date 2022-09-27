@@ -3,6 +3,7 @@ import random
 import string
 from datetime import timedelta
 
+from badi_utils.email import Email
 from badi_utils.errors import BadiErrorCodes
 from badi_utils.validations import PersianValidations, BadiValidators
 from django.contrib.auth import login, validators
@@ -15,6 +16,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from badi_utils.dynamic_api import DynamicModelApi, InCaseSensitiveTokenObtainPairSerializer
 from badi_utils.logging import log
@@ -107,11 +109,141 @@ BADI_AUTH_CONFIG = {
         "sms_panel": IpPanelSms,
         "username_validator": BadiValidators.username,
     },
+    "login": {
+        "is_active": True,
+        "type": "username_password",
+        "auto_create": True,
+        "login_to_django": True,
+        "user_key": "username",
+        "email_panel": Email.send_login_token,
+        "sms_panel": IpPanelSms,
+        "username_validator": PersianValidations.phone_number,
+    },
 }
 
 
-class AuthViewSet(viewsets.ViewSet):
+class LoginAuth:
+    @staticmethod
+    def _login_with_email_token(request, config):
+        email = request.data.get('username')
+        code = request.data.get('code')
+        if BadiValidators.is_mail(email):
+            user, is_created = User.objects.get_or_create(email=email,
+                                                          defaults={"username": email})
+        else:
+            return ResponseNotOk(reason='Invalid Email!')
+        if code:
+            if user.token and user.token.is_enabled():
+                if code == user.token.token:
+                    user.token.is_accepted = True
+                    user.token.save()
+                    login(request, user)
+                    refresh = RefreshToken.for_user(user)
+                    return Response({
+                        'refresh': str(refresh),
+                        'access': str(refresh.access_token),
+                    })
+                else:
+                    return ResponseNotOk(reason='Invalid Code!')
+        else:
+            if user:
+                if not user.email:
+                    return ResponseNotOk(reason='Email not Found!')
+                if user.token and user.token.is_enabled():
+                    return ResponseOk(detail='Code Recently sent to your email! please check Inbox and Spam mails!')
+                else:
+                    tkn = Token(token=random_with_N_digits(5), mail=user.email,
+                                last_send=datetime.datetime.now())
+                    tkn.save()
+                    send_state = Email.send(tkn.token, tkn.mail)
+                    if not send_state:
+                        return ResponseNotOk(reason='Email Sent Failed! please Check your Email!')
+
+                user.token = tkn
+                user.save()
+                return ResponseOk(detail='Code Sent to your Email!')
+
+            raise InvalidToken()
+
+    @staticmethod
+    def _login_with_sms_token(request, config):
+        user_key = config.get("user_key", "mobile_number")
+        data = request.data.get(user_key)
+        code = request.data.get('code')
+        if not config.get("username_validator")(data):
+            return ResponseNotOk(reason=_(BadiErrorCodes.phone))
+        if config['auto_create']:
+            defaults = {"username": data}
+            user, is_created = User.objects.get_or_create(**{user_key: data}, defaults=defaults)
+        else:
+            user = User.objects.filter(mobile_number=data)
+            if not user:
+                return ResponseNotOk(reason=_(BadiErrorCodes.not_found))
+        if code:
+            if user.token and user.token.is_enabled():
+                if code != user.token.token:
+                    return ResponseNotOk(reason=BadiErrorCodes.wrong_code)
+                user.token.is_accepted = True
+                user.token.save()
+                if config.get("login_to_django"):
+                    login(request, user)
+                refresh = RefreshToken.for_user(user)
+                return Response({
+                    'refresh': str(refresh),
+                    'access': str(refresh.access_token),
+                })
+        else:
+            if not user.mobile_number:
+                return ResponseNotOk(reason=BadiErrorCodes.not_found)
+            if user.token and user.token.is_enabled():
+                return ResponseOk(detail='کد تایید شماره تماس که برای شما ارسال شده را وارد کنید!')
+            else:
+                tkn = Token(token=random_with_N_digits(5), phone=user.mobile_number,
+                            last_send=datetime.datetime.now())
+                tkn.save()
+                config.get("sms_panel")(tkn.phone).send_verify_code(tkn.token)
+            user.token = tkn
+            user.save()
+            return ResponseOk(detail=_("Code sent to ") + data)
+
+        raise InvalidToken()
+
+    @staticmethod
+    def _login_with_username_password_token(request, config):
+        serializer = TokenObtainPairSerializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+            username = request.data.get('username')
+            dashboard_login = request.data.get('dashboard_login')
+            user = User.objects.filter(username=username).first()
+            if user.is_superuser:
+                user.is_admin = True
+                user.save()
+            if dashboard_login and not user.is_admin:
+                log(user, 1, 1, False)
+                return ResponseNotOk(reason='You dont have Permission to access Dashboard!')
+            else:
+                login(request, user)
+            log(user, 1, 1, True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
+
+
+class AuthViewSet(viewsets.ViewSet, LoginAuth):
     permission_classes = []
+
+    @action(methods=['post'], detail=False)
+    def login(self, request, *args, **kwargs):
+        config = BADI_AUTH_CONFIG['login']
+        if config["type"] == "email_token":
+            return self._login_with_email_token(request, config)
+        if config["type"] == "sms_token":
+            return self._login_with_sms_token(request, config)
+        if config["type"] == "username_password":
+            return self._login_with_username_password_token(request, config)
+
+        return ResponseNotOk()
 
     @action(methods=['post'], detail=False)
     def register(self, request, *args, **kwargs):
@@ -217,51 +349,6 @@ class AuthViewSet(viewsets.ViewSet):
             'refresh': str(refresh),
             'access': str(refresh.access_token),
         })
-
-    @action(methods=['post'], detail=False)
-    def login(self, request, *args, **kwargs):
-        serializer = InCaseSensitiveTokenObtainPairSerializer(data=request.data)
-        try:
-            mobile_number = request.data.get('username')
-            code = request.data.get('code')
-            if CustomValidations.phone_number(mobile_number):
-                user, is_created = User.objects.get_or_create(mobile_number=mobile_number,
-                                                              defaults={"username": mobile_number})
-            else:
-                return ResponseNotOk(reason='شماره تماس وارد شده صحیح نمی باشد!')
-            if code:
-                if user.token and user.token.is_enabled():
-                    if code == user.token.token:
-                        user.token.is_accepted = True
-                        user.token.save()
-                        login(self.request, user)
-                        refresh = RefreshToken.for_user(user)
-                        return Response({
-                            'refresh': str(refresh),
-                            'access': str(refresh.access_token),
-                        })
-                    else:
-                        return ResponseNotOk(reason='کد تایید شماره تماس ارسال شده صحیح نیست!')
-            else:
-                if user:
-                    if not user.mobile_number:
-                        return ResponseNotOk(reason='شماره تماس شما یافت نشد با مدیریت تماس بگیرید!')
-                    if user.token and user.token.is_enabled():
-                        return ResponseOk(detail='کد تایید شماره تماس که برای شما ارسال شده را وارد کنید!')
-                    else:
-                        tkn = Token(token=random_with_N_digits(5), phone=user.mobile_number,
-                                    last_send=datetime.datetime.now())
-                        tkn.save()
-                        Sms.send(tkn.token, tkn.phone)
-                    user.token = tkn
-                    user.save()
-                    return ResponseOk(detail='کد تایید شماره تماس برای شما ارسال شد!')
-
-                raise InvalidToken()
-        except TokenError as e:
-            raise InvalidToken(e.args[0])
-
-        return Response({}, status=status.HTTP_200_OK)
 
     @action(methods=['put'], detail=False)
     def change_password(self, request, *args, **kwargs):

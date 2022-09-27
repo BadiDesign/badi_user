@@ -8,12 +8,12 @@ from django.utils.translation import gettext_lazy as _
 
 
 class Token(models.Model):
-    token = models.CharField(max_length=250, verbose_name=_('کد'))
-    is_forgot = models.BooleanField(default=False, verbose_name=_('فراموشی رمز عبور'))
-    is_accepted = models.BooleanField(default=False, verbose_name=_('تایید شده'))
-    phone = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('شماره تماس'))
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("زمان"))
-    last_send = models.DateTimeField(blank=True, null=True, verbose_name=_("آخرین ارسال"))
+    token = models.CharField(max_length=250, verbose_name=_('code'))
+    is_forgot = models.BooleanField(default=False)
+    is_accepted = models.BooleanField(default=False)
+    phone = models.CharField(max_length=11, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+    last_send = models.DateTimeField(blank=True, null=True)
 
     def is_enabled(self):
         return self.created_at > datetime.now() - timedelta(minutes=30)
@@ -35,13 +35,13 @@ class User(AbstractUser, BadiModel):
             ('can_user', _('مدیریت کاربران')),
         )
 
-    is_admin = models.BooleanField(default=False, verbose_name=_('کاربر مدیر'))
-    mobile_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('شماره موبایل'))
-    birth_date = models.DateField(verbose_name=_('تاریخ تولد'), null=True)
-    picture = models.ImageField(null=True, verbose_name=_('تصویر'), upload_to='public/user', blank=True)
-    token = models.ForeignKey(Token, null=True, blank=True, verbose_name=_('توکن'), related_name='user',
+    is_admin = models.BooleanField(default=False, verbose_name=_('is admin'))
+    mobile_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Mobile Number'))
+    birth_date = models.DateField(verbose_name=_('Birth Date'), null=True)
+    picture = models.ImageField(null=True, verbose_name=_('Picture'), upload_to='public/user', blank=True)
+    token = models.ForeignKey(Token, null=True, blank=True, verbose_name=_('Token'), related_name='user',
                               on_delete=models.SET_NULL)
-    amount = models.BigIntegerField(default=0, blank=True, verbose_name=_('موجودی کیف پول'))
+    amount = models.BigIntegerField(default=0, blank=True, verbose_name=_('Amount'))
 
     def __str__(self):
         return self.first_name + " " + self.last_name

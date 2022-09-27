@@ -1,13 +1,14 @@
 import datetime
 
-from badi_utils.rss import CONFIG_JSON
 from django import template
+from django.conf import settings
 from django.utils.text import slugify
 
 from badi_utils.date_calc import custom_change_date, gregorian_to_jalali
 from random import shuffle
 
 register = template.Library()
+CONFIG_JSON = getattr(settings, "CONFIG_JSON", {})
 
 
 @register.filter(name='date_jalali')
