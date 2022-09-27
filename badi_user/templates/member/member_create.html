@@ -27,7 +27,7 @@
 						<div class="card-body">
 							<div class="row">
 								<div class="col-lg-3">
-									{% include 'components/image-field.html' with field=form.picture label='Picture' %}
+									{% include 'component/image-field.html' with field=form.picture label='Picture' %}
 								</div>
 								<div class="col-md-9">
 									<div class="row">
@@ -49,15 +49,15 @@
 												{% render_field form.password type='password' name='repeat_password' id='id_repeat_password' %}
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-6">
+										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
-												<label class="col-form-label">{{ form.first_name }}:</label>
+												<label class="col-form-label">{{ form.first_name.label }}:</label>
 												{{ form.first_name }}
 											</div>
 										</div>
-										<div class="col-lg-3 col-md-6">
+										<div class="col-lg-6 col-md-6">
 											<div class="form-group">
-												<label class="col-form-label">{{ form.last_name }}:</label>
+												<label class="col-form-label">{{ form.last_name.label }}:</label>
 												{{ form.last_name }}
 											</div>
 										</div>
@@ -84,7 +84,7 @@
 						</div>
 
 						<div class="card-footer">
-							<a href="{{ back }}" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+							<a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
 							<button class="btn btn-primary">{% trans "Submit" %}</button>
 						</div>
 					</form>
@@ -100,7 +100,7 @@
 
 {% endblock %}
 {% block script %}
-<script src="{% static 'custom/image-field.js' %}"></script>
+<script src="{% static 'badi_utils/js/image-field.js' %}"></script>
 <script>
     const formV = FormValidation.formValidation(
         document.getElementById('form'),
@@ -170,8 +170,8 @@
         formV.validate().then(function (status) {
             if (status === 'Valid') {
                 ApiAjax({
-                    success_url: MEMBER_LIST_TEMPLATE,
-                    url: MEMBER_API_URL,
+                    success_url: '../list',
+                    url: '{{ api_url }}',
                     form: 'form',
                     method: 'POST',
                     file: true,

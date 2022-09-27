@@ -16,12 +16,14 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
-from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from badi_utils.dynamic_api import DynamicModelApi, InCaseSensitiveTokenObtainPairSerializer
 from badi_utils.logging import log
 from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
+from rest_framework_simplejwt.views import TokenRefreshView
+
 from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer
 from badi_user.filter import UserListFilter, MemberListFilter
 from badi_user.models import Token
@@ -415,6 +417,15 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                                     status=HTTP_400_BAD_REQUEST)
 
         return JsonResponse({'mobile_number': ['مشکلی پیش آمده است!']}, status=HTTP_400_BAD_REQUEST)
+
+    @action(methods=['post'], detail=False)
+    def refresh(self, request, *args, **kwargs):
+        serializer = TokenRefreshSerializer(data=request.data)
+        try:
+            serializer.is_valid(raise_exception=True)
+        except TokenError as e:
+            raise InvalidToken(e.args[0])
+        return Response(serializer.validated_data, status=status.HTTP_200_OK)
 
     @action(methods=['put'], detail=False)
     def forgot_change_password(self, req, *args, **kwargs):

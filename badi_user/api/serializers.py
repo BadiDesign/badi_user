@@ -10,9 +10,6 @@ User = get_user_model()
 
 
 class UserSerializer(DynamicSerializer):
-    """
-    برای ایجاد کاربر جدید در سامانه
-    """
     remove_field_view = {
         'retrieve': ['password', ],
         'update_self': ['mobile_number', ],
@@ -73,9 +70,6 @@ class AuthSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(DynamicSerializer):
-    """
-    برای ایجاد کاربر جدید در سامانه
-    """
     remove_field_view = {
         'retrieve': ['password', ],
         'update_self': ['password', 'username', 'mobile_number', 'amount'],
@@ -116,9 +110,6 @@ class MemberSerializer(DynamicSerializer):
 
 
 class GroupSerializer(DynamicSerializer):
-    """
-    برای ایجاد کاربر جدید در سامانه
-    """
     remove_field_view = {
     }
 
@@ -132,9 +123,6 @@ class GroupSerializer(DynamicSerializer):
 
 
 class NotificationSerializer(DynamicSerializer):
-    """
-    برای ایجاد کاربر جدید در سامانه
-    """
     remove_field_view = {
     }
 

@@ -29,10 +29,11 @@ class Token(models.Model):
 
 class User(AbstractUser, BadiModel):
     class Meta:
-        verbose_name = _('کاربر')
-        verbose_name_plural = _('کاربران')
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
         permissions = (
-            ('can_user', _('مدیریت کاربران')),
+            ('can_user', _('Manage users')),
+            ('can_member', _('Manage members')),
         )
 
     is_admin = models.BooleanField(default=False, verbose_name=_('is admin'))
@@ -68,6 +69,11 @@ class User(AbstractUser, BadiModel):
         if action == 'member_create':
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
         return ['first_name', 'last_name', 'mobile_number', 'picture']
+
+    @staticmethod
+    def get_api_url(view):
+        if view == 'MemberListView':
+            return '/api/v1/member/'
 
 
 class Notification(models.Model):

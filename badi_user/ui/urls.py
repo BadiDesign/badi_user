@@ -8,7 +8,6 @@ urlpatterns = [
     path('login/', UserLoginView.as_view(), name='custom_login'),
     generate_url(User(), create=UserCreateView, add_model_to_url=False),
     generate_url(User(), view=UserListView, add_model_to_url=False),
-    # generate_url(User(), delete=UserDeleteView),
     generate_url(User(), update=UserUpdateView, add_model_to_url=False),
     path('change_password/', ChangePasswordViewTemplateView.as_view(), name='change_password'),
     path('member/list', MemberListView.as_view(), name='member_list'),

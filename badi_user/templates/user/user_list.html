@@ -109,7 +109,7 @@
 	window.data_table_cool_options['lengthChange'] = false
 	window.data_table_cool_options['searching'] = false
 	var table = datatable_simple_show({
-		url: USER_API_DATATABLE_URL,
+		url: '{{ api_url }}datatable/',
 		real_cols: {{cols|length}},
 		hide_id: true,
 		loading_all: true,

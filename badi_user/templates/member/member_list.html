@@ -1,4 +1,6 @@
-{% extends 'base.html' %}{% load static %}
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 {% block body %}
     {% load widget_tweaks %}
 
@@ -53,12 +55,6 @@
                         اعضا
                     </h3>
                     <div class="card-toolbar">
-                        {#                        <button type="button"#}
-                        {#                                class="btn mr-2 btn-light-primary font-weight-bolder"#}
-                        {#                                id="btn_excel">#}
-                        {#                            خروجی اکسل<i class="fa fa-file-excel ml-2"></i>#}
-                        {#                        </button>#}
-
                         <a href="{% url 'member_create' %}" class="btn btn-transparent-primary mr-2">
                             <i class="fa fa-plus"></i>
                             افزودن عضو
@@ -309,14 +305,14 @@
         window.data_table_cool_options['lengthChange'] = false
         window.data_table_cool_options['searching'] = false
         var table = datatable_simple_show({
-            url: MEMBER_API_DATATABLE_URL,
+            url: '{{ api_url }}datatable/',
             real_cols: {{cols|length}},
             hide_id: true,
             loading_all: true,
             responsive: true,
             datable_id: '#table',
-            del_url: MEMBER_API_WITH_PK_URL,
-            up_url: MEMBER_UPDATE_TEMPLATE,
+            del_url: '{{ api_url }}',
+            up_url: 'update/0',
             extra_del_params: {
                 ajax: true,
             },
@@ -485,33 +481,6 @@
                 success_message: 'زمز عبور با موفقیت تغییر کرد'
             })
         })
-
-    </script>
-    <script>
-        const vueTransactionsApp = new Vue({
-            delimiters: ['[[', ']]'],
-            el: '#transactions-vue',
-            data() {
-                return {
-                    transactions: [],
-                }
-            },
-            created: function () {
-            },
-            methods: {
-                getTransactions: function (pk) {
-                    ApiAjaxReader({
-                        method: 'GET',
-                        url: TRANSACTION_USER_API_URL,
-                        pk,
-                        success_message: 'با موفقیت انجام شد',
-                        success: (data) => {
-                            this.transactions = data;
-                        },
-                    });
-                },
-            },
-        });
 
     </script>
     <script>
