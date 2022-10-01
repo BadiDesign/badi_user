@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block body %}
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                {% trans "Update" %}
+                                {{ object }}
+                            </h3>
+                        </div>
+                        <form id="form" method="post">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.username.label }}:</label>
+                                            {{ form.username }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.first_name.label }}:</label>
+                                            {{ form.first_name }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="col-form-label">{{ form.last_name.label }}:</label>
+                                            {{ form.last_name }}
+                                        </div>
+                                    </div>
+                                    {% if form.mobile_number %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.mobile_number.label }}:</label>
+                                                {{ form.mobile_number }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                    {% if form.email %}
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="col-form-label">{{ form.email.label }}:</label>
+                                                {{ form.email }}
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+                                <button id="submitter" class="btn btn-primary">{% trans "Submit" %}</button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        const formV = FormValidation.formValidation(
+            document.getElementById('form'),
+            {
+                fields: {
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message: '{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message: '{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                },
+
+            }
+        );
+
+        $('#form').submit(function (e) {
+            e.preventDefault()
+            const button = $(this).find('button');
+            formV.validate().then(function (status) {
+                if (status === 'Valid') {
+                    ApiAjax({
+                        success_url: '../list',
+                        url: '{{ api_url }}',
+                        form: 'form',
+                        method: 'PUT',
+                        pk: '{{object.id}}',
+                        button: button,
+                        success_message: '{% trans "User" %} ({{ form.first_name.value }} {{ form.last_name.value }}) {% trans "Updated Successfully" %}!',
+                    })
+                } else {
+                    Swal.fire({
+                        text:'{% trans "Seems some error exists" %}',
+                        icon: "error",
+                        confirmButtonText: '{% trans "Got it" %}',
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-secondary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}
