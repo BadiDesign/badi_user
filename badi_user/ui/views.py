@@ -1,14 +1,14 @@
-# Create your views here.
+from logging import log
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.http import Http404
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
-
+from django.utils import timezone
 from badi_utils.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
 from badi_utils.utils import LoginRequiredMixin
 from badi_user.filter import UserListFilter
-from badi_user.models import User
+from badi_user.models import User, Token
 from badi_user.ui.forms import user_form
 
 
@@ -53,3 +53,31 @@ class UserLoginView(LoginView):
 
     def form_valid(self, form):
         return Http404
+
+
+class ChangePasswordForgot(View):
+
+    def get(self, req, token_id, hash_code, *args):
+        token = Token.objects.filter(pk=(int(token_id) + 1330) / 8569, token=hash_code, is_forgot=True,
+                                     is_accepted=False).first()
+        if token and token.is_enabled():
+            return render(req, 'user/change_password.html', {
+                'dont_ask_password': True,
+                'disable_nav': True,
+                'token_id': token_id,
+                'hash_code': hash_code
+            })
+        else:
+            return redirect('custom_login')
+
+
+class UserLogout(LoginRequiredMixin, View):
+
+    def get(self, request):
+        request.user.last_logout = timezone.now()
+        request.user.last_activity = timezone.now()
+        request.user.save()
+        log(request.user, 1, 2, True)
+        logout(request)
+
+        return redirect('/')
