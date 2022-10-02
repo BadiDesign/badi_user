@@ -8,8 +8,11 @@ from django.utils import timezone
 from badi_utils.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
 from badi_utils.utils import LoginRequiredMixin
 from badi_user.filter import UserListFilter
-from badi_user.models import User, Token
+from badi_user.models import Token
 from badi_user.ui.forms import user_form
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class UserListView(DynamicListView):
