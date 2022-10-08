@@ -1,4 +1,4 @@
-from plugins.dynamic import *
+from badi_utils.dynamic import *
 from .views import *
 
 urlpatterns = [
