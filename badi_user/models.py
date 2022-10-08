@@ -70,6 +70,12 @@ class User(AbstractUser, BadiModel):
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
         return ['first_name', 'last_name', 'mobile_number', 'picture']
 
+    @classmethod
+    def get_datatable_cols(cls, class_name, *args):
+        if class_name == 'MemberListView':
+            return ['#', _("Select"), _("Picture"), _("Username"), _("FirstName"), _("LastName"), _("Amount")]
+        return ['first_name', 'last_name', 'mobile_number', 'picture']
+
     @staticmethod
     def get_api_url(view):
         if view == 'MemberListView':

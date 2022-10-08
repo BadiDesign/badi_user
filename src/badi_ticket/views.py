@@ -1,8 +1,6 @@
-from badi_utils.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
+from plugins.dynamic import DynamicCreateView, DynamicListView, DynamicUpdateView
 from badi_ticket.models import Message, Ticket
-from django.contrib.auth import get_user_model
-
-User = get_user_model()
+from user.models import User
 
 
 class TicketListView(DynamicListView):

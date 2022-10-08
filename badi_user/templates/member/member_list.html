@@ -10,7 +10,7 @@
             <div class="card card-custom gutter-b">
                 <div class="card-header">
                     <h3 class="card-title">
-                        {% trans "Seatch in List" %}
+                        {% trans "Search in List" %}
                     </h3>
                     <div class="card-toolbar">
                         <a class="btn btn-icon" data-toggle="collapse" href="#collapse" role="button"
@@ -133,7 +133,7 @@
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content border-modal">
-                {% include 'shared/loader.html' %}
+                {% include 'component/loader.html' %}
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">ارسال پیامک</h5>
                 </div>
@@ -169,7 +169,7 @@
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content border-modal">
-                {% include 'shared/loader.html' %}
+                {% include 'component/loader.html' %}
                 <div class="modal-header text-center">
                     <h5 class="modal-title font-weight-bolder text-center mx-auto text-success">
                         برداشت وجه از عضو
@@ -204,7 +204,7 @@
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content border-modal">
-                {% include 'shared/loader.html' %}
+                {% include 'component/loader.html' %}
                 <div class="modal-header text-center">
                     <h5 class="modal-title font-weight-bolder text-center mx-auto text-danger">
                         برداشت از کیف پول ورزشکار
@@ -235,7 +235,7 @@
 {% endblock %}
 {% block script %}
     <script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
-    <script src="{% static 'custom/datatable.js' %}" type="text/javascript"></script>
+    <script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
 
     <script>
 
@@ -380,7 +380,7 @@
                 }).then(function (result) {
                     if (result.value) {
                         ApiAjax({
-                            url: INCREASE_WALLET_API_URL,
+                            url: '/api/v1/transaction/increase_wallet/0',
                             method: 'PUT',
                             pk,
                             success_message: 'حساب ورزشکار با موفقیت شارژ شد!',
@@ -411,7 +411,7 @@
                 }).then(function (result) {
                     if (result.value) {
                         ApiAjax({
-                            url: DECREASE_WALLET_API_URL,
+                            url: '/api/v1/transaction/decease_wallet/0',
                             method: 'PUT',
                             pk,
                             success_message: 'برداشت از حساب ورزشکار با موفقیت انجام شد!',

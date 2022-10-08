@@ -135,17 +135,17 @@
                         stringLength: {
                             min: 6,
                             max: 20,
-                            message: 'رمز عبور باید بین 6 تا 20 کاراکتر باشد!'
+                            message: '{% trans "must be between 6 and 20 character" %}'
                         },
                         notEmpty: {
-                            message: 'وارد کردن رمز عبور الزامی است!'
+                            message: '{% trans "This Field is required" %}'
                         },
                     }
                 },
                 repeat_password: {
                     validators: {
                         notEmpty: {
-                            message: 'وارد کردن تکرار رمز عبور الزامی است!'
+                            message: '{% trans "This Field is required" %}'
                         },
                         callback: {
                             message: 'رمز عبور با تکرار رمز عبور مطابقت ندارد!',
@@ -176,7 +176,7 @@
                     method: 'POST',
                     file: true,
                     button: button,
-                    success_message: 'عضو با موفقیت ایجاد شد!',
+                    success_message: '{% trans "Done successfully" %}',
                 })
             } else {
                 Swal.fire({

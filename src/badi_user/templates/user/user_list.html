@@ -9,7 +9,7 @@
 		<div class="card card-custom gutter-b">
 			<div class="card-header">
 				<h3 class="card-title">
-					{% trans "Seatch in List" %}
+					{% trans "Search in List" %}
 				</h3>
 				<div class="card-toolbar">
 					<a class="btn btn-icon" data-toggle="collapse" href="#collapse" role="button"
@@ -86,7 +86,7 @@
 {% endblock %}
 {% block script %}
 <script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
-<script src="{% static 'custom/datatable.js' %}" type="text/javascript"></script>
+<script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
 
 <script>
     function switch_ajax(url, pk) {
@@ -115,8 +115,8 @@
 		loading_all: true,
 		responsive: true,
 		datable_id: '#table',
-		del_url: USER_WITH_PK_API_URL,
-		up_url: USER_UPDATE_TEMPLATE,
+		del_url: '{{ api_url }}0',
+		up_url: 'update/0',
 		extra_del_params: {
 			ajax: true,
 		},
