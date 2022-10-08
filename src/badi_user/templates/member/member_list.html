@@ -380,7 +380,7 @@
                 }).then(function (result) {
                     if (result.value) {
                         ApiAjax({
-                            url: INCREASE_WALLET_API_URL,
+                            url: '/api/v1/transaction/increase_wallet/0',
                             method: 'PUT',
                             pk,
                             success_message: 'حساب ورزشکار با موفقیت شارژ شد!',
@@ -411,7 +411,7 @@
                 }).then(function (result) {
                     if (result.value) {
                         ApiAjax({
-                            url: DECREASE_WALLET_API_URL,
+                            url: '/api/v1/transaction/decease_wallet/0',
                             method: 'PUT',
                             pk,
                             success_message: 'برداشت از حساب ورزشکار با موفقیت انجام شد!',
