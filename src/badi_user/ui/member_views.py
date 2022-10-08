@@ -33,9 +33,9 @@ class MemberCreateView(DynamicCreateView):
 class MemberUpdateView(DynamicUpdateView):
     model = User
     model_name = 'عضو'
+    api_url = '/api/v1/member/'
     form = user_form(
         ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'picture', ], update=True)
-    success_url = '/user/member/list'
     template_name = 'member/member_update.html'
 
 
