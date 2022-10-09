@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-08 17:14+0330\n"
+"POT-Creation-Date: 2022-10-08 19:50+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -156,7 +156,8 @@ msgstr "شماره تماس"
 msgid "Birth Date"
 msgstr "تاریخ تولد"
 
-#: .\badi_user\models.py:42 .\src\badi_user\models.py:42
+#: .\badi_user\models.py:42 .\badi_user\models.py:76
+#: .\src\badi_user\models.py:42 .\src\badi_user\models.py:76
 msgid "Picture"
 msgstr "تصویر پروفایل"
 
@@ -164,69 +165,90 @@ msgstr "تصویر پروفایل"
 msgid "Token"
 msgstr "توکن"
 
-#: .\badi_user\models.py:45 .\src\badi_user\models.py:45
+#: .\badi_user\models.py:45 .\badi_user\models.py:76
+#: .\src\badi_user\models.py:45 .\src\badi_user\models.py:76
 msgid "Amount"
 msgstr "موجودی"
 
-#: .\badi_user\models.py:81 .\src\badi_user\models.py:81
+#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+#, fuzzy
+#| msgid "Delete"
+msgid "Select"
+msgstr "حذف"
+
+#: .\badi_user\models.py:76 .\badi_user\templates\login-theme\login-1.html:77
+#: .\src\badi_user\models.py:76
+#: .\src\badi_user\templates\login-theme\login-1.html:77
+msgid "Username"
+msgstr "نام کاربری"
+
+#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+msgid "FirstName"
+msgstr ""
+
+#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+msgid "LastName"
+msgstr ""
+
+#: .\badi_user\models.py:87 .\src\badi_user\models.py:87
 msgid "اعلان"
 msgstr ""
 
-#: .\badi_user\models.py:82 .\src\badi_user\models.py:82
+#: .\badi_user\models.py:88 .\src\badi_user\models.py:88
 msgid "اعلان ها"
 msgstr ""
 
-#: .\badi_user\models.py:84 .\src\badi_user\models.py:84
+#: .\badi_user\models.py:90 .\src\badi_user\models.py:90
 msgid "مدیرت اعلان ها"
 msgstr ""
 
-#: .\badi_user\models.py:87 .\badi_user\models.py:107
-#: .\src\badi_user\models.py:87 .\src\badi_user\models.py:107
+#: .\badi_user\models.py:93 .\badi_user\models.py:113
+#: .\src\badi_user\models.py:93 .\src\badi_user\models.py:113
 msgid "کاربر"
 msgstr ""
 
-#: .\badi_user\models.py:88 .\src\badi_user\models.py:88
+#: .\badi_user\models.py:94 .\src\badi_user\models.py:94
 msgid "موضوع"
 msgstr ""
 
-#: .\badi_user\models.py:89 .\src\badi_user\models.py:89
+#: .\badi_user\models.py:95 .\src\badi_user\models.py:95
 msgid "متن"
 msgstr ""
 
-#: .\badi_user\models.py:90 .\src\badi_user\models.py:90
+#: .\badi_user\models.py:96 .\src\badi_user\models.py:96
 msgid "نمایش اعلان از تاریخ"
 msgstr ""
 
-#: .\badi_user\models.py:91 .\src\badi_user\models.py:91
+#: .\badi_user\models.py:97 .\src\badi_user\models.py:97
 msgid "خوانده شده"
 msgstr ""
 
-#: .\badi_user\models.py:99 .\badi_user\models.py:100
-#: .\src\badi_user\models.py:99 .\src\badi_user\models.py:100
+#: .\badi_user\models.py:105 .\badi_user\models.py:106
+#: .\src\badi_user\models.py:105 .\src\badi_user\models.py:106
 msgid "گزارشات سامانه"
 msgstr ""
 
-#: .\badi_user\models.py:102 .\src\badi_user\models.py:102
+#: .\badi_user\models.py:108 .\src\badi_user\models.py:108
 msgid "مشاهده گزارشات سامانه"
 msgstr ""
 
-#: .\badi_user\models.py:105 .\src\badi_user\models.py:105
+#: .\badi_user\models.py:111 .\src\badi_user\models.py:111
 msgid "عنوان"
 msgstr ""
 
-#: .\badi_user\models.py:108 .\src\badi_user\models.py:108
+#: .\badi_user\models.py:114 .\src\badi_user\models.py:114
 msgid "اهمیت"
 msgstr ""
 
-#: .\badi_user\models.py:109 .\src\badi_user\models.py:109
+#: .\badi_user\models.py:115 .\src\badi_user\models.py:115
 msgid "وضیعت"
 msgstr ""
 
-#: .\badi_user\models.py:110 .\src\badi_user\models.py:110
+#: .\badi_user\models.py:116 .\src\badi_user\models.py:116
 msgid "توضیحات"
 msgstr ""
 
-#: .\badi_user\models.py:111 .\src\badi_user\models.py:111
+#: .\badi_user\models.py:117 .\src\badi_user\models.py:117
 msgid "زمان"
 msgstr ""
 
@@ -236,11 +258,6 @@ msgstr ""
 #: .\src\badi_user\templates\login-theme\login-1.html:97
 msgid "Login"
 msgstr ""
-
-#: .\badi_user\templates\login-theme\login-1.html:77
-#: .\src\badi_user\templates\login-theme\login-1.html:77
-msgid "Username"
-msgstr "نام کاربری"
 
 #: .\badi_user\templates\login-theme\login-1.html:86
 #: .\src\badi_user\templates\login-theme\login-1.html:86
@@ -252,36 +269,37 @@ msgstr "رمز عبور"
 #: .\badi_user\templates\user\user_list.html:60
 #: .\src\badi_user\templates\member\member_create.html:14
 #: .\src\badi_user\templates\user\user_create.html:15
+#: .\src\badi_user\templates\user\user_list.html:60
 msgid "Create"
 msgstr "ساخت"
 
-#: .\badi_user\templates\member\member_create.html:48
+#: .\badi_user\templates\member\member_create.html:47
 #: .\badi_user\templates\user\change_password.html:41
 #: .\badi_user\templates\user\user_create.html:37
-#: .\src\badi_user\templates\member\member_create.html:48
+#: .\src\badi_user\templates\member\member_create.html:47
 #: .\src\badi_user\templates\user\change_password.html:41
 #: .\src\badi_user\templates\user\user_create.html:37
 msgid "Repeat Password"
 msgstr "تکرار رمز عبور"
 
-#: .\badi_user\templates\member\member_create.html:87
+#: .\badi_user\templates\member\member_create.html:86
 #: .\badi_user\templates\user\change_password.html:50
 #: .\badi_user\templates\user\user_create.html:63
 #: .\badi_user\templates\user\user_update.html:58
-#: .\src\badi_user\templates\member\member_create.html:87
+#: .\src\badi_user\templates\member\member_create.html:86
 #: .\src\badi_user\templates\user\change_password.html:50
 #: .\src\badi_user\templates\user\user_create.html:63
 #: .\src\badi_user\templates\user\user_update.html:58
 msgid "Back"
 msgstr "بازگشت"
 
-#: .\badi_user\templates\member\member_create.html:88
+#: .\badi_user\templates\member\member_create.html:87
 #: .\badi_user\templates\member\member_self_update.html:71
 #: .\badi_user\templates\user\change_password.html:51
 #: .\badi_user\templates\user\user_create.html:64
 #: .\badi_user\templates\user\user_list.html:41
 #: .\badi_user\templates\user\user_update.html:59
-#: .\src\badi_user\templates\member\member_create.html:88
+#: .\src\badi_user\templates\member\member_create.html:87
 #: .\src\badi_user\templates\member\member_self_update.html:71
 #: .\src\badi_user\templates\user\change_password.html:51
 #: .\src\badi_user\templates\user\user_create.html:64
@@ -290,18 +308,18 @@ msgstr "بازگشت"
 msgid "Submit"
 msgstr "ثبت"
 
-#: .\badi_user\templates\member\member_create.html:114
-#: .\badi_user\templates\member\member_create.html:126
+#: .\badi_user\templates\member\member_create.html:113
+#: .\badi_user\templates\member\member_create.html:125
 #: .\badi_user\templates\member\member_self_update.html:134
 #: .\badi_user\templates\member\member_self_update.html:146
-#: .\badi_user\templates\member\member_update.html:85
-#: .\badi_user\templates\member\member_update.html:97
+#: .\badi_user\templates\member\member_update.html:86
+#: .\badi_user\templates\member\member_update.html:98
 #: .\badi_user\templates\user\user_create.html:89
 #: .\badi_user\templates\user\user_create.html:101
 #: .\badi_user\templates\user\user_update.html:86
 #: .\badi_user\templates\user\user_update.html:98
-#: .\src\badi_user\templates\member\member_create.html:114
-#: .\src\badi_user\templates\member\member_create.html:126
+#: .\src\badi_user\templates\member\member_create.html:113
+#: .\src\badi_user\templates\member\member_create.html:125
 #: .\src\badi_user\templates\member\member_self_update.html:134
 #: .\src\badi_user\templates\member\member_self_update.html:146
 #: .\src\badi_user\templates\member\member_update.html:85
@@ -313,12 +331,14 @@ msgstr "ثبت"
 msgid "must be between 2 and 20 character"
 msgstr "باید بین 2 و 20 حرف باشد"
 
-#: .\badi_user\templates\member\member_create.html:117
-#: .\badi_user\templates\member\member_create.html:129
+#: .\badi_user\templates\member\member_create.html:116
+#: .\badi_user\templates\member\member_create.html:128
+#: .\badi_user\templates\member\member_create.html:140
+#: .\badi_user\templates\member\member_create.html:147
 #: .\badi_user\templates\member\member_self_update.html:137
 #: .\badi_user\templates\member\member_self_update.html:149
-#: .\badi_user\templates\member\member_update.html:88
-#: .\badi_user\templates\member\member_update.html:100
+#: .\badi_user\templates\member\member_update.html:89
+#: .\badi_user\templates\member\member_update.html:101
 #: .\badi_user\templates\user\change_password.html:75
 #: .\badi_user\templates\user\change_password.html:87
 #: .\badi_user\templates\user\change_password.html:94
@@ -328,8 +348,10 @@ msgstr "باید بین 2 و 20 حرف باشد"
 #: .\badi_user\templates\user\user_create.html:123
 #: .\badi_user\templates\user\user_update.html:89
 #: .\badi_user\templates\user\user_update.html:101
-#: .\src\badi_user\templates\member\member_create.html:117
-#: .\src\badi_user\templates\member\member_create.html:129
+#: .\src\badi_user\templates\member\member_create.html:116
+#: .\src\badi_user\templates\member\member_create.html:128
+#: .\src\badi_user\templates\member\member_create.html:140
+#: .\src\badi_user\templates\member\member_create.html:147
 #: .\src\badi_user\templates\member\member_self_update.html:137
 #: .\src\badi_user\templates\member\member_self_update.html:149
 #: .\src\badi_user\templates\member\member_update.html:88
@@ -346,12 +368,28 @@ msgstr "باید بین 2 و 20 حرف باشد"
 msgid "This Field is required"
 msgstr "این فیلد ضروری است"
 
-#: .\badi_user\templates\member\member_create.html:183
-#: .\badi_user\templates\member\member_update.html:130
+#: .\badi_user\templates\member\member_create.html:137
+#: .\badi_user\templates\user\change_password.html:84
+#: .\badi_user\templates\user\user_create.html:113
+#: .\src\badi_user\templates\member\member_create.html:137
+#: .\src\badi_user\templates\user\change_password.html:84
+#: .\src\badi_user\templates\user\user_create.html:113
+msgid "must be between 6 and 20 character"
+msgstr "باید بین 6 تا 20 حرف باشد"
+
+#: .\badi_user\templates\member\member_create.html:178
+#: .\src\badi_user\templates\member\member_create.html:178
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Done successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\badi_user\templates\member\member_create.html:182
+#: .\badi_user\templates\member\member_update.html:131
 #: .\badi_user\templates\user\change_password.html:132
 #: .\badi_user\templates\user\user_create.html:160
 #: .\badi_user\templates\user\user_update.html:130
-#: .\src\badi_user\templates\member\member_create.html:183
+#: .\src\badi_user\templates\member\member_create.html:182
 #: .\src\badi_user\templates\member\member_update.html:130
 #: .\src\badi_user\templates\user\change_password.html:132
 #: .\src\badi_user\templates\user\user_create.html:160
@@ -359,12 +397,12 @@ msgstr "این فیلد ضروری است"
 msgid "Seems some error exists"
 msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 
-#: .\badi_user\templates\member\member_create.html:185
-#: .\badi_user\templates\member\member_update.html:132
+#: .\badi_user\templates\member\member_create.html:184
+#: .\badi_user\templates\member\member_update.html:133
 #: .\badi_user\templates\user\change_password.html:134
 #: .\badi_user\templates\user\user_create.html:162
 #: .\badi_user\templates\user\user_update.html:132
-#: .\src\badi_user\templates\member\member_create.html:185
+#: .\src\badi_user\templates\member\member_create.html:184
 #: .\src\badi_user\templates\member\member_update.html:132
 #: .\src\badi_user\templates\user\change_password.html:134
 #: .\src\badi_user\templates\user\user_create.html:162
@@ -416,13 +454,6 @@ msgstr "رمز فعلی"
 msgid "New Password"
 msgstr "رمز جدید"
 
-#: .\badi_user\templates\user\change_password.html:84
-#: .\badi_user\templates\user\user_create.html:113
-#: .\src\badi_user\templates\user\change_password.html:84
-#: .\src\badi_user\templates\user\user_create.html:113
-msgid "must be between 6 and 20 character"
-msgstr "باید بین 6 تا 20 حرف باشد"
-
 #: .\badi_user\templates\user\change_password.html:97
 #: .\badi_user\templates\user\user_create.html:126
 #: .\src\badi_user\templates\user\change_password.html:97
@@ -437,7 +468,6 @@ msgstr "رمز عبور با موفقیت بروزرسانی شد"
 
 #: .\badi_user\templates\user\user_list.html:55
 #: .\src\badi_user\templates\user\user_list.html:55
-#: .\src\badi_user\templates\user\user_list.html:60
 msgid "List"
 msgstr "لیست"
 

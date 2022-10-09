@@ -23,13 +23,15 @@ from badi_utils.logging import log
 from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
 from rest_framework_simplejwt.views import TokenRefreshView
-
 from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer
 from badi_user.filter import UserListFilter, MemberListFilter
 from badi_user.models import Token
 from django.utils.translation import gettext_lazy as _
 from badi_utils.sms import IpPanelSms
 from django.contrib.auth import get_user_model
+from django.conf import settings
+
+BADI_AUTH_CONFIG = getattr(settings, "BADI_AUTH_CONFIG", {})
 
 User = get_user_model()
 
@@ -80,48 +82,6 @@ class UserViewSet(DynamicModelApi):
         return JsonResponse({
             'message': 'با موفقیت {0} شد'.format('فعال' if user.is_active else 'غیرفعال')
         })
-
-
-BADI_AUTH_CONFIG = {
-    "resend": {
-        "is_active": True,
-        "class": IpPanelSms,
-        "user_find_key": "username",
-        "token_key": "phone",
-        "user_key": "mobile_number",
-        "errors": {
-            "404": _("No active user found")
-        }
-    },
-    "verify": {
-        "is_active": True,
-        "user_find_key": "username",
-        "token_key": "phone",
-        "user_key": "mobile_number",
-    },
-    "register": {
-        "is_active": True,
-        "user_find_key": "username",
-        "token_key": "phone",
-        "user_key": "mobile_number",
-        "email_active": False,
-        "mobile_number_active": True,
-        "mobile_number_validator": PersianValidations.phone_number,
-        "email_panel": PersianValidations.phone_number,
-        "sms_panel": IpPanelSms,
-        "username_validator": BadiValidators.username,
-    },
-    "login": {
-        "is_active": True,
-        "type": "username_password",
-        "auto_create": True,
-        "login_to_django": True,
-        "user_key": "username",
-        "email_panel": Email.send_login_token,
-        "sms_panel": IpPanelSms,
-        "username_validator": PersianValidations.phone_number,
-    },
-}
 
 
 class LoginAuth:

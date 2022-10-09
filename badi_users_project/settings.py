@@ -15,6 +15,9 @@ from datetime import timedelta
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+from badi_utils.email import Email
+from badi_utils.sms import IpPanelSms
+from badi_utils.validations import PersianValidations, BadiValidators
 from django.urls import reverse_lazy
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -195,4 +198,49 @@ JWT_AUTH = {
     'JWT_LOGIN_URLS ': LOGIN_URL,
     'JWT_AUTH_COOKIE': None,
 
+}
+
+BADI_AUTH_CONFIG = {
+    "resend": {
+        "is_active": True,
+        "class": IpPanelSms,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+        "errors": {
+            "404": _("No active user found")
+        }
+    },
+    "verify": {
+        "is_active": True,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+    },
+    "register": {
+        "is_active": True,
+        "user_find_key": "username",
+        "token_key": "phone",
+        "user_key": "mobile_number",
+        "email_active": False,
+        "mobile_number_active": True,
+        "mobile_number_validator": PersianValidations.phone_number,
+        "email_panel": PersianValidations.phone_number,
+        "sms_panel": IpPanelSms,
+        "username_validator": BadiValidators.username,
+    },
+    "login": {
+        "is_active": True,
+        "type": "username_password",
+        "auto_create": True,
+        "login_to_django": True,
+        "user_key": "username",
+        "email_panel": Email.send_login_token,
+        "sms_panel": IpPanelSms,
+        "username_validator": PersianValidations.phone_number,
+    },
+    "sms": {
+        "is_active": True,
+        "sms_panel": IpPanelSms,
+    },
 }

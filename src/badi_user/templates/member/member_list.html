@@ -51,13 +51,13 @@
             <div class="card card-custom">
                 <div class="card-header">
                     <h3 class="card-title">
-                        لیست
-                        اعضا
+                        {% trans "Member" %}
+                        {% trans "List" %}
                     </h3>
                     <div class="card-toolbar">
                         <a href="{% url 'member_create' %}" class="btn btn-transparent-primary mr-2">
                             <i class="fa fa-plus"></i>
-                            افزودن عضو
+                            {% trans 'Create' %}
                         </a>
                         <div class="dropdown dropdown-inline mr-2">
 
@@ -86,16 +86,22 @@
                                 <!--begin::Navigation-->
                                 <ul class="navi flex-column navi-hover py-2">
                                     <li class="navi-header justify-content-start font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
-                                        روی
+                                        {% trans "on" %}
                                         <span class="selected_count mx-2"></span>
-                                        مورد
+                                        {% trans "record" %}
                                     </li>
                                     <li class="navi-item">
                                         <a href="#" class="navi-link modal_ticket">
                                                     <span class="navi-icon">
                                                         <i class="far fa-comments"></i>
                                                     </span>
-                                            <span class="navi-text">ارسال پیام سیستمی</span>
+                                            <span class="navi-text">{% trans "Send ticket" %}</span>
+                                        </a>
+                                        <a href="#" class="navi-link modal_sms">
+                                                    <span class="navi-icon">
+                                                        <i class="far fa-comments"></i>
+                                                    </span>
+                                            <span class="navi-text">{% trans "Send Sms" %}</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -105,7 +111,7 @@
                         </div>
 
                         <button class="btn btn-primary" id="select_all" type="button">
-                            انتخاب همه
+                            {% trans "Select All" %}
                         </button>
                     </div>
                 </div>
@@ -135,10 +141,9 @@
             <div class="modal-content border-modal">
                 {% include 'component/loader.html' %}
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">ارسال پیامک</h5>
+                    <h5 class="modal-title">{% trans "Send Ticket" %}</h5>
                 </div>
-                <form class="kt-form" method="post">
-                    {% csrf_token %}
+                <form class="kt-form" method="post" id="ticket-form">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-12">
@@ -164,68 +169,94 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" id="modal_sms" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content border-modal">
+                {% include 'component/loader.html' %}
+                <div class="modal-header">
+                    <h5 class="modal-title">ارسال پیامک</h5>
+                </div>
+                <form method="post" id="sms-form">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <label class="col-form-label font-weight-bolder">متن پیامک</label>
+                                    <textarea required rows="5" id="id_sms_text" name="sms_text"
+                                              class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer p-1">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن
+                        </button>
+                        <button type="button" id="submit_sms" class="btn btn-primary">ارسال پیامک</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <div class="modal fade" id="modal_increase_athlete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modal_increase_member" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content border-modal">
                 {% include 'component/loader.html' %}
                 <div class="modal-header text-center">
                     <h5 class="modal-title font-weight-bolder text-center mx-auto text-success">
-                        برداشت وجه از عضو
+                        {% trans "Charge account" %}
                         <span class="fullname"></span>
                     </h5>
                 </div>
-                <form id="increase_athlete" method="post">
-                    {% csrf_token %}
+                <form id="increase_member" method="post">
                     <div class="modal-body pt-0">
                         <div class="row">
                             <div class="col-12">
                                 <div class="form-group">
-                                    <label class="col-form-label font-weight-bolder">مبلغ جهت شارژ کیف پول:</label>
+                                    <label class="col-form-label font-weight-bolder">{% trans "amount" %}:</label>
                                     <input required type="text" name="amount" class="form-control currency"/>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-form-label font-weight-bolder">توضیحات شارژ:</label>
+                                    <label class="col-form-label font-weight-bolder">{% trans "Description" %}:</label>
                                     <textarea required rows="5" name="description" class="form-control"></textarea>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="modal-footer p-1">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                        <button type="submit" class="btn btn-success">شارژ کیف پول</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                        <button type="submit" class="btn btn-success">{% trans "Charge" %}</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
-    <div class="modal fade" id="modal_decrease_athlete" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="modal_decrease_member" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
          aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content border-modal">
                 {% include 'component/loader.html' %}
                 <div class="modal-header text-center">
                     <h5 class="modal-title font-weight-bolder text-center mx-auto text-danger">
-                        برداشت از کیف پول ورزشکار
+                        {% trans "Decrease Charge account" %}
                         <span class="fullname"></span>
                     </h5>
                 </div>
-                <form id="decrease_athlete" method="post">
-                    {% csrf_token %}
+                <form id="decrease_member" method="post">
                     <div class="modal-body pt-0">
                         <div class="form-group">
-                            <label class="col-form-label font-weight-bolder">مبلغ جهت برداشت از کیف پول:</label>
+                            <label class="col-form-label font-weight-bolder">{% trans "amount" %}::</label>
                             <input required type="text" name="amount" class="form-control currency"/>
                         </div>
                         <div class="form-group">
-                            <label class="col-form-label font-weight-bolder">توضیحات برداشت:</label>
+                            <label class="col-form-label font-weight-bolder">{% trans "Description" %}:</label>
                             <textarea required rows="5" name="description" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer p-1">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">بستن</button>
-                        <button type="submit" class="btn btn-danger">برداشت از کیف پول</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">{% trans "Close" %}</button>
+                        <button type="submit" class="btn btn-danger">{% trans "Submit" %}</button>
                     </div>
                 </form>
             </div>
@@ -251,10 +282,10 @@
 
             set_selected_count()
             if (states.is_all_select) {
-                $(this).html('عدم انتخاب همه');
+                $(this).html('{% trans "DeSelect All" %}');
                 $('table input[type=checkbox]').prop('checked', true).change().closest('tr').addClass('bg-primary-o-10')
             } else {
-                $(this).html('انتخاب همه');
+                $(this).html('{% trans "Select All" %}');
                 $('table input[type=checkbox]').prop('checked', false).change().closest('tr').removeClass('bg-primary-o-10')
             }
         });
@@ -352,7 +383,7 @@
                     $(`td:eq(0)`, row).html(`<span><label class="checkbox checkbox-lg justify-content-center checkbox-single"><input type="checkbox" value="${data[0]}"><span></span></label></span>`)
                         .closest('tr').removeClass('bg-primary-o-10')
                 }
-                boldCol(5, row, formatNumber(data[6]) + ' تومان')
+                boldCol(5, row, formatNumber(data[6]) + ' {% trans "$" %}')
                 $(`td:eq(5)`, row)
                     .find('div').addClass('d-flex justify-content-between')
                     .append(` <button onclick="increaseCharge(${data[0]})" data-toggle="tooltip" data-theme="dark" title="شارژ"   class="btn btn-icon btn-xs ml-2 btn-light-success"> <i class="fa fa-plus"></i>  </button>`)
@@ -368,26 +399,26 @@
         });
         var table_trans = null;
         const increaseCharge = (pk) => {
-            $('#modal_increase_athlete').modal('show');
-            $('#increase_athlete').on('submit', function (e) {
+            $('#modal_increase_member').modal('show');
+            $('#increase_member').on('submit', function (e) {
                 e.preventDefault();
                 swal.fire({
-                    title: 'از شارژ مطمئن هستید؟',
+                    title: '{% trans "Are you Sure?" %}',
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonText: 'بله! شارژ کن',
-                    cancelButtonText: 'بازگشت',
+                    confirmButtonText: '{% trans "Yes, Charge it" %}',
+                    cancelButtonText: '{% trans "Cancel" %}',
                 }).then(function (result) {
                     if (result.value) {
                         ApiAjax({
                             url: '/api/v1/transaction/increase_wallet/0',
                             method: 'PUT',
                             pk,
-                            success_message: 'حساب ورزشکار با موفقیت شارژ شد!',
-                            form: '#increase_athlete',
+                            success_message: '{% trans "Done Successfully" %}',
+                            form: '#increase_member',
                             table: table,
-                            button: document.querySelector('#increase_athlete button[type="submit"]'),
-                            modal: '#modal_increase_athlete',
+                            button: document.querySelector('#increase_member button[type="submit"]'),
+                            modal: '#modal_increase_member',
                             success: function (result) {
                             },
                             error: function (result) {
@@ -399,8 +430,8 @@
             })
         };
         const reduceCharge = (pk) => {
-            $('#modal_decrease_athlete').modal('show');
-            $('#decrease_athlete').off().on('submit', function (e) {
+            $('#modal_decrease_member').modal('show');
+            $('#decrease_member').off().on('submit', function (e) {
                 e.preventDefault();
                 swal.fire({
                     title: 'از برداشت وجه مطمئن هستید؟',
@@ -414,11 +445,11 @@
                             url: '/api/v1/transaction/decease_wallet/0',
                             method: 'PUT',
                             pk,
-                            success_message: 'برداشت از حساب ورزشکار با موفقیت انجام شد!',
-                            form: '#decrease_athlete',
-                            button: document.querySelector('#decrease_athlete button[type="submit"]'),
+                            success_message: '{% trans "Done Successfully" %}',
+                            form: '#decrease_member',
+                            button: document.querySelector('#decrease_member button[type="submit"]'),
                             table: table,
-                            modal: '#modal_decrease_athlete',
+                            modal: '#modal_decrease_member',
                             success: function (result) {
                             },
                             error: function (result) {
@@ -435,6 +466,10 @@
             e.preventDefault();
             $('#modal_ticket').modal('show')
         });
+        $('.modal_sms').click(function (e) {
+            e.preventDefault();
+            $('#modal_sms').modal('show')
+        });
         $('#submit_tickets').click(function (e) {
             e.preventDefault();
             $('#modal_ticket').addClass('loading');
@@ -444,7 +479,7 @@
                 states[e.getAttribute('name')] = $(e).val();
             })
             ApiAjax({
-                url: TICKET_SEND_USERS,
+                url: '/api/v1/ticket/send_ticket/',
                 method: 'POST',
                 success_message: false,
                 data: states,
@@ -464,6 +499,34 @@
 
             });
         });
+        $('#submit_sms').click(function (e) {
+            e.preventDefault();
+            $('#modal_ticket').addClass('loading');
+            states['message_text'] = $('#id_sms_text').val();
+            $('.filters input, .filters select').each(function (i, e) {
+                states[e.getAttribute('name')] = $(e).val();
+            })
+            ApiAjax({
+                url: '/api/v1/ticket/send_sms/',
+                method: 'POST',
+                success_message: false,
+                data: states,
+                success: function (result) {
+                    if (result.done) {
+                        swalFireSuccess(result.message);
+                        $('#modal_sms').modal('hide')
+                    } else {
+                        swalFireError(result.message);
+                    }
+                    $('#modal_sms').removeClass('loading');
+                },
+                error: function (result) {
+                    swalFireError();
+                    $('#modal_sms').removeClass('loading');
+                }
+
+            });
+        });
     </script>
 
     <script>
@@ -477,7 +540,7 @@
                 button: button,
                 table: table,
                 modal: '#change_password',
-                success_message: 'زمز عبور با موفقیت تغییر کرد'
+                success_message: '{% trans "Done Successfully" %}'
             })
         })
 

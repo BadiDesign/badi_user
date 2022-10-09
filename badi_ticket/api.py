@@ -1,3 +1,5 @@
+from badi_utils.sms import IpPanelSms
+from django.conf import settings
 from django.http import JsonResponse, Http404
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
@@ -11,7 +13,7 @@ from badi_user.filter import MemberListFilter
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-
+BADI_AUTH_CONFIG = getattr(settings, "BADI_AUTH_CONFIG", {})
 
 
 def send_ticket(user, message_title, message_text, sender):
@@ -22,6 +24,18 @@ def send_ticket(user, message_title, message_text, sender):
         message.save()
         count += 1
 
+    return count
+
+
+def send_sms(users, message_title, message_text, sender):
+    count = 0
+    for user in users:
+        ticket, is_created = Ticket.objects.get_or_create(user=user, title=message_title)
+        message = Message(ticket=ticket, text=message_text, user=sender)
+        message.save()
+        count += 1
+
+    BADI_AUTH_CONFIG.get('sms').get('sms_panel').board_send(users, message_text)
     return count
 
 
@@ -78,6 +92,48 @@ class TicketViewSet(DynamicModelApi):
                 qs = User.objects.filter(id__in=selected)
             if qs.exists():
                 count = send_ticket(qs, message_title, message_text, self.request.user)
+                if count == 0:
+                    text_res = _('SomeThing Happened! No message sent!')
+                    return JsonResponse({
+                        'message': text_res,
+                        'done': False
+                    })
+                else:
+                    text_res = _('Your Ticket and Message sent to #0 User successfully!')
+                    return JsonResponse({
+                        'message': text_res.replace("#0", str(count)),
+                        'done': True
+                    })
+            else:
+                return JsonResponse({
+                    'message': _('Select a member!'),
+                    'done': False
+                })
+        raise CustomValidation('ticket', _('You dont have permission to Send Ticket!'))
+
+    @action(methods=['post'], detail=False)
+    def send_sms(self, request, *args, **kwargs):
+        if self.request.user.is_admin:
+            selected = request.data.get('selected')
+            exclude = request.data.get('exclude')
+            is_all_select = request.data.get('is_all_select')
+            message_title = "پیامک"
+            message_text = request.data.get('message_text')
+            if not message_title or not message_text:
+                return JsonResponse({
+                    'message': _("Please fill title and text fields"),
+                    'done': False
+                })
+
+            qs = User.objects.none()
+            if is_all_select is True:
+                qs = MemberListFilter(self.request.data).qs.filter(is_admin=False)
+                if exclude:
+                    qs = qs.exclude(id__in=exclude)
+            elif selected:
+                qs = User.objects.filter(id__in=selected)
+            if qs.exists():
+                count = send_sms(qs, message_title, message_text, self.request.user)
                 if count == 0:
                     text_res = _('SomeThing Happened! No message sent!')
                     return JsonResponse({

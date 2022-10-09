@@ -1,5 +1,5 @@
-from plugins.dynamic_api import api_error_creator, CustomValidation
-from plugins.dynamic_api import DynamicSerializer
+from badi_utils.dynamic_api import api_error_creator, CustomValidation
+from badi_utils.dynamic_api import DynamicSerializer
 from badi_ticket.models import Ticket, Message
 
 
@@ -13,7 +13,7 @@ class TicketCreateSerializer(DynamicSerializer):
                                          ['writer', 'title', 'created_at', 'is_closed', ],
                                          blank_fields=['writer'],
                                          required_fields=[])
-        depth = 5
+        depth = 2
         fields = ['id', 'writer', 'title', 'created_at', 'is_closed', ]
 
     def create(self, validated_data):
@@ -35,7 +35,7 @@ class MessageCreateSerializer(DynamicSerializer):
                                           'created_at', ],
                                          blank_fields=['writer', 'file'],
                                          required_fields=['tickt'])
-        depth = 5
+        depth = 3
         fields = ['id', 'tickt', 'text', 'writer', 'file', 'is_seen', 'is_seen_by_admin', 'created_at', ]
 
     def create(self, validated_data):

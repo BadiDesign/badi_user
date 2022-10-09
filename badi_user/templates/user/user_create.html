@@ -145,12 +145,12 @@
         formV.validate().then(function (status) {
             if (status === 'Valid') {
                 ApiAjax({
-                    success_url: USER_LIST_TEMPLATE,
-                    url: USER_API_CREATE_URL,
+                    success_url: 'list',
+                    url: '{{ api_url }}',
                     form: '#form',
                     method: 'POST',
                     button: button,
-                    success_message: 'کاربر با موفقیت ایجاد شد!',
+                    success_message: '{% trans "" %}',
                     check: function (data) {
                         return data
                     }

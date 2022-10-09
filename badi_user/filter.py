@@ -3,6 +3,10 @@ from django.db.models.functions import Concat
 from django_filters import rest_framework as filters
 from badi_utils.date_calc import custom_change_date
 from django.contrib.auth import get_user_model
+from django.conf import settings
+from django.apps import apps as django_apps
+
+Log = django_apps.get_model(getattr(settings, "LOG_MODEL"), require_ready=False)
 
 User = get_user_model()
 
@@ -92,3 +96,16 @@ class MemberListFilter(filters.FilterSet):
     first_name = TextIn(field_name='first_name')
     last_name = TextIn(field_name='last_name')
     mobile_number = TextIn(field_name='mobile_number')
+
+
+class LogFilter(filters.FilterSet):
+    class Meta:
+        model = Log
+        fields = [
+            'user',
+            'status',
+        ]
+
+    title = TextIn(field_name='title')
+    created_at_lt = BadiDateSmallerFilter(field_name='created_at', label='Action Start')
+    created_at_lg = BadiDateLargerFilter(field_name='created_at', label='Action End')

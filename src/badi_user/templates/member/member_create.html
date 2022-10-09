@@ -83,7 +83,7 @@
 						</div>
 
 						<div class="card-footer">
-							<a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+							<a href="list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
 							<button class="btn btn-primary">{% trans "Submit" %}</button>
 						</div>
 					</form>
@@ -169,7 +169,7 @@
         formV.validate().then(function (status) {
             if (status === 'Valid') {
                 ApiAjax({
-                    success_url: '../list',
+                    success_url: 'list',
                     url: '{{ api_url }}',
                     form: 'form',
                     method: 'POST',

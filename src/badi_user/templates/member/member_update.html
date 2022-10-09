@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block body %}
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
@@ -19,7 +20,7 @@
                             <div class="card-body">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        {% include 'components/image-field.html' with field=form.picture label='آواتار' %}
+                                        {% include 'component/image-field.html' with field=form.picture label='Picture' %}
                                     </div>
                                     <div class="col-md-9">
                                         <div class="row">
@@ -53,8 +54,8 @@
                                 </div>
                             </div>
                             <div class="card-footer">
-                                <a href="{{ back }}" class="btn ml-2 btn-secondary">بازگشت</a>
-                                <button class="btn btn-primary">ویرایش کاربر</button>
+                                <a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+                                <button class="btn btn-primary">{% trans "Submit" %}</button>
                             </div>
                         </form>
                         <!--end::Form-->
@@ -116,8 +117,8 @@
             formV.validate().then(function (status) {
                 if (status === 'Valid') {
                     ApiAjax({
-                        success_url: MEMBER_LIST_TEMPLATE,
-                        url: MEMBER_API_WITH_PK_URL,
+                        success_url: '../list',
+                        url: '{{ api_url }}0',
                         form: 'form',
                         method: 'PUT',
                         file:true,

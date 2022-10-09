@@ -102,19 +102,19 @@ class Notification(models.Model):
 
 class Log(models.Model):
     class Meta:
-        verbose_name = _('گزارشات سامانه')
-        verbose_name_plural = _('گزارشات سامانه')
+        verbose_name = _('Log')
+        verbose_name_plural = _('Logs')
         permissions = (
-            ('can_log', _('مشاهده گزارشات سامانه')),
+            ('can_log', _('Manage Logs')),
         )
 
-    title = models.CharField(max_length=200, verbose_name=_('عنوان'))
+    title = models.CharField(max_length=200, verbose_name=_('Title'))
     user = models.ForeignKey(User, related_name='logs', on_delete=models.SET_NULL, null=True, blank=True,
-                             verbose_name=_('کاربر'))
-    priority = models.IntegerField(verbose_name=_('اهمیت'))
-    status = models.BooleanField(default=True, verbose_name=_('وضیعت'))
-    description = models.TextField(verbose_name=_('توضیحات'), validators=[MaxLengthValidator(1200)])
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_('زمان'))
+                             verbose_name=_('User'))
+    priority = models.IntegerField(verbose_name=_('Priority'))
+    status = models.BooleanField(default=True, verbose_name=_('Status'))
+    description = models.TextField(verbose_name=_('Description'), validators=[MaxLengthValidator(1200)])
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_('Created at'))
 
     def __str__(self):
         return self.title
