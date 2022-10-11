@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 import os
 from datetime import timedelta
 from pathlib import Path
+from django.utils.translation import ugettext_lazy as _, gettext_noop
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 from badi_utils.email import Email
 from badi_utils.sms import IpPanelSms
 from badi_utils.validations import PersianValidations, BadiValidators
@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'badi_utils',
     'badi_ticket',
     'badi_user',
+    'badi_wallet',
 ]
 
 MIDDLEWARE = [
@@ -63,8 +64,6 @@ LOCALE_PATHS = (
     os.path.join(BASE_DIR, 'locale'),
 )
 ROOT_URLCONF = 'badi_users_project.urls'
-USE_I18N = True
-from django.utils.translation import ugettext_lazy as _, gettext_noop
 
 LANGUAGES = (
     ('fa', _('Persian')),
@@ -146,10 +145,6 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'badi_user.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOG_MODEL = "badi_user.Log"
-CONFIG_JSON = {
-    "wtf": "wtf"
-}
 LOGIN_URL = reverse_lazy('custom_login')
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
@@ -244,3 +239,6 @@ BADI_AUTH_CONFIG = {
         "sms_panel": IpPanelSms,
     },
 }
+LOG_MODEL = "badi_user.Log"
+BANK_TRANSACTION_MODEL = "badi_user.Log"
+TRANSACTION_MODEL = "badi_user.Log"

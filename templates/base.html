@@ -1,5 +1,6 @@
 {% load static %}
 {% load appfilter %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="fa" direction="rtl" style="direction: rtl;">
 <!--begin::Head-->
@@ -403,6 +404,10 @@
     {% for message in messages %}
         toastr.error('{{ message }}')
     {% endfor %}
+    window['BADI_CONFIG'] = {
+        currency_append : '{% trans "$" %}'
+    }
+
 </script>
 {% if not dont_ask_password %}
 {#    <script src="{% static 'custom/notification.js' %}"></script>#}
