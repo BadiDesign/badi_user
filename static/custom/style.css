@@ -1,0 +1,9 @@
+#kt_aside{
+    background: #fff;
+}
+:root {
+    --primary: #0a923f;
+    --hover-primary: #037a31;
+    --sec-primary: #dcffdf;
+    --trans-primary: rgb(87 255 54 / 10%);
+}

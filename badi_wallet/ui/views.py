@@ -12,7 +12,7 @@ class TransActionsView(DynamicListView):
 
 class AdminTransActionsView(DynamicListView):
     model = Transaction
-    datatable_cols = Transaction().get_columns()
+    datatable_cols = Transaction().get_datatable_verbose_names(['bank transaction'])
     datatableURL = '/api/v1/transaction/all_transactions/'
     template_name = 'transaction/all_transaction_list.html'
 

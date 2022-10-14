@@ -16,6 +16,7 @@ class TicketCreateView(DynamicCreateView):
     model = Ticket
     success_url = '/ticket/ticket/list'
     permission_required = True
+    datatable_cols = model().get_datatable_verbose_names()
     # permission_required = ROLES_ADMIN_TEACHER
     form_fields = ['title', 'writer']
 
@@ -29,7 +30,6 @@ class TicketCreateView(DynamicCreateView):
 class TicketUpdateView(DynamicUpdateView):
     model = Ticket
     success_url = '/dashboard/ticket/ticket/list'
-    template_name = 'dynamic/update.html'
     form_fields = ['title', 'writer', 'is_closed']
 
     def get_extra_context(self, context):

@@ -2,7 +2,7 @@
 {% load appfilter %}
 {% load i18n %}
 <!DOCTYPE html>
-<html lang="fa" direction="rtl" style="direction: rtl;">
+<html lang="fa" dir="rtl" style="direction: rtl;">
 <!--begin::Head-->
 <head>
     <meta charset="utf-8"/>
@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{% static 'assets/js/pages/persian-date/persian-datepicker.css' %}">
     <link href="{% static 'assets/css/themes/layout/light.rtl.css' %}" rel="stylesheet" type="text/css"/>
     <link href="{% static 'badi_utils/css/custom.css' %}" rel="stylesheet" type="text/css"/>
+    <link href="{% static 'custom/style.css' %}" rel="stylesheet" type="text/css"/>
     {% block  css %}
 
     {% endblock %}
@@ -395,20 +396,21 @@
 <!--begin::Page Scripts(used by this page)-->
 <script src="{% static 'assets/js/pages/persian-date/persian-date.js' %}"></script>
 <script src="{% static 'assets/js/pages/persian-date/persian-datepicker.min.js' %}"></script>
-<script src="{% static 'custom/urls.js' %}"></script>
-<script src="{% static 'custom/vue.js' %}"></script>
-<script src="{% static 'custom/custom-vue.js' %}"></script>
-<script src="{% static 'badi_utils/js/main.js' %}"></script>
-<script src="{% static 'badi_utils/js/api.js' %}"></script>
 <script>
     {% for message in messages %}
         toastr.error('{{ message }}')
     {% endfor %}
     window['BADI_CONFIG'] = {
-        currency_append : '{% trans "$" %}'
+        currency_append : '{% trans "$" %}',
+        price_text : '{% trans "$" %}'
     }
 
 </script>
+<script src="{% static 'custom/urls.js' %}"></script>
+<script src="{% static 'custom/vue.js' %}"></script>
+<script src="{% static 'custom/custom-vue.js' %}"></script>
+<script src="{% static 'badi_utils/js/main.js' %}"></script>
+<script src="{% static 'badi_utils/js/api.js' %}"></script>
 {% if not dont_ask_password %}
 {#    <script src="{% static 'custom/notification.js' %}"></script>#}
 {% endif %}

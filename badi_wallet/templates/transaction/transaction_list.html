@@ -47,7 +47,7 @@
     <script>
         window.data_table_cool_options["rowCallback"] = function (row, data) {
             defaultDrawCallBack(row, data);
-            boldCol(0, row, formatNumber(data[1]) + PRICE_TEXT + ' ', data[2] === 'شارژ' ? 'primary' : 'danger')
+            boldCol(0, row, formatNumber(data[1]) + badiConfig["price_text"] + ' ', data[2] === 'شارژ' ? 'primary' : 'danger')
         };
         var table = datatable_simple_show({
             url: TRANSACTION_API_DATATABLE_URL,
