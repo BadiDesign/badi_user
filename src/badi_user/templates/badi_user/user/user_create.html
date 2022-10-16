@@ -1,0 +1,173 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+{% load i18n %}
+{% load badi_utils %}
+{% block body %}
+<div class="d-flex flex-column-fluid">
+	<!--begin::Container-->
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<!--begin::Card-->
+				<div class="card card-custom">
+					<div class="card-header">
+						<h3 class="card-title">
+							{% trans "Create" %}
+							{{ model_name }}
+						</h3>
+					</div>
+					<!--begin::Form-->
+					<form class="form" id="form" method="POST">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-form-label">{{ form.username.label }}:</label>
+										{{ form.username }}
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-form-label">{{ form.password.label }}:</label>
+										{% render_field form.password type='password' %}
+									</div>
+								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<label class="col-form-label">{% trans "Repeat Password" %}:</label>
+										{% render_field form.password type='password' name='repeat_password' id='id_repeat_password' %}
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="form-group">
+										<label class="col-form-label">{{ form.first_name.label }}</label>
+										{{ form.first_name }}
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="form-group">
+										<label class="col-form-label">{{ form.last_name.label }}</label>
+										{{ form.last_name }}
+									</div>
+								</div>
+								<div class="col-lg-3 col-md-6">
+									<div class="form-group">
+										<label class="col-form-label">{{ form.mobile_number.label }}</label>
+										{{ form.mobile_number }}
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="card-footer">
+							<a href="{{ back }}" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+							<button type="submit" class="btn btn-primary">{% trans "Submit" %}</button>
+						</div>
+					</form>
+					<!--end::Form-->
+				</div>
+				<!--end::Card-->
+			</div>
+		</div>
+	</div>
+	<!--end::Container-->
+</div>
+
+
+{% endblock %}
+{% block script %}
+<script>
+    const formV = FormValidation.formValidation(
+        document.getElementById('form'),
+        {
+            fields: {
+                first_name: {
+                    validators: {
+                        stringLength: {
+                            max: 20,
+                            min: 2,
+                            message:'{% trans "must be between 2 and 20 character" %}'
+                        },
+                        notEmpty: {
+                            message: '{% trans "This Field is required" %}'
+                        },
+                    }
+                },
+                last_name: {
+                    validators: {
+                        stringLength: {
+                            max: 20,
+                            min: 2,
+                            message: '{% trans "must be between 2 and 20 character" %}'
+                        },
+                        notEmpty: {
+                            message: '{% trans "This Field is required" %}'
+                        },
+                    }
+                },
+                password: {
+                    validators: {
+                        stringLength: {
+                            min: 6,
+                            max: 20,
+                            message: '{% trans "must be between 6 and 20 character" %}'
+                        },
+                        notEmpty: {
+                            message: '{% trans "This Field is required" %}'
+                        },
+                    }
+                },
+                repeat_password: {
+                    validators: {
+                        notEmpty: {
+                            message: '{% trans "This Field is required" %}'
+                        },
+                        callback: {
+                            message: '{% trans "Repeat Password and New Password are not equal" %}',
+                            callback: function (input) {
+                                return input.value === document.querySelector('#id_password').value
+                            }
+
+                        }
+                    }
+                },
+            },
+            plugins: {
+                trigger: new FormValidation.plugins.Trigger(),
+                bootstrap: new FormValidation.plugins.Bootstrap()
+            },
+
+        }
+    );
+    $('#form').on('submit', function (e) {
+        e.preventDefault()
+        const button = document.querySelector('#form button[type="submit"]');
+        formV.validate().then(function (status) {
+            if (status === 'Valid') {
+                ApiAjax({
+                    success_url: 'list',
+                    url: '{{ api_url }}',
+                    form: '#form',
+                    method: 'POST',
+                    button: button,
+                    success_message: '{% trans "" %}',
+                    check: function (data) {
+                        return data
+                    }
+                })
+            } else {
+                Swal.fire({
+                    text: '{% trans "Seems some error exists" %}',
+                    icon: "error",
+                    confirmButtonText: '{% trans "Got it" %}',
+                    customClass: {
+                        confirmButton: "btn font-weight-bold btn-secondary"
+                    }
+                }).then(function () {
+                    KTUtil.scrollTop();
+                });
+            }
+        });
+    });
+</script>
+{% endblock %}

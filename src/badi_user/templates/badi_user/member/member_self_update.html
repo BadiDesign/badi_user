@@ -1,0 +1,191 @@
+{% extends request.user.is_admin|yesno:"base.html,base-ui.html" %}
+{{ request.user.is_admin }}
+{% load widget_tweaks %}
+{% load static %}
+{% block body %}
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="{% if request.user.is_admin %}container-fluid{% else %}container{% endif %}">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                {% trans "Update" %}
+                                {% trans "self information" %}
+                            </h3>
+                        </div>
+                        <form class="form" id="form" method="POST">
+                            {% csrf_token %}
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        {% include 'component/image-field.html' with field=form.picture label='Picture' %}
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">{{ form.first_name.label }}:</label>
+                                                    {{ form.first_name }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">{{ form.last_name.label }}:</label>
+                                                    {{ form.last_name }}
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-6">
+                                                <div class="form-group">
+                                                    <label class="col-form-label">{{ form.mobile_number.label }}:</label>
+                                                    {{ form.mobile_number }}
+                                                </div>
+                                            </div>
+                                            {% if form.city %}
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">{% trans "Province" %}:</label>
+                                                        <select name="province" id="id_province">
+                                                            {% if request.user.city and request.user.city.province %}
+                                                                <option value="{{ request.user.city.province.id }}">{{ request.user.city.province }}</option>
+                                                            {% endif %}
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-6">
+                                                    <div class="form-group">
+                                                        <label class="col-form-label">{{ form.city.label }}:</label>
+                                                        {{ form.city }}
+                                                    </div>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="card-footer">
+                                <button type="button" id="submitter" class="btn btn-primary">{% trans "Submit" %}</button>
+                            </div>
+                        </form>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+
+
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'custom/image-field.js' %}"></script>
+
+    <script>
+        $('#id_mobile_number').prop('disabled', true)
+        $(document).ready(function ($) {
+            {% if form.city %}
+                $('#id_province').select2({
+                    dir: "rtl",
+                    placeholder: 'استان را انتخاب کنید...',
+                    ajax: {
+                        url: SELECT2_PROVINCE,
+                        data: function (params) {
+                            return {
+                                search: params.term,
+                                page: params.page || 1
+                            };
+                        }
+                    }
+                }).change(function (e) {
+                    $('#id_city').val('').change()
+                });
+                $('#id_city').select2({
+                dir: "rtl",
+                ajax: {
+                    url: SELECT2_CITY,
+                    data: function (params) {
+                        var query = {
+                            province: $('#id_province').val(),
+                            search: params.term,
+                            page: params.page || 1
+                        };
+                        return query;
+                    }
+                }
+            });
+            {% endif %}
+        })
+
+        const formV = FormValidation.formValidation(
+            document.getElementById('form'),
+            {
+                fields: {
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message:'{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message:'{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    },
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                },
+
+            }
+        );
+
+        $('#submitter').click(function (e) {
+            const button = this;
+            formV.validate().then(function (status) {
+                if (status === 'Valid') {
+                    ApiAjax({
+                        success_url: '/',
+                        url: MEMBER_API_URL,
+                        pk: 'update_self',
+                        form: 'form',
+                        file: true,
+                        method: 'PUT',
+                        button: button,
+                        success_message: '{% trans "Updated successfully" %}',
+                    })
+                } else {
+                    Swal.fire({
+                        text: "به نظر می رسد تعدادی خطا در اطلاعات شما وجود دارد، لطفا دوباره تلاش کنید.",
+                        icon: "error",
+                        confirmButtonText: "متوجه شدم!",
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-secondary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                    });
+                }
+            });
+        });
+    </script>
+{% endblock %}
