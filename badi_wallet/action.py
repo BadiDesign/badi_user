@@ -7,8 +7,10 @@ from badi_utils.responses import ResponseNotOk, ResponseOk
 from django.conf import settings
 from django.apps import apps as django_apps
 
-BankTransaction = django_apps.get_model(getattr(settings, "BANK_TRANSACTION_MODEL"), require_ready=False)
-Transaction = django_apps.get_model(getattr(settings, "TRANSACTION_MODEL"), require_ready=False)
+BankTransaction = django_apps.get_model(getattr(settings, "BANK_TRANSACTION_MODEL", "badi_wallet.BankTransaction"),
+                                        require_ready=False)
+Transaction = django_apps.get_model(getattr(settings, "TRANSACTION_MODEL", "badi_wallet.Transaction"),
+                                    require_ready=False)
 
 ZP_CONFIG = getattr(settings, "ZP_CONFIG", {})
 

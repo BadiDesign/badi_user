@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
-BANK_TRANSACTION_MODEL = getattr(settings, "BANK_TRANSACTION_MODEL")
+BANK_TRANSACTION_MODEL = getattr(settings, "BANK_TRANSACTION_MODEL", "badi_wallet.BankTransaction")
 
 
 class BankTransaction(models.Model, BadiModel):
