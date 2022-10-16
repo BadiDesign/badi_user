@@ -43,14 +43,14 @@
 
 {% block script %}
     <script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
-    <script src="{% static 'custom/datatable.js' %}" type="text/javascript"></script>
+    <script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
     <script>
         window.data_table_cool_options["rowCallback"] = function (row, data) {
             defaultDrawCallBack(row, data);
             boldCol(0, row, formatNumber(data[1]) + badiConfig["price_text"] + ' ', data[2] === 'شارژ' ? 'primary' : 'danger')
         };
         var table = datatable_simple_show({
-            url: TRANSACTION_API_DATATABLE_URL,
+            url: {{api_url}}datatable/,
             real_cols: {{cols|length}},
             hide_id: true,
             loading_all: true,
