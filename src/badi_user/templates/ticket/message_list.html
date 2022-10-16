@@ -1,0 +1,134 @@
+{% extends request.user.is_admin|yesno:"base.html,base-ui.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block css %}
+    {#    <link rel="stylesheet" href="{% static 'assets/js/pages/custom/chat/chat.css' %}">#}
+{% endblock %}
+
+{% block body %}
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="{% if request.user.is_admin %}container-fluid{% else %}container{% endif %}" id="vue-selector">
+            <div class="row no-form-text" :class="{ loading: loading }">
+                {% include 'shared/loader.html' %}
+                <div class="col-md-12">
+                    <div class="card card-custom">
+                        <!--begin::Header-->
+                        <div class="card-header align-items-center px-4 py-3">
+                            <div class="text-center flex-grow-1">
+                                <div class="text-dark-75 font-weight-bolder font-size-h5">
+                                    عنوان تیکت:
+                                    [[ tickt.title ]]
+                                </div>
+                                <div class="mt-1">
+                                    <span class="font-weight-bold text-black">عضو:
+                                        [[ tickt.fullname ]]</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--end::Header-->
+                        <!--begin::Body-->
+                        <div class="card-body">
+                            <!--begin::Scroll-->
+                            <div>
+                                <div class="messages" v-if="messages.length">
+                                    <template v-for="msg in messages">
+                                        <div v-if="msg.is_admin" class="d-flex flex-column mb-5 align-items-start">
+                                            <div class="d-flex align-items-center">
+                                                <div class="symbol symbol-circle symbol-40 mr-3">
+
+                                                </div>
+                                                <div>
+                                                    <a href="#"
+                                                       class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">{% trans "Management" %}</a>
+                                                    <span class="text-muted font-size-sm">[[ msg.created_at ]]</span>
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 rounded p-5 bg-light-success text-dark-50 font-weight-bold font-size-lg text-left  max-w-400px">
+                                                [[ msg.text ]]
+                                                <div v-if="msg.file" class="text-left ">
+                                                    <a :href="msg.file" download
+                                                       class="mt-5 btn btn-sm btn-primary ml-auto ">
+                                                        <i class="fa fa-download"></i>
+                                                        دریافت فایل
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div v-else class="d-flex flex-column mb-5 align-items-end">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <span class="text-muted font-size-sm">[[ msg.created_at ]]</span>
+                                                    <a href="#"
+                                                       class="text-dark-75 text-hover-primary font-weight-bold font-size-h6">[[
+                                                        tickt.fullname ]]</a>
+                                                </div>
+                                                <div class="symbol symbol-circle symbol-40 ml-3">
+
+                                                </div>
+                                            </div>
+                                            <div class="mt-2 rounded p-5 bg-light-primary text-dark-50 font-weight-bold font-size-lg text-right max-w-400px">
+                                                <div>[[ msg.text ]]</div>
+                                                <div v-if="msg.file" class="text-left ">
+                                                    <a :href="msg.file" download
+                                                       class="mt-5 btn btn-sm btn-primary ml-auto ">
+                                                        <i class="fa fa-download"></i>
+                                                        دریافت فایل
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </template>
+                                </div>
+                                <h3 class="w-100 text-primary bg-light-primary p-5 my-10 rounded text-center" v-else>
+                                    هیچ پیامی ارسال نشده است!
+                                </h3>
+                            </div>
+                        </div>
+                        <div class="card-footer align-items-center">
+                            <form method="post" id="form-send-message" @submit.prevent="sendMessage">
+                                {% csrf_token %}
+                                <!--begin::Compose-->
+                                <label class="col-form-label font-weight-bolder text-left w-100">متن پیام:</label>
+                                <input type="text" id="id_tickt" name="tickt" value="{{ pk }}" class="d-none">
+                                <textarea class="form-control border-1 p-5" id="id_text" name="text" rows="5"
+                                          placeholder="پیام خود را وارد کنید"></textarea>
+                                <div class="d-flex align-items-center justify-content-between mt-5">
+                                    <div class="mr-3 d-flex align-items-center font-weight-bolder">
+                                        پیوست:
+                                        <input type="file" class="form-control mr-2" placeholder="پیوست فایل"
+                                               name="file" id="id_file">
+                                    </div>
+                                    <div>
+                                        <a href="{% url 'ticket_list' %}"
+                                           class="btn btn-secondary text-uppercase font-weight-bold py-2 px-6">
+                                            بازگشت
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary text-uppercase font-weight-bold py-2 px-6">
+                                            ارسال
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!--begin::Compose-->
+                        </div>
+                        <!--end::Footer-->
+                    </div>
+                </div>
+            </div>
+            <!--begin::Compose-->
+        </div>
+        <!--end::Footer-->
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.js' %}" type="text/javascript"></script>
+    <script>
+        const MESSAGES_API_URL = "{{api_url}}"
+    </script>
+    <script src="{% static 'custom/chat.js' %}"></script>
+
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block body %}
+
+<div class="d-flex flex-column-fluid">
+	<!--begin::Container-->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<!--begin::Card-->
+				<div class="card card-custom">
+					<div class="card-header">
+						<h3 class="card-title">
+							{% trans "Update" %}
+							{{ model_name }}
+						</h3>
+					</div>
+					<form>
+						{% csrf_token %}
+						<div class="card-body">
+							{% for field in form %}
+							<div class="form-group">
+								<label>{{ field.label }}:</label>
+								{{ field }}
+							</div>
+							{% endfor %}
+						</div>
+						<div class="card-footer">
+							<a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+							<button type="button" id="submitter" class="btn btn-primary">
+								{% trans "Update" %}
+								{{ model_name }}
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--end::Container-->
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    $('.card select').select2({
+        dir: "rtl"
+    });
+    $('#submitter').click(function (e) {
+        const button = this;
+        ApiAjax({
+            url: '{{ api_url }}',
+            pk: getUrlPk(),
+            form: 'form',
+            method: 'PUT',
+            button: button,
+            success_url: '../create',
+            success_message: '{{ model_name }} با موفقیت ویرایش شد!',
+            error: function (e) {
+                console.log(e)
+            }
+        })
+    })
+
+</script>
+{% endblock %}
