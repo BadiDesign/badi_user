@@ -1,0 +1,41 @@
+<button data-skin="dark" data-toggle="modal" data-target="#modal_here"
+        title=" Create "
+        class="btn btn-icon btn-primary btn-sm mr-2"><span
+        class="svg-icon svg-icon-white svg-icon-md">
+    {% include 'svg/plus.html' %}
+</span>
+</button>
+<div class="modal fade" id="modal_here" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">{{ title }}</h5>
+            </div>
+            <form class="kt-form" method="post">
+                {% csrf_token %}
+                <div class="modal-body">
+                    {% include 'shared/form-errors.html' %}
+                    <div class="row">
+                        <div class="col-md-12">
+                            {% for field in form %}
+                                <div class="form-group row">
+                                    <label class="col-form-label col-lg-3 col-sm-12">{{ field.label }}:</label>
+                                    <div class="col-lg-9 col-md-9 col-sm-12">
+                                        {{ field }}
+                                    </div>
+                                </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer p-1">
+                    <button type="submit" id="submitter" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,8 @@
+<div class="d-flex {% if answer_long %}flex-column {% endif %}bg-secondary rounded font-weight-bolder py-4 px-6 mb-2 text-center w-100 {{ extra_class }}">
+     <span class="flex-grow-1 text-left">
+            {{ question }}:
+        </span>
+        <span class="flex-grow-1 text-right">
+            {{ answer }} {{ answer_long }}
+        </span>
+</div>

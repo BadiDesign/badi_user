@@ -1,0 +1,11 @@
+{% if a %}<a href="{{ a }}"{% else %}
+    <button type="button"{% endif %}
+{{ attr }}
+            class="btn btn-sm font-weight-bold btn-light-{{ color }} {{ extra_class }}">
+    <span class="svg-icon svg-icon-md ml-2">
+            {% with 'svg/'|add:svg|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+    </span>
+    {{ title }}
+    </{% if a %}a{% else %}button{% endif %}>

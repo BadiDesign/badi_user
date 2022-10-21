@@ -1,0 +1,10 @@
+<button type="button" data-skin="dark" data-toggle="tooltip" data-placement="top" title=""
+        data-original-title="{{ title }}"
+        {{ attr }}
+        class="btn btn-sm btn-icon btn-light-{{ color }} {{ extra_class }}">
+    <span class="svg-icon svg-icon-md">
+            {% with 'svg/'|add:svg|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+    </span>
+</button>

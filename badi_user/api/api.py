@@ -37,8 +37,8 @@ User = get_user_model()
 
 
 class UserViewSet(DynamicModelApi):
-    columns = ['id', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', ]
-    order_columns = ['id', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', ]
+    columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', 'email', ]
+    order_columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', 'email', ]
     model = User
     queryset = User.objects.filter(is_admin=True)
     serializer_class = UserSerializer

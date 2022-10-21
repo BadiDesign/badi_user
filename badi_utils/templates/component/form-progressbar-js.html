@@ -1,0 +1,35 @@
+{% load static %}
+<script src="{% static 'custom/jquery.form.min.js' %}"></script>
+<script>
+    // https://stackoverflow.com/questions/15410265/file-upload-progress-bar-with-jquery
+    let $FP_ = $('form[data-progress]');
+    let $FP_Bar = $FP_.find('.bar'),
+        $FP_BarPercent = $FP_.find('.percent'),
+        $FP_Status = $FP_.find('.status'),
+        FP_PercentVal = '0%';
+    $FP_.ajaxForm({
+        headers: {
+            "foo": "bar"
+        },
+        beforeSend: function () {
+            $FP_.find('.progress-upload').addClass('show')
+            $FP_Bar.width(FP_PercentVal);
+            $FP_BarPercent.html(FP_PercentVal);
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            FP_PercentVal = percentComplete + '%';
+            $FP_Bar.width(FP_PercentVal);
+            $FP_BarPercent.html(FP_PercentVal);
+        },
+        complete: function (xhr) {
+            const is_show_detail = $FP_.attr('show-detail');
+            if (is_show_detail !== 'false')
+                $FP_Status.html(xhr.responseText).addClass('d-none');
+            const success_url = $FP_.attr('success-url');
+            if (success_url)
+                window.open(success_url, '_self');
+            else
+                location.reload()
+        }
+    });
+</script>

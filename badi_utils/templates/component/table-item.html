@@ -1,0 +1,29 @@
+<div class="mb-{{ mb }}">
+    <!--begin::Content-->
+    <div class="d-flex align-items-center flex-grow-1">
+        <!--begin::Section-->
+        <div class="d-flex flex-wrap align-items-center justify-content-between w-100">
+            <!--begin::Info-->
+            <div class="d-flex flex-column align-items-cente py-2 w-50">
+                <!--begin::Title-->
+                <span
+                        class="text-dark-75 font-weight-bolder font-size-lg mb-1">
+                    {{ question }}
+                </span>
+                <!--end::Title-->
+                <!--begin::Data-->
+                {% if subtitle %}
+                    <span v-if="" class="text-muted font-weight-bold">{{ subtitle }}</span>
+                {% endif %}
+                <!--end::Data-->
+            </div>
+            <!--end::Info-->
+            <!--begin::Label-->
+            <span v-if="{{answer}}" class="label {{ label_class }} label-lg label-{% if color %}{{ color }}{% else %}light-primary{% endif %} label-inline font-weight-bold py-4">[[{{ answer }}]] {{ extra_text }}</span>
+            <span v-else class="label {{ label_class }} label-lg label-{% if color %}{{ color }}{% else %}light-primary{% endif %} label-inline font-weight-bold py-4">-------</span>
+            <!--end::Label-->
+        </div>
+        <!--end::Section-->
+    </div>
+    <!--end::Content-->
+</div>

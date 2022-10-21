@@ -1,0 +1,16 @@
+
+{% if linkpk %}
+    {% url link pk=linkpk as the_url %}
+{% else %}
+    {% url link as the_url %}
+{% endif %}
+<li class="menu-item" aria-haspopup="true">
+    <a href="{{ the_url }}" class="menu-link">
+        <span class="svg-icon menu-icon">
+            {% with 'svg/'|add:svg|add:".html" as template %}
+                {% include template %}
+            {% endwith %}
+        </span>
+        <span class="menu-text">{{ title }}</span>
+    </a>
+</li>
