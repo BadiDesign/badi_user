@@ -31,14 +31,17 @@ from badi_utils.sms import IpPanelSms
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
+MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "Maj", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dec"]
 BADI_AUTH_CONFIG = getattr(settings, "BADI_AUTH_CONFIG", {})
 
 User = get_user_model()
 
 
 class UserViewSet(DynamicModelApi):
-    columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', 'email', ]
-    order_columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active', 'email', ]
+    columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active',
+               'email', ]
+    order_columns = ['id', 'picture', 'username', 'first_name', 'last_name', 'mobile_number', 'is_admin', 'is_active',
+                     'email', ]
     model = User
     queryset = User.objects.filter(is_admin=True)
     serializer_class = UserSerializer
@@ -473,6 +476,34 @@ class MemberViewSet(DynamicModelApi):
             instance._prefetched_objects_cache = {}
 
         return Response(serializer.data)
+
+    @action(methods=['get'], detail=False)
+    def chart(self, request, *args, **kwargs):
+        today = datetime.datetime.today()
+        start_of_month = datetime.datetime.today()
+        members = User.members()
+        data = {
+            "data-new-members-today": members.filter(date_joined=today).count(),
+            "data-new-members-week": members.filter(date_joined__gte=today - datetime.timedelta(days=7)).count(),
+            "data-all-personnels-count": User.personnels().count(),
+            "data-all-members-count": members.count(),
+            "data": [{
+                'name': "New Personnel's",
+                'data': [User.objects.filter(is_personnel=True,
+                                             date_joined__month=(
+                                                     start_of_month - datetime.timedelta(days=30 * x)).month,
+                                             date_joined__year=(start_of_month - datetime.timedelta(days=30 * x)).year
+                                             ).count() for x in range(7)]
+            }, {
+                'name': 'New Members',
+                'data': [members.filter(
+                    date_joined__month=(start_of_month - datetime.timedelta(days=30 * x)).month,
+                    date_joined__year=(start_of_month - datetime.timedelta(days=30 * x)).year
+                ).count() for x in range(7)]
+            }],
+            'labels': [MONTH_NAMES[(start_of_month - datetime.timedelta(days=30 * x)).month - 1] for x in range(7)]
+        }
+        return Response(data)
 
     @action(methods=['put'], detail=False)
     def change_password(self, request, *args, **kwargs):

@@ -17,7 +17,7 @@ User = get_user_model()
 
 class UserListView(DynamicListView):
     model = User
-    datatable_cols = ['#', 'نام کاربری', 'نام', 'نام خانوادگی', 'شماره تماس', 'مدیر', 'فعال', ]
+    datatable_cols = ['#', '', 'شماره تماس', 'مدیر', 'فعال', ]
 
     def get_extra_context(self, context):
         context['filters'] = UserListFilter(self.request.POST)
@@ -38,7 +38,7 @@ class UserCreateView(DynamicCreateView):
 class UserUpdateView(DynamicUpdateView):
     model = User
     form = user_form(
-        ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', ], update=True)
+        ['username', 'picture', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'email', ], update=True)
     success_url = '/user/list'
 
 

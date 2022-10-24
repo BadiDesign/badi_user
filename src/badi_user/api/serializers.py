@@ -19,13 +19,13 @@ class UserSerializer(DynamicSerializer):
     class Meta:
         model = User
         extra_kwargs = api_error_creator(User,
-                                         ['username', 'password', 'first_name', 'last_name', 'mobile_number',
+                                         ['username', 'password', 'picture', 'first_name', 'last_name', 'mobile_number',
                                           'picture', ],
                                          blank_fields=['username', 'password'],
                                          required_fields=['first_name', 'last_name',
                                                           'mobile_number'])
         depth = 5
-        fields = ['id', 'username', 'password', 'first_name', 'last_name', 'mobile_number',
+        fields = ['id', 'username', 'password', 'picture', 'first_name', 'last_name', 'mobile_number',
                   'is_admin', 'mobile_number',
                   ]
 

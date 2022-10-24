@@ -1,0 +1,11 @@
+<div class="row">{% for field in form %}
+    <div class="col-xl-4 col-md-6">
+        <div class="form-group">
+            <label class="col-form-label font-weight-bolder col-12">{{ field.label }}:</label>
+            <div class="col-12">
+                {{ field }}
+            </div>
+        </div>
+    </div>
+{% endfor %}
+</div>

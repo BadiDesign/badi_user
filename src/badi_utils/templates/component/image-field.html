@@ -1,0 +1,27 @@
+{% load static %}
+<div>
+    {% if label %}<label class="col-form-label font-weight-bolder">{{ label }}:</label>{% endif %}
+    <div class="image-field-1 mb-3 {{ image_field_class }}">
+        {% if field.initial %}
+            <span class="switch switch-sm switch-outline switch-icon switch-danger position-absolute top-0 right-0">
+                <label data-toggle="tooltip" data-theme="dark" title="Delete Picture" class="mr-n15">
+                    <input type="checkbox" name="{{ field.name }}_delete">
+                    <span></span>
+                </label>
+            </span>
+        {% endif %}
+        <div class="image-field-1-img-holder {{ holder_class }}">
+            <img class="image-field-img {{ holder_img_class }}"
+                 src="{% if field.initial %}{{ field.initial.url }}{% elif default_image %}
+{{ default_image }}{% else %}
+{% static 'assets/media/user.png' %}
+{% endif %}">
+        </div>
+        <div class="image-field-hover {{ image_field_hover_class }}">
+            <div><i class="fa {% if field.initial %}fa-pen{% else %}fa-upload{% endif %} large"></i></div>
+        </div>
+        <div class="d-none">
+            {{ field }}
+        </div>
+    </div>
+</div>

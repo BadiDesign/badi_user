@@ -1,0 +1,29 @@
+{% load widget_tweaks %}
+{% load appfilter %}
+<form class="filters" onsubmit="FilterSubmitDrawTable(event,{{ table|default:"table" }})">
+    <div class="row">
+        {% for field in form %}
+            <div class="col-md-{{ col_md|default:"4" }}">
+                <div class="form-group ">
+                    <label class="col-form-label">{{ field.label }}</label>
+                    <div class="col-12">
+                        {% render_field field class='form-control' %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="col">
+            <div class="form-group">
+                <label class="col-form-label">&nbsp;</label>
+                <div>
+                    <button type="submit"
+                            class="btn btn-primary btn-sm btn-icon-sm">
+                        <i class="flaticon-search ml-2"></i>
+                        Search
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</form>
