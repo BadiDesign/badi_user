@@ -1,0 +1,698 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:153
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:153
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-10-24 19:21+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\venv\Lib\site-packages\badi_user\api\api.py:172
+msgid "Code sent to "
+msgstr "کد ارسال شد به"
+
+#: .\venv\Lib\site-packages\badi_user\api\api.py:225
+msgid "Invalid username"
+msgstr "نام کاربری غیر معتبر"
+
+#: .\venv\Lib\site-packages\badi_user\api\api.py:227
+msgid "This username already taken"
+msgstr "این نام کاربری قبلا ثبت شده است"
+
+#: .\venv\Lib\site-packages\badi_user\api\api.py:230
+#: .\venv\Lib\site-packages\badi_user\api\api.py:236
+msgid "This mobile number already registered"
+msgstr "این شماره تماس قبلا ثبت شده است"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:11
+msgid "code"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:32
+#: .\venv\Lib\site-packages\badi_user\models.py:113
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:126
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:119
+msgid "User"
+msgstr "کاربر"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:33
+#, fuzzy
+#| msgid "User"
+msgid "Users"
+msgstr "کاربر"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:35
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage users"
+msgstr "مدیریت تیکت ها"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:36
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage members"
+msgstr "مدیریت تیکت ها"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:39
+msgid "is admin"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:40
+msgid "Mobile Number"
+msgstr "شماره تماس"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:41
+msgid "Birth Date"
+msgstr "تاریخ تولد"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:42
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+msgid "Picture"
+msgstr "تصویر پروفایل"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:43
+msgid "Token"
+msgstr "توکن"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:45
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+msgid "Amount"
+msgstr "موجودی"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+#, fuzzy
+#| msgid "Delete"
+msgid "Select"
+msgstr "حذف"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\login-theme\login-1.html:77
+#: .\venv\Lib\site-packages\badi_user\templates\login-theme\login-1.html:77
+msgid "Username"
+msgstr "نام کاربری"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+msgid "FirstName"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+msgid "LastName"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:87
+msgid "اعلان"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:88
+msgid "اعلان ها"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:90
+msgid "مدیرت اعلان ها"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:93
+msgid "کاربر"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:94
+msgid "موضوع"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:95
+msgid "متن"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:96
+msgid "نمایش اعلان از تاریخ"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:97
+msgid "خوانده شده"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:105
+msgid "Log"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:106
+msgid "Logs"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:108
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage Logs"
+msgstr "مدیریت تیکت ها"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:111
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:32
+msgid "Title"
+msgstr "عنوان"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:114
+msgid "Priority"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:115
+#, fuzzy
+#| msgid "Sent at"
+msgid "Status"
+msgstr "ارسال در"
+
+#: .\venv\Lib\site-packages\badi_user\models.py:116
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:221
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:253
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:221
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:253
+msgid "Description"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\models.py:117
+msgid "Created at"
+msgstr "تاریخ ثبت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\login-theme\login-1.html:68
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\login-theme\login-1.html:97
+#: .\venv\Lib\site-packages\badi_user\templates\login-theme\login-1.html:68
+#: .\venv\Lib\site-packages\badi_user\templates\login-theme\login-1.html:97
+msgid "Login"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\login-theme\login-1.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\login-theme\login-1.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:30
+msgid "Password"
+msgstr "رمز عبور"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:14
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:60
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:23
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:59
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:15
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:60
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:14
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:60
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:15
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_list.html:60
+msgid "Create"
+msgstr "ساخت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:47
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:41
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:37
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:47
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:41
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:37
+msgid "Repeat Password"
+msgstr "تکرار رمز عبور"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:57
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_update.html:31
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:50
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:63
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:58
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:57
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:50
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:63
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:49
+msgid "Back"
+msgstr "بازگشت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:87
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:259
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:71
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:58
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:49
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:51
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:64
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:41
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:59
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:87
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:259
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:71
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:58
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:51
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:64
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_list.html:41
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:50
+msgid "Submit"
+msgstr "ثبت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:113
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:125
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:134
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:146
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:98
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:101
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:98
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:113
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:125
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:134
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:146
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:86
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:98
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:101
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:78
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:90
+msgid "must be between 2 and 20 character"
+msgstr "باید بین 2 و 20 حرف باشد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:116
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:128
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:140
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:147
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:137
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:149
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:101
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:75
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:87
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:94
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:92
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:104
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:116
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:123
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:101
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:116
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:128
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:140
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:147
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:137
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:149
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:101
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:75
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:87
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:94
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:92
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:104
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:116
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:123
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:81
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:93
+msgid "This Field is required"
+msgstr "این فیلد ضروری است"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:137
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:84
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:113
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:137
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:84
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:113
+msgid "must be between 6 and 20 character"
+msgstr "باید بین 6 تا 20 حرف باشد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:178
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:178
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Done successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:182
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:131
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:132
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:160
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:130
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:182
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:131
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:132
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:160
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:123
+msgid "Seems some error exists"
+msgstr "بنظر می رسد تعدادی خطا وجود دارد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_create.html:184
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_update.html:133
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:134
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:162
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:132
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_create.html:184
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_update.html:133
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:134
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:162
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:125
+msgid "Got it"
+msgstr "متوجه شدم"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:13
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:12
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:13
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_list.html:12
+msgid "Search in List"
+msgstr "جستجو در لیست"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:54
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:54
+msgid "Member"
+msgstr "عضو"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:55
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:15
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:55
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:55
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_list.html:55
+msgid "List"
+msgstr "لیست"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:89
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:89
+msgid "on"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:91
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:91
+msgid "record"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:98
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:98
+msgid "Send ticket"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:104
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:104
+msgid "Send Sms"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:114
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:288
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:114
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:288
+#, fuzzy
+#| msgid "Delete"
+msgid "Select All"
+msgstr "حذف"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:126
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\admin_tickets.html:35
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\my_tickets.html:55
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:72
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:72
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:126
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_list.html:72
+msgid "Action"
+msgstr "اقدام"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:144
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:144
+#, fuzzy
+#| msgid "Ticket"
+msgid "Send Ticket"
+msgstr "تیکت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:208
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:208
+msgid "Charge account"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:217
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:249
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:217
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:249
+#, fuzzy
+#| msgid "Amount"
+msgid "amount"
+msgstr "موجودی"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:228
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:258
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:228
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:258
+#, fuzzy
+#| msgid "is Closed"
+msgid "Close"
+msgstr "بسته شده"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:229
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:229
+msgid "Charge"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:242
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:242
+msgid "Decrease Charge account"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:285
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:285
+#, fuzzy
+#| msgid "Delete"
+msgid "DeSelect All"
+msgstr "حذف"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:386
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\transaction\transaction_result.html:31
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:386
+msgid "$"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:406
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:406
+msgid "Are you Sure?"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:409
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:409
+msgid "Yes, Charge it"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:410
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:46
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:410
+msgid "Cancel"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:417
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:448
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_list.html:543
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:417
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:448
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_list.html:543
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Done Successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:15
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_update.html:16
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_update.html:33
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:13
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:15
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:14
+msgid "Update"
+msgstr "بروزرسانی"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:16
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:16
+msgid "self information"
+msgstr "اطلاعات شخصی"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:49
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:49
+msgid "Province"
+msgstr "استان"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\member\member_self_update.html:174
+#: .\venv\Lib\site-packages\badi_user\templates\member\member_self_update.html:174
+msgid "Updated successfully"
+msgstr "با موفقیت بروزرسانی شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\message_list.html:44
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Management"
+msgstr "مدیریت تیکت ها"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:23
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:59
+msgid "Ticket"
+msgstr "تیکت"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\ticket\ticket_create.html:136
+msgid "Messages"
+msgstr "پیام ها"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\transaction\transaction_result.html:12
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Payment done Successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\transaction\transaction_result.html:14
+msgid "Payment Failed"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\transaction\transaction_result.html:29
+msgid "Your Wallet"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\transaction\transaction_result.html:31
+msgid "Charged"
+msgstr ""
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:13
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:13
+msgid "Change Password"
+msgstr "تغییر رمز عبور"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:23
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:23
+msgid "Current Password"
+msgstr "رمز فعلی"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:34
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:34
+msgid "New Password"
+msgstr "رمز جدید"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:97
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_create.html:126
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:97
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_create.html:126
+msgid "Repeat Password and New Password are not equal"
+msgstr "تکرار رمز عبور با رمز عبور مطابقت ندارد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\change_password.html:128
+#: .\venv\Lib\site-packages\badi_user\templates\user\change_password.html:128
+msgid "Password changed successfully"
+msgstr "رمز عبور با موفقیت بروزرسانی شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:145
+msgid "Enabled successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_list.html:145
+msgid "Disabled successfully"
+msgstr "با موفقیت غیر فعال شد"
+
+#: .\venv\Lib\site-packages\badi_user\templates\badi_user\user\user_update.html:126
+#: .\venv\Lib\site-packages\badi_user\templates\user\user_update.html:119
+msgid "Updated Successfully"
+msgstr "با موفقیت بروزرسانی شد"
+
+#~ msgid "New message"
+#~ msgstr "پیام جدید"
+
+#~ msgid "Please fill title and text fields"
+#~ msgstr "لطفا عنوان و متن را وارد کنید"
+
+#~ msgid "SomeThing Happened! No message sent!"
+#~ msgstr "مشکلی پیش آمد! هیچ پیامی ارسال نشد!"
+
+#~ msgid "Your Ticket and Message sent to #0 User successfully!"
+#~ msgstr "تیکت و پیام شما با موفقیت برای #0 کاربر ارسال شد"
+
+#~ msgid "Select a member!"
+#~ msgstr "یک عضو را انتخاب کنید"
+
+#~ msgid "You dont have permission to Send Ticket!"
+#~ msgstr "شما به بخش ارسال تیکت دسترسی ندارید"
+
+#~ msgid "File must be less than 1 mb!"
+#~ msgstr "فایل باید کمتر از یک مگابایت باشد"
+
+#~ msgid "Message Text"
+#~ msgstr "متن پیام"
+
+#~ msgid "Writer"
+#~ msgstr "نویسنده"
+
+#~ msgid "File"
+#~ msgstr "فایل"
+
+#~ msgid "Is seen by user"
+#~ msgstr "توسط کاربر دیده شده"
+
+#~ msgid "Is seen by admin"
+#~ msgstr "توسط مدیریت دیده شده"
+
+#~ msgid "No active user found"
+#~ msgstr "کاربر فعالی یافت نشد"
+
+#~ msgid "Persian"
+#~ msgstr "فارسی"
+
+#~ msgid "custom"
+#~ msgstr "غیره"
+
+#~ msgid "login"
+#~ msgstr "ورود"
+
+#~ msgid "logout"
+#~ msgstr "خروج"
+
+#~ msgid "Delete"
+#~ msgstr "حذف"
+
+#~ msgid "NO_PERMISSION"
+#~ msgstr "شما به این قسمت دسترسی ندارید"
+
+#~ msgid "Site Maps"
+#~ msgstr "سایت مپ"
+
+#~ msgid "Static Files"
+#~ msgstr "فایل های استاتیک"
+
+#~ msgid "Syndication"
+#~ msgstr "سندیکا"
+
+#~ msgid "…"
+#~ msgstr "…"
+
+#~ msgid "That page number is not an integer"
+#~ msgstr "صفحه باید عددی باشد"
+
+#~ msgid "That page number is less than 1"
+#~ msgstr "صفحه نباید کمتر از یک باشد"
+
+#~ msgid "That page contains no results"
+#~ msgstr "در این صفحه موردی یافت نشد"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "یک مقدار معتبر وارد کنید"
+
+#~ msgid "Enter a valid URL."
+#~ msgstr "یک آدرس معتبر وارد کنید"
+
+#~ msgid "Enter a valid integer."
+#~ msgstr "یک مقدار عددی وارد کنید"
+
+#~ msgid "Enter a valid email address."
+#~ msgstr "یک ایمیل معتبر وارد کنید"
+
+#~ msgid ""
+#~ "Enter a valid “slug” consisting of letters, numbers, underscores or "
+#~ "hyphens."
+#~ msgstr "یک 'اسلاگ' معتبر متشکل از حروف، اعداد، زیرخط یا خط فاصله وارد کنید"
+
+#~ msgid ""
+#~ "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, "
+#~ "or hyphens."
+#~ msgstr "یک 'اسلاگ' معتبر متشکل از حروف یونیکد، اعداد، زیرخط وارد کنید"
+
+#~ msgid "Enter a valid IPv4 address."
+#~ msgstr "یک آدرس IPv4 معتبر وارد کنید"
+
+#~ msgid "کد"
+#~ msgstr "کد"

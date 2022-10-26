@@ -3,12 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+#: .\badi_user\templates\user\user_create.html:153
+#: .\src\badi_user\templates\badi_user\user\user_create.html:153
+#: .\src\badi_user\templates\user\user_create.html:153
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-08 19:50+0330\n"
+"POT-Creation-Date: 2022-10-24 19:23+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,160 +20,379 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\badi_ticket\api.py:45 .\src\badi_ticket\api.py:45
+#: .\badi_ticket\api.py:59 .\src\badi_ticket\api.py:59
+#: .\venv\Lib\site-packages\badi_ticket\api.py:59
 msgid "New message"
 msgstr "پیام جدید"
 
-#: .\badi_ticket\api.py:68 .\src\badi_ticket\api.py:68
+#: .\badi_ticket\api.py:82 .\badi_ticket\api.py:124
+#: .\src\badi_ticket\api.py:82 .\src\badi_ticket\api.py:124
+#: .\venv\Lib\site-packages\badi_ticket\api.py:82
+#: .\venv\Lib\site-packages\badi_ticket\api.py:124
 msgid "Please fill title and text fields"
 msgstr "لطفا عنوان و متن را وارد کنید"
 
-#: .\badi_ticket\api.py:82 .\src\badi_ticket\api.py:82
+#: .\badi_ticket\api.py:96 .\badi_ticket\api.py:138
+#: .\src\badi_ticket\api.py:96 .\src\badi_ticket\api.py:138
+#: .\venv\Lib\site-packages\badi_ticket\api.py:96
+#: .\venv\Lib\site-packages\badi_ticket\api.py:138
 msgid "SomeThing Happened! No message sent!"
 msgstr "مشکلی پیش آمد! هیچ پیامی ارسال نشد!"
 
-#: .\badi_ticket\api.py:88 .\src\badi_ticket\api.py:88
+#: .\badi_ticket\api.py:102 .\badi_ticket\api.py:144
+#: .\src\badi_ticket\api.py:102 .\src\badi_ticket\api.py:144
+#: .\venv\Lib\site-packages\badi_ticket\api.py:102
+#: .\venv\Lib\site-packages\badi_ticket\api.py:144
 msgid "Your Ticket and Message sent to #0 User successfully!"
 msgstr "تیکت و پیام شما با موفقیت برای #0 کاربر ارسال شد"
 
-#: .\badi_ticket\api.py:95 .\src\badi_ticket\api.py:95
+#: .\badi_ticket\api.py:109 .\badi_ticket\api.py:151
+#: .\src\badi_ticket\api.py:109 .\src\badi_ticket\api.py:151
+#: .\venv\Lib\site-packages\badi_ticket\api.py:109
+#: .\venv\Lib\site-packages\badi_ticket\api.py:151
 msgid "Select a member!"
 msgstr "یک عضو را انتخاب کنید"
 
-#: .\badi_ticket\api.py:98 .\src\badi_ticket\api.py:98
+#: .\badi_ticket\api.py:112 .\badi_ticket\api.py:154
+#: .\src\badi_ticket\api.py:112 .\src\badi_ticket\api.py:154
+#: .\venv\Lib\site-packages\badi_ticket\api.py:112
+#: .\venv\Lib\site-packages\badi_ticket\api.py:154
 msgid "You dont have permission to Send Ticket!"
 msgstr "شما به بخش ارسال تیکت دسترسی ندارید"
 
 #: .\badi_ticket\models.py:15 .\src\badi_ticket\models.py:15
+#: .\venv\Lib\site-packages\badi_ticket\models.py:15
 msgid "File must be less than 1 mb!"
 msgstr "فایل باید کمتر از یک مگابایت باشد"
 
 #: .\badi_ticket\models.py:23 .\badi_ticket\models.py:58
 #: .\src\badi_ticket\models.py:23 .\src\badi_ticket\models.py:58
+#: .\venv\Lib\site-packages\badi_ticket\models.py:23
+#: .\venv\Lib\site-packages\badi_ticket\models.py:58
 msgid "Manage Tickets"
 msgstr "مدیریت تیکت ها"
 
-#: .\badi_ticket\models.py:27 .\src\badi_ticket\models.py:27
+#: .\badi_ticket\models.py:27 .\badi_user\templates\member\member_list.html:54
+#: .\src\badi_ticket\models.py:27
+#: .\src\badi_user\templates\badi_user\member\member_list.html:54
+#: .\src\badi_user\templates\member\member_list.html:54
+#: .\venv\Lib\site-packages\badi_ticket\models.py:27
 msgid "Member"
 msgstr "عضو"
 
-#: .\badi_ticket\models.py:28 .\src\badi_ticket\models.py:28
+#: .\badi_ticket\models.py:28
+#: .\badi_ticket\templates\ticket\ticket_create.html:32
+#: .\badi_user\models.py:111 .\src\badi_ticket\models.py:28
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:32
+#: .\src\badi_user\models.py:111
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:32
+#: .\venv\Lib\site-packages\badi_ticket\models.py:28
+#: .\venv\Lib\site-packages\badi_user\models.py:111
 msgid "Title"
 msgstr "عنوان"
 
-#: .\badi_ticket\models.py:29 .\src\badi_ticket\models.py:29
+#: .\badi_ticket\models.py:29 .\badi_user\models.py:117
+#: .\src\badi_ticket\models.py:29 .\src\badi_user\models.py:117
+#: .\venv\Lib\site-packages\badi_ticket\models.py:29
+#: .\venv\Lib\site-packages\badi_user\models.py:117
 msgid "Created at"
 msgstr "تاریخ ثبت"
 
 #: .\badi_ticket\models.py:30 .\src\badi_ticket\models.py:30
+#: .\venv\Lib\site-packages\badi_ticket\models.py:30
 msgid "is Closed"
 msgstr "بسته شده"
 
-#: .\badi_ticket\models.py:63 .\src\badi_ticket\models.py:63
+#: .\badi_ticket\models.py:63
+#: .\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\src\badi_ticket\models.py:63
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:23
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:59
+#: .\venv\Lib\site-packages\badi_ticket\models.py:63
 msgid "Ticket"
 msgstr "تیکت"
 
 #: .\badi_ticket\models.py:64 .\src\badi_ticket\models.py:64
+#: .\venv\Lib\site-packages\badi_ticket\models.py:64
 msgid "Message Text"
 msgstr "متن پیام"
 
 #: .\badi_ticket\models.py:66 .\src\badi_ticket\models.py:66
+#: .\venv\Lib\site-packages\badi_ticket\models.py:66
 msgid "Writer"
 msgstr "نویسنده"
 
 #: .\badi_ticket\models.py:67 .\src\badi_ticket\models.py:67
+#: .\venv\Lib\site-packages\badi_ticket\models.py:67
 #: .\venv\Lib\site-packages\django\db\models\fields\files.py:226
 msgid "File"
 msgstr "فایل"
 
 #: .\badi_ticket\models.py:69 .\src\badi_ticket\models.py:69
+#: .\venv\Lib\site-packages\badi_ticket\models.py:69
 msgid "Is seen by user"
 msgstr "توسط کاربر دیده شده"
 
 #: .\badi_ticket\models.py:70 .\src\badi_ticket\models.py:70
+#: .\venv\Lib\site-packages\badi_ticket\models.py:70
 msgid "Is seen by admin"
 msgstr "توسط مدیریت دیده شده"
 
 #: .\badi_ticket\models.py:71 .\src\badi_ticket\models.py:71
+#: .\venv\Lib\site-packages\badi_ticket\models.py:71
 msgid "Sent at"
 msgstr "ارسال در"
 
-#: .\badi_user\api\api.py:93 .\src\badi_user\api\api.py:93
-msgid "No active user found"
-msgstr "کاربر فعالی یافت نشد"
+#: .\badi_ticket\templates\ticket\admin_tickets.html:35
+#: .\badi_ticket\templates\ticket\my_tickets.html:55
+#: .\badi_ticket\templates\ticket\ticket_create.html:72
+#: .\badi_user\templates\member\member_list.html:126
+#: .\badi_user\templates\user\user_list.html:72
+#: .\src\badi_ticket\templates\ticket\admin_tickets.html:35
+#: .\src\badi_ticket\templates\ticket\my_tickets.html:55
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:72
+#: .\src\badi_user\templates\badi_user\member\member_list.html:126
+#: .\src\badi_user\templates\badi_user\ticket\admin_tickets.html:35
+#: .\src\badi_user\templates\badi_user\ticket\my_tickets.html:55
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:72
+#: .\src\badi_user\templates\badi_user\user\user_list.html:72
+#: .\src\badi_user\templates\member\member_list.html:126
+#: .\src\badi_user\templates\user\user_list.html:72
+msgid "Action"
+msgstr "اقدام"
 
-#: .\badi_user\api\api.py:209 .\src\badi_user\api\api.py:209
+#: .\badi_ticket\templates\ticket\message_list.html:44
+#: .\src\badi_ticket\templates\ticket\message_list.html:44
+#: .\src\badi_user\templates\badi_user\ticket\message_list.html:44
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Management"
+msgstr "مدیریت تیکت ها"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:15
+#: .\badi_user\templates\member\member_list.html:55
+#: .\badi_user\templates\user\user_list.html:55 .\badi_utils\dynamic.py:345
+#: .\badi_utils\dynamic.py:346
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:15
+#: .\src\badi_user\templates\badi_user\member\member_list.html:55
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:15
+#: .\src\badi_user\templates\badi_user\user\user_list.html:55
+#: .\src\badi_user\templates\member\member_list.html:55
+#: .\src\badi_user\templates\user\user_list.html:55
+#: .\src\badi_utils\dynamic.py:345 .\src\badi_utils\dynamic.py:346
+msgid "List"
+msgstr "لیست"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\badi_user\templates\member\member_create.html:14
+#: .\badi_user\templates\member\member_list.html:60
+#: .\badi_user\templates\user\user_create.html:15
+#: .\badi_user\templates\user\user_list.html:60
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\src\badi_user\templates\badi_user\member\member_create.html:14
+#: .\src\badi_user\templates\badi_user\member\member_list.html:60
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:23
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:59
+#: .\src\badi_user\templates\badi_user\user\user_create.html:15
+#: .\src\badi_user\templates\badi_user\user\user_list.html:60
+#: .\src\badi_user\templates\member\member_create.html:14
+#: .\src\badi_user\templates\member\member_list.html:60
+#: .\src\badi_user\templates\user\user_create.html:15
+#: .\src\badi_user\templates\user\user_list.html:60
+msgid "Create"
+msgstr "ساخت"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:46
+#: .\badi_user\templates\member\member_list.html:410
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:46
+#: .\src\badi_user\templates\badi_user\member\member_list.html:410
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:46
+#: .\src\badi_user\templates\member\member_list.html:410
+msgid "Cancel"
+msgstr ""
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:49
+#: .\badi_user\templates\member\member_create.html:87
+#: .\badi_user\templates\member\member_list.html:259
+#: .\badi_user\templates\member\member_self_update.html:71
+#: .\badi_user\templates\member\member_update.html:58
+#: .\badi_user\templates\user\change_password.html:51
+#: .\badi_user\templates\user\user_create.html:64
+#: .\badi_user\templates\user\user_list.html:41
+#: .\badi_user\templates\user\user_update.html:50
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:49
+#: .\src\badi_user\templates\badi_user\member\member_create.html:87
+#: .\src\badi_user\templates\badi_user\member\member_list.html:259
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:71
+#: .\src\badi_user\templates\badi_user\member\member_update.html:58
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:49
+#: .\src\badi_user\templates\badi_user\user\change_password.html:51
+#: .\src\badi_user\templates\badi_user\user\user_create.html:64
+#: .\src\badi_user\templates\badi_user\user\user_list.html:41
+#: .\src\badi_user\templates\badi_user\user\user_update.html:59
+#: .\src\badi_user\templates\member\member_create.html:87
+#: .\src\badi_user\templates\member\member_list.html:259
+#: .\src\badi_user\templates\member\member_self_update.html:71
+#: .\src\badi_user\templates\member\member_update.html:58
+#: .\src\badi_user\templates\user\change_password.html:51
+#: .\src\badi_user\templates\user\user_create.html:64
+#: .\src\badi_user\templates\user\user_list.html:41
+#: .\src\badi_user\templates\user\user_update.html:50
+msgid "Submit"
+msgstr "ثبت"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:136
+#: .\src\badi_ticket\templates\ticket\ticket_create.html:136
+#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:136
+#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
+msgid "Messages"
+msgstr "پیام ها"
+
+#: .\badi_ticket\templates\ticket\ticket_update.html:16
+#: .\badi_ticket\templates\ticket\ticket_update.html:33
+#: .\badi_user\templates\member\member_self_update.html:15
+#: .\badi_user\templates\user\user_update.html:14 .\badi_utils\dynamic.py:592
+#: .\badi_utils\dynamic.py:593
+#: .\src\badi_ticket\templates\ticket\ticket_update.html:16
+#: .\src\badi_ticket\templates\ticket\ticket_update.html:33
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:15
+#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:16
+#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:33
+#: .\src\badi_user\templates\badi_user\user\user_update.html:13
+#: .\src\badi_user\templates\member\member_self_update.html:15
+#: .\src\badi_user\templates\user\user_update.html:14
+#: .\src\badi_utils\dynamic.py:592 .\src\badi_utils\dynamic.py:593
+msgid "Update"
+msgstr "بروزرسانی"
+
+#: .\badi_ticket\templates\ticket\ticket_update.html:31
+#: .\badi_user\templates\member\member_create.html:86
+#: .\badi_user\templates\member\member_update.html:57
+#: .\badi_user\templates\user\change_password.html:50
+#: .\badi_user\templates\user\user_create.html:63
+#: .\badi_user\templates\user\user_update.html:49
+#: .\src\badi_ticket\templates\ticket\ticket_update.html:31
+#: .\src\badi_user\templates\badi_user\member\member_create.html:86
+#: .\src\badi_user\templates\badi_user\member\member_update.html:57
+#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:31
+#: .\src\badi_user\templates\badi_user\user\change_password.html:50
+#: .\src\badi_user\templates\badi_user\user\user_create.html:63
+#: .\src\badi_user\templates\badi_user\user\user_update.html:58
+#: .\src\badi_user\templates\member\member_create.html:86
+#: .\src\badi_user\templates\member\member_update.html:57
+#: .\src\badi_user\templates\user\change_password.html:50
+#: .\src\badi_user\templates\user\user_create.html:63
+#: .\src\badi_user\templates\user\user_update.html:49
+msgid "Back"
+msgstr "بازگشت"
+
+#: .\badi_user\api\api.py:172 .\src\badi_user\api\api.py:172
+#: .\venv\Lib\site-packages\badi_user\api\api.py:169
 msgid "Code sent to "
 msgstr "کد ارسال شد به"
 
-#: .\badi_user\api\api.py:262 .\src\badi_user\api\api.py:262
+#: .\badi_user\api\api.py:225 .\src\badi_user\api\api.py:225
+#: .\venv\Lib\site-packages\badi_user\api\api.py:222
 msgid "Invalid username"
 msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_user\api\api.py:264 .\src\badi_user\api\api.py:264
+#: .\badi_user\api\api.py:227 .\src\badi_user\api\api.py:227
+#: .\venv\Lib\site-packages\badi_user\api\api.py:224
 msgid "This username already taken"
 msgstr "این نام کاربری قبلا ثبت شده است"
 
-#: .\badi_user\api\api.py:267 .\badi_user\api\api.py:273
-#: .\src\badi_user\api\api.py:267 .\src\badi_user\api\api.py:273
+#: .\badi_user\api\api.py:230 .\badi_user\api\api.py:236
+#: .\src\badi_user\api\api.py:230 .\src\badi_user\api\api.py:236
+#: .\venv\Lib\site-packages\badi_user\api\api.py:227
+#: .\venv\Lib\site-packages\badi_user\api\api.py:233
 msgid "This mobile number already registered"
 msgstr "این شماره تماس قبلا ثبت شده است"
 
 #: .\badi_user\models.py:11 .\src\badi_user\models.py:11
+#: .\venv\Lib\site-packages\badi_user\models.py:11
 msgid "code"
 msgstr ""
 
-#: .\badi_user\models.py:32 .\badi_user\templates\user\user_update.html:126
-#: .\src\badi_user\models.py:32
-#: .\src\badi_user\templates\user\user_update.html:126
+#: .\badi_user\models.py:32 .\badi_user\models.py:113
+#: .\badi_user\templates\user\user_update.html:119 .\badi_wallet\models.py:23
+#: .\badi_wallet\models.py:54 .\src\badi_user\models.py:32
+#: .\src\badi_user\models.py:113
+#: .\src\badi_user\templates\badi_user\user\user_update.html:126
+#: .\src\badi_user\templates\user\user_update.html:119
+#: .\src\badi_wallet\models.py:23 .\src\badi_wallet\models.py:54
+#: .\venv\Lib\site-packages\badi_user\models.py:32
+#: .\venv\Lib\site-packages\badi_user\models.py:113
+#: .\venv\Lib\site-packages\badi_wallet\models.py:23
+#: .\venv\Lib\site-packages\badi_wallet\models.py:54
 msgid "User"
 msgstr "کاربر"
 
 #: .\badi_user\models.py:33 .\src\badi_user\models.py:33
+#: .\venv\Lib\site-packages\badi_user\models.py:33
 #, fuzzy
 #| msgid "User"
 msgid "Users"
 msgstr "کاربر"
 
 #: .\badi_user\models.py:35 .\src\badi_user\models.py:35
+#: .\venv\Lib\site-packages\badi_user\models.py:35
 #, fuzzy
 #| msgid "Manage Tickets"
 msgid "Manage users"
 msgstr "مدیریت تیکت ها"
 
 #: .\badi_user\models.py:36 .\src\badi_user\models.py:36
+#: .\venv\Lib\site-packages\badi_user\models.py:36
 #, fuzzy
 #| msgid "Manage Tickets"
 msgid "Manage members"
 msgstr "مدیریت تیکت ها"
 
 #: .\badi_user\models.py:39 .\src\badi_user\models.py:39
+#: .\venv\Lib\site-packages\badi_user\models.py:39
 msgid "is admin"
 msgstr ""
 
 #: .\badi_user\models.py:40 .\src\badi_user\models.py:40
+#: .\venv\Lib\site-packages\badi_user\models.py:40
 msgid "Mobile Number"
 msgstr "شماره تماس"
 
 #: .\badi_user\models.py:41 .\src\badi_user\models.py:41
+#: .\venv\Lib\site-packages\badi_user\models.py:41
 msgid "Birth Date"
 msgstr "تاریخ تولد"
 
 #: .\badi_user\models.py:42 .\badi_user\models.py:76
 #: .\src\badi_user\models.py:42 .\src\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_user\models.py:42
+#: .\venv\Lib\site-packages\badi_user\models.py:76
 msgid "Picture"
 msgstr "تصویر پروفایل"
 
 #: .\badi_user\models.py:43 .\src\badi_user\models.py:43
+#: .\venv\Lib\site-packages\badi_user\models.py:43
 msgid "Token"
 msgstr "توکن"
 
 #: .\badi_user\models.py:45 .\badi_user\models.py:76
+#: .\badi_wallet\models.py:29 .\badi_wallet\models.py:55
 #: .\src\badi_user\models.py:45 .\src\badi_user\models.py:76
+#: .\src\badi_wallet\models.py:29 .\src\badi_wallet\models.py:55
+#: .\venv\Lib\site-packages\badi_user\models.py:45
+#: .\venv\Lib\site-packages\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_wallet\models.py:29
+#: .\venv\Lib\site-packages\badi_wallet\models.py:55
 msgid "Amount"
 msgstr "موجودی"
 
 #: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_user\models.py:76
 #, fuzzy
 #| msgid "Delete"
 msgid "Select"
@@ -178,135 +400,132 @@ msgstr "حذف"
 
 #: .\badi_user\models.py:76 .\badi_user\templates\login-theme\login-1.html:77
 #: .\src\badi_user\models.py:76
+#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:77
 #: .\src\badi_user\templates\login-theme\login-1.html:77
+#: .\venv\Lib\site-packages\badi_user\models.py:76
 msgid "Username"
 msgstr "نام کاربری"
 
 #: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_user\models.py:76
 msgid "FirstName"
-msgstr ""
+msgstr "نام"
 
 #: .\badi_user\models.py:76 .\src\badi_user\models.py:76
+#: .\venv\Lib\site-packages\badi_user\models.py:76
 msgid "LastName"
-msgstr ""
+msgstr "نام خانوادگی"
 
 #: .\badi_user\models.py:87 .\src\badi_user\models.py:87
+#: .\venv\Lib\site-packages\badi_user\models.py:87
 msgid "اعلان"
 msgstr ""
 
 #: .\badi_user\models.py:88 .\src\badi_user\models.py:88
+#: .\venv\Lib\site-packages\badi_user\models.py:88
 msgid "اعلان ها"
 msgstr ""
 
 #: .\badi_user\models.py:90 .\src\badi_user\models.py:90
+#: .\venv\Lib\site-packages\badi_user\models.py:90
 msgid "مدیرت اعلان ها"
 msgstr ""
 
-#: .\badi_user\models.py:93 .\badi_user\models.py:113
-#: .\src\badi_user\models.py:93 .\src\badi_user\models.py:113
+#: .\badi_user\models.py:93 .\src\badi_user\models.py:93
+#: .\venv\Lib\site-packages\badi_user\models.py:93
 msgid "کاربر"
 msgstr ""
 
 #: .\badi_user\models.py:94 .\src\badi_user\models.py:94
+#: .\venv\Lib\site-packages\badi_user\models.py:94
 msgid "موضوع"
 msgstr ""
 
 #: .\badi_user\models.py:95 .\src\badi_user\models.py:95
+#: .\venv\Lib\site-packages\badi_user\models.py:95
 msgid "متن"
 msgstr ""
 
 #: .\badi_user\models.py:96 .\src\badi_user\models.py:96
+#: .\venv\Lib\site-packages\badi_user\models.py:96
 msgid "نمایش اعلان از تاریخ"
 msgstr ""
 
 #: .\badi_user\models.py:97 .\src\badi_user\models.py:97
+#: .\venv\Lib\site-packages\badi_user\models.py:97
 msgid "خوانده شده"
 msgstr ""
 
-#: .\badi_user\models.py:105 .\badi_user\models.py:106
-#: .\src\badi_user\models.py:105 .\src\badi_user\models.py:106
-msgid "گزارشات سامانه"
+#: .\badi_user\models.py:105 .\src\badi_user\models.py:105
+#: .\venv\Lib\site-packages\badi_user\models.py:105
+msgid "Log"
+msgstr ""
+
+#: .\badi_user\models.py:106 .\src\badi_user\models.py:106
+#: .\venv\Lib\site-packages\badi_user\models.py:106
+msgid "Logs"
 msgstr ""
 
 #: .\badi_user\models.py:108 .\src\badi_user\models.py:108
-msgid "مشاهده گزارشات سامانه"
-msgstr ""
-
-#: .\badi_user\models.py:111 .\src\badi_user\models.py:111
-msgid "عنوان"
-msgstr ""
+#: .\venv\Lib\site-packages\badi_user\models.py:108
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage Logs"
+msgstr "مدیریت تیکت ها"
 
 #: .\badi_user\models.py:114 .\src\badi_user\models.py:114
-msgid "اهمیت"
+#: .\venv\Lib\site-packages\badi_user\models.py:114
+msgid "Priority"
 msgstr ""
 
 #: .\badi_user\models.py:115 .\src\badi_user\models.py:115
-msgid "وضیعت"
-msgstr ""
+#: .\venv\Lib\site-packages\badi_user\models.py:115
+#, fuzzy
+#| msgid "Sent at"
+msgid "Status"
+msgstr "ارسال در"
 
-#: .\badi_user\models.py:116 .\src\badi_user\models.py:116
-msgid "توضیحات"
-msgstr ""
-
-#: .\badi_user\models.py:117 .\src\badi_user\models.py:117
-msgid "زمان"
+#: .\badi_user\models.py:116 .\badi_user\templates\member\member_list.html:221
+#: .\badi_user\templates\member\member_list.html:253
+#: .\badi_wallet\models.py:24 .\src\badi_user\models.py:116
+#: .\src\badi_user\templates\badi_user\member\member_list.html:221
+#: .\src\badi_user\templates\badi_user\member\member_list.html:253
+#: .\src\badi_user\templates\member\member_list.html:221
+#: .\src\badi_user\templates\member\member_list.html:253
+#: .\src\badi_wallet\models.py:24
+#: .\venv\Lib\site-packages\badi_user\models.py:116
+#: .\venv\Lib\site-packages\badi_wallet\models.py:24
+msgid "Description"
 msgstr ""
 
 #: .\badi_user\templates\login-theme\login-1.html:68
 #: .\badi_user\templates\login-theme\login-1.html:97
+#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:68
+#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:97
 #: .\src\badi_user\templates\login-theme\login-1.html:68
 #: .\src\badi_user\templates\login-theme\login-1.html:97
 msgid "Login"
 msgstr ""
 
 #: .\badi_user\templates\login-theme\login-1.html:86
+#: .\badi_user\templates\user\user_update.html:30
+#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:86
 #: .\src\badi_user\templates\login-theme\login-1.html:86
+#: .\src\badi_user\templates\user\user_update.html:30
 msgid "Password"
 msgstr "رمز عبور"
-
-#: .\badi_user\templates\member\member_create.html:14
-#: .\badi_user\templates\user\user_create.html:15
-#: .\badi_user\templates\user\user_list.html:60
-#: .\src\badi_user\templates\member\member_create.html:14
-#: .\src\badi_user\templates\user\user_create.html:15
-#: .\src\badi_user\templates\user\user_list.html:60
-msgid "Create"
-msgstr "ساخت"
 
 #: .\badi_user\templates\member\member_create.html:47
 #: .\badi_user\templates\user\change_password.html:41
 #: .\badi_user\templates\user\user_create.html:37
+#: .\src\badi_user\templates\badi_user\member\member_create.html:47
+#: .\src\badi_user\templates\badi_user\user\change_password.html:41
+#: .\src\badi_user\templates\badi_user\user\user_create.html:37
 #: .\src\badi_user\templates\member\member_create.html:47
 #: .\src\badi_user\templates\user\change_password.html:41
 #: .\src\badi_user\templates\user\user_create.html:37
 msgid "Repeat Password"
 msgstr "تکرار رمز عبور"
-
-#: .\badi_user\templates\member\member_create.html:86
-#: .\badi_user\templates\user\change_password.html:50
-#: .\badi_user\templates\user\user_create.html:63
-#: .\badi_user\templates\user\user_update.html:58
-#: .\src\badi_user\templates\member\member_create.html:86
-#: .\src\badi_user\templates\user\change_password.html:50
-#: .\src\badi_user\templates\user\user_create.html:63
-#: .\src\badi_user\templates\user\user_update.html:58
-msgid "Back"
-msgstr "بازگشت"
-
-#: .\badi_user\templates\member\member_create.html:87
-#: .\badi_user\templates\member\member_self_update.html:71
-#: .\badi_user\templates\user\change_password.html:51
-#: .\badi_user\templates\user\user_create.html:64
-#: .\badi_user\templates\user\user_list.html:41
-#: .\badi_user\templates\user\user_update.html:59
-#: .\src\badi_user\templates\member\member_create.html:87
-#: .\src\badi_user\templates\member\member_self_update.html:71
-#: .\src\badi_user\templates\user\change_password.html:51
-#: .\src\badi_user\templates\user\user_create.html:64
-#: .\src\badi_user\templates\user\user_list.html:41
-#: .\src\badi_user\templates\user\user_update.html:59
-msgid "Submit"
-msgstr "ثبت"
 
 #: .\badi_user\templates\member\member_create.html:113
 #: .\badi_user\templates\member\member_create.html:125
@@ -316,18 +535,28 @@ msgstr "ثبت"
 #: .\badi_user\templates\member\member_update.html:98
 #: .\badi_user\templates\user\user_create.html:89
 #: .\badi_user\templates\user\user_create.html:101
-#: .\badi_user\templates\user\user_update.html:86
-#: .\badi_user\templates\user\user_update.html:98
+#: .\badi_user\templates\user\user_update.html:78
+#: .\badi_user\templates\user\user_update.html:90
+#: .\src\badi_user\templates\badi_user\member\member_create.html:113
+#: .\src\badi_user\templates\badi_user\member\member_create.html:125
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:134
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:146
+#: .\src\badi_user\templates\badi_user\member\member_update.html:86
+#: .\src\badi_user\templates\badi_user\member\member_update.html:98
+#: .\src\badi_user\templates\badi_user\user\user_create.html:89
+#: .\src\badi_user\templates\badi_user\user\user_create.html:101
+#: .\src\badi_user\templates\badi_user\user\user_update.html:86
+#: .\src\badi_user\templates\badi_user\user\user_update.html:98
 #: .\src\badi_user\templates\member\member_create.html:113
 #: .\src\badi_user\templates\member\member_create.html:125
 #: .\src\badi_user\templates\member\member_self_update.html:134
 #: .\src\badi_user\templates\member\member_self_update.html:146
-#: .\src\badi_user\templates\member\member_update.html:85
-#: .\src\badi_user\templates\member\member_update.html:97
+#: .\src\badi_user\templates\member\member_update.html:86
+#: .\src\badi_user\templates\member\member_update.html:98
 #: .\src\badi_user\templates\user\user_create.html:89
 #: .\src\badi_user\templates\user\user_create.html:101
-#: .\src\badi_user\templates\user\user_update.html:86
-#: .\src\badi_user\templates\user\user_update.html:98
+#: .\src\badi_user\templates\user\user_update.html:78
+#: .\src\badi_user\templates\user\user_update.html:90
 msgid "must be between 2 and 20 character"
 msgstr "باید بین 2 و 20 حرف باشد"
 
@@ -346,16 +575,33 @@ msgstr "باید بین 2 و 20 حرف باشد"
 #: .\badi_user\templates\user\user_create.html:104
 #: .\badi_user\templates\user\user_create.html:116
 #: .\badi_user\templates\user\user_create.html:123
-#: .\badi_user\templates\user\user_update.html:89
-#: .\badi_user\templates\user\user_update.html:101
+#: .\badi_user\templates\user\user_update.html:81
+#: .\badi_user\templates\user\user_update.html:93
+#: .\src\badi_user\templates\badi_user\member\member_create.html:116
+#: .\src\badi_user\templates\badi_user\member\member_create.html:128
+#: .\src\badi_user\templates\badi_user\member\member_create.html:140
+#: .\src\badi_user\templates\badi_user\member\member_create.html:147
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:137
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:149
+#: .\src\badi_user\templates\badi_user\member\member_update.html:89
+#: .\src\badi_user\templates\badi_user\member\member_update.html:101
+#: .\src\badi_user\templates\badi_user\user\change_password.html:75
+#: .\src\badi_user\templates\badi_user\user\change_password.html:87
+#: .\src\badi_user\templates\badi_user\user\change_password.html:94
+#: .\src\badi_user\templates\badi_user\user\user_create.html:92
+#: .\src\badi_user\templates\badi_user\user\user_create.html:104
+#: .\src\badi_user\templates\badi_user\user\user_create.html:116
+#: .\src\badi_user\templates\badi_user\user\user_create.html:123
+#: .\src\badi_user\templates\badi_user\user\user_update.html:89
+#: .\src\badi_user\templates\badi_user\user\user_update.html:101
 #: .\src\badi_user\templates\member\member_create.html:116
 #: .\src\badi_user\templates\member\member_create.html:128
 #: .\src\badi_user\templates\member\member_create.html:140
 #: .\src\badi_user\templates\member\member_create.html:147
 #: .\src\badi_user\templates\member\member_self_update.html:137
 #: .\src\badi_user\templates\member\member_self_update.html:149
-#: .\src\badi_user\templates\member\member_update.html:88
-#: .\src\badi_user\templates\member\member_update.html:100
+#: .\src\badi_user\templates\member\member_update.html:89
+#: .\src\badi_user\templates\member\member_update.html:101
 #: .\src\badi_user\templates\user\change_password.html:75
 #: .\src\badi_user\templates\user\change_password.html:87
 #: .\src\badi_user\templates\user\change_password.html:94
@@ -363,14 +609,17 @@ msgstr "باید بین 2 و 20 حرف باشد"
 #: .\src\badi_user\templates\user\user_create.html:104
 #: .\src\badi_user\templates\user\user_create.html:116
 #: .\src\badi_user\templates\user\user_create.html:123
-#: .\src\badi_user\templates\user\user_update.html:89
-#: .\src\badi_user\templates\user\user_update.html:101
+#: .\src\badi_user\templates\user\user_update.html:81
+#: .\src\badi_user\templates\user\user_update.html:93
 msgid "This Field is required"
 msgstr "این فیلد ضروری است"
 
 #: .\badi_user\templates\member\member_create.html:137
 #: .\badi_user\templates\user\change_password.html:84
 #: .\badi_user\templates\user\user_create.html:113
+#: .\src\badi_user\templates\badi_user\member\member_create.html:137
+#: .\src\badi_user\templates\badi_user\user\change_password.html:84
+#: .\src\badi_user\templates\badi_user\user\user_create.html:113
 #: .\src\badi_user\templates\member\member_create.html:137
 #: .\src\badi_user\templates\user\change_password.html:84
 #: .\src\badi_user\templates\user\user_create.html:113
@@ -378,6 +627,7 @@ msgid "must be between 6 and 20 character"
 msgstr "باید بین 6 تا 20 حرف باشد"
 
 #: .\badi_user\templates\member\member_create.html:178
+#: .\src\badi_user\templates\badi_user\member\member_create.html:178
 #: .\src\badi_user\templates\member\member_create.html:178
 #, fuzzy
 #| msgid "Enabled successfully"
@@ -388,12 +638,17 @@ msgstr "با موفقیت فعال شد"
 #: .\badi_user\templates\member\member_update.html:131
 #: .\badi_user\templates\user\change_password.html:132
 #: .\badi_user\templates\user\user_create.html:160
-#: .\badi_user\templates\user\user_update.html:130
+#: .\badi_user\templates\user\user_update.html:123
+#: .\src\badi_user\templates\badi_user\member\member_create.html:182
+#: .\src\badi_user\templates\badi_user\member\member_update.html:131
+#: .\src\badi_user\templates\badi_user\user\change_password.html:132
+#: .\src\badi_user\templates\badi_user\user\user_create.html:160
+#: .\src\badi_user\templates\badi_user\user\user_update.html:130
 #: .\src\badi_user\templates\member\member_create.html:182
-#: .\src\badi_user\templates\member\member_update.html:130
+#: .\src\badi_user\templates\member\member_update.html:131
 #: .\src\badi_user\templates\user\change_password.html:132
 #: .\src\badi_user\templates\user\user_create.html:160
-#: .\src\badi_user\templates\user\user_update.html:130
+#: .\src\badi_user\templates\user\user_update.html:123
 msgid "Seems some error exists"
 msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 
@@ -401,124 +656,388 @@ msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 #: .\badi_user\templates\member\member_update.html:133
 #: .\badi_user\templates\user\change_password.html:134
 #: .\badi_user\templates\user\user_create.html:162
-#: .\badi_user\templates\user\user_update.html:132
+#: .\badi_user\templates\user\user_update.html:125
+#: .\src\badi_user\templates\badi_user\member\member_create.html:184
+#: .\src\badi_user\templates\badi_user\member\member_update.html:133
+#: .\src\badi_user\templates\badi_user\user\change_password.html:134
+#: .\src\badi_user\templates\badi_user\user\user_create.html:162
+#: .\src\badi_user\templates\badi_user\user\user_update.html:132
 #: .\src\badi_user\templates\member\member_create.html:184
-#: .\src\badi_user\templates\member\member_update.html:132
+#: .\src\badi_user\templates\member\member_update.html:133
 #: .\src\badi_user\templates\user\change_password.html:134
 #: .\src\badi_user\templates\user\user_create.html:162
-#: .\src\badi_user\templates\user\user_update.html:132
+#: .\src\badi_user\templates\user\user_update.html:125
 msgid "Got it"
 msgstr "متوجه شدم"
 
 #: .\badi_user\templates\member\member_list.html:13
 #: .\badi_user\templates\user\user_list.html:12
+#: .\src\badi_user\templates\badi_user\member\member_list.html:13
+#: .\src\badi_user\templates\badi_user\user\user_list.html:12
 #: .\src\badi_user\templates\member\member_list.html:13
 #: .\src\badi_user\templates\user\user_list.html:12
 msgid "Search in List"
 msgstr "جستجو در لیست"
 
-#: .\badi_user\templates\member\member_self_update.html:15
-#: .\badi_user\templates\user\user_update.html:13
-#: .\src\badi_user\templates\member\member_self_update.html:15
-#: .\src\badi_user\templates\user\user_update.html:13
-msgid "Update"
-msgstr "بروزرسانی"
+#: .\badi_user\templates\member\member_list.html:89
+#: .\src\badi_user\templates\badi_user\member\member_list.html:89
+#: .\src\badi_user\templates\member\member_list.html:89
+msgid "on"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:91
+#: .\src\badi_user\templates\badi_user\member\member_list.html:91
+#: .\src\badi_user\templates\member\member_list.html:91
+msgid "record"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:98
+#: .\src\badi_user\templates\badi_user\member\member_list.html:98
+#: .\src\badi_user\templates\member\member_list.html:98
+msgid "Send ticket"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:104
+#: .\src\badi_user\templates\badi_user\member\member_list.html:104
+#: .\src\badi_user\templates\member\member_list.html:104
+msgid "Send Sms"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:114
+#: .\badi_user\templates\member\member_list.html:288
+#: .\src\badi_user\templates\badi_user\member\member_list.html:114
+#: .\src\badi_user\templates\badi_user\member\member_list.html:288
+#: .\src\badi_user\templates\member\member_list.html:114
+#: .\src\badi_user\templates\member\member_list.html:288
+#, fuzzy
+#| msgid "Delete"
+msgid "Select All"
+msgstr "حذف"
+
+#: .\badi_user\templates\member\member_list.html:144
+#: .\src\badi_user\templates\badi_user\member\member_list.html:144
+#: .\src\badi_user\templates\member\member_list.html:144
+#, fuzzy
+#| msgid "Ticket"
+msgid "Send Ticket"
+msgstr "تیکت"
+
+#: .\badi_user\templates\member\member_list.html:208
+#: .\src\badi_user\templates\badi_user\member\member_list.html:208
+#: .\src\badi_user\templates\member\member_list.html:208
+msgid "Charge account"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:217
+#: .\badi_user\templates\member\member_list.html:249
+#: .\src\badi_user\templates\badi_user\member\member_list.html:217
+#: .\src\badi_user\templates\badi_user\member\member_list.html:249
+#: .\src\badi_user\templates\member\member_list.html:217
+#: .\src\badi_user\templates\member\member_list.html:249
+#, fuzzy
+#| msgid "Amount"
+msgid "amount"
+msgstr "موجودی"
+
+#: .\badi_user\templates\member\member_list.html:228
+#: .\badi_user\templates\member\member_list.html:258
+#: .\src\badi_user\templates\badi_user\member\member_list.html:228
+#: .\src\badi_user\templates\badi_user\member\member_list.html:258
+#: .\src\badi_user\templates\member\member_list.html:228
+#: .\src\badi_user\templates\member\member_list.html:258
+#, fuzzy
+#| msgid "is Closed"
+msgid "Close"
+msgstr "بسته شده"
+
+#: .\badi_user\templates\member\member_list.html:229
+#: .\badi_wallet\action.py:153 .\badi_wallet\models.py:50
+#: .\src\badi_user\templates\badi_user\member\member_list.html:229
+#: .\src\badi_user\templates\member\member_list.html:229
+#: .\src\badi_wallet\action.py:153 .\src\badi_wallet\models.py:50
+#: .\venv\Lib\site-packages\badi_wallet\action.py:153
+#: .\venv\Lib\site-packages\badi_wallet\models.py:50
+msgid "Charge"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:242
+#: .\src\badi_user\templates\badi_user\member\member_list.html:242
+#: .\src\badi_user\templates\member\member_list.html:242
+msgid "Decrease Charge account"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:285
+#: .\src\badi_user\templates\badi_user\member\member_list.html:285
+#: .\src\badi_user\templates\member\member_list.html:285
+#, fuzzy
+#| msgid "Delete"
+msgid "DeSelect All"
+msgstr "حذف"
+
+#: .\badi_user\templates\member\member_list.html:386
+#: .\badi_wallet\templates\transaction\transaction_result.html:31
+#: .\src\badi_user\templates\badi_user\member\member_list.html:386
+#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:31
+#: .\src\badi_user\templates\member\member_list.html:386
+#: .\src\badi_wallet\templates\transaction\transaction_result.html:31
+#: .\templates\base.html:404 .\templates\base.html:405
+msgid "$"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:406
+#: .\src\badi_user\templates\badi_user\member\member_list.html:406
+#: .\src\badi_user\templates\member\member_list.html:406
+msgid "Are you Sure?"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:409
+#: .\src\badi_user\templates\badi_user\member\member_list.html:409
+#: .\src\badi_user\templates\member\member_list.html:409
+msgid "Yes, Charge it"
+msgstr ""
+
+#: .\badi_user\templates\member\member_list.html:417
+#: .\badi_user\templates\member\member_list.html:448
+#: .\badi_user\templates\member\member_list.html:543
+#: .\src\badi_user\templates\badi_user\member\member_list.html:417
+#: .\src\badi_user\templates\badi_user\member\member_list.html:448
+#: .\src\badi_user\templates\badi_user\member\member_list.html:543
+#: .\src\badi_user\templates\member\member_list.html:417
+#: .\src\badi_user\templates\member\member_list.html:448
+#: .\src\badi_user\templates\member\member_list.html:543
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Done Successfully"
+msgstr "با موفقیت فعال شد"
 
 #: .\badi_user\templates\member\member_self_update.html:16
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:16
 #: .\src\badi_user\templates\member\member_self_update.html:16
 msgid "self information"
 msgstr "اطلاعات شخصی"
 
 #: .\badi_user\templates\member\member_self_update.html:49
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:49
 #: .\src\badi_user\templates\member\member_self_update.html:49
 msgid "Province"
 msgstr "استان"
 
 #: .\badi_user\templates\member\member_self_update.html:174
+#: .\src\badi_user\templates\badi_user\member\member_self_update.html:174
 #: .\src\badi_user\templates\member\member_self_update.html:174
 msgid "Updated successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
 #: .\badi_user\templates\user\change_password.html:13
+#: .\src\badi_user\templates\badi_user\user\change_password.html:13
 #: .\src\badi_user\templates\user\change_password.html:13
 msgid "Change Password"
 msgstr "تغییر رمز عبور"
 
 #: .\badi_user\templates\user\change_password.html:23
+#: .\src\badi_user\templates\badi_user\user\change_password.html:23
 #: .\src\badi_user\templates\user\change_password.html:23
 msgid "Current Password"
 msgstr "رمز فعلی"
 
 #: .\badi_user\templates\user\change_password.html:34
+#: .\src\badi_user\templates\badi_user\user\change_password.html:34
 #: .\src\badi_user\templates\user\change_password.html:34
 msgid "New Password"
 msgstr "رمز جدید"
 
 #: .\badi_user\templates\user\change_password.html:97
 #: .\badi_user\templates\user\user_create.html:126
+#: .\src\badi_user\templates\badi_user\user\change_password.html:97
+#: .\src\badi_user\templates\badi_user\user\user_create.html:126
 #: .\src\badi_user\templates\user\change_password.html:97
 #: .\src\badi_user\templates\user\user_create.html:126
 msgid "Repeat Password and New Password are not equal"
 msgstr "تکرار رمز عبور با رمز عبور مطابقت ندارد"
 
 #: .\badi_user\templates\user\change_password.html:128
+#: .\src\badi_user\templates\badi_user\user\change_password.html:128
 #: .\src\badi_user\templates\user\change_password.html:128
 msgid "Password changed successfully"
 msgstr "رمز عبور با موفقیت بروزرسانی شد"
 
-#: .\badi_user\templates\user\user_list.html:55
-#: .\src\badi_user\templates\user\user_list.html:55
-msgid "List"
-msgstr "لیست"
-
-#: .\badi_user\templates\user\user_list.html:72
-#: .\src\badi_user\templates\user\user_list.html:72
-msgid "Action"
-msgstr "اقدام"
-
-#: .\badi_user\templates\user\user_list.html:145
-#: .\src\badi_user\templates\user\user_list.html:145
-msgid "Enabled successfully"
-msgstr "با موفقیت فعال شد"
-
-#: .\badi_user\templates\user\user_list.html:145
-#: .\src\badi_user\templates\user\user_list.html:145
-msgid "Disabled successfully"
-msgstr "با موفقیت غیر فعال شد"
-
-#: .\badi_user\templates\user\user_update.html:126
-#: .\src\badi_user\templates\user\user_update.html:126
+#: .\badi_user\templates\user\user_update.html:119 .\badi_utils\dynamic.py:576
+#: .\src\badi_user\templates\badi_user\user\user_update.html:126
+#: .\src\badi_user\templates\user\user_update.html:119
+#: .\src\badi_utils\dynamic.py:576
 msgid "Updated Successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
-#: .\badi_users_project\settings.py:67
+#: .\badi_users_project\settings.py:69
 msgid "Persian"
 msgstr "فارسی"
 
-#: .\venv\Lib\site-packages\badi_utils\logging.py:16
+#: .\badi_users_project\settings.py:206
+msgid "No active user found"
+msgstr "کاربر فعالی یافت نشد"
+
+#: .\badi_utils\dynamic.py:329 .\badi_utils\dynamic.py:432
+#: .\src\badi_utils\dynamic.py:329 .\src\badi_utils\dynamic.py:432
+#, fuzzy
+#| msgid "Updated Successfully"
+msgid "Created Successfully"
+msgstr "با موفقیت بروزرسانی شد"
+
+#: .\badi_utils\logging.py:16 .\src\badi_utils\logging.py:16
 msgid "custom"
 msgstr "غیره"
 
-#: .\venv\Lib\site-packages\badi_utils\logging.py:20
+#: .\badi_utils\logging.py:20 .\src\badi_utils\logging.py:20
 msgid "login"
 msgstr "ورود"
 
-#: .\venv\Lib\site-packages\badi_utils\logging.py:23
+#: .\badi_utils\logging.py:23 .\src\badi_utils\logging.py:23
 msgid "logout"
 msgstr "خروج"
 
-#: .\venv\Lib\site-packages\badi_utils\logging.py:34
+#: .\badi_utils\logging.py:34 .\src\badi_utils\logging.py:34
 #: .\venv\Lib\site-packages\django\forms\formsets.py:417
 msgid "Delete"
 msgstr "حذف"
 
-#: .\venv\Lib\site-packages\badi_utils\utils.py:25
+#: .\badi_utils\utils.py:25 .\src\badi_utils\utils.py:25
 msgid "NO_PERMISSION"
 msgstr "شما به این قسمت دسترسی ندارید"
 
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
-msgid "Messages"
-msgstr "پیام ها"
+#: .\badi_wallet\action.py:25 .\badi_wallet\ui\views.py:21
+#: .\src\badi_wallet\action.py:25 .\src\badi_wallet\ui\views.py:21
+#: .\venv\Lib\site-packages\badi_wallet\action.py:25
+#: .\venv\Lib\site-packages\badi_wallet\ui\views.py:21
+msgid ""
+"The operation encountered an error. Please try again. If the amount is "
+"deducted from your account, it will be returned to your account within 72 "
+"hours."
+msgstr ""
+
+#: .\badi_wallet\action.py:126 .\src\badi_wallet\action.py:126
+#: .\venv\Lib\site-packages\badi_wallet\action.py:126
+#, fuzzy
+#| msgid "Invalid username"
+msgid "Invalid Data"
+msgstr "نام کاربری غیر معتبر"
+
+#: .\badi_wallet\action.py:188 .\src\badi_wallet\action.py:188
+#: .\venv\Lib\site-packages\badi_wallet\action.py:188
+msgid "Transaction canceled"
+msgstr ""
+
+#: .\badi_wallet\apps.py:8 .\src\badi_wallet\apps.py:8
+#: .\venv\Lib\site-packages\badi_wallet\apps.py:8
+msgid "Wallet"
+msgstr ""
+
+#: .\badi_wallet\models.py:16 .\badi_wallet\models.py:17
+#: .\src\badi_wallet\models.py:16 .\src\badi_wallet\models.py:17
+#: .\venv\Lib\site-packages\badi_wallet\models.py:16
+#: .\venv\Lib\site-packages\badi_wallet\models.py:17
+msgid "Bank Transaction"
+msgstr "تراکنش بانکی"
+
+#: .\badi_wallet\models.py:19 .\badi_wallet\models.py:46
+#: .\src\badi_wallet\models.py:19 .\src\badi_wallet\models.py:46
+#: .\venv\Lib\site-packages\badi_wallet\models.py:19
+#: .\venv\Lib\site-packages\badi_wallet\models.py:46
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage"
+msgstr "مدیریت تیکت ها"
+
+#: .\badi_wallet\models.py:22 .\src\badi_wallet\models.py:22
+#: .\venv\Lib\site-packages\badi_wallet\models.py:22
+msgid "Authority"
+msgstr ""
+
+#: .\badi_wallet\models.py:25 .\src\badi_wallet\models.py:25
+#: .\venv\Lib\site-packages\badi_wallet\models.py:25
+msgid "is Verified"
+msgstr ""
+
+#: .\badi_wallet\models.py:26 .\src\badi_wallet\models.py:26
+#: .\venv\Lib\site-packages\badi_wallet\models.py:26
+msgid "RefID"
+msgstr ""
+
+#: .\badi_wallet\models.py:27 .\src\badi_wallet\models.py:27
+#: .\venv\Lib\site-packages\badi_wallet\models.py:27
+msgid "Card Hash"
+msgstr ""
+
+#: .\badi_wallet\models.py:30 .\src\badi_wallet\models.py:30
+#: .\venv\Lib\site-packages\badi_wallet\models.py:30
+msgid "Bank Response"
+msgstr ""
+
+#: .\badi_wallet\models.py:43 .\src\badi_wallet\models.py:43
+#: .\venv\Lib\site-packages\badi_wallet\models.py:43
+msgid "Transaction"
+msgstr ""
+
+#: .\badi_wallet\models.py:44 .\src\badi_wallet\models.py:44
+#: .\venv\Lib\site-packages\badi_wallet\models.py:44
+msgid "Transactions"
+msgstr ""
+
+#: .\badi_wallet\models.py:51 .\src\badi_wallet\models.py:51
+#: .\venv\Lib\site-packages\badi_wallet\models.py:51
+msgid "Return"
+msgstr ""
+
+#: .\badi_wallet\models.py:56 .\src\badi_wallet\models.py:56
+#: .\venv\Lib\site-packages\badi_wallet\models.py:56
+msgid "Type"
+msgstr "نوع"
+
+#: .\badi_wallet\models.py:57 .\src\badi_wallet\models.py:57
+#: .\venv\Lib\site-packages\badi_wallet\models.py:57
+#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
+msgid "Time"
+msgstr "زمان"
+
+#: .\badi_wallet\models.py:58 .\src\badi_wallet\models.py:58
+#: .\venv\Lib\site-packages\badi_wallet\models.py:58
+#, fuzzy
+#| msgid "Delete"
+msgid "Subject"
+msgstr "موضوع"
+
+#: .\badi_wallet\templates\transaction\transaction_result.html:12
+#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:12
+#: .\src\badi_wallet\templates\transaction\transaction_result.html:12
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Payment done Successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\badi_wallet\templates\transaction\transaction_result.html:14
+#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:14
+#: .\src\badi_wallet\templates\transaction\transaction_result.html:14
+msgid "Payment Failed"
+msgstr ""
+
+#: .\badi_wallet\templates\transaction\transaction_result.html:29
+#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:29
+#: .\src\badi_wallet\templates\transaction\transaction_result.html:29
+msgid "Your Wallet"
+msgstr ""
+
+#: .\badi_wallet\templates\transaction\transaction_result.html:31
+#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:31
+#: .\src\badi_wallet\templates\transaction\transaction_result.html:31
+msgid "Charged"
+msgstr ""
+
+#: .\src\badi_user\templates\badi_user\user\user_list.html:145
+msgid "Enabled successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\src\badi_user\templates\badi_user\user\user_list.html:145
+msgid "Disabled successfully"
+msgstr "با موفقیت غیر فعال شد"
 
 #: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
 msgid "Site Maps"
@@ -882,10 +1401,6 @@ msgstr ""
 msgid ""
 "“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
 "invalid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
-msgid "Time"
 msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2312

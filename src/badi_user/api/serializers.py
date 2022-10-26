@@ -3,7 +3,7 @@ from django.contrib.auth.models import Group
 from rest_framework import serializers
 
 from badi_utils.dynamic_api import api_error_creator, DynamicSerializer
-from badi_user.models import Notification
+from badi_user.models import Notification, Log
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -133,3 +133,16 @@ class NotificationSerializer(DynamicSerializer):
                                          required_fields=['user', 'subject', 'text', 'show_date', 'is_seen', ])
         depth = 5
         fields = ['id', 'user', 'subject', 'text', 'show_date', 'is_seen', ]
+
+
+class LogSerializer(DynamicSerializer):
+    remove_field_view = {
+    }
+
+    class Meta:
+        model = Log
+        extra_kwargs = api_error_creator(Log,
+                                         Log.get_serializer_fields(),
+                                         required_fields=Log.get_serializer_fields())
+        depth = 5
+        fields = ['id', ] + Log.get_serializer_fields()

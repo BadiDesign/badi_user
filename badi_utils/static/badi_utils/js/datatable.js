@@ -12,10 +12,7 @@ window.data_table_cool_options = {
     'info': true,
     'autoWidth': true,
     'responsive': false,
-    'oLanguage': {
-        "sSearch": "search: ",
-        sProcessing: ''
-    }
+    'oLanguage': badiConfig["datatable__oLanguage"]
 };
 var raw_data_table_cool_options = JSON.parse(JSON.stringify(window.data_table_cool_options));
 window.getData = function (oTable, ele) {

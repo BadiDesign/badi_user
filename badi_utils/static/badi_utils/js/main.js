@@ -30,8 +30,10 @@ const badiConfig = {
         calendar_date_active: true,
         calendar_datetime_active: true,
         clock_picker_active: true,
-
-
+        datatable__oLanguage: {
+            "sSearch": "search: ",
+            sProcessing: ''
+        }
     }, ...window['BADI_CONFIG']
 }
 const getCurrentValueOfKey = (key, def = "") => {
@@ -702,8 +704,10 @@ const setProgress = (qs = '.progress-upload', percent, uploaded, total) => {
         $(qs).find('.progress-percent').html(percent);
     }
 };
-$(`.menu-item a[href="${CURRENT_URL}"]`).addClass('active').parent().addClass('menu-item-active')
-$(`a.nav-link[href="${CURRENT_URL}"]`).addClass('active')
+if (!badiConfig["disable_auto_menu_active"]) {
+    $(`.menu-item a[href="${CURRENT_URL}"]`).addClass('active').parent().addClass('menu-item-active')
+    $(`a.nav-link[href="${CURRENT_URL}"]`).addClass('active').parent().addClass('menu-item-active')
+}
 $('input[data-show]').change(function () {
     let $target = $($(this).attr('data-show'));
     $target.toggleClass('d-none')

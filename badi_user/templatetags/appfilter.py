@@ -11,6 +11,14 @@ register = template.Library()
 CONFIG_JSON = getattr(settings, "CONFIG_JSON", {})
 
 
+@register.simple_tag(takes_context=True)
+def get_query_string(context):
+    params = context.request.META.get('QUERY_STRING')
+    if params:
+        params = '?' + params
+    return params
+
+
 @register.filter(name='date_jalali')
 def date_jalali(value, mode=1):
     if value != None:

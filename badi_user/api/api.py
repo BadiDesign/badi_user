@@ -23,9 +23,9 @@ from badi_utils.logging import log
 from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
 from rest_framework_simplejwt.views import TokenRefreshView
-from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer
-from badi_user.filter import UserListFilter, MemberListFilter
-from badi_user.models import Token
+from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer, LogSerializer
+from badi_user.filter import UserListFilter, MemberListFilter, LogFilter
+from badi_user.models import Token, Log
 from django.utils.translation import gettext_lazy as _
 from badi_utils.sms import IpPanelSms
 from django.contrib.auth import get_user_model
@@ -550,3 +550,33 @@ class MemberViewSet(DynamicModelApi):
         if column == 'transactions__count':
             return row.transactions.count()
         return super().render_column(row, column)
+
+
+class LogViewSet(DynamicModelApi):
+    model = Log
+    serializer_class = LogSerializer
+    queryset = Log.objects.all()
+    filterset_class = LogFilter
+    disables_views = ['create', 'destroy', 'update']
+    custom_perms = {
+        'datatable': 'user.can_log',
+        'user': 'user.can_user',
+        'self': True,
+    }
+
+    @action(methods=['get'], detail=False)
+    def self(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    @action(methods=['post'], detail=False, url_path='user/(?P<pk>[^/.]+)')
+    def user(self, request, *args, **kwargs):
+        return self.datatable(request, *args, **kwargs)
+
+    def filter_queryset(self, qs):
+        if self.action == 'self':
+            return qs.filter(user=self.request.user)
+        if self.action == 'user':
+            return qs.filter(user_id=self.kwargs['pk'])
+        if self.action == 'datatable':
+            return LogFilter(self.request.data).qs
+        return super().filter_queryset(qs)

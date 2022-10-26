@@ -118,3 +118,11 @@ class Log(models.Model):
 
     def __str__(self):
         return self.title
+
+    @staticmethod
+    def get_serializer_fields():
+        return ['title', 'user', 'priority', 'status', 'description', 'created_at', ]
+
+    @staticmethod
+    def get_datatable_columns():
+        return ["#", _('Title'), _('User'), _('Priority'), _('Status'), _('Description'), _('Created at')]

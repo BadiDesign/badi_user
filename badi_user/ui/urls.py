@@ -1,3 +1,4 @@
+from badi_user.ui.log_views import LogListView
 from badi_utils.dynamic import *
 from badi_user.ui.member_views import *
 from badi_user.ui.views import *
@@ -17,5 +18,6 @@ urlpatterns = [
     path('member/create', MemberCreateView.as_view(), name='member_create'),
     path('member/update/<int:pk>', MemberUpdateView.as_view(), name='member_update'),
     path('member/update/self', MemberSelfUpdateView.as_view(), name='member_self'),
+    path('log/list', LogListView.as_view(), name='log_list'),
     path('edit', MemberSelfUpdateView.as_view(), name='edit_self'),
 ]

@@ -15,7 +15,6 @@
             <form class="kt-form" method="post">
                 {% csrf_token %}
                 <div class="modal-body">
-                    {% include 'shared/form-errors.html' %}
                     <div class="row">
                         <div class="col-md-12">
                             {% for field in form %}
