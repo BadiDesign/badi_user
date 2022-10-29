@@ -110,7 +110,6 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
 
         return self._render_column(row, column)
 
-    # @action(methods=['post'], detail=False, url_path='datatable/(?P<phone_pk>[^/.]+)')
     @action(methods=['post'], detail=False)
     def datatable(self, request, *args, **kwargs):
         if 'datatable' in self.disables_views:
@@ -160,7 +159,15 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
         if 'create' in self.disables_views:
             return Http404()
 
-        return super().create(request, *args, **kwargs)
+        res = super().create(request, *args, **kwargs)
+        user = self.request.user
+        if user:
+            if res.data.serializer and res.data.serializer.instance:
+                log(user, 1, 3, True, self.model, res.data.serializer.instance.__str__())
+            else:
+                log(user, 1, 3, True, self.model, kwargs['pk'])
+        return res
+
 
     def retrieve(self, request, *args, **kwargs):
         if 'retrieve' in self.disables_views:
@@ -172,9 +179,10 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
             return Http404()
         try:
             instance = self.get_object()
+            obj_str = instance.__str__()
             self.perform_destroy(instance)
             user = request.user
-            log(user, 1, 5, True, self.model, self.kwargs['pk'])
+            log(user, 3, 5, True, self.model, obj_str)
             return Response(status=status.HTTP_204_NO_CONTENT)
 
         except Exception as e:
@@ -190,7 +198,14 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
     def update(self, request, *args, **kwargs):
         if 'update' in self.disables_views:
             return Http404()
-        return super().update(request, *args, **kwargs)
+        res = super().update(request, *args, **kwargs)
+        user = self.request.user
+        if user:
+            if res.data.serializer and res.data.serializer.instance:
+                log(user, 2, 4, True, self.model, res.data.serializer.instance.__str__())
+            else:
+                log(user, 2, 4, True, self.model, kwargs['pk'])
+        return res
 
 
 class DynamicModelReadOnlyApi(viewsets.ReadOnlyModelViewSet, BaseDatatableView):

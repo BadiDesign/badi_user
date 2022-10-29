@@ -782,19 +782,19 @@ msgstr "حذف"
 #: .\src\badi_wallet\templates\transaction\transaction_result.html:31
 #: .\templates\base.html:404 .\templates\base.html:405
 msgid "$"
-msgstr ""
+msgstr "تومان"
 
 #: .\badi_user\templates\member\member_list.html:406
 #: .\src\badi_user\templates\badi_user\member\member_list.html:406
 #: .\src\badi_user\templates\member\member_list.html:406
 msgid "Are you Sure?"
-msgstr ""
+msgstr "مطمئن هستید؟"
 
 #: .\badi_user\templates\member\member_list.html:409
 #: .\src\badi_user\templates\badi_user\member\member_list.html:409
 #: .\src\badi_user\templates\member\member_list.html:409
 msgid "Yes, Charge it"
-msgstr ""
+msgstr "بله، شارژش کن"
 
 #: .\badi_user\templates\member\member_list.html:417
 #: .\badi_user\templates\member\member_list.html:448
@@ -912,7 +912,7 @@ msgid ""
 "The operation encountered an error. Please try again. If the amount is "
 "deducted from your account, it will be returned to your account within 72 "
 "hours."
-msgstr ""
+msgstr "عملیات با خطا مواجه شد. لطفا دوباره تلاش کنید. در صورتی که مبلغی از حساب شما کم شود، نهایتا تا 72ساعت آینده به حساب شما بازگشت داده می شود."
 
 #: .\badi_wallet\action.py:126 .\src\badi_wallet\action.py:126
 #: .\venv\Lib\site-packages\badi_wallet\action.py:126
@@ -924,12 +924,12 @@ msgstr "نام کاربری غیر معتبر"
 #: .\badi_wallet\action.py:188 .\src\badi_wallet\action.py:188
 #: .\venv\Lib\site-packages\badi_wallet\action.py:188
 msgid "Transaction canceled"
-msgstr ""
+msgstr "پرداخت لغو شد"
 
 #: .\badi_wallet\apps.py:8 .\src\badi_wallet\apps.py:8
 #: .\venv\Lib\site-packages\badi_wallet\apps.py:8
 msgid "Wallet"
-msgstr ""
+msgstr "کیف پول"
 
 #: .\badi_wallet\models.py:16 .\badi_wallet\models.py:17
 #: .\src\badi_wallet\models.py:16 .\src\badi_wallet\models.py:17
@@ -950,12 +950,12 @@ msgstr "مدیریت تیکت ها"
 #: .\badi_wallet\models.py:22 .\src\badi_wallet\models.py:22
 #: .\venv\Lib\site-packages\badi_wallet\models.py:22
 msgid "Authority"
-msgstr ""
+msgstr "شناسه"
 
 #: .\badi_wallet\models.py:25 .\src\badi_wallet\models.py:25
 #: .\venv\Lib\site-packages\badi_wallet\models.py:25
 msgid "is Verified"
-msgstr ""
+msgstr "تایید شده"
 
 #: .\badi_wallet\models.py:26 .\src\badi_wallet\models.py:26
 #: .\venv\Lib\site-packages\badi_wallet\models.py:26
@@ -965,22 +965,22 @@ msgstr ""
 #: .\badi_wallet\models.py:27 .\src\badi_wallet\models.py:27
 #: .\venv\Lib\site-packages\badi_wallet\models.py:27
 msgid "Card Hash"
-msgstr ""
+msgstr "شماره کارت"
 
 #: .\badi_wallet\models.py:30 .\src\badi_wallet\models.py:30
 #: .\venv\Lib\site-packages\badi_wallet\models.py:30
 msgid "Bank Response"
-msgstr ""
+msgstr "پاسخ بانک"
 
 #: .\badi_wallet\models.py:43 .\src\badi_wallet\models.py:43
 #: .\venv\Lib\site-packages\badi_wallet\models.py:43
 msgid "Transaction"
-msgstr ""
+msgstr "تراکنش"
 
 #: .\badi_wallet\models.py:44 .\src\badi_wallet\models.py:44
 #: .\venv\Lib\site-packages\badi_wallet\models.py:44
 msgid "Transactions"
-msgstr ""
+msgstr "تراکنش ها"
 
 #: .\badi_wallet\models.py:51 .\src\badi_wallet\models.py:51
 #: .\venv\Lib\site-packages\badi_wallet\models.py:51

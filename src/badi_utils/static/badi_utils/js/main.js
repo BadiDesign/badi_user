@@ -42,6 +42,10 @@ const getCurrentValueOfKey = (key, def = "") => {
     }
     return localStorage.getItem(key)
 }
+const FilterSubmitDrawTable = (e, table) => {
+    e.preventDefault();
+    table.draw()
+}
 const getCurrentPage = (default_page = 1) => {
     let page = urlSearchParams.get('page');
     if (page) {

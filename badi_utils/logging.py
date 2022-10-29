@@ -4,7 +4,7 @@ from django.apps import apps as django_apps
 
 from django.utils.translation import gettext_lazy as _
 
-Log = django_apps.get_model(getattr(settings, "LOG_MODEL"), require_ready=False)
+Log = django_apps.get_model(getattr(settings, "LOG_MODEL", "badi_user.Log"), require_ready=False)
 
 
 def log(user, priority, action, status, my_object=None, field=None, text=None):
@@ -16,23 +16,24 @@ def log(user, priority, action, status, my_object=None, field=None, text=None):
         lg.title = _('custom')
         lg.description = text
     else:
+        verbose_name = str(my_object._meta.verbose_name)
+        user_str = str(user)
+        field_str = str(field)
+        user_did = _("User") + ' (' + user_str + ") "
         if action == 1:
             lg.title = _('login')
-            lg.description = 'کاربر ' + str(user) + ' به سامانه وارد شد.'
+            lg.description = user_did + _("Logged in")
         elif action == 2:
             lg.title = _('logout')
-            lg.description = 'کاربر ' + str(user) + ' از سامانه خارج شد.'
-        elif action == 3:
-            lg.title = 'ایجاد رکورد'
-            lg.description = "کاربر " + str(user) + " " + str(my_object._meta.verbose_name) + "'" + str(
-                field) + "'" + " را اضافه کرد."
+            lg.description = user_did + _("Logged out")
+        if action == 3:
+            lg.title = _('Create')
+            lg.description = user_did + _("Added") + ' ' + verbose_name + " (" + field_str + ") "
         elif action == 4:
-            lg.title = 'ویرایش رکورد'
-            lg.description = "کاربر " + str(user) + " " + str(my_object._meta.verbose_name) + "'" + str(
-                field) + "'" + " را ویرایش کرد."
+            lg.title = _('Update')
+            lg.description = user_did + _("Updated") + ' ' + verbose_name + " (" + field_str + ")"
         elif action == 5:
             lg.title = _("Delete")
-            lg.description = "کاربر " + str(user) + " " + str(my_object._meta.verbose_name) + "'" + str(
-                field) + "'" + " را حذف کرد."
+            lg.description = user_did + _("Removed") + ' ' + verbose_name + " (" + field_str + ")"
     lg.save()
     return lg

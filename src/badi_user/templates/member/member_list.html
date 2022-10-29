@@ -371,7 +371,7 @@
                 console.log(data[2])
                 if (data[2] && data[2] !== 'file-null') {
                     $(`td:eq(1)`, row).html(`<span class="symbol symbol-lg-50 symbol-25 symbol-light-primary">
-                                    <span class="symbol-label" style="background-size: contain !important;background: url(${data[2]});"></span>
+                                    <span class="symbol-label datatable-symbol" style="background: url(${data[2]});"></span>
                                 </span>`)
                 }
                 boldCol(2, row, data[3]);
@@ -383,7 +383,7 @@
                     $(`td:eq(0)`, row).html(`<span><label class="checkbox checkbox-lg justify-content-center checkbox-single"><input type="checkbox" value="${data[0]}"><span></span></label></span>`)
                         .closest('tr').removeClass('bg-primary-o-10')
                 }
-                boldCol(5, row, formatNumber(data[6]) + ' {% trans "$" %}')
+                boldCol(5, row, formatNumber(data[6]) + ' {% trans "$" %} ')
                 $(`td:eq(5)`, row)
                     .find('div').addClass('d-flex justify-content-between')
                     .append(` <button onclick="increaseCharge(${data[0]})" data-toggle="tooltip" data-theme="dark" title="شارژ"   class="btn btn-icon btn-xs ml-2 btn-light-success"> <i class="fa fa-plus"></i>  </button>`)

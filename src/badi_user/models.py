@@ -107,6 +107,7 @@ class Log(models.Model):
         permissions = (
             ('can_log', _('Manage Logs')),
         )
+        ordering = ['-pk']
 
     title = models.CharField(max_length=200, verbose_name=_('Title'))
     user = models.ForeignKey(User, related_name='logs', on_delete=models.SET_NULL, null=True, blank=True,

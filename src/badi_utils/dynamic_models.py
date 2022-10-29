@@ -18,11 +18,13 @@ class BadiModel:
             excludes = []
         fields = [field.attname.replace('_id', '') for field in self._meta.fields]
         many_2_many = [x.name for x in self._meta.many_to_many]
-        return fields + many_2_many
+        all_fields = fields + many_2_many
+        for f in all_fields:
+            if f in excludes:
+                all_fields.remove(f)
+        return all_fields
 
     def get_columns(self, excludes=None):
-        if excludes is None:
-            excludes = []
         return self.get_all_fields(excludes)
 
     def get_datatable_columns(self, excludes=None):
@@ -35,7 +37,11 @@ class BadiModel:
             excludes = []
         fields = [field.verbose_name for field in self._meta.fields]
         many_2_many = [x.verbose_name for x in self._meta.many_to_many]
-        return fields + many_2_many
+        all_fields = fields + many_2_many
+        for f in all_fields:
+            if f in excludes:
+                all_fields.remove(f)
+        return all_fields
 
 
 class PersianDateField(models.DateField):

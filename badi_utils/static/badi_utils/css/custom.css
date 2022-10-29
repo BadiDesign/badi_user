@@ -1456,7 +1456,7 @@ table.table.white-nowrap th, table.table.white-nowrap td{
     padding-top: 5px;
 }
 .datatable-symbol {
-    background-size: cover !important;
+    background-size: contain !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
 }
