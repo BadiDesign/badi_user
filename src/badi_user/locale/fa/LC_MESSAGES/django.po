@@ -496,7 +496,7 @@ msgstr "ارسال در"
 #: .\venv\Lib\site-packages\badi_user\models.py:116
 #: .\venv\Lib\site-packages\badi_wallet\models.py:24
 msgid "Description"
-msgstr ""
+msgstr "توضیحات"
 
 #: .\badi_user\templates\login-theme\login-1.html:68
 #: .\badi_user\templates\login-theme\login-1.html:97
@@ -505,7 +505,7 @@ msgstr ""
 #: .\src\badi_user\templates\login-theme\login-1.html:68
 #: .\src\badi_user\templates\login-theme\login-1.html:97
 msgid "Login"
-msgstr ""
+msgstr "ورود به حساب کاربری"
 
 #: .\badi_user\templates\login-theme\login-1.html:86
 #: .\badi_user\templates\user\user_update.html:30
@@ -683,25 +683,25 @@ msgstr "جستجو در لیست"
 #: .\src\badi_user\templates\badi_user\member\member_list.html:89
 #: .\src\badi_user\templates\member\member_list.html:89
 msgid "on"
-msgstr ""
+msgstr "روی"
 
 #: .\badi_user\templates\member\member_list.html:91
 #: .\src\badi_user\templates\badi_user\member\member_list.html:91
 #: .\src\badi_user\templates\member\member_list.html:91
 msgid "record"
-msgstr ""
+msgstr "رکورد"
 
 #: .\badi_user\templates\member\member_list.html:98
 #: .\src\badi_user\templates\badi_user\member\member_list.html:98
 #: .\src\badi_user\templates\member\member_list.html:98
 msgid "Send ticket"
-msgstr ""
+msgstr "ارسال تیکت"
 
 #: .\badi_user\templates\member\member_list.html:104
 #: .\src\badi_user\templates\badi_user\member\member_list.html:104
 #: .\src\badi_user\templates\member\member_list.html:104
 msgid "Send Sms"
-msgstr ""
+msgstr "ارسال پیامک"
 
 #: .\badi_user\templates\member\member_list.html:114
 #: .\badi_user\templates\member\member_list.html:288
@@ -726,7 +726,7 @@ msgstr "تیکت"
 #: .\src\badi_user\templates\badi_user\member\member_list.html:208
 #: .\src\badi_user\templates\member\member_list.html:208
 msgid "Charge account"
-msgstr ""
+msgstr "شارژ حساب کاربری"
 
 #: .\badi_user\templates\member\member_list.html:217
 #: .\badi_user\templates\member\member_list.html:249
@@ -758,13 +758,13 @@ msgstr "بسته شده"
 #: .\venv\Lib\site-packages\badi_wallet\action.py:153
 #: .\venv\Lib\site-packages\badi_wallet\models.py:50
 msgid "Charge"
-msgstr ""
+msgstr "شارژ"
 
 #: .\badi_user\templates\member\member_list.html:242
 #: .\src\badi_user\templates\badi_user\member\member_list.html:242
 #: .\src\badi_user\templates\member\member_list.html:242
 msgid "Decrease Charge account"
-msgstr ""
+msgstr "برداشت پول"
 
 #: .\badi_user\templates\member\member_list.html:285
 #: .\src\badi_user\templates\badi_user\member\member_list.html:285
@@ -1017,19 +1017,19 @@ msgstr "با موفقیت فعال شد"
 #: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:14
 #: .\src\badi_wallet\templates\transaction\transaction_result.html:14
 msgid "Payment Failed"
-msgstr ""
+msgstr "پرداخت نا موفق بود"
 
 #: .\badi_wallet\templates\transaction\transaction_result.html:29
 #: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:29
 #: .\src\badi_wallet\templates\transaction\transaction_result.html:29
 msgid "Your Wallet"
-msgstr ""
+msgstr "کیف پول شما"
 
 #: .\badi_wallet\templates\transaction\transaction_result.html:31
 #: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:31
 #: .\src\badi_wallet\templates\transaction\transaction_result.html:31
 msgid "Charged"
-msgstr ""
+msgstr "شارژ شد"
 
 #: .\src\badi_user\templates\badi_user\user\user_list.html:145
 msgid "Enabled successfully"
@@ -1159,7 +1159,7 @@ msgstr[1] ""
 #: .\venv\Lib\site-packages\django\forms\fields.py:292
 #: .\venv\Lib\site-packages\django\forms\fields.py:327
 msgid "Enter a number."
-msgstr ""
+msgstr "یک عدد وارد کنید"
 
 #: .\venv\Lib\site-packages\django\core\validators.py:434
 #, python-format
@@ -1198,7 +1198,7 @@ msgstr ""
 #: .\venv\Lib\site-packages\django\db\models\base.py:1197
 #: .\venv\Lib\site-packages\django\forms\models.py:768
 msgid "and"
-msgstr ""
+msgstr "و"
 
 #: .\venv\Lib\site-packages\django\db\models\base.py:1199
 #, python-format
@@ -1212,11 +1212,11 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:101
 msgid "This field cannot be null."
-msgstr ""
+msgstr "این فیلد الزامی است"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:102
 msgid "This field cannot be blank."
-msgstr ""
+msgstr "این فیلد نمیتواند خالی باشد"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:103
 #, python-format
@@ -1276,7 +1276,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1150
 msgid "Date (without time)"
-msgstr ""
+msgstr "تاریخ"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1288
 #, python-format
@@ -1294,7 +1294,7 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1296
 msgid "Date (with time)"
-msgstr ""
+msgstr "تاریخ با زمان"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1444
 #, python-format
@@ -1314,15 +1314,15 @@ msgstr ""
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1588
 msgid "Duration"
-msgstr ""
+msgstr "بازه زمانی"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1638
 msgid "Email address"
-msgstr ""
+msgstr "آدرس ایمیل"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1661
 msgid "File path"
-msgstr ""
+msgstr "آدرس فایل"
 
 #: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1727
 #, python-format

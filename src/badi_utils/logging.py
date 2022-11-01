@@ -16,9 +16,9 @@ def log(user, priority, action, status, my_object=None, field=None, text=None):
         lg.title = _('custom')
         lg.description = text
     else:
-        verbose_name = str(my_object._meta.verbose_name)
         user_str = str(user)
         field_str = str(field)
+        verbose_name = ''
         user_did = _("User") + ' (' + user_str + ") "
         if action == 1:
             lg.title = _('login')
@@ -26,6 +26,8 @@ def log(user, priority, action, status, my_object=None, field=None, text=None):
         elif action == 2:
             lg.title = _('logout')
             lg.description = user_did + _("Logged out")
+        else:
+            verbose_name = str(my_object._meta.verbose_name)
         if action == 3:
             lg.title = _('Create')
             lg.description = user_did + _("Added") + ' ' + verbose_name + " (" + field_str + ") "

@@ -42,10 +42,6 @@ const getCurrentValueOfKey = (key, def = "") => {
     }
     return localStorage.getItem(key)
 }
-const FilterSubmitDrawTable = (e, table) => {
-    e.preventDefault();
-    table.draw()
-}
 const getCurrentPage = (default_page = 1) => {
     let page = urlSearchParams.get('page');
     if (page) {
@@ -63,7 +59,8 @@ const getCurrentPages = (default_page = 1) => {
     }
 }
 const initDefaultFormsUI = () => {
-    $('[data-toggle="tooltip"], [data-toggle="kt-tooltip"]').tooltip();
+    if ($.fn.tooltip && badiConfig.tooltip)
+        $('[data-toggle="tooltip"], [data-toggle="kt-tooltip"]').tooltip();
     $('form:not(.filters):not([data-filter]) input[required]').parent().find('label').append(' <span class="text-danger"> * </span> ');
     $('form:not(.filters):not([data-filter]) select[required]').parent().find('label').append(' <span class="text-danger"> * </span> ');
     $('form:not(.filters):not([data-filter]) textarea[required]').parent().find('label').append(' <span class="text-danger"> * </span> ');
@@ -99,7 +96,7 @@ const initDefaultFormsUI = () => {
     }).keyup(function () {
         JustPersian($(this));
     });
-    if (badiConfig.select2_active)
+    if (badiConfig.select2_active && $.fn.select2)
         $('form select:not(.no-select2)').select2({
             dir: badiConfig.select2_direction,
             minimumResultsForSearch: -1,
@@ -487,9 +484,10 @@ const toastrFireSuccess = (desc = 'با موفقیت انجام شد.') => {
     toastr.success(desc);
 };
 $('form:not(.filters):not([data-filter])').parent().prepend(`<div class="precustom-loader"><div class="custom-loader"></div></div>`)
-$.fn.select2.defaults.defaults.language['searching'] = () => badiConfig.select2_searching_text
-$.fn.select2.defaults.defaults.language['noResults'] = () => badiConfig.select2_no_result_text
-
+if ($.fn.select2 && badiConfig.tooltip) {
+    $.fn.select2.defaults.defaults.language['searching'] = () => badiConfig.select2_searching_text
+    $.fn.select2.defaults.defaults.language['noResults'] = () => badiConfig.select2_no_result_text
+}
 
 function removeItemAll(arr, value) {
     var i = 0;
