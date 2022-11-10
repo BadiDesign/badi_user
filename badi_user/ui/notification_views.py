@@ -1,7 +1,7 @@
 from django.contrib.auth.models import Group
 
-from plugins.dynamic import DynamicCreateView, DynamicUpdateView, DynamicListView
-from plugins.utils import dynamic_permision
+from badi_utils.dynamic import DynamicCreateView, DynamicUpdateView, DynamicListView
+from badi_utils.utils import dynamic_permision
 from user.models import Notification
 
 

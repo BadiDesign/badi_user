@@ -11,6 +11,10 @@ if (!String.prototype.isInList) {
         }
     });
 }
+const FilterSubmitDrawTable = (e, table) => {
+    e.preventDefault();
+    table.draw()
+}
 const urlSearchParams = new URLSearchParams(window.location.search)
 const CURRENT_URL = window.location.pathname,
     CURRENT_SEARCH = window.location.search,

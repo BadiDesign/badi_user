@@ -105,7 +105,7 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
             if colType == 'ManyRelatedManager':
                 return ' - '.join([str(x) for x in getattr(row, column).all()])
 
-            if colType in ['FieldFile', 'ImageFieldFile']:
+            if colType in ['FieldFile', 'ImageFieldFile', 'ResizedImageFieldFile']:
                 return value.url if value else 'file-null'
 
         return self._render_column(row, column)

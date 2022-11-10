@@ -21,7 +21,7 @@ from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
 from badi_users_project import settings
 
-# handler404 = 'plugins.views.my_custom_page_not_found_view'
+# handler404 = 'badi_utils.views.my_custom_page_not_found_view'
 urlpatterns = [
                   path('admin/', admin.site.urls),
                   path('', include('badi_user.ui.urls')),
@@ -30,4 +30,5 @@ urlpatterns = [
                   path('api/v1/', include('badi_user.api.routers')),
                   path('api/v1/', include('badi_ticket.routers')),
                   path('api/v1/', include('badi_wallet.api.routers')),
+                  path('api/v1/', include('badi_visit.api.routers')),
               ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

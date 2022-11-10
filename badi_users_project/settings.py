@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'badi_ticket',
     'badi_user',
     'badi_wallet',
+    'badi_visit',
 ]
 
 MIDDLEWARE = [
