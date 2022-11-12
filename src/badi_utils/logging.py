@@ -9,7 +9,8 @@ Log = django_apps.get_model(getattr(settings, "LOG_MODEL", "badi_user.Log"), req
 
 def log(user, priority, action, status, my_object=None, field=None, text=None):
     lg = Log()
-    lg.user = user
+    if user.is_authenticated:
+        lg.user = user
     lg.priority = priority
     lg.status = status
     if text:
