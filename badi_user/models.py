@@ -43,9 +43,14 @@ class User(AbstractUser, BadiModel):
     token = models.ForeignKey(Token, null=True, blank=True, verbose_name=_('Token'), related_name='user',
                               on_delete=models.SET_NULL)
     amount = models.BigIntegerField(default=0, blank=True, verbose_name=_('Amount'))
+    last_action = models.DateTimeField(blank=True, null=True, verbose_name='Last Action')
 
     def __str__(self):
         return self.first_name + " " + self.last_name
+
+    def update_action(self):
+        self.last_action = datetime.now()
+        self.save()
 
     @staticmethod
     def admins():
