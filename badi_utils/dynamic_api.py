@@ -130,23 +130,32 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
         return self.render_to_response(dump)
 
     def check_permissions(self, request):
-        super().check_permissions(request)
-        if self.request.user.is_authenticated and self.request.user.is_admin:
-            return True
-
+        request_user = self.request.user
+        if request_user.is_authenticated:
+            request_user.update_action()
+            if request_user.is_admin:
+                return True
         if self.custom_perms:
             if self.custom_perms.get(self.action) is None:
-                if self.request.user.is_authenticated and self.request.user.is_admin:
+                if request_user.is_authenticated and request_user.is_admin:
                     return True
                 else:
                     self.permission_denied(
                         request, message=getattr('Login Required', 'message', None)
                     )
 
-            if self.custom_perms.get(self.action) is False:
+            elif self.custom_perms.get(self.action) is False:
                 return True
 
-            if self.custom_perms.get(self.action) is True and not self.request.user.is_authenticated:
+            elif self.custom_perms.get(self.action) is True and request_user.is_authenticated:
+                return True
+
+            elif self.custom_perms.get(self.action) is True and not request_user.is_authenticated:
+                self.permission_denied(
+                    request, message=getattr('Login Required', 'message', None)
+                )
+            elif self.custom_perms.get(self.action) and not request_user.has_perm(
+                    self.custom_perms.get(self.action)):
                 self.permission_denied(
                     request, message=getattr('Login Required', 'message', None)
                 )
@@ -167,7 +176,6 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
             else:
                 log(user, 1, 3, True, self.model, kwargs['pk'])
         return res
-
 
     def retrieve(self, request, *args, **kwargs):
         if 'retrieve' in self.disables_views:
@@ -336,17 +344,39 @@ class DynamicModelReadOnlyApi(viewsets.ReadOnlyModelViewSet, BaseDatatableView):
         return self.render_to_response(dump)
 
     def check_permissions(self, request):
-        super().check_permissions(request)
-        if not self.request.user.is_authenticated:
+        request_user = self.request.user
+        if request_user.is_authenticated:
+            request_user.update_action()
+            if request_user.is_admin:
+                return True
+        if self.custom_perms:
+            if self.custom_perms.get(self.action) is None:
+                if request_user.is_authenticated and request_user.is_admin:
+                    return True
+                else:
+                    self.permission_denied(
+                        request, message=getattr('Login Required', 'message', None)
+                    )
+
+            elif self.custom_perms.get(self.action) is False:
+                return True
+
+            elif self.custom_perms.get(self.action) is True and request_user.is_authenticated:
+                return True
+
+            elif self.custom_perms.get(self.action) is True and not request_user.is_authenticated:
+                self.permission_denied(
+                    request, message=getattr('Login Required', 'message', None)
+                )
+            elif self.custom_perms.get(self.action) and not request_user.has_perm(
+                    self.custom_perms.get(self.action)):
+                self.permission_denied(
+                    request, message=getattr('Login Required', 'message', None)
+                )
+        else:
             self.permission_denied(
                 request, message=getattr('Login Required', 'message', None)
             )
-        if self.custom_perms:
-            if self.custom_perms.get(self.action):
-                permissonObject = Permission.objects.filter(codename=self.custom_perms.get(self.action)).last()
-                perm = str(self.model._meta).split('.')[0] + '.' + permissonObject.codename
-                if not self.request.user.has_perm(perm):
-                    self.permission_denied(request, message='شما دسترسی {0} را ندارید!'.format(permissonObject.name))
 
     def retrieve(self, request, *args, **kwargs):
         if 'retrieve' in self.disables_views:
