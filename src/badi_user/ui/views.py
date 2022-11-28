@@ -1,4 +1,4 @@
-from logging import log
+from badi_utils.logging import log
 from django.contrib.auth import logout
 from django.contrib.auth.views import LoginView
 from django.http import Http404
@@ -38,7 +38,8 @@ class UserCreateView(DynamicCreateView):
 class UserUpdateView(DynamicUpdateView):
     model = User
     form = user_form(
-        ['username', 'picture', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'email', ], update=True)
+        ['username', 'picture', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'email', ],
+        update=True)
     success_url = '/user/list'
 
 

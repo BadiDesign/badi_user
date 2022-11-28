@@ -73,6 +73,10 @@ class User(AbstractUser, BadiModel):
     def get_form_fields(cls, action, *args):
         if action == 'member_create':
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
+        if action == 'member_update':
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
+        if action == 'member_self_update':
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
         return ['first_name', 'last_name', 'mobile_number', 'picture']
 
     @classmethod

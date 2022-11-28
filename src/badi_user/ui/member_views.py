@@ -34,15 +34,14 @@ class MemberUpdateView(DynamicUpdateView):
     model = User
     model_name = 'عضو'
     api_url = '/api/v1/member/'
-    form = user_form(
-        ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'picture', ], update=True)
+    form = user_form(User.get_form_fields('member_update'), update=True)
     template_name = 'member/member_update.html'
 
 
 class MemberSelfUpdateView(DynamicUpdateView):
     model = User
     model_name = 'عضو'
-    form = user_form(User.get_form_fields('member_create'), update=True)
+    form = user_form(User.get_form_fields('member_self_update'), update=True)
     success_url = '/user/member/list'
     template_name = 'member/member_self_update.html'
 

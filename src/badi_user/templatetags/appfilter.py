@@ -19,6 +19,11 @@ def get_query_string(context):
     return params
 
 
+@register.filter(name='get_absolute_url')
+def get_absolute_url(obj):
+    return obj.get_absolute_url()
+
+
 @register.filter(name='date_jalali')
 def date_jalali(value, mode=1):
     if value != None:
