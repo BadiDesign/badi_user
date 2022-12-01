@@ -217,20 +217,20 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             return Http404()
         first_name = self.request.data.get('first_name')
         last_name = self.request.data.get('last_name')
-        username = self.request.data.get('username')
+        username = self.request.data.get(config.get('user_key'))
         mobile_number = self.request.data.get('mobile_number')
         email = self.request.data.get('email')
         password = self.request.data.get('password')
-        if config['username_validator'] and not config['username_validator'](username):
-            return Response({'username': [_('Invalid username'), ]}, status=status.HTTP_400_BAD_REQUEST)
-        if User.objects.filter(username=username).first():
-            return Response({'username': [_('This username already taken'), ]}, status=status.HTTP_400_BAD_REQUEST)
         if config['mobile_number_active']:
             if User.objects.filter(mobile_number=mobile_number).first():
                 return Response({'mobile_number': [_('This mobile number already registered'), ]},
                                 status=status.HTTP_400_BAD_REQUEST)
             if not config['mobile_number_validator'](mobile_number):
                 return Response({'mobile_number': ['Invalid mobile number']}, status=status.HTTP_400_BAD_REQUEST)
+        if config['username_validator'] and not config['username_validator'](username):
+            return Response({'username': [_('Invalid username'), ]}, status=status.HTTP_400_BAD_REQUEST)
+        if User.objects.filter(username=username).first():
+            return Response({'username': [_('This username already taken'), ]}, status=status.HTTP_400_BAD_REQUEST)
         if config['email_active']:
             if User.objects.filter(email=email).first():
                 return Response({'email': [_('This mobile number already registered'), ]},
@@ -238,28 +238,67 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             if not config['email_validator'](email):
                 return Response({'email': ['Invalid mobile number']},
                                 status=status.HTTP_400_BAD_REQUEST)
-        user = User()
-        user.first_name = first_name
-        user.last_name = last_name
-        user.password = make_password(password)
-        user.username = username
-        token = Token()
-        if config['mobile_number_active']:
-            user.mobile_number = mobile_number
-            token.phone = mobile_number
-        if config['email_active']:
-            user.email = email
-            token.email = email
-        user.save()
-        token.token = random_with_N_digits(5)
-        token.last_send = timezone.now()
-        if config['sms_panel']:
-            config['sms_panel'](mobile_number).send_verify_code(token.token)
-        if config['email_panel']:
-            config['email_panel'](email).send_verify_code(token.email)
-        token.save()
-        user.token = token
-        user.save()
+        if config.get('code-required'):
+            token = self.request.data.get('token')
+            last_token = Token.objects.filter(phone=mobile_number, is_accepted=False, is_forgot=False).last()
+            if not token and last_token and not last_token.is_possible_resend():
+                return Response(
+                    {'token': [_('You request code recently, please try again later')]},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
+            if not token:
+                token_obj = Token()
+                token_obj.phone = mobile_number
+                token_obj.token = random_with_N_digits(5)
+                token_obj.last_send = timezone.now()
+                config['sms_panel'](mobile_number).send_verify_code(token_obj.token)
+                token_obj.save()
+                return Response({'token': [_('Code sent')]})
+            if last_token.token == token:
+                last_token.is_accepted = True
+                last_token.save()
+                user = User()
+                user.first_name = first_name
+                user.last_name = last_name
+                user.password = make_password(password)
+                user.username = username
+                user.mobile_number = mobile_number
+                user.token = last_token
+                user.save()
+                serializer = TokenObtainPairSerializer(data={
+                    'password': password,
+                    'username': username,
+                })
+                serializer.is_valid(raise_exception=True)
+                if BADI_AUTH_CONFIG['login'].get('login_to_django'):
+                    login(request, user)
+                log(user, 1, 1, True)
+                return Response(serializer.validated_data, status=status.HTTP_200_OK)
+            else:
+                return Response({'token': [_('Invalid Code!')]}, status=status.HTTP_400_BAD_REQUEST)
+        else:
+            user = User()
+            user.first_name = first_name
+            user.last_name = last_name
+            user.password = make_password(password)
+            user.username = username
+            token = Token()
+            if config['mobile_number_active']:
+                user.mobile_number = mobile_number
+                token.phone = mobile_number
+            if config['email_active']:
+                user.email = email
+                token.email = email
+            user.save()
+            token.token = random_with_N_digits(5)
+            token.last_send = timezone.now()
+            if config['sms_panel']:
+                config['sms_panel'](mobile_number).send_verify_code(token.token)
+            if config['email_panel']:
+                config['email_panel'](email).send_verify_code(token.email)
+            token.save()
+            user.token = token
+            user.save()
         return ResponseOk()
 
     @action(methods=['post'], detail=False)

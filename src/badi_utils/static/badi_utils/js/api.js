@@ -410,8 +410,6 @@ const ApiAjax = (jsonValues) => {
                         if (res.responseJSON['detail'])
                             toastrFireError(res.responseJSON['detail'])
                         api_after_error(res['responseJSON'])
-
-
                     } else {
                         console.error('UNKNOWN ERROR Backend RES :', res);
                         console.log('tokenStatus:', tokenStatus)
@@ -422,7 +420,9 @@ const ApiAjax = (jsonValues) => {
                         api_after_error(res['responseJSON'])
                     }
                 });
-
+            else {
+                api_after_error(res['responseJSON'])
+            }
         }
     }).done(function (e) {
         if (api_button)
