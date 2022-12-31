@@ -15,6 +15,13 @@ const FilterSubmitDrawTable = (e, table) => {
     e.preventDefault();
     table.draw()
 }
+
+function moveItem(arr, from, to) {
+    let f = arr.splice(from, 1)[0];
+    arr.splice(to, 0, f);
+    return arr
+}
+
 const urlSearchParams = new URLSearchParams(window.location.search)
 const CURRENT_URL = window.location.pathname,
     CURRENT_SEARCH = window.location.search,
