@@ -1,5 +1,6 @@
 import json
 import requests
+# from django.contrib.sites.models import Site
 from django.shortcuts import render
 from django.utils.translation import gettext_lazy as _
 from badi_utils.dynamic_api import CustomValidation
@@ -15,10 +16,11 @@ Transaction = django_apps.get_model(getattr(settings, "TRANSACTION_MODEL", "badi
 ZP_CONFIG = getattr(settings, "ZP_CONFIG", {})
 
 MERCHANT = ZP_CONFIG.get("MERCHANT")
-ZP_API_REQUEST = ZP_CONFIG.get("MERCHANT", "https://api.zarinpal.com/pg/v4/payment/request.json")
-ZP_API_VERIFY = ZP_CONFIG.get("MERCHANT", "https://api.zarinpal.com/pg/v4/payment/verify.json")
-ZP_API_STARTPAY = ZP_CONFIG.get("MERCHANT", "https://www.zarinpal.com/pg/StartPay/{authority}")
-CallbackURL = ZP_CONFIG.get("MERCHANT", '/dashboard/wallet/zp_verify')
+ZP_API_REQUEST = ZP_CONFIG.get("ZP_API_REQUEST", "https://api.zarinpal.com/pg/v4/payment/request.json")
+ZP_API_VERIFY = ZP_CONFIG.get("ZP_API_VERIFY", "https://api.zarinpal.com/pg/v4/payment/verify.json")
+ZP_API_STARTPAY = ZP_CONFIG.get("ZP_API_STARTPAY", "https://www.zarinpal.com/pg/StartPay/{authority}")
+CallbackURL = ZP_CONFIG.get("CallbackURL", '/dashboard/wallet/zp_verify')
+# SiteUrl = ZP_CONFIG.get(Site.objects.last().domain, '/dashboard/wallet/zp_verify')
 
 
 class ZPBankAction:

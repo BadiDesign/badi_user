@@ -24,6 +24,11 @@ def get_absolute_url(obj):
     return obj.get_absolute_url()
 
 
+@register.filter()
+def minus(obj, value):
+    return obj - value
+
+
 @register.filter(name='date_jalali')
 def date_jalali(value, mode=1):
     if value != None:
@@ -163,50 +168,6 @@ def get_query_string(context):
 @register.filter(name='slugify_utf8')
 def slugify_utf8(value):
     return slugify(value, True)
-
-
-@register.simple_tag(takes_context=True)
-def last_12_pages(context):
-    pages = list(Page.objects.all())
-    shuffle(pages)
-    return pages[:12]
-
-
-@register.simple_tag(takes_context=True)
-def last_breaking_news(context):
-    news = BlogNews.objects.filter(breaking_title__isnull=False)[:10]
-    return news
-
-
-@register.simple_tag(takes_context=True)
-def suggest_news(context):
-    news = BlogNews.objects.filter(is_recommend=True)[:4]
-    return news
-
-
-@register.simple_tag(takes_context=True)
-def categories(context):
-    cats = CategoryNews.objects.filter(index_show=True)
-    return cats
-
-
-@register.simple_tag(takes_context=True)
-def slider_news(context, count=7):
-    news = BlogNews.objects.filter(slider_title__isnull=False)[:count]
-    return news
-
-
-@register.simple_tag(takes_context=True)
-def week_top_news(context):
-    week_ago = datetime.datetime.now() - datetime.timedelta(days=8)
-    news = BlogNews.objects.filter(created_at__gt=week_ago).order_by('view')[:5]
-    return news
-
-
-@register.simple_tag(takes_context=True)
-def last_news(context, count=15):
-    news = BlogNews.objects.all()[:count]
-    return news
 
 
 @register.simple_tag(takes_context=True)

@@ -1,5 +1,5 @@
 <script type="text/x-template" id="pagination-template">
-    <div class="text-left ltr d-flex">
+    <div class="text-left ltr d-flex justify-content-center justify-content-sm-start">
         <button class="btn  btn-sm btn-icon"
                 :class="[isPageActive(current-1) ? 'btn-light-primary' : 'disabled btn-light noHover']"
                 @click="goPage(current - 1)">

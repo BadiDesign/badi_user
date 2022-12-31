@@ -79,7 +79,7 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
         if '.' not in column:
             colType = type(getattr(row, column)).__name__
             value = getattr(row, column)
-            if column in ['price']:
+            if 'price' in column and colType == 'int':
                 return "{:,}".format(getattr(row, column)) if value else 0
 
             elif value is None or colType == 'str' or colType == 'int':

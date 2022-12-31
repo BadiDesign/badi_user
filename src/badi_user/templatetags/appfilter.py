@@ -24,6 +24,11 @@ def get_absolute_url(obj):
     return obj.get_absolute_url()
 
 
+@register.filter()
+def minus(obj, value):
+    return obj - value
+
+
 @register.filter(name='date_jalali')
 def date_jalali(value, mode=1):
     if value != None:
