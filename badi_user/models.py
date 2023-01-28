@@ -93,10 +93,10 @@ class User(AbstractUser, BadiModel):
 
 class Notification(models.Model):
     class Meta:
-        verbose_name = _('اعلان')
-        verbose_name_plural = _('اعلان ها')
+        verbose_name = _('Notification')
+        verbose_name_plural = _('Notifications')
         permissions = (
-            ('can_notification', _('مدیرت اعلان ها')),
+            ('can_notification', _('مدیرت Notifications')),
         )
 
     user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE, verbose_name=_('کاربر'))

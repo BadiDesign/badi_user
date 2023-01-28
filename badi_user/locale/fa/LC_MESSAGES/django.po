@@ -4,14 +4,12 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #: .\badi_user\templates\user\user_create.html:153
-#: .\src\badi_user\templates\badi_user\user\user_create.html:153
-#: .\src\badi_user\templates\user\user_create.html:153
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-10-24 19:23+0330\n"
+"POT-Creation-Date: 2023-01-28 12:50+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -20,203 +18,224 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\badi_ticket\api.py:59 .\src\badi_ticket\api.py:59
-#: .\venv\Lib\site-packages\badi_ticket\api.py:59
-msgid "New message"
-msgstr "پیام جدید"
+#: .\badi_user\api\api.py:172
+msgid "Code sent to "
+msgstr "کد ارسال شد به"
 
-#: .\badi_ticket\api.py:82 .\badi_ticket\api.py:124
-#: .\src\badi_ticket\api.py:82 .\src\badi_ticket\api.py:124
-#: .\venv\Lib\site-packages\badi_ticket\api.py:82
-#: .\venv\Lib\site-packages\badi_ticket\api.py:124
-msgid "Please fill title and text fields"
-msgstr "لطفا عنوان و متن را وارد کنید"
+#: .\badi_user\api\api.py:226 .\badi_user\api\api.py:236
+msgid "This mobile number already registered"
+msgstr "این شماره تماس قبلا ثبت شده است"
 
-#: .\badi_ticket\api.py:96 .\badi_ticket\api.py:138
-#: .\src\badi_ticket\api.py:96 .\src\badi_ticket\api.py:138
-#: .\venv\Lib\site-packages\badi_ticket\api.py:96
-#: .\venv\Lib\site-packages\badi_ticket\api.py:138
-msgid "SomeThing Happened! No message sent!"
-msgstr "مشکلی پیش آمد! هیچ پیامی ارسال نشد!"
+#: .\badi_user\api\api.py:231
+msgid "Invalid username"
+msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_ticket\api.py:102 .\badi_ticket\api.py:144
-#: .\src\badi_ticket\api.py:102 .\src\badi_ticket\api.py:144
-#: .\venv\Lib\site-packages\badi_ticket\api.py:102
-#: .\venv\Lib\site-packages\badi_ticket\api.py:144
-msgid "Your Ticket and Message sent to #0 User successfully!"
-msgstr "تیکت و پیام شما با موفقیت برای #0 کاربر ارسال شد"
+#: .\badi_user\api\api.py:233
+msgid "This username already taken"
+msgstr "این نام کاربری قبلا ثبت شده است"
 
-#: .\badi_ticket\api.py:109 .\badi_ticket\api.py:151
-#: .\src\badi_ticket\api.py:109 .\src\badi_ticket\api.py:151
-#: .\venv\Lib\site-packages\badi_ticket\api.py:109
-#: .\venv\Lib\site-packages\badi_ticket\api.py:151
-msgid "Select a member!"
-msgstr "یک عضو را انتخاب کنید"
+#: .\badi_user\api\api.py:246
+msgid "You request code recently, please try again later"
+msgstr "شما به تازگی درخواست کد داده اید! لطفا بعدا تلاش کنید"
 
-#: .\badi_ticket\api.py:112 .\badi_ticket\api.py:154
-#: .\src\badi_ticket\api.py:112 .\src\badi_ticket\api.py:154
-#: .\venv\Lib\site-packages\badi_ticket\api.py:112
-#: .\venv\Lib\site-packages\badi_ticket\api.py:154
-msgid "You dont have permission to Send Ticket!"
-msgstr "شما به بخش ارسال تیکت دسترسی ندارید"
+#: .\badi_user\api\api.py:256
+#, fuzzy
+#| msgid "Code sent to "
+msgid "Code sent"
+msgstr "کد ارسال شد به"
 
-#: .\badi_ticket\models.py:15 .\src\badi_ticket\models.py:15
-#: .\venv\Lib\site-packages\badi_ticket\models.py:15
-msgid "File must be less than 1 mb!"
-msgstr "فایل باید کمتر از یک مگابایت باشد"
+#: .\badi_user\api\api.py:278
+#, fuzzy
+#| msgid "Invalid username"
+msgid "Invalid Code!"
+msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_ticket\models.py:23 .\badi_ticket\models.py:58
-#: .\src\badi_ticket\models.py:23 .\src\badi_ticket\models.py:58
-#: .\venv\Lib\site-packages\badi_ticket\models.py:23
-#: .\venv\Lib\site-packages\badi_ticket\models.py:58
-msgid "Manage Tickets"
+#: .\badi_user\models.py:11
+msgid "code"
+msgstr "کد"
+
+#: .\badi_user\models.py:32 .\badi_user\models.py:123
+#: .\badi_user\models.py:138 .\badi_user\templates\user\user_update.html:119
+msgid "User"
+msgstr "کاربر"
+
+#: .\badi_user\models.py:33
+#, fuzzy
+#| msgid "User"
+msgid "Users"
+msgstr "کاربر"
+
+#: .\badi_user\models.py:35
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage users"
 msgstr "مدیریت تیکت ها"
 
-#: .\badi_ticket\models.py:27 .\badi_user\templates\member\member_list.html:54
-#: .\src\badi_ticket\models.py:27
-#: .\src\badi_user\templates\badi_user\member\member_list.html:54
-#: .\src\badi_user\templates\member\member_list.html:54
-#: .\venv\Lib\site-packages\badi_ticket\models.py:27
-msgid "Member"
-msgstr "عضو"
+#: .\badi_user\models.py:36
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage members"
+msgstr "مدیریت تیکت ها"
 
-#: .\badi_ticket\models.py:28
-#: .\badi_ticket\templates\ticket\ticket_create.html:32
-#: .\badi_user\models.py:111 .\src\badi_ticket\models.py:28
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:32
-#: .\src\badi_user\models.py:111
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:32
-#: .\venv\Lib\site-packages\badi_ticket\models.py:28
-#: .\venv\Lib\site-packages\badi_user\models.py:111
+#: .\badi_user\models.py:39
+msgid "is admin"
+msgstr "مدیر"
+
+#: .\badi_user\models.py:40
+msgid "Mobile Number"
+msgstr "شماره تماس"
+
+#: .\badi_user\models.py:41
+msgid "Birth Date"
+msgstr "تاریخ تولد"
+
+#: .\badi_user\models.py:42 .\badi_user\models.py:85
+msgid "Picture"
+msgstr "تصویر پروفایل"
+
+#: .\badi_user\models.py:43
+msgid "Token"
+msgstr "توکن"
+
+#: .\badi_user\models.py:45 .\badi_user\models.py:85
+msgid "Amount"
+msgstr "موجودی"
+
+#: .\badi_user\models.py:85
+#, fuzzy
+#| msgid "Delete"
+msgid "Select"
+msgstr "حذف"
+
+#: .\badi_user\models.py:85 .\badi_user\templates\login-theme\login-1.html:80
+msgid "Username"
+msgstr "نام کاربری"
+
+#: .\badi_user\models.py:85
+msgid "FirstName"
+msgstr "نام"
+
+#: .\badi_user\models.py:85
+msgid "LastName"
+msgstr "نام خانوادگی"
+
+#: .\badi_user\models.py:96
+#, fuzzy
+#| msgid "Syndication"
+msgid "Notification"
+msgstr "سندیکا"
+
+#: .\badi_user\models.py:97
+msgid "Notifications"
+msgstr ""
+
+#: .\badi_user\models.py:99
+msgid "مدیرت Notifications"
+msgstr ""
+
+#: .\badi_user\models.py:102
+msgid "کاربر"
+msgstr ""
+
+#: .\badi_user\models.py:103
+msgid "موضوع"
+msgstr ""
+
+#: .\badi_user\models.py:104
+msgid "متن"
+msgstr ""
+
+#: .\badi_user\models.py:105
+msgid "نمایش اعلان از تاریخ"
+msgstr ""
+
+#: .\badi_user\models.py:106
+msgid "خوانده شده"
+msgstr ""
+
+#: .\badi_user\models.py:114
+msgid "Log"
+msgstr ""
+
+#: .\badi_user\models.py:115
+msgid "Logs"
+msgstr ""
+
+#: .\badi_user\models.py:117
+#, fuzzy
+#| msgid "Manage Tickets"
+msgid "Manage Logs"
+msgstr "مدیریت تیکت ها"
+
+#: .\badi_user\models.py:121 .\badi_user\models.py:138
 msgid "Title"
 msgstr "عنوان"
 
-#: .\badi_ticket\models.py:29 .\badi_user\models.py:117
-#: .\src\badi_ticket\models.py:29 .\src\badi_user\models.py:117
-#: .\venv\Lib\site-packages\badi_ticket\models.py:29
-#: .\venv\Lib\site-packages\badi_user\models.py:117
+#: .\badi_user\models.py:124 .\badi_user\models.py:138
+msgid "Priority"
+msgstr ""
+
+#: .\badi_user\models.py:125 .\badi_user\models.py:138
+#, fuzzy
+#| msgid "Sent at"
+msgid "Status"
+msgstr "ارسال در"
+
+#: .\badi_user\models.py:126 .\badi_user\models.py:138
+#: .\badi_user\templates\member\member_list.html:221
+#: .\badi_user\templates\member\member_list.html:253
+msgid "Description"
+msgstr "توضیحات"
+
+#: .\badi_user\models.py:127 .\badi_user\models.py:138
 msgid "Created at"
 msgstr "تاریخ ثبت"
 
-#: .\badi_ticket\models.py:30 .\src\badi_ticket\models.py:30
-#: .\venv\Lib\site-packages\badi_ticket\models.py:30
-msgid "is Closed"
-msgstr "بسته شده"
+#: .\badi_user\templates\login-theme\login-1.html:71
+#: .\badi_user\templates\login-theme\login-1.html:100
+msgid "Login"
+msgstr "ورود به حساب کاربری"
 
-#: .\badi_ticket\models.py:63
-#: .\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\badi_ticket\templates\ticket\ticket_create.html:59
-#: .\src\badi_ticket\models.py:63
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:59
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:23
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:59
-#: .\venv\Lib\site-packages\badi_ticket\models.py:63
-msgid "Ticket"
-msgstr "تیکت"
+#: .\badi_user\templates\login-theme\login-1.html:89
+#: .\badi_user\templates\user\user_update.html:30
+msgid "Password"
+msgstr "رمز عبور"
 
-#: .\badi_ticket\models.py:64 .\src\badi_ticket\models.py:64
-#: .\venv\Lib\site-packages\badi_ticket\models.py:64
-msgid "Message Text"
-msgstr "متن پیام"
+#: .\badi_user\templates\login-theme\login-1.html:147
+#: .\badi_user\templates\login-theme\login-1.html:148
+#: .\badi_user\templates\member\member_list.html:386
+msgid "$"
+msgstr "تومان"
 
-#: .\badi_ticket\models.py:66 .\src\badi_ticket\models.py:66
-#: .\venv\Lib\site-packages\badi_ticket\models.py:66
-msgid "Writer"
-msgstr "نویسنده"
+#: .\badi_user\templates\login-theme\login-1.html:149
+msgid "Required"
+msgstr "اجباری"
 
-#: .\badi_ticket\models.py:67 .\src\badi_ticket\models.py:67
-#: .\venv\Lib\site-packages\badi_ticket\models.py:67
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:226
-msgid "File"
-msgstr "فایل"
+#: .\badi_user\templates\login-theme\login-1.html:150
+msgid "Optional"
+msgstr "اختیاری"
 
-#: .\badi_ticket\models.py:69 .\src\badi_ticket\models.py:69
-#: .\venv\Lib\site-packages\badi_ticket\models.py:69
-msgid "Is seen by user"
-msgstr "توسط کاربر دیده شده"
-
-#: .\badi_ticket\models.py:70 .\src\badi_ticket\models.py:70
-#: .\venv\Lib\site-packages\badi_ticket\models.py:70
-msgid "Is seen by admin"
-msgstr "توسط مدیریت دیده شده"
-
-#: .\badi_ticket\models.py:71 .\src\badi_ticket\models.py:71
-#: .\venv\Lib\site-packages\badi_ticket\models.py:71
-msgid "Sent at"
-msgstr "ارسال در"
-
-#: .\badi_ticket\templates\ticket\admin_tickets.html:35
-#: .\badi_ticket\templates\ticket\my_tickets.html:55
-#: .\badi_ticket\templates\ticket\ticket_create.html:72
-#: .\badi_user\templates\member\member_list.html:126
-#: .\badi_user\templates\user\user_list.html:72
-#: .\src\badi_ticket\templates\ticket\admin_tickets.html:35
-#: .\src\badi_ticket\templates\ticket\my_tickets.html:55
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:72
-#: .\src\badi_user\templates\badi_user\member\member_list.html:126
-#: .\src\badi_user\templates\badi_user\ticket\admin_tickets.html:35
-#: .\src\badi_user\templates\badi_user\ticket\my_tickets.html:55
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:72
-#: .\src\badi_user\templates\badi_user\user\user_list.html:72
-#: .\src\badi_user\templates\member\member_list.html:126
-#: .\src\badi_user\templates\user\user_list.html:72
-msgid "Action"
-msgstr "اقدام"
-
-#: .\badi_ticket\templates\ticket\message_list.html:44
-#: .\src\badi_ticket\templates\ticket\message_list.html:44
-#: .\src\badi_user\templates\badi_user\ticket\message_list.html:44
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Management"
-msgstr "مدیریت تیکت ها"
-
-#: .\badi_ticket\templates\ticket\ticket_create.html:15
-#: .\badi_user\templates\member\member_list.html:55
-#: .\badi_user\templates\user\user_list.html:55 .\badi_utils\dynamic.py:345
-#: .\badi_utils\dynamic.py:346
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:15
-#: .\src\badi_user\templates\badi_user\member\member_list.html:55
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:15
-#: .\src\badi_user\templates\badi_user\user\user_list.html:55
-#: .\src\badi_user\templates\member\member_list.html:55
-#: .\src\badi_user\templates\user\user_list.html:55
-#: .\src\badi_utils\dynamic.py:345 .\src\badi_utils\dynamic.py:346
-msgid "List"
-msgstr "لیست"
-
-#: .\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\badi_ticket\templates\ticket\ticket_create.html:59
 #: .\badi_user\templates\member\member_create.html:14
 #: .\badi_user\templates\member\member_list.html:60
 #: .\badi_user\templates\user\user_create.html:15
 #: .\badi_user\templates\user\user_list.html:60
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:59
-#: .\src\badi_user\templates\badi_user\member\member_create.html:14
-#: .\src\badi_user\templates\badi_user\member\member_list.html:60
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:23
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:59
-#: .\src\badi_user\templates\badi_user\user\user_create.html:15
-#: .\src\badi_user\templates\badi_user\user\user_list.html:60
-#: .\src\badi_user\templates\member\member_create.html:14
-#: .\src\badi_user\templates\member\member_list.html:60
-#: .\src\badi_user\templates\user\user_create.html:15
-#: .\src\badi_user\templates\user\user_list.html:60
 msgid "Create"
 msgstr "ساخت"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:46
-#: .\badi_user\templates\member\member_list.html:410
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:46
-#: .\src\badi_user\templates\badi_user\member\member_list.html:410
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:46
-#: .\src\badi_user\templates\member\member_list.html:410
-msgid "Cancel"
-msgstr ""
+#: .\badi_user\templates\member\member_create.html:47
+#: .\badi_user\templates\user\change_password.html:41
+#: .\badi_user\templates\user\user_create.html:37
+msgid "Repeat Password"
+msgstr "تکرار رمز عبور"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:49
+#: .\badi_user\templates\member\member_create.html:86
+#: .\badi_user\templates\member\member_update.html:57
+#: .\badi_user\templates\user\change_password.html:50
+#: .\badi_user\templates\user\user_create.html:63
+#: .\badi_user\templates\user\user_update.html:49
+msgid "Back"
+msgstr "بازگشت"
+
 #: .\badi_user\templates\member\member_create.html:87
 #: .\badi_user\templates\member\member_list.html:259
 #: .\badi_user\templates\member\member_self_update.html:71
@@ -225,307 +244,8 @@ msgstr ""
 #: .\badi_user\templates\user\user_create.html:64
 #: .\badi_user\templates\user\user_list.html:41
 #: .\badi_user\templates\user\user_update.html:50
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:49
-#: .\src\badi_user\templates\badi_user\member\member_create.html:87
-#: .\src\badi_user\templates\badi_user\member\member_list.html:259
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:71
-#: .\src\badi_user\templates\badi_user\member\member_update.html:58
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:49
-#: .\src\badi_user\templates\badi_user\user\change_password.html:51
-#: .\src\badi_user\templates\badi_user\user\user_create.html:64
-#: .\src\badi_user\templates\badi_user\user\user_list.html:41
-#: .\src\badi_user\templates\badi_user\user\user_update.html:59
-#: .\src\badi_user\templates\member\member_create.html:87
-#: .\src\badi_user\templates\member\member_list.html:259
-#: .\src\badi_user\templates\member\member_self_update.html:71
-#: .\src\badi_user\templates\member\member_update.html:58
-#: .\src\badi_user\templates\user\change_password.html:51
-#: .\src\badi_user\templates\user\user_create.html:64
-#: .\src\badi_user\templates\user\user_list.html:41
-#: .\src\badi_user\templates\user\user_update.html:50
 msgid "Submit"
 msgstr "ثبت"
-
-#: .\badi_ticket\templates\ticket\ticket_create.html:136
-#: .\src\badi_ticket\templates\ticket\ticket_create.html:136
-#: .\src\badi_user\templates\badi_user\ticket\ticket_create.html:136
-#: .\venv\Lib\site-packages\django\contrib\messages\apps.py:7
-msgid "Messages"
-msgstr "پیام ها"
-
-#: .\badi_ticket\templates\ticket\ticket_update.html:16
-#: .\badi_ticket\templates\ticket\ticket_update.html:33
-#: .\badi_user\templates\member\member_self_update.html:15
-#: .\badi_user\templates\user\user_update.html:14 .\badi_utils\dynamic.py:592
-#: .\badi_utils\dynamic.py:593
-#: .\src\badi_ticket\templates\ticket\ticket_update.html:16
-#: .\src\badi_ticket\templates\ticket\ticket_update.html:33
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:15
-#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:16
-#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:33
-#: .\src\badi_user\templates\badi_user\user\user_update.html:13
-#: .\src\badi_user\templates\member\member_self_update.html:15
-#: .\src\badi_user\templates\user\user_update.html:14
-#: .\src\badi_utils\dynamic.py:592 .\src\badi_utils\dynamic.py:593
-msgid "Update"
-msgstr "بروزرسانی"
-
-#: .\badi_ticket\templates\ticket\ticket_update.html:31
-#: .\badi_user\templates\member\member_create.html:86
-#: .\badi_user\templates\member\member_update.html:57
-#: .\badi_user\templates\user\change_password.html:50
-#: .\badi_user\templates\user\user_create.html:63
-#: .\badi_user\templates\user\user_update.html:49
-#: .\src\badi_ticket\templates\ticket\ticket_update.html:31
-#: .\src\badi_user\templates\badi_user\member\member_create.html:86
-#: .\src\badi_user\templates\badi_user\member\member_update.html:57
-#: .\src\badi_user\templates\badi_user\ticket\ticket_update.html:31
-#: .\src\badi_user\templates\badi_user\user\change_password.html:50
-#: .\src\badi_user\templates\badi_user\user\user_create.html:63
-#: .\src\badi_user\templates\badi_user\user\user_update.html:58
-#: .\src\badi_user\templates\member\member_create.html:86
-#: .\src\badi_user\templates\member\member_update.html:57
-#: .\src\badi_user\templates\user\change_password.html:50
-#: .\src\badi_user\templates\user\user_create.html:63
-#: .\src\badi_user\templates\user\user_update.html:49
-msgid "Back"
-msgstr "بازگشت"
-
-#: .\badi_user\api\api.py:172 .\src\badi_user\api\api.py:172
-#: .\venv\Lib\site-packages\badi_user\api\api.py:169
-msgid "Code sent to "
-msgstr "کد ارسال شد به"
-
-#: .\badi_user\api\api.py:225 .\src\badi_user\api\api.py:225
-#: .\venv\Lib\site-packages\badi_user\api\api.py:222
-msgid "Invalid username"
-msgstr "نام کاربری غیر معتبر"
-
-#: .\badi_user\api\api.py:227 .\src\badi_user\api\api.py:227
-#: .\venv\Lib\site-packages\badi_user\api\api.py:224
-msgid "This username already taken"
-msgstr "این نام کاربری قبلا ثبت شده است"
-
-#: .\badi_user\api\api.py:230 .\badi_user\api\api.py:236
-#: .\src\badi_user\api\api.py:230 .\src\badi_user\api\api.py:236
-#: .\venv\Lib\site-packages\badi_user\api\api.py:227
-#: .\venv\Lib\site-packages\badi_user\api\api.py:233
-msgid "This mobile number already registered"
-msgstr "این شماره تماس قبلا ثبت شده است"
-
-#: .\badi_user\models.py:11 .\src\badi_user\models.py:11
-#: .\venv\Lib\site-packages\badi_user\models.py:11
-msgid "code"
-msgstr ""
-
-#: .\badi_user\models.py:32 .\badi_user\models.py:113
-#: .\badi_user\templates\user\user_update.html:119 .\badi_wallet\models.py:23
-#: .\badi_wallet\models.py:54 .\src\badi_user\models.py:32
-#: .\src\badi_user\models.py:113
-#: .\src\badi_user\templates\badi_user\user\user_update.html:126
-#: .\src\badi_user\templates\user\user_update.html:119
-#: .\src\badi_wallet\models.py:23 .\src\badi_wallet\models.py:54
-#: .\venv\Lib\site-packages\badi_user\models.py:32
-#: .\venv\Lib\site-packages\badi_user\models.py:113
-#: .\venv\Lib\site-packages\badi_wallet\models.py:23
-#: .\venv\Lib\site-packages\badi_wallet\models.py:54
-msgid "User"
-msgstr "کاربر"
-
-#: .\badi_user\models.py:33 .\src\badi_user\models.py:33
-#: .\venv\Lib\site-packages\badi_user\models.py:33
-#, fuzzy
-#| msgid "User"
-msgid "Users"
-msgstr "کاربر"
-
-#: .\badi_user\models.py:35 .\src\badi_user\models.py:35
-#: .\venv\Lib\site-packages\badi_user\models.py:35
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage users"
-msgstr "مدیریت تیکت ها"
-
-#: .\badi_user\models.py:36 .\src\badi_user\models.py:36
-#: .\venv\Lib\site-packages\badi_user\models.py:36
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage members"
-msgstr "مدیریت تیکت ها"
-
-#: .\badi_user\models.py:39 .\src\badi_user\models.py:39
-#: .\venv\Lib\site-packages\badi_user\models.py:39
-msgid "is admin"
-msgstr ""
-
-#: .\badi_user\models.py:40 .\src\badi_user\models.py:40
-#: .\venv\Lib\site-packages\badi_user\models.py:40
-msgid "Mobile Number"
-msgstr "شماره تماس"
-
-#: .\badi_user\models.py:41 .\src\badi_user\models.py:41
-#: .\venv\Lib\site-packages\badi_user\models.py:41
-msgid "Birth Date"
-msgstr "تاریخ تولد"
-
-#: .\badi_user\models.py:42 .\badi_user\models.py:76
-#: .\src\badi_user\models.py:42 .\src\badi_user\models.py:76
-#: .\venv\Lib\site-packages\badi_user\models.py:42
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-msgid "Picture"
-msgstr "تصویر پروفایل"
-
-#: .\badi_user\models.py:43 .\src\badi_user\models.py:43
-#: .\venv\Lib\site-packages\badi_user\models.py:43
-msgid "Token"
-msgstr "توکن"
-
-#: .\badi_user\models.py:45 .\badi_user\models.py:76
-#: .\badi_wallet\models.py:29 .\badi_wallet\models.py:55
-#: .\src\badi_user\models.py:45 .\src\badi_user\models.py:76
-#: .\src\badi_wallet\models.py:29 .\src\badi_wallet\models.py:55
-#: .\venv\Lib\site-packages\badi_user\models.py:45
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-#: .\venv\Lib\site-packages\badi_wallet\models.py:29
-#: .\venv\Lib\site-packages\badi_wallet\models.py:55
-msgid "Amount"
-msgstr "موجودی"
-
-#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-#, fuzzy
-#| msgid "Delete"
-msgid "Select"
-msgstr "حذف"
-
-#: .\badi_user\models.py:76 .\badi_user\templates\login-theme\login-1.html:77
-#: .\src\badi_user\models.py:76
-#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:77
-#: .\src\badi_user\templates\login-theme\login-1.html:77
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-msgid "Username"
-msgstr "نام کاربری"
-
-#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-msgid "FirstName"
-msgstr "نام"
-
-#: .\badi_user\models.py:76 .\src\badi_user\models.py:76
-#: .\venv\Lib\site-packages\badi_user\models.py:76
-msgid "LastName"
-msgstr "نام خانوادگی"
-
-#: .\badi_user\models.py:87 .\src\badi_user\models.py:87
-#: .\venv\Lib\site-packages\badi_user\models.py:87
-msgid "اعلان"
-msgstr ""
-
-#: .\badi_user\models.py:88 .\src\badi_user\models.py:88
-#: .\venv\Lib\site-packages\badi_user\models.py:88
-msgid "اعلان ها"
-msgstr ""
-
-#: .\badi_user\models.py:90 .\src\badi_user\models.py:90
-#: .\venv\Lib\site-packages\badi_user\models.py:90
-msgid "مدیرت اعلان ها"
-msgstr ""
-
-#: .\badi_user\models.py:93 .\src\badi_user\models.py:93
-#: .\venv\Lib\site-packages\badi_user\models.py:93
-msgid "کاربر"
-msgstr ""
-
-#: .\badi_user\models.py:94 .\src\badi_user\models.py:94
-#: .\venv\Lib\site-packages\badi_user\models.py:94
-msgid "موضوع"
-msgstr ""
-
-#: .\badi_user\models.py:95 .\src\badi_user\models.py:95
-#: .\venv\Lib\site-packages\badi_user\models.py:95
-msgid "متن"
-msgstr ""
-
-#: .\badi_user\models.py:96 .\src\badi_user\models.py:96
-#: .\venv\Lib\site-packages\badi_user\models.py:96
-msgid "نمایش اعلان از تاریخ"
-msgstr ""
-
-#: .\badi_user\models.py:97 .\src\badi_user\models.py:97
-#: .\venv\Lib\site-packages\badi_user\models.py:97
-msgid "خوانده شده"
-msgstr ""
-
-#: .\badi_user\models.py:105 .\src\badi_user\models.py:105
-#: .\venv\Lib\site-packages\badi_user\models.py:105
-msgid "Log"
-msgstr ""
-
-#: .\badi_user\models.py:106 .\src\badi_user\models.py:106
-#: .\venv\Lib\site-packages\badi_user\models.py:106
-msgid "Logs"
-msgstr ""
-
-#: .\badi_user\models.py:108 .\src\badi_user\models.py:108
-#: .\venv\Lib\site-packages\badi_user\models.py:108
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage Logs"
-msgstr "مدیریت تیکت ها"
-
-#: .\badi_user\models.py:114 .\src\badi_user\models.py:114
-#: .\venv\Lib\site-packages\badi_user\models.py:114
-msgid "Priority"
-msgstr ""
-
-#: .\badi_user\models.py:115 .\src\badi_user\models.py:115
-#: .\venv\Lib\site-packages\badi_user\models.py:115
-#, fuzzy
-#| msgid "Sent at"
-msgid "Status"
-msgstr "ارسال در"
-
-#: .\badi_user\models.py:116 .\badi_user\templates\member\member_list.html:221
-#: .\badi_user\templates\member\member_list.html:253
-#: .\badi_wallet\models.py:24 .\src\badi_user\models.py:116
-#: .\src\badi_user\templates\badi_user\member\member_list.html:221
-#: .\src\badi_user\templates\badi_user\member\member_list.html:253
-#: .\src\badi_user\templates\member\member_list.html:221
-#: .\src\badi_user\templates\member\member_list.html:253
-#: .\src\badi_wallet\models.py:24
-#: .\venv\Lib\site-packages\badi_user\models.py:116
-#: .\venv\Lib\site-packages\badi_wallet\models.py:24
-msgid "Description"
-msgstr "توضیحات"
-
-#: .\badi_user\templates\login-theme\login-1.html:68
-#: .\badi_user\templates\login-theme\login-1.html:97
-#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:68
-#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:97
-#: .\src\badi_user\templates\login-theme\login-1.html:68
-#: .\src\badi_user\templates\login-theme\login-1.html:97
-msgid "Login"
-msgstr "ورود به حساب کاربری"
-
-#: .\badi_user\templates\login-theme\login-1.html:86
-#: .\badi_user\templates\user\user_update.html:30
-#: .\src\badi_user\templates\badi_user\login-theme\login-1.html:86
-#: .\src\badi_user\templates\login-theme\login-1.html:86
-#: .\src\badi_user\templates\user\user_update.html:30
-msgid "Password"
-msgstr "رمز عبور"
-
-#: .\badi_user\templates\member\member_create.html:47
-#: .\badi_user\templates\user\change_password.html:41
-#: .\badi_user\templates\user\user_create.html:37
-#: .\src\badi_user\templates\badi_user\member\member_create.html:47
-#: .\src\badi_user\templates\badi_user\user\change_password.html:41
-#: .\src\badi_user\templates\badi_user\user\user_create.html:37
-#: .\src\badi_user\templates\member\member_create.html:47
-#: .\src\badi_user\templates\user\change_password.html:41
-#: .\src\badi_user\templates\user\user_create.html:37
-msgid "Repeat Password"
-msgstr "تکرار رمز عبور"
 
 #: .\badi_user\templates\member\member_create.html:113
 #: .\badi_user\templates\member\member_create.html:125
@@ -537,26 +257,6 @@ msgstr "تکرار رمز عبور"
 #: .\badi_user\templates\user\user_create.html:101
 #: .\badi_user\templates\user\user_update.html:78
 #: .\badi_user\templates\user\user_update.html:90
-#: .\src\badi_user\templates\badi_user\member\member_create.html:113
-#: .\src\badi_user\templates\badi_user\member\member_create.html:125
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:134
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:146
-#: .\src\badi_user\templates\badi_user\member\member_update.html:86
-#: .\src\badi_user\templates\badi_user\member\member_update.html:98
-#: .\src\badi_user\templates\badi_user\user\user_create.html:89
-#: .\src\badi_user\templates\badi_user\user\user_create.html:101
-#: .\src\badi_user\templates\badi_user\user\user_update.html:86
-#: .\src\badi_user\templates\badi_user\user\user_update.html:98
-#: .\src\badi_user\templates\member\member_create.html:113
-#: .\src\badi_user\templates\member\member_create.html:125
-#: .\src\badi_user\templates\member\member_self_update.html:134
-#: .\src\badi_user\templates\member\member_self_update.html:146
-#: .\src\badi_user\templates\member\member_update.html:86
-#: .\src\badi_user\templates\member\member_update.html:98
-#: .\src\badi_user\templates\user\user_create.html:89
-#: .\src\badi_user\templates\user\user_create.html:101
-#: .\src\badi_user\templates\user\user_update.html:78
-#: .\src\badi_user\templates\user\user_update.html:90
 msgid "must be between 2 and 20 character"
 msgstr "باید بین 2 و 20 حرف باشد"
 
@@ -577,58 +277,16 @@ msgstr "باید بین 2 و 20 حرف باشد"
 #: .\badi_user\templates\user\user_create.html:123
 #: .\badi_user\templates\user\user_update.html:81
 #: .\badi_user\templates\user\user_update.html:93
-#: .\src\badi_user\templates\badi_user\member\member_create.html:116
-#: .\src\badi_user\templates\badi_user\member\member_create.html:128
-#: .\src\badi_user\templates\badi_user\member\member_create.html:140
-#: .\src\badi_user\templates\badi_user\member\member_create.html:147
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:137
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:149
-#: .\src\badi_user\templates\badi_user\member\member_update.html:89
-#: .\src\badi_user\templates\badi_user\member\member_update.html:101
-#: .\src\badi_user\templates\badi_user\user\change_password.html:75
-#: .\src\badi_user\templates\badi_user\user\change_password.html:87
-#: .\src\badi_user\templates\badi_user\user\change_password.html:94
-#: .\src\badi_user\templates\badi_user\user\user_create.html:92
-#: .\src\badi_user\templates\badi_user\user\user_create.html:104
-#: .\src\badi_user\templates\badi_user\user\user_create.html:116
-#: .\src\badi_user\templates\badi_user\user\user_create.html:123
-#: .\src\badi_user\templates\badi_user\user\user_update.html:89
-#: .\src\badi_user\templates\badi_user\user\user_update.html:101
-#: .\src\badi_user\templates\member\member_create.html:116
-#: .\src\badi_user\templates\member\member_create.html:128
-#: .\src\badi_user\templates\member\member_create.html:140
-#: .\src\badi_user\templates\member\member_create.html:147
-#: .\src\badi_user\templates\member\member_self_update.html:137
-#: .\src\badi_user\templates\member\member_self_update.html:149
-#: .\src\badi_user\templates\member\member_update.html:89
-#: .\src\badi_user\templates\member\member_update.html:101
-#: .\src\badi_user\templates\user\change_password.html:75
-#: .\src\badi_user\templates\user\change_password.html:87
-#: .\src\badi_user\templates\user\change_password.html:94
-#: .\src\badi_user\templates\user\user_create.html:92
-#: .\src\badi_user\templates\user\user_create.html:104
-#: .\src\badi_user\templates\user\user_create.html:116
-#: .\src\badi_user\templates\user\user_create.html:123
-#: .\src\badi_user\templates\user\user_update.html:81
-#: .\src\badi_user\templates\user\user_update.html:93
 msgid "This Field is required"
 msgstr "این فیلد ضروری است"
 
 #: .\badi_user\templates\member\member_create.html:137
 #: .\badi_user\templates\user\change_password.html:84
 #: .\badi_user\templates\user\user_create.html:113
-#: .\src\badi_user\templates\badi_user\member\member_create.html:137
-#: .\src\badi_user\templates\badi_user\user\change_password.html:84
-#: .\src\badi_user\templates\badi_user\user\user_create.html:113
-#: .\src\badi_user\templates\member\member_create.html:137
-#: .\src\badi_user\templates\user\change_password.html:84
-#: .\src\badi_user\templates\user\user_create.html:113
 msgid "must be between 6 and 20 character"
 msgstr "باید بین 6 تا 20 حرف باشد"
 
 #: .\badi_user\templates\member\member_create.html:178
-#: .\src\badi_user\templates\badi_user\member\member_create.html:178
-#: .\src\badi_user\templates\member\member_create.html:178
 #, fuzzy
 #| msgid "Enabled successfully"
 msgid "Done successfully"
@@ -639,16 +297,6 @@ msgstr "با موفقیت فعال شد"
 #: .\badi_user\templates\user\change_password.html:132
 #: .\badi_user\templates\user\user_create.html:160
 #: .\badi_user\templates\user\user_update.html:123
-#: .\src\badi_user\templates\badi_user\member\member_create.html:182
-#: .\src\badi_user\templates\badi_user\member\member_update.html:131
-#: .\src\badi_user\templates\badi_user\user\change_password.html:132
-#: .\src\badi_user\templates\badi_user\user\user_create.html:160
-#: .\src\badi_user\templates\badi_user\user\user_update.html:130
-#: .\src\badi_user\templates\member\member_create.html:182
-#: .\src\badi_user\templates\member\member_update.html:131
-#: .\src\badi_user\templates\user\change_password.html:132
-#: .\src\badi_user\templates\user\user_create.html:160
-#: .\src\badi_user\templates\user\user_update.html:123
 msgid "Seems some error exists"
 msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 
@@ -657,83 +305,63 @@ msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 #: .\badi_user\templates\user\change_password.html:134
 #: .\badi_user\templates\user\user_create.html:162
 #: .\badi_user\templates\user\user_update.html:125
-#: .\src\badi_user\templates\badi_user\member\member_create.html:184
-#: .\src\badi_user\templates\badi_user\member\member_update.html:133
-#: .\src\badi_user\templates\badi_user\user\change_password.html:134
-#: .\src\badi_user\templates\badi_user\user\user_create.html:162
-#: .\src\badi_user\templates\badi_user\user\user_update.html:132
-#: .\src\badi_user\templates\member\member_create.html:184
-#: .\src\badi_user\templates\member\member_update.html:133
-#: .\src\badi_user\templates\user\change_password.html:134
-#: .\src\badi_user\templates\user\user_create.html:162
-#: .\src\badi_user\templates\user\user_update.html:125
 msgid "Got it"
 msgstr "متوجه شدم"
 
 #: .\badi_user\templates\member\member_list.html:13
 #: .\badi_user\templates\user\user_list.html:12
-#: .\src\badi_user\templates\badi_user\member\member_list.html:13
-#: .\src\badi_user\templates\badi_user\user\user_list.html:12
-#: .\src\badi_user\templates\member\member_list.html:13
-#: .\src\badi_user\templates\user\user_list.html:12
 msgid "Search in List"
 msgstr "جستجو در لیست"
 
+#: .\badi_user\templates\member\member_list.html:54
+msgid "Member"
+msgstr "عضو"
+
+#: .\badi_user\templates\member\member_list.html:55
+#: .\badi_user\templates\user\user_list.html:55
+msgid "List"
+msgstr "لیست"
+
 #: .\badi_user\templates\member\member_list.html:89
-#: .\src\badi_user\templates\badi_user\member\member_list.html:89
-#: .\src\badi_user\templates\member\member_list.html:89
 msgid "on"
 msgstr "روی"
 
 #: .\badi_user\templates\member\member_list.html:91
-#: .\src\badi_user\templates\badi_user\member\member_list.html:91
-#: .\src\badi_user\templates\member\member_list.html:91
 msgid "record"
 msgstr "رکورد"
 
 #: .\badi_user\templates\member\member_list.html:98
-#: .\src\badi_user\templates\badi_user\member\member_list.html:98
-#: .\src\badi_user\templates\member\member_list.html:98
 msgid "Send ticket"
 msgstr "ارسال تیکت"
 
 #: .\badi_user\templates\member\member_list.html:104
-#: .\src\badi_user\templates\badi_user\member\member_list.html:104
-#: .\src\badi_user\templates\member\member_list.html:104
 msgid "Send Sms"
 msgstr "ارسال پیامک"
 
 #: .\badi_user\templates\member\member_list.html:114
 #: .\badi_user\templates\member\member_list.html:288
-#: .\src\badi_user\templates\badi_user\member\member_list.html:114
-#: .\src\badi_user\templates\badi_user\member\member_list.html:288
-#: .\src\badi_user\templates\member\member_list.html:114
-#: .\src\badi_user\templates\member\member_list.html:288
 #, fuzzy
 #| msgid "Delete"
 msgid "Select All"
 msgstr "حذف"
 
+#: .\badi_user\templates\member\member_list.html:126
+#: .\badi_user\templates\user\user_list.html:72
+msgid "Action"
+msgstr "اقدام"
+
 #: .\badi_user\templates\member\member_list.html:144
-#: .\src\badi_user\templates\badi_user\member\member_list.html:144
-#: .\src\badi_user\templates\member\member_list.html:144
 #, fuzzy
 #| msgid "Ticket"
 msgid "Send Ticket"
 msgstr "تیکت"
 
 #: .\badi_user\templates\member\member_list.html:208
-#: .\src\badi_user\templates\badi_user\member\member_list.html:208
-#: .\src\badi_user\templates\member\member_list.html:208
 msgid "Charge account"
 msgstr "شارژ حساب کاربری"
 
 #: .\badi_user\templates\member\member_list.html:217
 #: .\badi_user\templates\member\member_list.html:249
-#: .\src\badi_user\templates\badi_user\member\member_list.html:217
-#: .\src\badi_user\templates\badi_user\member\member_list.html:249
-#: .\src\badi_user\templates\member\member_list.html:217
-#: .\src\badi_user\templates\member\member_list.html:249
 #, fuzzy
 #| msgid "Amount"
 msgid "amount"
@@ -741,1482 +369,311 @@ msgstr "موجودی"
 
 #: .\badi_user\templates\member\member_list.html:228
 #: .\badi_user\templates\member\member_list.html:258
-#: .\src\badi_user\templates\badi_user\member\member_list.html:228
-#: .\src\badi_user\templates\badi_user\member\member_list.html:258
-#: .\src\badi_user\templates\member\member_list.html:228
-#: .\src\badi_user\templates\member\member_list.html:258
 #, fuzzy
 #| msgid "is Closed"
 msgid "Close"
 msgstr "بسته شده"
 
 #: .\badi_user\templates\member\member_list.html:229
-#: .\badi_wallet\action.py:153 .\badi_wallet\models.py:50
-#: .\src\badi_user\templates\badi_user\member\member_list.html:229
-#: .\src\badi_user\templates\member\member_list.html:229
-#: .\src\badi_wallet\action.py:153 .\src\badi_wallet\models.py:50
-#: .\venv\Lib\site-packages\badi_wallet\action.py:153
-#: .\venv\Lib\site-packages\badi_wallet\models.py:50
 msgid "Charge"
 msgstr "شارژ"
 
 #: .\badi_user\templates\member\member_list.html:242
-#: .\src\badi_user\templates\badi_user\member\member_list.html:242
-#: .\src\badi_user\templates\member\member_list.html:242
 msgid "Decrease Charge account"
 msgstr "برداشت پول"
 
 #: .\badi_user\templates\member\member_list.html:285
-#: .\src\badi_user\templates\badi_user\member\member_list.html:285
-#: .\src\badi_user\templates\member\member_list.html:285
 #, fuzzy
 #| msgid "Delete"
 msgid "DeSelect All"
 msgstr "حذف"
 
-#: .\badi_user\templates\member\member_list.html:386
-#: .\badi_wallet\templates\transaction\transaction_result.html:31
-#: .\src\badi_user\templates\badi_user\member\member_list.html:386
-#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:31
-#: .\src\badi_user\templates\member\member_list.html:386
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:31
-#: .\templates\base.html:404 .\templates\base.html:405
-msgid "$"
-msgstr "تومان"
-
 #: .\badi_user\templates\member\member_list.html:406
-#: .\src\badi_user\templates\badi_user\member\member_list.html:406
-#: .\src\badi_user\templates\member\member_list.html:406
 msgid "Are you Sure?"
 msgstr "مطمئن هستید؟"
 
 #: .\badi_user\templates\member\member_list.html:409
-#: .\src\badi_user\templates\badi_user\member\member_list.html:409
-#: .\src\badi_user\templates\member\member_list.html:409
 msgid "Yes, Charge it"
 msgstr "بله، شارژش کن"
+
+#: .\badi_user\templates\member\member_list.html:410
+msgid "Cancel"
+msgstr ""
 
 #: .\badi_user\templates\member\member_list.html:417
 #: .\badi_user\templates\member\member_list.html:448
 #: .\badi_user\templates\member\member_list.html:543
-#: .\src\badi_user\templates\badi_user\member\member_list.html:417
-#: .\src\badi_user\templates\badi_user\member\member_list.html:448
-#: .\src\badi_user\templates\badi_user\member\member_list.html:543
-#: .\src\badi_user\templates\member\member_list.html:417
-#: .\src\badi_user\templates\member\member_list.html:448
-#: .\src\badi_user\templates\member\member_list.html:543
 #, fuzzy
 #| msgid "Enabled successfully"
 msgid "Done Successfully"
 msgstr "با موفقیت فعال شد"
 
+#: .\badi_user\templates\member\member_self_update.html:15
+#: .\badi_user\templates\user\user_update.html:14
+msgid "Update"
+msgstr "بروزرسانی"
+
 #: .\badi_user\templates\member\member_self_update.html:16
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:16
-#: .\src\badi_user\templates\member\member_self_update.html:16
 msgid "self information"
 msgstr "اطلاعات شخصی"
 
 #: .\badi_user\templates\member\member_self_update.html:49
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:49
-#: .\src\badi_user\templates\member\member_self_update.html:49
 msgid "Province"
 msgstr "استان"
 
 #: .\badi_user\templates\member\member_self_update.html:174
-#: .\src\badi_user\templates\badi_user\member\member_self_update.html:174
-#: .\src\badi_user\templates\member\member_self_update.html:174
 msgid "Updated successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
 #: .\badi_user\templates\user\change_password.html:13
-#: .\src\badi_user\templates\badi_user\user\change_password.html:13
-#: .\src\badi_user\templates\user\change_password.html:13
 msgid "Change Password"
 msgstr "تغییر رمز عبور"
 
 #: .\badi_user\templates\user\change_password.html:23
-#: .\src\badi_user\templates\badi_user\user\change_password.html:23
-#: .\src\badi_user\templates\user\change_password.html:23
 msgid "Current Password"
 msgstr "رمز فعلی"
 
 #: .\badi_user\templates\user\change_password.html:34
-#: .\src\badi_user\templates\badi_user\user\change_password.html:34
-#: .\src\badi_user\templates\user\change_password.html:34
 msgid "New Password"
 msgstr "رمز جدید"
 
 #: .\badi_user\templates\user\change_password.html:97
 #: .\badi_user\templates\user\user_create.html:126
-#: .\src\badi_user\templates\badi_user\user\change_password.html:97
-#: .\src\badi_user\templates\badi_user\user\user_create.html:126
-#: .\src\badi_user\templates\user\change_password.html:97
-#: .\src\badi_user\templates\user\user_create.html:126
 msgid "Repeat Password and New Password are not equal"
 msgstr "تکرار رمز عبور با رمز عبور مطابقت ندارد"
 
 #: .\badi_user\templates\user\change_password.html:128
-#: .\src\badi_user\templates\badi_user\user\change_password.html:128
-#: .\src\badi_user\templates\user\change_password.html:128
 msgid "Password changed successfully"
 msgstr "رمز عبور با موفقیت بروزرسانی شد"
 
-#: .\badi_user\templates\user\user_update.html:119 .\badi_utils\dynamic.py:576
-#: .\src\badi_user\templates\badi_user\user\user_update.html:126
-#: .\src\badi_user\templates\user\user_update.html:119
-#: .\src\badi_utils\dynamic.py:576
+#: .\badi_user\templates\user\user_update.html:119
 msgid "Updated Successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
-#: .\badi_users_project\settings.py:69
+#: .\badi_users_project\settings.py:71
 msgid "Persian"
 msgstr "فارسی"
 
-#: .\badi_users_project\settings.py:206
+#: .\badi_users_project\settings.py:208
 msgid "No active user found"
 msgstr "کاربر فعالی یافت نشد"
 
-#: .\badi_utils\dynamic.py:329 .\badi_utils\dynamic.py:432
-#: .\src\badi_utils\dynamic.py:329 .\src\badi_utils\dynamic.py:432
+#~ msgid "New message"
+#~ msgstr "پیام جدید"
+
+#~ msgid "Please fill title and text fields"
+#~ msgstr "لطفا عنوان و متن را وارد کنید"
+
+#~ msgid "SomeThing Happened! No message sent!"
+#~ msgstr "مشکلی پیش آمد! هیچ پیامی ارسال نشد!"
+
+#~ msgid "Your Ticket and Message sent to #0 User successfully!"
+#~ msgstr "تیکت و پیام شما با موفقیت برای #0 کاربر ارسال شد"
+
+#~ msgid "Select a member!"
+#~ msgstr "یک عضو را انتخاب کنید"
+
+#~ msgid "You dont have permission to Send Ticket!"
+#~ msgstr "شما به بخش ارسال تیکت دسترسی ندارید"
+
+#~ msgid "File must be less than 1 mb!"
+#~ msgstr "فایل باید کمتر از یک مگابایت باشد"
+
+#~ msgid "Manage Tickets"
+#~ msgstr "مدیریت تیکت ها"
+
+#~ msgid "is Closed"
+#~ msgstr "بسته شده"
+
+#~ msgid "Ticket"
+#~ msgstr "تیکت"
+
+#~ msgid "Message Text"
+#~ msgstr "متن پیام"
+
+#~ msgid "Writer"
+#~ msgstr "نویسنده"
+
+#~ msgid "File"
+#~ msgstr "فایل"
+
+#~ msgid "Is seen by user"
+#~ msgstr "توسط کاربر دیده شده"
+
+#~ msgid "Is seen by admin"
+#~ msgstr "توسط مدیریت دیده شده"
+
+#~ msgid "Sent at"
+#~ msgstr "ارسال در"
+
 #, fuzzy
-#| msgid "Updated Successfully"
-msgid "Created Successfully"
-msgstr "با موفقیت بروزرسانی شد"
+#~| msgid "Manage Tickets"
+#~ msgid "Management"
+#~ msgstr "مدیریت تیکت ها"
 
-#: .\badi_utils\logging.py:16 .\src\badi_utils\logging.py:16
-msgid "custom"
-msgstr "غیره"
+#~ msgid "Messages"
+#~ msgstr "پیام ها"
 
-#: .\badi_utils\logging.py:20 .\src\badi_utils\logging.py:20
-msgid "login"
-msgstr "ورود"
-
-#: .\badi_utils\logging.py:23 .\src\badi_utils\logging.py:23
-msgid "logout"
-msgstr "خروج"
-
-#: .\badi_utils\logging.py:34 .\src\badi_utils\logging.py:34
-#: .\venv\Lib\site-packages\django\forms\formsets.py:417
-msgid "Delete"
-msgstr "حذف"
-
-#: .\badi_utils\utils.py:25 .\src\badi_utils\utils.py:25
-msgid "NO_PERMISSION"
-msgstr "شما به این قسمت دسترسی ندارید"
-
-#: .\badi_wallet\action.py:25 .\badi_wallet\ui\views.py:21
-#: .\src\badi_wallet\action.py:25 .\src\badi_wallet\ui\views.py:21
-#: .\venv\Lib\site-packages\badi_wallet\action.py:25
-#: .\venv\Lib\site-packages\badi_wallet\ui\views.py:21
-msgid ""
-"The operation encountered an error. Please try again. If the amount is "
-"deducted from your account, it will be returned to your account within 72 "
-"hours."
-msgstr "عملیات با خطا مواجه شد. لطفا دوباره تلاش کنید. در صورتی که مبلغی از حساب شما کم شود، نهایتا تا 72ساعت آینده به حساب شما بازگشت داده می شود."
-
-#: .\badi_wallet\action.py:126 .\src\badi_wallet\action.py:126
-#: .\venv\Lib\site-packages\badi_wallet\action.py:126
 #, fuzzy
-#| msgid "Invalid username"
-msgid "Invalid Data"
-msgstr "نام کاربری غیر معتبر"
+#~| msgid "Updated Successfully"
+#~ msgid "Created Successfully"
+#~ msgstr "با موفقیت بروزرسانی شد"
 
-#: .\badi_wallet\action.py:188 .\src\badi_wallet\action.py:188
-#: .\venv\Lib\site-packages\badi_wallet\action.py:188
-msgid "Transaction canceled"
-msgstr "پرداخت لغو شد"
+#~ msgid "custom"
+#~ msgstr "غیره"
 
-#: .\badi_wallet\apps.py:8 .\src\badi_wallet\apps.py:8
-#: .\venv\Lib\site-packages\badi_wallet\apps.py:8
-msgid "Wallet"
-msgstr "کیف پول"
+#~ msgid "login"
+#~ msgstr "ورود"
 
-#: .\badi_wallet\models.py:16 .\badi_wallet\models.py:17
-#: .\src\badi_wallet\models.py:16 .\src\badi_wallet\models.py:17
-#: .\venv\Lib\site-packages\badi_wallet\models.py:16
-#: .\venv\Lib\site-packages\badi_wallet\models.py:17
-msgid "Bank Transaction"
-msgstr "تراکنش بانکی"
+#~ msgid "logout"
+#~ msgstr "خروج"
 
-#: .\badi_wallet\models.py:19 .\badi_wallet\models.py:46
-#: .\src\badi_wallet\models.py:19 .\src\badi_wallet\models.py:46
-#: .\venv\Lib\site-packages\badi_wallet\models.py:19
-#: .\venv\Lib\site-packages\badi_wallet\models.py:46
+#~ msgid "Delete"
+#~ msgstr "حذف"
+
+#~ msgid "NO_PERMISSION"
+#~ msgstr "شما به این قسمت دسترسی ندارید"
+
+#~ msgid ""
+#~ "The operation encountered an error. Please try again. If the amount is "
+#~ "deducted from your account, it will be returned to your account within 72 "
+#~ "hours."
+#~ msgstr ""
+#~ "عملیات با خطا مواجه شد. لطفا دوباره تلاش کنید. در صورتی که مبلغی از حساب "
+#~ "شما کم شود، نهایتا تا 72ساعت آینده به حساب شما بازگشت داده می شود."
+
+#~ msgid "Transaction canceled"
+#~ msgstr "پرداخت لغو شد"
+
+#~ msgid "Wallet"
+#~ msgstr "کیف پول"
+
+#~ msgid "Bank Transaction"
+#~ msgstr "تراکنش بانکی"
+
 #, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage"
-msgstr "مدیریت تیکت ها"
+#~| msgid "Manage Tickets"
+#~ msgid "Manage"
+#~ msgstr "مدیریت تیکت ها"
 
-#: .\badi_wallet\models.py:22 .\src\badi_wallet\models.py:22
-#: .\venv\Lib\site-packages\badi_wallet\models.py:22
-msgid "Authority"
-msgstr "شناسه"
+#~ msgid "Authority"
+#~ msgstr "شناسه"
 
-#: .\badi_wallet\models.py:25 .\src\badi_wallet\models.py:25
-#: .\venv\Lib\site-packages\badi_wallet\models.py:25
-msgid "is Verified"
-msgstr "تایید شده"
+#~ msgid "is Verified"
+#~ msgstr "تایید شده"
 
-#: .\badi_wallet\models.py:26 .\src\badi_wallet\models.py:26
-#: .\venv\Lib\site-packages\badi_wallet\models.py:26
-msgid "RefID"
-msgstr ""
+#~ msgid "Card Hash"
+#~ msgstr "شماره کارت"
 
-#: .\badi_wallet\models.py:27 .\src\badi_wallet\models.py:27
-#: .\venv\Lib\site-packages\badi_wallet\models.py:27
-msgid "Card Hash"
-msgstr "شماره کارت"
+#~ msgid "Bank Response"
+#~ msgstr "پاسخ بانک"
 
-#: .\badi_wallet\models.py:30 .\src\badi_wallet\models.py:30
-#: .\venv\Lib\site-packages\badi_wallet\models.py:30
-msgid "Bank Response"
-msgstr "پاسخ بانک"
+#~ msgid "Transaction"
+#~ msgstr "تراکنش"
 
-#: .\badi_wallet\models.py:43 .\src\badi_wallet\models.py:43
-#: .\venv\Lib\site-packages\badi_wallet\models.py:43
-msgid "Transaction"
-msgstr "تراکنش"
+#~ msgid "Transactions"
+#~ msgstr "تراکنش ها"
 
-#: .\badi_wallet\models.py:44 .\src\badi_wallet\models.py:44
-#: .\venv\Lib\site-packages\badi_wallet\models.py:44
-msgid "Transactions"
-msgstr "تراکنش ها"
+#~ msgid "Type"
+#~ msgstr "نوع"
 
-#: .\badi_wallet\models.py:51 .\src\badi_wallet\models.py:51
-#: .\venv\Lib\site-packages\badi_wallet\models.py:51
-msgid "Return"
-msgstr ""
+#~ msgid "Time"
+#~ msgstr "زمان"
 
-#: .\badi_wallet\models.py:56 .\src\badi_wallet\models.py:56
-#: .\venv\Lib\site-packages\badi_wallet\models.py:56
-msgid "Type"
-msgstr "نوع"
-
-#: .\badi_wallet\models.py:57 .\src\badi_wallet\models.py:57
-#: .\venv\Lib\site-packages\badi_wallet\models.py:57
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2186
-msgid "Time"
-msgstr "زمان"
-
-#: .\badi_wallet\models.py:58 .\src\badi_wallet\models.py:58
-#: .\venv\Lib\site-packages\badi_wallet\models.py:58
 #, fuzzy
-#| msgid "Delete"
-msgid "Subject"
-msgstr "موضوع"
+#~| msgid "Delete"
+#~ msgid "Subject"
+#~ msgstr "موضوع"
 
-#: .\badi_wallet\templates\transaction\transaction_result.html:12
-#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:12
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:12
 #, fuzzy
-#| msgid "Enabled successfully"
-msgid "Payment done Successfully"
-msgstr "با موفقیت فعال شد"
+#~| msgid "Enabled successfully"
+#~ msgid "Payment done Successfully"
+#~ msgstr "با موفقیت فعال شد"
 
-#: .\badi_wallet\templates\transaction\transaction_result.html:14
-#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:14
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:14
-msgid "Payment Failed"
-msgstr "پرداخت نا موفق بود"
+#~ msgid "Payment Failed"
+#~ msgstr "پرداخت نا موفق بود"
 
-#: .\badi_wallet\templates\transaction\transaction_result.html:29
-#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:29
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:29
-msgid "Your Wallet"
-msgstr "کیف پول شما"
+#~ msgid "Your Wallet"
+#~ msgstr "کیف پول شما"
 
-#: .\badi_wallet\templates\transaction\transaction_result.html:31
-#: .\src\badi_user\templates\badi_user\transaction\transaction_result.html:31
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:31
-msgid "Charged"
-msgstr "شارژ شد"
+#~ msgid "Charged"
+#~ msgstr "شارژ شد"
 
-#: .\src\badi_user\templates\badi_user\user\user_list.html:145
-msgid "Enabled successfully"
-msgstr "با موفقیت فعال شد"
+#~ msgid "Enabled successfully"
+#~ msgstr "با موفقیت فعال شد"
 
-#: .\src\badi_user\templates\badi_user\user\user_list.html:145
-msgid "Disabled successfully"
-msgstr "با موفقیت غیر فعال شد"
+#~ msgid "Disabled successfully"
+#~ msgstr "با موفقیت غیر فعال شد"
 
-#: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
-msgid "Site Maps"
-msgstr "سایت مپ"
+#~ msgid "Site Maps"
+#~ msgstr "سایت مپ"
 
-#: .\venv\Lib\site-packages\django\contrib\staticfiles\apps.py:9
-msgid "Static Files"
-msgstr "فایل های استاتیک"
+#~ msgid "Static Files"
+#~ msgstr "فایل های استاتیک"
 
-#: .\venv\Lib\site-packages\django\contrib\syndication\apps.py:7
-msgid "Syndication"
-msgstr "سندیکا"
+#~ msgid "…"
+#~ msgstr "…"
 
-#. Translators: String used to replace omitted page numbers in elided page
-#. range generated by paginators, e.g. [1, 2, '…', 5, 6, 7, '…', 9, 10].
-#: .\venv\Lib\site-packages\django\core\paginator.py:30
-msgid "…"
-msgstr "…"
+#~ msgid "That page number is not an integer"
+#~ msgstr "صفحه باید عددی باشد"
 
-#: .\venv\Lib\site-packages\django\core\paginator.py:51
-msgid "That page number is not an integer"
-msgstr "صفحه باید عددی باشد"
+#~ msgid "That page number is less than 1"
+#~ msgstr "صفحه نباید کمتر از یک باشد"
 
-#: .\venv\Lib\site-packages\django\core\paginator.py:53
-msgid "That page number is less than 1"
-msgstr "صفحه نباید کمتر از یک باشد"
+#~ msgid "That page contains no results"
+#~ msgstr "در این صفحه موردی یافت نشد"
 
-#: .\venv\Lib\site-packages\django\core\paginator.py:58
-msgid "That page contains no results"
-msgstr "در این صفحه موردی یافت نشد"
+#~ msgid "Enter a valid value."
+#~ msgstr "یک مقدار معتبر وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:22
-msgid "Enter a valid value."
-msgstr "یک مقدار معتبر وارد کنید"
+#~ msgid "Enter a valid URL."
+#~ msgstr "یک آدرس معتبر وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:93
-#: .\venv\Lib\site-packages\django\forms\fields.py:664
-msgid "Enter a valid URL."
-msgstr "یک آدرس معتبر وارد کنید"
+#~ msgid "Enter a valid integer."
+#~ msgstr "یک مقدار عددی وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:150
-msgid "Enter a valid integer."
-msgstr "یک مقدار عددی وارد کنید"
+#~ msgid "Enter a valid email address."
+#~ msgstr "یک ایمیل معتبر وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:161
-msgid "Enter a valid email address."
-msgstr "یک ایمیل معتبر وارد کنید"
+#~ msgid ""
+#~ "Enter a valid “slug” consisting of letters, numbers, underscores or "
+#~ "hyphens."
+#~ msgstr "یک 'اسلاگ' معتبر متشکل از حروف، اعداد، زیرخط یا خط فاصله وارد کنید"
 
-#. Translators: "letters" means latin letters: a-z and A-Z.
-#: .\venv\Lib\site-packages\django\core\validators.py:262
-msgid ""
-"Enter a valid “slug” consisting of letters, numbers, underscores or hyphens."
-msgstr "یک 'اسلاگ' معتبر متشکل از حروف، اعداد، زیرخط یا خط فاصله وارد کنید"
+#~ msgid ""
+#~ "Enter a valid “slug” consisting of Unicode letters, numbers, underscores, "
+#~ "or hyphens."
+#~ msgstr "یک 'اسلاگ' معتبر متشکل از حروف یونیکد، اعداد، زیرخط وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:269
-msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
-msgstr "یک 'اسلاگ' معتبر متشکل از حروف یونیکد، اعداد، زیرخط وارد کنید"
+#~ msgid "Enter a valid IPv4 address."
+#~ msgstr "یک آدرس IPv4 معتبر وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:278
-#: .\venv\Lib\site-packages\django\core\validators.py:288
-#: .\venv\Lib\site-packages\django\core\validators.py:311
-msgid "Enter a valid IPv4 address."
-msgstr "یک آدرس IPv4 معتبر وارد کنید"
+#~ msgid "Enter a number."
+#~ msgstr "یک عدد وارد کنید"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:296
-#: .\venv\Lib\site-packages\django\core\validators.py:312
-msgid "Enter a valid IPv6 address."
-msgstr ""
+#~ msgid "and"
+#~ msgstr "و"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:306
-#: .\venv\Lib\site-packages\django\core\validators.py:310
-msgid "Enter a valid IPv4 or IPv6 address."
-msgstr ""
+#~ msgid "This field cannot be null."
+#~ msgstr "این فیلد الزامی است"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:340
-msgid "Enter only digits separated by commas."
-msgstr ""
+#~ msgid "This field cannot be blank."
+#~ msgstr "این فیلد نمیتواند خالی باشد"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:346
-#, python-format
-msgid "Ensure this value is %(limit_value)s (it is %(show_value)s)."
-msgstr ""
+#~ msgid "Date (without time)"
+#~ msgstr "تاریخ"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:379
-#, python-format
-msgid "Ensure this value is less than or equal to %(limit_value)s."
-msgstr ""
+#~ msgid "Date (with time)"
+#~ msgstr "تاریخ با زمان"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:388
-#, python-format
-msgid "Ensure this value is greater than or equal to %(limit_value)s."
-msgstr ""
+#~ msgid "Duration"
+#~ msgstr "بازه زمانی"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:398
-#, python-format
-msgid ""
-"Ensure this value has at least %(limit_value)d character (it has %"
-"(show_value)d)."
-msgid_plural ""
-"Ensure this value has at least %(limit_value)d characters (it has %"
-"(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
+#~ msgid "Email address"
+#~ msgstr "آدرس ایمیل"
 
-#: .\venv\Lib\site-packages\django\core\validators.py:413
-#, python-format
-msgid ""
-"Ensure this value has at most %(limit_value)d character (it has %(show_value)"
-"d)."
-msgid_plural ""
-"Ensure this value has at most %(limit_value)d characters (it has %"
-"(show_value)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:432
-#: .\venv\Lib\site-packages\django\forms\fields.py:292
-#: .\venv\Lib\site-packages\django\forms\fields.py:327
-msgid "Enter a number."
-msgstr "یک عدد وارد کنید"
-
-#: .\venv\Lib\site-packages\django\core\validators.py:434
-#, python-format
-msgid "Ensure that there are no more than %(max)s digit in total."
-msgid_plural "Ensure that there are no more than %(max)s digits in total."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:439
-#, python-format
-msgid "Ensure that there are no more than %(max)s decimal place."
-msgid_plural "Ensure that there are no more than %(max)s decimal places."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:444
-#, python-format
-msgid ""
-"Ensure that there are no more than %(max)s digit before the decimal point."
-msgid_plural ""
-"Ensure that there are no more than %(max)s digits before the decimal point."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:506
-#, python-format
-msgid ""
-"File extension “%(extension)s” is not allowed. Allowed extensions are: %"
-"(allowed_extensions)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\core\validators.py:559
-msgid "Null characters are not allowed."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\base.py:1197
-#: .\venv\Lib\site-packages\django\forms\models.py:768
-msgid "and"
-msgstr "و"
-
-#: .\venv\Lib\site-packages\django\db\models\base.py:1199
-#, python-format
-msgid "%(model_name)s with this %(field_labels)s already exists."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:100
-#, python-format
-msgid "Value %(value)r is not a valid choice."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:101
-msgid "This field cannot be null."
-msgstr "این فیلد الزامی است"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:102
-msgid "This field cannot be blank."
-msgstr "این فیلد نمیتواند خالی باشد"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:103
-#, python-format
-msgid "%(model_name)s with this %(field_label)s already exists."
-msgstr ""
-
-#. Translators: The 'lookup_type' is one of 'date', 'year' or 'month'.
-#. Eg: "Title must be unique for pub_date year"
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:107
-#, python-format
-msgid ""
-"%(field_label)s must be unique for %(date_field_label)s %(lookup_type)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:126
-#, python-format
-msgid "Field of type: %(field_type)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:958
-#, python-format
-msgid "“%(value)s” value must be either True or False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:959
-#, python-format
-msgid "“%(value)s” value must be either True, False, or None."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:961
-msgid "Boolean (Either True or False)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1002
-#, python-format
-msgid "String (up to %(max_length)s)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1096
-msgid "Comma-separated integers"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1145
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid date format. It must be in YYYY-MM-DD "
-"format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1147
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1290
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD) but it is an invalid "
-"date."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1150
-msgid "Date (without time)"
-msgstr "تاریخ"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1288
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1292
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1296
-msgid "Date (with time)"
-msgstr "تاریخ با زمان"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1444
-#, python-format
-msgid "“%(value)s” value must be a decimal number."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1446
-msgid "Decimal number"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1585
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1588
-msgid "Duration"
-msgstr "بازه زمانی"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1638
-msgid "Email address"
-msgstr "آدرس ایمیل"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1661
-msgid "File path"
-msgstr "آدرس فایل"
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1727
-#, python-format
-msgid "“%(value)s” value must be a float."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1729
-msgid "Floating point number"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1767
-#, python-format
-msgid "“%(value)s” value must be an integer."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1769
-msgid "Integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1852
-msgid "Big (8 byte) integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1867
-msgid "Small integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1875
-msgid "IPv4 address"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1906
-msgid "IP address"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1986
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1987
-#, python-format
-msgid "“%(value)s” value must be either None, True or False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:1989
-msgid "Boolean (Either True, False or None)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2043
-msgid "Positive big integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2056
-msgid "Positive integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2069
-msgid "Positive small integer"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2083
-#, python-format
-msgid "Slug (up to %(max_length)s)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2115
-msgid "Text"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2181
-#, python-format
-msgid ""
-"“%(value)s” value has an invalid format. It must be in HH:MM[:ss[.uuuuuu]] "
-"format."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2183
-#, python-format
-msgid ""
-"“%(value)s” value has the correct format (HH:MM[:ss[.uuuuuu]]) but it is an "
-"invalid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2312
-msgid "URL"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2334
-msgid "Raw binary data"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2399
-#, python-format
-msgid "“%(value)s” is not a valid UUID."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\__init__.py:2401
-msgid "Universally unique identifier"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\files.py:375
-msgid "Image"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\json.py:18
-msgid "A JSON object"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\json.py:20
-msgid "Value must be valid JSON."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:790
-#, python-format
-msgid "%(model)s instance with %(field)s %(value)r does not exist."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:792
-msgid "Foreign Key (type determined by related field)"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1045
-msgid "One-to-one relationship"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1099
-#, python-format
-msgid "%(from)s-%(to)s relationship"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1100
-#, python-format
-msgid "%(from)s-%(to)s relationships"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\db\models\fields\related.py:1142
-msgid "Many-to-many relationship"
-msgstr ""
-
-#. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
-#: .\venv\Lib\site-packages\django\forms\boundfield.py:150
-msgid ":?.!"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:54
-msgid "This field is required."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:247
-msgid "Enter a whole number."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:391
-#: .\venv\Lib\site-packages\django\forms\fields.py:1132
-msgid "Enter a valid date."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:415
-#: .\venv\Lib\site-packages\django\forms\fields.py:1133
-msgid "Enter a valid time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:443
-msgid "Enter a valid date/time."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:477
-msgid "Enter a valid duration."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:478
-msgid "The number of days must be between {min_days} and {max_days}."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:538
-msgid "No file was submitted. Check the encoding type on the form."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:539
-msgid "No file was submitted."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:540
-msgid "The submitted file is empty."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:542
-#, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
-msgid_plural ""
-"Ensure this filename has at most %(max)d characters (it has %(length)d)."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:545
-msgid "Please either submit a file or check the clear checkbox, not both."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:606
-msgid ""
-"Upload a valid image. The file you uploaded was either not an image or a "
-"corrupted image."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:768
-#: .\venv\Lib\site-packages\django\forms\fields.py:858
-#: .\venv\Lib\site-packages\django\forms\models.py:1309
-#, python-format
-msgid "Select a valid choice. %(value)s is not one of the available choices."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:859
-#: .\venv\Lib\site-packages\django\forms\fields.py:974
-#: .\venv\Lib\site-packages\django\forms\models.py:1308
-msgid "Enter a list of values."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:975
-msgid "Enter a complete value."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:1191
-msgid "Enter a valid UUID."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\fields.py:1221
-msgid "Enter a valid JSON."
-msgstr ""
-
-#. Translators: This is the default suffix added to form field labels
-#: .\venv\Lib\site-packages\django\forms\forms.py:76
-msgid ":"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\forms.py:203
-#, python-format
-msgid "(Hidden field %(name)s) %(error)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:61
-#, python-format
-msgid ""
-"ManagementForm data is missing or has been tampered with. Missing fields: %"
-"(field_names)s. You may need to file a bug report if the issue persists."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:370
-#, python-format
-msgid "Please submit at most %d form."
-msgid_plural "Please submit at most %d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:377
-#, python-format
-msgid "Please submit at least %d form."
-msgid_plural "Please submit at least %d forms."
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\forms\formsets.py:405
-#: .\venv\Lib\site-packages\django\forms\formsets.py:412
-msgid "Order"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:763
-#, python-format
-msgid "Please correct the duplicate data for %(field)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:767
-#, python-format
-msgid "Please correct the duplicate data for %(field)s, which must be unique."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:773
-#, python-format
-msgid ""
-"Please correct the duplicate data for %(field_name)s which must be unique "
-"for the %(lookup)s in %(date_field)s."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:782
-msgid "Please correct the duplicate values below."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1109
-msgid "The inline value did not match the parent instance."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1193
-msgid "Select a valid choice. That choice is not one of the available choices."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\models.py:1311
-#, python-format
-msgid "“%(pk)s” is not a valid value."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\utils.py:172
-#, python-format
-msgid ""
-"%(datetime)s couldn’t be interpreted in time zone %(current_timezone)s; it "
-"may be ambiguous or it may not exist."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:403
-msgid "Clear"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:404
-msgid "Currently"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:405
-msgid "Change"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:714
-msgid "Unknown"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:715
-msgid "Yes"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\forms\widgets.py:716
-msgid "No"
-msgstr ""
-
-#. Translators: Please do not add spaces around commas.
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:805
-msgid "yes,no,maybe"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:834
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:851
-#, python-format
-msgid "%(size)d byte"
-msgid_plural "%(size)d bytes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:853
-#, python-format
-msgid "%s KB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:855
-#, python-format
-msgid "%s MB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:857
-#, python-format
-msgid "%s GB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:859
-#, python-format
-msgid "%s TB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\template\defaultfilters.py:861
-#, python-format
-msgid "%s PB"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:66
-msgid "p.m."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:67
-msgid "a.m."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:72
-msgid "PM"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:73
-msgid "AM"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:146
-msgid "midnight"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dateformat.py:148
-msgid "noon"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:6
-msgid "Monday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:6
-msgid "Tuesday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:6
-msgid "Wednesday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:6
-msgid "Thursday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:6
-msgid "Friday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:7
-msgid "Saturday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:7
-msgid "Sunday"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Mon"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Tue"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Wed"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Thu"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:10
-msgid "Fri"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:11
-msgid "Sat"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:11
-msgid "Sun"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "January"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "February"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:14
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:15
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:15
-msgid "August"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:15
-msgid "September"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:15
-msgid "October"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:15
-msgid "November"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:16
-msgid "December"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "jan"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "feb"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "mar"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "apr"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "may"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:19
-msgid "jun"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "jul"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "aug"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "sep"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "oct"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "nov"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:20
-msgid "dec"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:23
-msgctxt "abbrev. month"
-msgid "Jan."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:24
-msgctxt "abbrev. month"
-msgid "Feb."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:25
-msgctxt "abbrev. month"
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:26
-msgctxt "abbrev. month"
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:27
-msgctxt "abbrev. month"
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:28
-msgctxt "abbrev. month"
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:29
-msgctxt "abbrev. month"
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:30
-msgctxt "abbrev. month"
-msgid "Aug."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:31
-msgctxt "abbrev. month"
-msgid "Sept."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:32
-msgctxt "abbrev. month"
-msgid "Oct."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:33
-msgctxt "abbrev. month"
-msgid "Nov."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:34
-msgctxt "abbrev. month"
-msgid "Dec."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:37
-msgctxt "alt. month"
-msgid "January"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:38
-msgctxt "alt. month"
-msgid "February"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:39
-msgctxt "alt. month"
-msgid "March"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:40
-msgctxt "alt. month"
-msgid "April"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:41
-msgctxt "alt. month"
-msgid "May"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:42
-msgctxt "alt. month"
-msgid "June"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:43
-msgctxt "alt. month"
-msgid "July"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:44
-msgctxt "alt. month"
-msgid "August"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:45
-msgctxt "alt. month"
-msgid "September"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:46
-msgctxt "alt. month"
-msgid "October"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:47
-msgctxt "alt. month"
-msgid "November"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\dates.py:48
-msgctxt "alt. month"
-msgid "December"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\ipv6.py:8
-msgid "This is not a valid IPv6 address."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\text.py:71
-#, python-format
-msgctxt "String to return when truncating text"
-msgid "%(truncated_text)s…"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\text.py:240
-msgid "or"
-msgstr ""
-
-#. Translators: This string is used as a separator between list elements
-#: .\venv\Lib\site-packages\django\utils\text.py:259
-#: .\venv\Lib\site-packages\django\utils\timesince.py:94
-msgid ", "
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:9
-#, python-format
-msgid "%d year"
-msgid_plural "%d years"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:10
-#, python-format
-msgid "%d month"
-msgid_plural "%d months"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:11
-#, python-format
-msgid "%d week"
-msgid_plural "%d weeks"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:12
-#, python-format
-msgid "%d day"
-msgid_plural "%d days"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:13
-#, python-format
-msgid "%d hour"
-msgid_plural "%d hours"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\timesince.py:14
-#, python-format
-msgid "%d minute"
-msgid_plural "%d minutes"
-msgstr[0] ""
-msgstr[1] ""
-
-#: .\venv\Lib\site-packages\django\utils\translation\__init__.py:329
-msgid "name"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:110
-msgid "Forbidden"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:111
-msgid "CSRF verification failed. Request aborted."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:115
-msgid ""
-"You are seeing this message because this HTTPS site requires a “Referer "
-"header” to be sent by your Web browser, but none was sent. This header is "
-"required for security reasons, to ensure that your browser is not being "
-"hijacked by third parties."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:120
-msgid ""
-"If you have configured your browser to disable “Referer” headers, please re-"
-"enable them, at least for this site, or for HTTPS connections, or for “same-"
-"origin” requests."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:124
-msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a rel=\"noreferrer"
-"\" …> for links to third-party sites."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:132
-msgid ""
-"You are seeing this message because this site requires a CSRF cookie when "
-"submitting forms. This cookie is required for security reasons, to ensure "
-"that your browser is not being hijacked by third parties."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:137
-msgid ""
-"If you have configured your browser to disable cookies, please re-enable "
-"them, at least for this site, or for “same-origin” requests."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\csrf.py:142
-msgid "More information is available with DEBUG=True."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:41
-msgid "No year specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:61
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:111
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:208
-msgid "Date out of range"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:90
-msgid "No month specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:142
-msgid "No day specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:188
-msgid "No week specified"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:338
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:367
-#, python-format
-msgid "No %(verbose_name_plural)s available"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:594
-#, python-format
-msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\dates.py:628
-#, python-format
-msgid "Invalid date string “%(datestr)s” given format “%(format)s”"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\detail.py:54
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:67
-msgid "Page is not “last”, nor can it be converted to an int."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:72
-#, python-format
-msgid "Invalid page (%(page_number)s): %(message)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\generic\list.py:154
-#, python-format
-msgid "Empty list and “%(class_name)s.allow_empty” is False."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:40
-msgid "Directory indexes are not allowed here."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:42
-#, python-format
-msgid "“%(path)s” does not exist"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\static.py:80
-#, python-format
-msgid "Index of %(directory)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:7
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:221
-msgid "The install worked successfully! Congratulations!"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:207
-#, python-format
-msgid ""
-"View <a href=\"https://docs.djangoproject.com/en/%(version)s/releases/\" "
-"target=\"_blank\" rel=\"noopener\">release notes</a> for Django %(version)s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:222
-#, python-format
-msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" rel=\"noopener"
-"\">DEBUG=True</a> is in your settings file and you have not configured any "
-"URLs."
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:230
-msgid "Django Documentation"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:231
-msgid "Topics, references, &amp; how-to’s"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:239
-msgid "Tutorial: A Polling App"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:240
-msgid "Get started with Django"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:248
-msgid "Django Community"
-msgstr ""
-
-#: .\venv\Lib\site-packages\django\views\templates\default_urlconf.html:249
-msgid "Connect, get help, or contribute"
-msgstr ""
+#~ msgid "File path"
+#~ msgstr "آدرس فایل"
 
 #~ msgid "کد"
 #~ msgstr "کد"

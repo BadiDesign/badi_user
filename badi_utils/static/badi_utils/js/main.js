@@ -484,8 +484,8 @@ $('form a').click(function (e) {
         $(this).addClass('spinner spinner-white spinner-right');
 });
 
-$('form input[required]:not([type="checkbox"]):not([type="hidden"]):not([type="hidden"]),form select[required],form textarea[required]').parent().append(`<span class="form-text d-none text-muted"> الزامی </span>`);
-$('form input:not([type="checkbox"]):not(:required):not([type="hidden"]),form select:not(:required),form textarea:not(:required)').parent().append(`<span class="form-text d-none text-muted"> اختیاری </span>`);
+$('form input[required]:not([type="checkbox"]):not([type="hidden"]):not([type="hidden"]),form select[required],form textarea[required]').parent().append(`<span class="form-text d-none text-muted"> ${window['BADI_CONFIG']['required_text']} </span>`);
+$('form input:not([type="checkbox"]):not(:required):not([type="hidden"]),form select:not(:required),form textarea:not(:required)').parent().append(`<span class="form-text d-none text-muted"> ${window['BADI_CONFIG']['optional_text']} </span>`);
 $('.no-form-text span.form-text.text-muted').remove();
 $('span.form-text.text-muted').removeClass('d-none');
 const toastrFireError = (desc = 'مشکلی پیش آمده است.') => {
@@ -765,3 +765,18 @@ const copyText = (value) => {
     if (result)
         toastrFireSuccess('به کلیپ بورد کپی شد')
 }
+
+
+$('input[type="password"]').parent().find('label').append(`<span data-toggle="hide" class="mr-2 toggle-password-input font-size-sm"><i class="fa text-info fa-eye-slash"></i></span>`)
+$('.toggle-password-input').click(function () {
+    const state = $(this).attr('data-toggle')
+    if (state === 'hide') {
+        $(this).html(`<i class="fa text-info fa-eye"></i>`)
+        $(this).attr('data-toggle', 'show')
+        $(this).parent().parent().find('input').attr('type', 'text')
+    } else {
+        $(this).html(`<i class="fa text-info fa-eye-slash"></i>`)
+        $(this).attr('data-toggle', 'hide')
+        $(this).parent().parent().find('input').attr('type', 'password')
+    }
+})

@@ -1,8 +1,10 @@
 {% load static %}
 {% load appfilter %}
 {% load i18n %}
-
-<html lang="en" direction="ltr" style="direction: ltr;"><!--begin::Head-->
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+<html lang="{{ lang.code }}" direction="{% if lang.code == 'en' %}ltr{% else %}rtl{% endif %}"
+	  style="direction: {% if lang.code == 'en' %}ltr{% else %}rtl{% endif %};">
 <head>
 	<!-- Google Tag Manager -->
 	<!-- End Google Tag Manager -->
@@ -30,6 +32,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<!--begin::Page Custom Styles(used by this page)-->
 	<link href="{% static 'assets/css/pages/login/login-2.css' %}" rel="stylesheet" type="text/css">
+	<link href="{% static 'custom/css/style.css' %}" rel="stylesheet" type="text/css">
 	<!--end::Page Custom Styles-->
 	<!--begin::Global Theme Styles(used by all pages)-->
 	<link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
@@ -109,7 +112,8 @@
 		</div>
 		<!--begin::Aside-->
 		<!--begin::Content-->
-		<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0" style="background-color: var(--sec-primary);">
+		<div class="content order-1 order-lg-2 d-flex flex-column w-100 pb-0"
+			 style="background-color: var(--sec-primary);">
 			<!--begin::Title-->
 			<div class="d-flex flex-column justify-content-center text-center pt-lg-10 pt-md-5 pt-sm-5 px-lg-0 pt-5 px-7">
 				<h3 class="display4 font-weight-bolder mb-5 text-primary">{% get_text 'site_title' %}</h3>
@@ -135,6 +139,17 @@
 <script src="{% static 'assets/js/scripts.bundle.js' %}"></script>
 <!--end::Global Theme Bundle-->
 <!--begin::Page Scripts(used by this page)-->
+<script>
+    {% for message in messages %}
+        toastr.error('{{ message }}')
+    {% endfor %}
+    window['BADI_CONFIG'] = {
+        currency_append: '{% trans "$" %}',
+        price_text: '{% trans "$" %}',
+        required_text: '{% trans "Required" %}',
+        optional_text: '{% trans "Optional" %}',
+    }
+</script>
 <script src="{% static 'badi_utils/js/main.js' %}"></script>
 <script src="{% static 'badi_utils/js/api.js' %}"></script>
 <script src="{% static 'assets/js/pages/custom/login/login-general.js' %}"></script>
