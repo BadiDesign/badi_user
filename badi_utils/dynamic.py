@@ -277,7 +277,7 @@ def dynamic_form(model_class, get_fields=None, form_fields_config=None, just_dat
                 self.fields[field].required = required[key]
                 self.fields[field].widget.attrs = classes[key]
                 self.fields[field].widget.attrs['placeholder'] = CONFIG_JSON.get('placeholder_text', '#'). \
-                    replace('#', labels[key])
+                    replace('#', str(labels[key]))
 
     return ModelFormCreator
 
