@@ -5,8 +5,11 @@ from django.forms.models import ModelForm
 
 from badi_utils.dynamic import dynamic_form
 from django.contrib.auth import get_user_model
+from django.conf import settings
 
 User = get_user_model()
+
+CONFIG_JSON = getattr(settings, "CONFIG_JSON", {})
 
 
 def user_form(fields=None, update=False):
@@ -25,7 +28,8 @@ def user_form(fields=None, update=False):
                 self.fields[field].label = form_config.get('labels')[key]
                 self.fields[field].required = form_config.get('required')[key]
                 self.fields[field].widget.attrs = form_config.get('classes')[key]
-                self.fields[field].widget.attrs['placeholder'] = form_config.get('labels')[key] + ' را وارد کنید ...'
+                self.fields[field].widget.attrs['placeholder'] = CONFIG_JSON.get('placeholder_text', '#'). \
+                    replace('#', form_config.get('labels')[key])
 
         def clean_password(self):
             return make_password(self.cleaned_data['password'])

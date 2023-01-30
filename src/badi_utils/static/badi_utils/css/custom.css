@@ -1175,8 +1175,8 @@ table.table-custom-border th:not(:last-child)::after, table.table-custom-border 
     bottom: 0 !important;
     border-right: 1px solid #DCDFE6;
 }
-html[dir=ltr] table.table-custom-border th:not(:first-child)::after,html[dir=ltr]  table.table-custom-border td:not(:first-child)::after {
-    left: 0 !important;
+html[dir=ltr] table.table-custom-border th:not(:last-child)::after,html[dir=ltr]  table.table-custom-border td:not(:last-child)::after {
+    right: 0 !important;
 }
 html[dir=rtl] table.table-custom-border th:not(:last-child)::after,html[dir=rtl]  table.table-custom-border td:not(:last-child)::after {
     left: 0 !important;

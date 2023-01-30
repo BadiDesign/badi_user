@@ -14,8 +14,11 @@ from .date_calc import custom_change_date
 from .logging import log
 from .utils import LoginRequiredMixin, CustomPermissionRequiredMixin
 from django.utils.translation import gettext_lazy as _
+from django.conf import settings
 
 DISABLE_FORM_SUBMIT = getattr(settings, "DISABLE_FORM_SUBMIT", True)
+
+CONFIG_JSON = getattr(settings, "CONFIG_JSON", {})
 
 
 def get_model_api_url(model: Model, view):
@@ -273,7 +276,8 @@ def dynamic_form(model_class, get_fields=None, form_fields_config=None, just_dat
                 self.fields[field].label = labels[key]
                 self.fields[field].required = required[key]
                 self.fields[field].widget.attrs = classes[key]
-                self.fields[field].widget.attrs['placeholder'] = labels[key] + ' را وارد کنید ...'
+                self.fields[field].widget.attrs['placeholder'] = CONFIG_JSON.get('placeholder_text', '#'). \
+                    replace('#', labels[key])
 
     return ModelFormCreator
 

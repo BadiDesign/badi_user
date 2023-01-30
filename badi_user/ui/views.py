@@ -17,7 +17,7 @@ User = get_user_model()
 
 class UserListView(DynamicListView):
     model = User
-    datatable_cols = ['#', '', 'شماره تماس', 'مدیر', 'فعال', ]
+    datatable_cols = User.get_datatable_cols('UserListView')
 
     def get_extra_context(self, context):
         context['filters'] = UserListFilter(self.request.POST)
