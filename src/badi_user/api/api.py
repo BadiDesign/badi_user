@@ -460,19 +460,32 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
 
 
 class GroupViewSet(DynamicModelApi):
-    columns = ['id', 'name']
-    order_columns = ['id', 'name']
+    columns = ['id', 'name', 'permissions']
+    order_columns = ['id', 'name', 'permissions']
     model = Group
     serializer_class = GroupSerializer
     queryset = Group.objects.all()
     custom_perms = {
-        'datatable': 'can_manage_user'
+        'datatable': 'user.can_user',
+        'update': 'user.can_user',
+        'create': 'user.can_user',
+        'retrieve': 'user.can_user',
+        'destroy': 'user.can_user',
+        'change_state': 'user.can_user',
     }
 
     @action(methods=['get'], detail=False)
     def permissions(self, request, *args, **kwargs):
         perms = permissions_json()
-        return Response(perms)
+        response = {}
+        for key, value in perms.items():
+            response[str(key)] = value
+        return Response(response)
+
+    def render_column(self, row, column):
+        if column == 'permissions':
+            return ' - '.join([x.name for x in row.permissions.all()])
+        return super().render_column(row, column)
 
 
 class MemberViewSet(DynamicModelApi):

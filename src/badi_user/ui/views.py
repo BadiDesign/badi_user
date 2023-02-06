@@ -26,8 +26,7 @@ class UserListView(DynamicListView):
 
 class UserCreateView(DynamicCreateView):
     model = User
-    form = user_form(
-        ['username', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', ])
+    form = user_form(model().get_form_fields('user_create'))
     datatableEnable = False
 
     def get_extra_context(self, context):
@@ -37,9 +36,7 @@ class UserCreateView(DynamicCreateView):
 
 class UserUpdateView(DynamicUpdateView):
     model = User
-    form = user_form(
-        ['username', 'picture', 'password', 'first_name', 'last_name', 'is_admin', 'mobile_number', 'email', ],
-        update=True)
+    form = user_form(model().get_form_fields('user_update'), update=True)
     success_url = '/user/list'
 
 

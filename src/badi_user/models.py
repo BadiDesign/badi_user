@@ -1,5 +1,7 @@
 from datetime import timedelta, datetime
 
+from django_resized import ResizedImageField
+
 from badi_utils.dynamic_models import BadiModel
 from django.contrib.auth.models import AbstractUser
 from django.core.validators import MaxLengthValidator
@@ -32,14 +34,15 @@ class User(AbstractUser, BadiModel):
         verbose_name = _('User')
         verbose_name_plural = _('Users')
         permissions = (
-            ('can_user', _('Manage users')),
-            ('can_member', _('Manage members')),
+            ('can_user', _("Manage") + ' ' + _(verbose_name)),
+            ('can_member', _("Manage") + ' ' + _("Member")),
         )
 
     is_admin = models.BooleanField(default=False, verbose_name=_('is admin'))
     mobile_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Mobile Number'))
     birth_date = models.DateField(verbose_name=_('Birth Date'), null=True)
-    picture = models.ImageField(null=True, verbose_name=_('Picture'), upload_to='public/user', blank=True)
+    picture = ResizedImageField(quality=99, size=[450, 450], blank=True, null=True, upload_to='public/user/',
+                                force_format="WEBP")
     token = models.ForeignKey(Token, null=True, blank=True, verbose_name=_('Token'), related_name='user',
                               on_delete=models.SET_NULL)
     amount = models.BigIntegerField(default=0, blank=True, verbose_name=_('Amount'))
@@ -82,8 +85,8 @@ class User(AbstractUser, BadiModel):
     @classmethod
     def get_datatable_cols(cls, class_name, *args):
         if class_name == 'MemberListView':
-            return ['#', _("Select"), _("Picture"), _("Username"), _("FirstName"), _("LastName"), _("Amount")]
-        return ['first_name', 'last_name', 'mobile_number', 'picture']
+            return ['#', _("Select"), _(""), _("Username"), _("FirstName"), _("LastName"), _("Amount")]
+        return [_("FirstName"), _("LastName"), _("Mobile Number"), _("Picture")]
 
     @staticmethod
     def get_api_url(view):
@@ -96,14 +99,14 @@ class Notification(models.Model):
         verbose_name = _('Notification')
         verbose_name_plural = _('Notifications')
         permissions = (
-            ('can_notification', _('مدیرت Notifications')),
+            ('can_notification', _("Manage") + ' ' + _(verbose_name)),
         )
 
-    user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE, verbose_name=_('کاربر'))
-    subject = models.CharField(max_length=255, verbose_name=_('موضوع'))
-    text = models.TextField(verbose_name=_('متن'))
-    show_date = models.DateField(verbose_name=_('نمایش اعلان از تاریخ'))
-    is_seen = models.BooleanField(default=False, verbose_name=_('خوانده شده'))
+    user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE, verbose_name=_('User'))
+    subject = models.CharField(max_length=255, verbose_name=_('Subject'))
+    text = models.TextField(verbose_name=_('Text'))
+    show_date = models.DateField(verbose_name=_('Show Date'))
+    is_seen = models.BooleanField(default=False, verbose_name=_('Is Seen'))
 
     def __str__(self):
         return "{0} - {1}".format(self.subject, self.user)
@@ -114,7 +117,7 @@ class Log(models.Model):
         verbose_name = _('Log')
         verbose_name_plural = _('Logs')
         permissions = (
-            ('can_log', _('Manage Logs')),
+            ('can_log', _("Manage") + ' ' + _(verbose_name)),
         )
         ordering = ['-pk']
 

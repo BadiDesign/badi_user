@@ -306,6 +306,7 @@ function switch_ajax(url, pk, table) {
         url: url,
         pk,
         method: 'PUT',
+        success_message: false,
         success: function (result) {
             swalFireSuccess(result.message);
             table.draw()

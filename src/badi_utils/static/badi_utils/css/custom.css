@@ -1184,6 +1184,7 @@ html[dir=rtl] table.table-custom-border th:not(:last-child)::after,html[dir=rtl]
 
 html[dir="ltr"] table.table-thead-primary.table-custom-border thead th:not(:last-child):after, table.table-custom-border thead td:not(:last-child):after {
     border-right: 1px solid #A1A5B7;
+    right: 0;
 }
 html[dir="rtl"] table.table-thead-primary.table-custom-border thead th:not(:last-child):after, table.table-custom-border thead td:not(:last-child):after {
     border-right: 1px solid #A1A5B7;

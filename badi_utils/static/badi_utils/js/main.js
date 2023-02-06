@@ -177,11 +177,11 @@ const swalDelete = {
     confirmButtonText: 'بله! حذفش کن',
     cancelButtonText: 'لغو'
 };
-const swalFireError = (desc = 'مشکلی پیش آمده است.') => {
-    swal.fire('خطا', desc, 'error');
+const swalFireError = (desc = window['BADI_CONFIG']['error_happened']) => {
+    swal.fire(window['BADI_CONFIG']['failed_message'], desc, 'error');
 };
-const swalFireSuccess = (desc = 'با موفقیت انجام شد.') => {
-    swal.fire('انجام شد!', desc, 'success');
+const swalFireSuccess = (desc = window['BADI_CONFIG']['done_successfully']) => {
+    swal.fire(window['BADI_CONFIG']['done_message'], desc, 'success');
 };
 const swalFireLoading = (title = 'درحال دریافت اطلاعات...', html = "لطفا منتظر بمانید") => {
     Swal.fire({
