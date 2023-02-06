@@ -4,6 +4,7 @@ from django import template
 from django.conf import settings
 from django.utils.text import slugify
 
+from badi_ticket.models import Ticket
 from badi_utils.date_calc import custom_change_date, gregorian_to_jalali
 from random import shuffle
 
@@ -152,8 +153,6 @@ def my_info(context):
     return {
         'unread_messages': Ticket.unread_messages_of(user),
         'amount': user.amount,
-        'posts': user.posts.count(),
-        'freeposters': user.freeposters.count(),
     }
 
 
@@ -178,3 +177,45 @@ def is_filled_profile(context):
 @register.simple_tag()
 def get_text(index):
     return CONFIG_JSON.get(index) if CONFIG_JSON.get(index) else '---'
+
+
+@register.simple_tag(takes_context=True)
+def last_activities(context):
+    user = context.request.user
+    if user.is_authenticated:
+        return user.logs.all()[:10]
+    return []
+
+
+@register.filter()
+def get_log_icon(log):
+    if log.title == "Custom":
+        return "fa-info"
+    if log.title == "Login":
+        return "fa-arrow-down"
+    if log.title == "LogOut":
+        return "fa-arrow-up"
+    if log.title == "Insert":
+        return "fa-plus"
+    if log.title == "Edit":
+        return "fa-pen"
+    if log.title == "Remove":
+        return "fa-trash"
+    return 'fa-info'
+
+
+@register.filter()
+def get_log_color(log):
+    if log.title == "Custom":
+        return "info"
+    if log.title == "Login":
+        return "success"
+    if log.title == "LogOut":
+        return "info"
+    if log.title == "Insert":
+        return "primary"
+    if log.title == "Edit":
+        return "warning"
+    if log.title == "Remove":
+        return "danger"
+    return 'fa-info'

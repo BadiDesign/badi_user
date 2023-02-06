@@ -244,3 +244,4 @@ BADI_AUTH_CONFIG = {
 LOG_MODEL = "badi_user.Log"
 BANK_TRANSACTION_MODEL = "badi_user.Log"
 TRANSACTION_MODEL = "badi_user.Log"
+SITE_ID = 1

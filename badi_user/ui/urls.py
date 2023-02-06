@@ -1,4 +1,7 @@
+from badi_user.models import Notification
 from badi_user.ui.log_views import LogListView
+from badi_user.ui.notification_views import *
+from badi_user.ui.roles_views import *
 from badi_utils.dynamic import *
 from badi_user.ui.member_views import *
 from badi_user.ui.views import *
@@ -20,4 +23,10 @@ urlpatterns = [
     path('member/update/self', MemberSelfUpdateView.as_view(), name='member_self'),
     path('log/list', LogListView.as_view(), name='log_list'),
     path('edit', MemberSelfUpdateView.as_view(), name='edit_self'),
+
+    generate_url(Notification(), create=NotificationCreateView),
+    generate_url(Notification(), list=NotificationListView),
+    path('group/create', RoleCreateView.as_view(), name='role_create'),
+    path('group/update/<int:pk>', RoleUpdateView.as_view(), name='role_update'),
+
 ]
