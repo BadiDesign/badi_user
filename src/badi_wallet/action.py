@@ -20,6 +20,7 @@ ZP_API_REQUEST = ZP_CONFIG.get("ZP_API_REQUEST", "https://api.zarinpal.com/pg/v4
 ZP_API_VERIFY = ZP_CONFIG.get("ZP_API_VERIFY", "https://api.zarinpal.com/pg/v4/payment/verify.json")
 ZP_API_STARTPAY = ZP_CONFIG.get("ZP_API_STARTPAY", "https://www.zarinpal.com/pg/StartPay/{authority}")
 CallbackURL = ZP_CONFIG.get("CallbackURL", '/dashboard/wallet/zp_verify')
+BaseUrl = ZP_CONFIG.get("BaseUrl", 'https://BadiDesign.ir')
 # SiteUrl = ZP_CONFIG.get(Site.objects.last().domain, '/dashboard/wallet/zp_verify')
 
 
@@ -27,10 +28,11 @@ class ZPBankAction:
     bankError = _("The operation encountered an error. Please try again."
                   " If the amount is deducted from your account, it will be returned to your account within 72 hours.")
 
-    def send_request(self, request, amount, mobile='', email=''):
-        description = ' شارژ حساب کاربری ' + request.user.get_full_name()
+    def send_request(self, request, amount, info='', mobile='', email='', description=None):
+        if not description:
+            description = ' شارژ حساب کاربری ' + request.user.get_full_name()
         baseUrl = request._request.META.get('HTTP_ORIGIN') if request._request.META.get(
-            'HTTP_ORIGIN') else 'https://iscconferences.ir/'
+            'HTTP_ORIGIN') else BaseUrl
         amount = int(amount) * 10
         if amount < 10000:
             raise CustomValidation('amount', 'حداقل مبلغ قابل شارژ 10,000 تومان می باشد')
@@ -57,6 +59,7 @@ class ZPBankAction:
                 description=description,
                 is_verified=False,
                 ref_id=None,
+                info=info,
                 user=request.user,
                 amount=amount,
                 data=str(req_json)
@@ -93,15 +96,7 @@ class ZPBankAction:
                     trans.ref_id = req.json()['data']['ref_id']
                     trans.save()
                     if not Transaction.objects.filter(bank_transaction=trans).first():
-                        transAction = Transaction(
-                            user=trans.user,
-                            amount=trans.amount,
-                            type='1',
-                            subject='شارژ حساب کاربری',
-                            bank_transaction=trans,
-                        )
-                        transAction.save()
-                        trans.user.amount += trans.amount
+                        trans.user.success_transaction(trans, req.json())
                         trans.user.save()
                     return ResponseOk({
                         'ref_id': req.json()['data']['ref_id']
@@ -151,12 +146,12 @@ class ZPBankAction:
                         transAction = Transaction(
                             user=trans.user,
                             amount=trans.amount,
-                            type='1',
+                            type='+',
                             subject=_("Charge"),
                             bank_transaction=trans,
                         )
                         transAction.save()
-                        trans.user.amount += trans.amount
+                        trans.user.success_transaction(trans, req.json())
                         trans.card_hash = req.json()['data']['card_pan']
                         trans.ref_id = req.json()['data']['ref_id']
                         trans.user.save()
@@ -175,7 +170,7 @@ class ZPBankAction:
                     trans.save()
                     return render(request, 'transaction/transaction_result.html', {
                         'state': False,
-                        'error': req.json()['errors']['message']})
+                        'error': req.json()['errors']['message'] if req.json()['errors'] else []})
                 else:
                     return render(request, 'transaction/transaction_result.html', {
                         'state': False,

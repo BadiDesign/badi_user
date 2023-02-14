@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
+from django.shortcuts import render
 from django.urls import path, include
 from django.conf.urls.static import static
 from django.contrib import admin
@@ -21,9 +22,15 @@ from django.urls import path, include
 from rest_framework_simplejwt import views as jwt_views
 from badi_users_project import settings
 
+
+def index_view(req):
+    return render(req, 'index.html')
+
+
 # handler404 = 'badi_utils.views.my_custom_page_not_found_view'
 urlpatterns = [
                   path('admin/', admin.site.urls),
+                  path('', index_view),
                   path('', include('badi_user.ui.urls')),
                   path('', include('badi_ticket.urls')),
                   path('', include('badi_wallet.ui.urls')),

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-28 12:50+0330\n"
+"POT-Creation-Date: 2023-02-11 19:20+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,9 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\badi_user\api\api.py:172
-msgid "Code sent to "
+#: .\badi_user\api\api.py:172 .\badi_user\api\api.py:256
+#, fuzzy
+#| msgid "Code sent to "
+msgid "Code sent"
 msgstr "کد ارسال شد به"
+
+#: .\badi_user\api\api.py:172
+msgid "to"
+msgstr ""
 
 #: .\badi_user\api\api.py:226 .\badi_user\api\api.py:236
 msgid "This mobile number already registered"
@@ -38,158 +44,161 @@ msgstr "این نام کاربری قبلا ثبت شده است"
 msgid "You request code recently, please try again later"
 msgstr "شما به تازگی درخواست کد داده اید! لطفا بعدا تلاش کنید"
 
-#: .\badi_user\api\api.py:256
-#, fuzzy
-#| msgid "Code sent to "
-msgid "Code sent"
-msgstr "کد ارسال شد به"
-
 #: .\badi_user\api\api.py:278
 #, fuzzy
 #| msgid "Invalid username"
 msgid "Invalid Code!"
 msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_user\models.py:11
+#: .\badi_user\models.py:13
 msgid "code"
 msgstr "کد"
 
-#: .\badi_user\models.py:32 .\badi_user\models.py:123
-#: .\badi_user\models.py:138 .\badi_user\templates\user\user_update.html:119
+#: .\badi_user\models.py:34 .\badi_user\models.py:105
+#: .\badi_user\models.py:126 .\badi_user\models.py:141
+#: .\badi_user\templates\user\user_update.html:119
 msgid "User"
 msgstr "کاربر"
 
-#: .\badi_user\models.py:33
+#: .\badi_user\models.py:35
 #, fuzzy
 #| msgid "User"
 msgid "Users"
 msgstr "کاربر"
 
-#: .\badi_user\models.py:35
+#: .\badi_user\models.py:37 .\badi_user\models.py:38 .\badi_user\models.py:102
+#: .\badi_user\models.py:120
 #, fuzzy
 #| msgid "Manage Tickets"
-msgid "Manage users"
+msgid "Manage"
 msgstr "مدیریت تیکت ها"
 
-#: .\badi_user\models.py:36
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage members"
-msgstr "مدیریت تیکت ها"
+#: .\badi_user\models.py:38 .\badi_user\templates\member\member_list.html:55
+#: .\badi_user\ui\member_views.py:12 .\badi_user\ui\member_views.py:23
+#: .\badi_user\ui\member_views.py:36 .\badi_user\ui\member_views.py:44
+msgid "Member"
+msgstr "عضو"
 
-#: .\badi_user\models.py:39
+#: .\badi_user\models.py:41
 msgid "is admin"
 msgstr "مدیر"
 
-#: .\badi_user\models.py:40
+#: .\badi_user\models.py:42 .\badi_user\models.py:89
 msgid "Mobile Number"
 msgstr "شماره تماس"
 
-#: .\badi_user\models.py:41
+#: .\badi_user\models.py:43
 msgid "Birth Date"
 msgstr "تاریخ تولد"
 
-#: .\badi_user\models.py:42 .\badi_user\models.py:85
-msgid "Picture"
-msgstr "تصویر پروفایل"
-
-#: .\badi_user\models.py:43
+#: .\badi_user\models.py:46
 msgid "Token"
 msgstr "توکن"
 
-#: .\badi_user\models.py:45 .\badi_user\models.py:85
+#: .\badi_user\models.py:48 .\badi_user\models.py:88
 msgid "Amount"
 msgstr "موجودی"
 
-#: .\badi_user\models.py:85
+#: .\badi_user\models.py:88
 #, fuzzy
 #| msgid "Delete"
 msgid "Select"
 msgstr "حذف"
 
-#: .\badi_user\models.py:85 .\badi_user\templates\login-theme\login-1.html:80
+#: .\badi_user\models.py:88 .\badi_user\templates\login-theme\login-1.html:80
 msgid "Username"
 msgstr "نام کاربری"
 
-#: .\badi_user\models.py:85
+#: .\badi_user\models.py:88 .\badi_user\models.py:89
 msgid "FirstName"
 msgstr "نام"
 
-#: .\badi_user\models.py:85
+#: .\badi_user\models.py:88 .\badi_user\models.py:89
 msgid "LastName"
 msgstr "نام خانوادگی"
 
-#: .\badi_user\models.py:96
+#: .\badi_user\models.py:89
+msgid "Picture"
+msgstr "تصویر پروفایل"
+
+#: .\badi_user\models.py:99
 #, fuzzy
 #| msgid "Syndication"
 msgid "Notification"
 msgstr "سندیکا"
 
-#: .\badi_user\models.py:97
+#: .\badi_user\models.py:100
 msgid "Notifications"
 msgstr ""
 
-#: .\badi_user\models.py:99
-msgid "مدیرت Notifications"
-msgstr ""
-
-#: .\badi_user\models.py:102
-msgid "کاربر"
-msgstr ""
-
-#: .\badi_user\models.py:103
-msgid "موضوع"
-msgstr ""
-
-#: .\badi_user\models.py:104
-msgid "متن"
-msgstr ""
-
-#: .\badi_user\models.py:105
-msgid "نمایش اعلان از تاریخ"
-msgstr ""
-
 #: .\badi_user\models.py:106
-msgid "خوانده شده"
-msgstr ""
+#, fuzzy
+#| msgid "Delete"
+msgid "Subject"
+msgstr "موضوع"
 
-#: .\badi_user\models.py:114
-msgid "Log"
-msgstr ""
+#: .\badi_user\models.py:107
+#, fuzzy
+#| msgid "Ticket"
+msgid "Text"
+msgstr "تیکت"
 
-#: .\badi_user\models.py:115
-msgid "Logs"
+#: .\badi_user\models.py:108
+#, fuzzy
+#| msgid "Birth Date"
+msgid "Show Date"
+msgstr "تاریخ تولد"
+
+#: .\badi_user\models.py:109
+msgid "Is Seen"
 msgstr ""
 
 #: .\badi_user\models.py:117
-#, fuzzy
-#| msgid "Manage Tickets"
-msgid "Manage Logs"
-msgstr "مدیریت تیکت ها"
+msgid "Log"
+msgstr ""
 
-#: .\badi_user\models.py:121 .\badi_user\models.py:138
+#: .\badi_user\models.py:118
+msgid "Logs"
+msgstr ""
+
+#: .\badi_user\models.py:124 .\badi_user\models.py:141
 msgid "Title"
 msgstr "عنوان"
 
-#: .\badi_user\models.py:124 .\badi_user\models.py:138
+#: .\badi_user\models.py:127 .\badi_user\models.py:141
 msgid "Priority"
 msgstr ""
 
-#: .\badi_user\models.py:125 .\badi_user\models.py:138
+#: .\badi_user\models.py:128 .\badi_user\models.py:141
 #, fuzzy
 #| msgid "Sent at"
 msgid "Status"
 msgstr "ارسال در"
 
-#: .\badi_user\models.py:126 .\badi_user\models.py:138
-#: .\badi_user\templates\member\member_list.html:221
-#: .\badi_user\templates\member\member_list.html:253
+#: .\badi_user\models.py:129 .\badi_user\models.py:141
+#: .\badi_user\templates\member\member_list.html:223
+#: .\badi_user\templates\member\member_list.html:256
 msgid "Description"
 msgstr "توضیحات"
 
-#: .\badi_user\models.py:127 .\badi_user\models.py:138
+#: .\badi_user\models.py:130 .\badi_user\models.py:141
 msgid "Created at"
 msgstr "تاریخ ثبت"
+
+#: .\badi_user\templates\group\group_create.html:65
+#: .\badi_user\templates\member\member_create.html:14
+#: .\badi_user\templates\member\member_list.html:61
+#: .\badi_user\templates\user\user_create.html:15
+#: .\badi_user\templates\user\user_list.html:60
+msgid "Create"
+msgstr "ساخت"
+
+#: .\badi_user\templates\group\group_update.html:17
+#: .\badi_user\templates\group\group_update.html:70
+#: .\badi_user\templates\member\member_self_update.html:15
+#: .\badi_user\templates\user\user_update.html:14
+msgid "Update"
+msgstr "بروزرسانی"
 
 #: .\badi_user\templates\login-theme\login-1.html:71
 #: .\badi_user\templates\login-theme\login-1.html:100
@@ -203,7 +212,7 @@ msgstr "رمز عبور"
 
 #: .\badi_user\templates\login-theme\login-1.html:147
 #: .\badi_user\templates\login-theme\login-1.html:148
-#: .\badi_user\templates\member\member_list.html:386
+#: .\badi_user\templates\member\member_list.html:390
 msgid "$"
 msgstr "تومان"
 
@@ -214,13 +223,6 @@ msgstr "اجباری"
 #: .\badi_user\templates\login-theme\login-1.html:150
 msgid "Optional"
 msgstr "اختیاری"
-
-#: .\badi_user\templates\member\member_create.html:14
-#: .\badi_user\templates\member\member_list.html:60
-#: .\badi_user\templates\user\user_create.html:15
-#: .\badi_user\templates\user\user_list.html:60
-msgid "Create"
-msgstr "ساخت"
 
 #: .\badi_user\templates\member\member_create.html:47
 #: .\badi_user\templates\user\change_password.html:41
@@ -237,7 +239,7 @@ msgid "Back"
 msgstr "بازگشت"
 
 #: .\badi_user\templates\member\member_create.html:87
-#: .\badi_user\templates\member\member_list.html:259
+#: .\badi_user\templates\member\member_list.html:263
 #: .\badi_user\templates\member\member_self_update.html:71
 #: .\badi_user\templates\member\member_update.html:58
 #: .\badi_user\templates\user\change_password.html:51
@@ -313,105 +315,103 @@ msgstr "متوجه شدم"
 msgid "Search in List"
 msgstr "جستجو در لیست"
 
-#: .\badi_user\templates\member\member_list.html:54
-msgid "Member"
-msgstr "عضو"
+#: .\badi_user\templates\member\member_list.html:42
+#, fuzzy
+#| msgid "Search in List"
+msgid "Search"
+msgstr "جستجو در لیست"
 
-#: .\badi_user\templates\member\member_list.html:55
+#: .\badi_user\templates\member\member_list.html:56
 #: .\badi_user\templates\user\user_list.html:55
 msgid "List"
 msgstr "لیست"
 
-#: .\badi_user\templates\member\member_list.html:89
+#: .\badi_user\templates\member\member_list.html:84
+#: .\badi_user\templates\member\member_list.html:128
+#: .\badi_user\templates\user\user_list.html:72
+msgid "Action"
+msgstr "اقدام"
+
+#: .\badi_user\templates\member\member_list.html:91
 msgid "on"
 msgstr "روی"
 
-#: .\badi_user\templates\member\member_list.html:91
+#: .\badi_user\templates\member\member_list.html:93
 msgid "record"
 msgstr "رکورد"
 
-#: .\badi_user\templates\member\member_list.html:98
+#: .\badi_user\templates\member\member_list.html:100
 msgid "Send ticket"
 msgstr "ارسال تیکت"
 
-#: .\badi_user\templates\member\member_list.html:104
+#: .\badi_user\templates\member\member_list.html:106
 msgid "Send Sms"
 msgstr "ارسال پیامک"
 
-#: .\badi_user\templates\member\member_list.html:114
-#: .\badi_user\templates\member\member_list.html:288
+#: .\badi_user\templates\member\member_list.html:116
+#: .\badi_user\templates\member\member_list.html:292
 #, fuzzy
 #| msgid "Delete"
 msgid "Select All"
 msgstr "حذف"
 
-#: .\badi_user\templates\member\member_list.html:126
-#: .\badi_user\templates\user\user_list.html:72
-msgid "Action"
-msgstr "اقدام"
-
-#: .\badi_user\templates\member\member_list.html:144
+#: .\badi_user\templates\member\member_list.html:146
 #, fuzzy
 #| msgid "Ticket"
 msgid "Send Ticket"
 msgstr "تیکت"
 
-#: .\badi_user\templates\member\member_list.html:208
+#: .\badi_user\templates\member\member_list.html:210
 msgid "Charge account"
 msgstr "شارژ حساب کاربری"
 
-#: .\badi_user\templates\member\member_list.html:217
-#: .\badi_user\templates\member\member_list.html:249
+#: .\badi_user\templates\member\member_list.html:219
+#: .\badi_user\templates\member\member_list.html:252
 #, fuzzy
 #| msgid "Amount"
 msgid "amount"
 msgstr "موجودی"
 
-#: .\badi_user\templates\member\member_list.html:228
-#: .\badi_user\templates\member\member_list.html:258
+#: .\badi_user\templates\member\member_list.html:231
+#: .\badi_user\templates\member\member_list.html:262
 #, fuzzy
 #| msgid "is Closed"
 msgid "Close"
 msgstr "بسته شده"
 
-#: .\badi_user\templates\member\member_list.html:229
+#: .\badi_user\templates\member\member_list.html:232
 msgid "Charge"
 msgstr "شارژ"
 
-#: .\badi_user\templates\member\member_list.html:242
+#: .\badi_user\templates\member\member_list.html:245
 msgid "Decrease Charge account"
 msgstr "برداشت پول"
 
-#: .\badi_user\templates\member\member_list.html:285
+#: .\badi_user\templates\member\member_list.html:289
 #, fuzzy
 #| msgid "Delete"
 msgid "DeSelect All"
 msgstr "حذف"
 
-#: .\badi_user\templates\member\member_list.html:406
+#: .\badi_user\templates\member\member_list.html:410
 msgid "Are you Sure?"
 msgstr "مطمئن هستید؟"
 
-#: .\badi_user\templates\member\member_list.html:409
+#: .\badi_user\templates\member\member_list.html:413
 msgid "Yes, Charge it"
 msgstr "بله، شارژش کن"
 
-#: .\badi_user\templates\member\member_list.html:410
+#: .\badi_user\templates\member\member_list.html:414
 msgid "Cancel"
 msgstr ""
 
-#: .\badi_user\templates\member\member_list.html:417
-#: .\badi_user\templates\member\member_list.html:448
-#: .\badi_user\templates\member\member_list.html:543
+#: .\badi_user\templates\member\member_list.html:421
+#: .\badi_user\templates\member\member_list.html:452
+#: .\badi_user\templates\member\member_list.html:547
 #, fuzzy
 #| msgid "Enabled successfully"
 msgid "Done Successfully"
 msgstr "با موفقیت فعال شد"
-
-#: .\badi_user\templates\member\member_self_update.html:15
-#: .\badi_user\templates\user\user_update.html:14
-msgid "Update"
-msgstr "بروزرسانی"
 
 #: .\badi_user\templates\member\member_self_update.html:16
 msgid "self information"
@@ -458,6 +458,24 @@ msgstr "فارسی"
 msgid "No active user found"
 msgstr "کاربر فعالی یافت نشد"
 
+#~ msgid "Code sent to "
+#~ msgstr "کد ارسال شد به"
+
+#, fuzzy
+#~| msgid "Manage Tickets"
+#~ msgid "Manage users"
+#~ msgstr "مدیریت تیکت ها"
+
+#, fuzzy
+#~| msgid "Manage Tickets"
+#~ msgid "Manage members"
+#~ msgstr "مدیریت تیکت ها"
+
+#, fuzzy
+#~| msgid "Manage Tickets"
+#~ msgid "Manage Logs"
+#~ msgstr "مدیریت تیکت ها"
+
 #~ msgid "New message"
 #~ msgstr "پیام جدید"
 
@@ -484,9 +502,6 @@ msgstr "کاربر فعالی یافت نشد"
 
 #~ msgid "is Closed"
 #~ msgstr "بسته شده"
-
-#~ msgid "Ticket"
-#~ msgstr "تیکت"
 
 #~ msgid "Message Text"
 #~ msgstr "متن پیام"
@@ -551,11 +566,6 @@ msgstr "کاربر فعالی یافت نشد"
 #~ msgid "Bank Transaction"
 #~ msgstr "تراکنش بانکی"
 
-#, fuzzy
-#~| msgid "Manage Tickets"
-#~ msgid "Manage"
-#~ msgstr "مدیریت تیکت ها"
-
 #~ msgid "Authority"
 #~ msgstr "شناسه"
 
@@ -579,11 +589,6 @@ msgstr "کاربر فعالی یافت نشد"
 
 #~ msgid "Time"
 #~ msgstr "زمان"
-
-#, fuzzy
-#~| msgid "Delete"
-#~ msgid "Subject"
-#~ msgstr "موضوع"
 
 #, fuzzy
 #~| msgid "Enabled successfully"

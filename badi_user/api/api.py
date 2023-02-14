@@ -169,7 +169,7 @@ class LoginAuth:
                 config.get("sms_panel")(tkn.phone).send_verify_code(tkn.token)
             user.token = tkn
             user.save()
-            return ResponseOk(detail=_("Code sent to ") + data)
+            return ResponseOk(detail=_("Code sent") + ' ' + _('to') + ' ' + data)
 
         raise InvalidToken()
 

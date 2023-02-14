@@ -27,6 +27,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         'update', 'create', 'list', 'retrieve', 'destroy', 'delete'
     ]
     custom_perms = {
+        'datatable': True
     }
 
     @action(methods=['post'], detail=False)

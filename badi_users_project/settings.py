@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'humanize',
     'widget_tweaks',
     'badi_utils',
     'badi_ticket',

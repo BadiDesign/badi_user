@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-01-28 12:49+0330\n"
+"POT-Creation-Date: 2023-02-11 19:20+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -125,9 +125,9 @@ msgid "Management"
 msgstr "مدیریت تیکت ها"
 
 #: .\badi_ticket\templates\ticket\ticket_create.html:15
-#: .\badi_utils\dynamic.py:345 .\badi_utils\dynamic.py:346
+#: .\badi_utils\dynamic.py:349 .\badi_utils\dynamic.py:350
 #: .\src\badi_ticket\templates\ticket\ticket_create.html:15
-#: .\src\badi_utils\dynamic.py:345 .\src\badi_utils\dynamic.py:346
+#: .\src\badi_utils\dynamic.py:349 .\src\badi_utils\dynamic.py:350
 msgid "List"
 msgstr "لیست"
 
@@ -158,11 +158,11 @@ msgstr "پیام ها"
 
 #: .\badi_ticket\templates\ticket\ticket_update.html:16
 #: .\badi_ticket\templates\ticket\ticket_update.html:33
-#: .\badi_utils\dynamic.py:592 .\badi_utils\dynamic.py:593
+#: .\badi_utils\dynamic.py:596 .\badi_utils\dynamic.py:597
 #: .\badi_utils\logging.py:36
 #: .\src\badi_ticket\templates\ticket\ticket_update.html:16
 #: .\src\badi_ticket\templates\ticket\ticket_update.html:33
-#: .\src\badi_utils\dynamic.py:592 .\src\badi_utils\dynamic.py:593
+#: .\src\badi_utils\dynamic.py:596 .\src\badi_utils\dynamic.py:597
 #: .\src\badi_utils\logging.py:36
 msgid "Update"
 msgstr "بروزرسانی"
@@ -172,14 +172,14 @@ msgstr "بروزرسانی"
 msgid "Back"
 msgstr "بازگشت"
 
-#: .\badi_utils\dynamic.py:329 .\badi_utils\dynamic.py:432
-#: .\src\badi_utils\dynamic.py:329 .\src\badi_utils\dynamic.py:432
+#: .\badi_utils\dynamic.py:333 .\badi_utils\dynamic.py:436
+#: .\src\badi_utils\dynamic.py:333 .\src\badi_utils\dynamic.py:436
 #, fuzzy
 #| msgid "Updated Successfully"
 msgid "Created Successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
-#: .\badi_utils\dynamic.py:576 .\src\badi_utils\dynamic.py:576
+#: .\badi_utils\dynamic.py:580 .\src\badi_utils\dynamic.py:580
 msgid "Updated Successfully"
 msgstr "با موفقیت بروزرسانی شد"
 
@@ -352,7 +352,7 @@ msgstr "کیف پول شما"
 
 #: .\badi_wallet\templates\transaction\transaction_result.html:31
 #: .\src\badi_wallet\templates\transaction\transaction_result.html:31
-#: .\templates\base.html:404 .\templates\base.html:405
+#: .\templates\base.html:405 .\templates\base.html:406
 #: .\templates\login.html:207 .\templates\login.html:208
 msgid "$"
 msgstr "تومان"
@@ -362,13 +362,39 @@ msgstr "تومان"
 msgid "Charged"
 msgstr "شارژ شد"
 
-#: .\templates\base.html:406 .\templates\login.html:209
+#: .\templates\base.html:407 .\templates\login.html:209
 msgid "Required"
-msgstr ""
+msgstr "اجباری"
 
-#: .\templates\base.html:407 .\templates\login.html:210
+#: .\templates\base.html:408 .\templates\login.html:210
 msgid "Optional"
-msgstr ""
+msgstr "اختیاری"
+
+#: .\templates\base.html:409
+#, fuzzy
+#| msgid "on"
+msgid "Done"
+msgstr "روی"
+
+#: .\templates\base.html:410
+#, fuzzy
+#| msgid "File"
+msgid "Failed"
+msgstr "فایل"
+
+#: .\templates\base.html:411
+#, fuzzy
+#| msgid "Enabled successfully"
+msgid "Done Successfully"
+msgstr "با موفقیت فعال شد"
+
+#: .\templates\base.html:412
+msgid "Some error happened"
+msgstr "عملیات به خطا خورد"
+
+#: .\templates\index.html:9
+msgid "Code sent"
+msgstr "کد ارسال شد"
 
 #: .\venv\Lib\site-packages\django\contrib\sitemaps\apps.py:8
 msgid "Site Maps"
@@ -1549,9 +1575,6 @@ msgstr ""
 msgid "Connect, get help, or contribute"
 msgstr ""
 
-#~ msgid "Code sent to "
-#~ msgstr "کد ارسال شد به"
-
 #~ msgid "Invalid username"
 #~ msgstr "نام کاربری غیر معتبر"
 
@@ -1641,9 +1664,6 @@ msgstr ""
 #~ msgid "Search in List"
 #~ msgstr "جستجو در لیست"
 
-#~ msgid "on"
-#~ msgstr "روی"
-
 #~ msgid "record"
 #~ msgstr "رکورد"
 
@@ -1689,11 +1709,6 @@ msgstr ""
 
 #~ msgid "Yes, Charge it"
 #~ msgstr "بله، شارژش کن"
-
-#, fuzzy
-#~| msgid "Enabled successfully"
-#~ msgid "Done Successfully"
-#~ msgstr "با موفقیت فعال شد"
 
 #~ msgid "self information"
 #~ msgstr "اطلاعات شخصی"

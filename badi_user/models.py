@@ -85,13 +85,25 @@ class User(AbstractUser, BadiModel):
     @classmethod
     def get_datatable_cols(cls, class_name, *args):
         if class_name == 'MemberListView':
-            return ['#', _("Select"), _(""), _("Username"), _("FirstName"), _("LastName"), _("Amount")]
+            return ['#', _("Select"), "", _("Username"), _("FirstName"), _("LastName"), _("Amount")]
         return [_("FirstName"), _("LastName"), _("Mobile Number"), _("Picture")]
 
     @staticmethod
     def get_api_url(view):
         if view == 'MemberListView':
             return '/api/v1/member/'
+
+    def success_transaction(self, trans, request):
+        # transAction = Transaction(
+        #     user=trans.user,
+        #     amount=trans.amount,
+        #     type='1',
+        #     subject='شارژ حساب کاربری',
+        #     bank_transaction=trans,
+        # )
+        # transAction.save()
+        # trans.user.amount += trans.amount
+        print("SUCCESS_TRANSACTION", self, trans, request)
 
 
 class Notification(models.Model):

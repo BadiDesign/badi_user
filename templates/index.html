@@ -1,0 +1,11 @@
+{% load i18n %}
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_language_info for LANGUAGE_CODE as lang %}
+lang="{{ lang.code }}"
+<br>
+direction="{% if lang.code == 'en' %}ltr{% else %}rtl{% endif %}"
+<br>
+{% trans 'Code sent' %}
+<br>
+{% trans 'You request code recently, please try again later' %}
