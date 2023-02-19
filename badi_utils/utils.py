@@ -76,27 +76,28 @@ def clean_cost(cost: str):
 def permissions_json():
     apps1 = assignable_app_names()
     permission = dict()
-    for app in apps1:
-
-        data_to_return = []
-        if settings.DATABASES['default']['ENGINE'] != 'django.db.backends.sqlite3':
-            perms = Permission.objects.filter(~Q(name__icontains='can'), content_type__app_label=app.app_label)
-        else:
-            perms = Permission.objects.filter(~Q(name__icontains='can'), content_type__app_label=app['app_label'])
-
-        for perm in perms:
-            data_to_return.append({
-                'id': perm.id,
-                'name': perm.name,
-                'content_type': perm.content_type.app_label,
-                'codename': perm.codename,
-            })
-        if len(data_to_return) != 0:
+    try:
+        for app in apps1:
+            data_to_return = []
             if settings.DATABASES['default']['ENGINE'] != 'django.db.backends.sqlite3':
-                permission[apps.get_app_config(app.app_label).verbose_name] = data_to_return
+                perms = Permission.objects.filter(~Q(name__icontains='can'), content_type__app_label=app.app_label)
             else:
-                permission[apps.get_app_config(app['app_label']).verbose_name] = data_to_return
+                perms = Permission.objects.filter(~Q(name__icontains='can'), content_type__app_label=app['app_label'])
 
+            for perm in perms:
+                data_to_return.append({
+                    'id': perm.id,
+                    'name': perm.name,
+                    'content_type': perm.content_type.app_label,
+                    'codename': perm.codename,
+                })
+            if len(data_to_return) != 0:
+                if settings.DATABASES['default']['ENGINE'] != 'django.db.backends.sqlite3':
+                    permission[apps.get_app_config(app.app_label).verbose_name] = data_to_return
+                else:
+                    permission[apps.get_app_config(app['app_label']).verbose_name] = data_to_return
+    except:
+        pass
     return permission
 
 

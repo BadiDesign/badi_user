@@ -37,7 +37,11 @@
 	<!--begin::Global Theme Styles(used by all pages)-->
 	<link href="{% static 'assets/plugins/global/plugins.bundle.css' %}" rel="stylesheet" type="text/css"/>
 	<link href="{% static 'assets/plugins/custom/prismjs/prismjs.bundle.rtl.css' %}" rel="stylesheet" type="text/css"/>
+	{% if lang.code == 'en' %}
 	<link href="{% static 'assets/css/style.bundle.css' %}" rel="stylesheet" type="text/css"/>
+	{% else %}
+	<link href="{% static 'assets/css/style.bundle.rtl.css' %}" rel="stylesheet" type="text/css"/>
+	{% endif %}
 	<link href="{% static 'badi_utils/css/custom.css' %}" rel="stylesheet" type="text/css"/>
 	<!--begin::Layout Themes(used by all pages)-->
 	<!--end::Layout Themes-->
