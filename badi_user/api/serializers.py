@@ -9,6 +9,12 @@ from django.contrib.auth import get_user_model
 User = get_user_model()
 
 
+class UserProfileSerializer(DynamicSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'first_name', 'last_name', 'picture', ]
+
+
 class UserSerializer(DynamicSerializer):
     remove_field_view = {
         'retrieve': ['password', ],

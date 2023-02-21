@@ -31,14 +31,14 @@
 												<div class="form-group">
 													<label class="col-form-label font-weight-bolder">{% trans "Title" %}:</label>
 													<input type="text" class="form-control"
-														   placeholder="اسم تیکت را وارد کنید" name="title"
+														   placeholder="{% trans 'Title' %}..." name="title"
 														   id="ticket-name">
 												</div>
 												<label class="d-none">
 													<input type="hidden" value="{{ object.writer }}" name="writer">
 												</label>
 												{% if request.user.is_admin %}
-												{% include 'component/input.html' with input=form.writer %}
+												{{form.writer}}
 												{% endif %}
 											</div>
 											<div class="card-footer">
@@ -144,13 +144,13 @@
             e.preventDefault();
             const button = document.querySelector('#form_ticket button');
             ApiAjax({
-                url: TICKET_API_CREATE_URL,
+                url: '{{api_url}}',
                 form: '#form_ticket',
                 method: 'POST',
                 button: button,
                 table: table,
                 modal: '#ticketModal',
-                success_message: 'پیام سیستمی با موفقیت ایجاد شد!',
+                            success_message: '{% trans "Done Successfully" %}',
                 file: true,
             })
         });

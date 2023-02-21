@@ -680,7 +680,7 @@ function convertToSlug(titleStr) {
     titleStr = titleStr.replace(/[^a-z0-9_\s-ءاأإآؤئبتثجحخدذرزسشصضطظعغفقكلمنهويةى]#u/g, '')
         .replace('»', '').replace('«', '').replace(':', '').replace('‌', '-')
         .replace(/\s+/g, '-')
-        .replace(',', '').replace('’', '')
+        .replace(',', '').replace('’', '').replace('‌', '')
         .replace(/-+/g, '-');
     return titleStr;
 }
