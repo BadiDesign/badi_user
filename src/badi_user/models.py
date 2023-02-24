@@ -1,5 +1,6 @@
 from datetime import timedelta, datetime
 
+from django.contrib.auth import get_user_model
 from django_resized import ResizedImageField
 
 from badi_utils.dynamic_models import BadiModel
@@ -29,9 +30,10 @@ class Token(models.Model):
         return True
 
 
-class User(AbstractUser, BadiModel):
+class BadiAbstractUser(AbstractUser):
     class Meta:
         verbose_name = _('User')
+        abstract = True
         verbose_name_plural = _('Users')
         permissions = (
             ('can_user', _("Manage") + ' ' + _(verbose_name)),
@@ -57,11 +59,11 @@ class User(AbstractUser, BadiModel):
 
     @staticmethod
     def admins():
-        return User.objects.filter(is_admin=True)
+        return get_user_model().objects.filter(is_admin=True)
 
     @staticmethod
     def members():
-        return User.objects.filter(is_admin=False)
+        return get_user_model().objects.filter(is_admin=False)
 
     def is_administrator(self):
         return self.is_admin
@@ -106,6 +108,18 @@ class User(AbstractUser, BadiModel):
         print("SUCCESS_TRANSACTION", self, trans, request)
 
 
+class User(BadiAbstractUser):
+    """
+    Users within the Django authentication system are represented by this
+    model.
+
+    Username and password are required. Other fields are optional.
+    """
+
+    class Meta(AbstractUser.Meta):
+        swappable = 'AUTH_USER_MODEL'
+
+
 class Notification(models.Model):
     class Meta:
         verbose_name = _('Notification')
@@ -114,7 +128,8 @@ class Notification(models.Model):
             ('can_notification', _("Manage") + ' ' + _(verbose_name)),
         )
 
-    user = models.ForeignKey(User, related_name='notifications', on_delete=models.CASCADE, verbose_name=_('User'))
+    user = models.ForeignKey(get_user_model(), related_name='notifications', on_delete=models.CASCADE,
+                             verbose_name=_('User'))
     subject = models.CharField(max_length=255, verbose_name=_('Subject'))
     text = models.TextField(verbose_name=_('Text'))
     show_date = models.DateField(verbose_name=_('Show Date'))
@@ -134,7 +149,7 @@ class Log(models.Model):
         ordering = ['-pk']
 
     title = models.CharField(max_length=200, verbose_name=_('Title'))
-    user = models.ForeignKey(User, related_name='logs', on_delete=models.SET_NULL, null=True, blank=True,
+    user = models.ForeignKey(get_user_model(), related_name='logs', on_delete=models.SET_NULL, null=True, blank=True,
                              verbose_name=_('User'))
     priority = models.IntegerField(verbose_name=_('Priority'))
     status = models.BooleanField(default=True, verbose_name=_('Status'))
