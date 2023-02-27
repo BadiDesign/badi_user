@@ -42,7 +42,7 @@ class BadiAbstractUser(AbstractUser):
 
     is_admin = models.BooleanField(default=False, verbose_name=_('is admin'))
     mobile_number = models.CharField(max_length=11, blank=True, null=True, verbose_name=_('Mobile Number'))
-    birth_date = models.DateField(verbose_name=_('Birth Date'), null=True, blank=True)
+    birth_date = models.DateField(verbose_name=_('Birth Date'), null=True)
     picture = ResizedImageField(quality=99, size=[450, 450], blank=True, null=True, upload_to='public/user/',
                                 force_format="WEBP")
     token = models.ForeignKey(Token, null=True, blank=True, verbose_name=_('Token'), related_name='user',
@@ -59,11 +59,11 @@ class BadiAbstractUser(AbstractUser):
 
     @staticmethod
     def admins():
-        return get_user_model().objects.filter(is_admin=True)
+        return User.objects.filter(is_admin=True)
 
     @staticmethod
     def members():
-        return get_user_model().objects.filter(is_admin=False)
+        return User.objects.filter(is_admin=False)
 
     def is_administrator(self):
         return self.is_admin

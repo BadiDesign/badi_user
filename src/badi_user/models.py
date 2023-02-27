@@ -59,11 +59,11 @@ class BadiAbstractUser(AbstractUser):
 
     @staticmethod
     def admins():
-        return get_user_model().objects.filter(is_admin=True)
+        return User.objects.filter(is_admin=True)
 
     @staticmethod
     def members():
-        return get_user_model().objects.filter(is_admin=False)
+        return User.objects.filter(is_admin=False)
 
     def is_administrator(self):
         return self.is_admin

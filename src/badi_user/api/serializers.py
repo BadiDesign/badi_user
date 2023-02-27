@@ -12,7 +12,13 @@ User = get_user_model()
 class UserProfileSerializer(DynamicSerializer):
     class Meta:
         model = User
-        fields = ['id', 'username', 'first_name', 'last_name', 'picture', ]
+        fields = User.get_form_fields('profile')
+
+
+class UserRegisterSerializer(DynamicSerializer):
+    class Meta:
+        model = User
+        fields = User.get_form_fields('register')
 
 
 class UserSerializer(DynamicSerializer):

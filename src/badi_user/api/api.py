@@ -3,6 +3,7 @@ import random
 import string
 from datetime import timedelta
 
+from badi_utils.dynamic import dynamic_form
 from badi_utils.email import Email
 from badi_utils.errors import BadiErrorCodes
 from badi_utils.validations import PersianValidations, BadiValidators
@@ -23,7 +24,8 @@ from badi_utils.logging import log
 from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
 from rest_framework_simplejwt.views import TokenRefreshView
-from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer, LogSerializer
+from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSerializer, LogSerializer, \
+    UserProfileSerializer, UserRegisterSerializer
 from badi_user.filter import UserListFilter, MemberListFilter, LogFilter
 from badi_user.models import Token, Log
 from django.utils.translation import gettext_lazy as _
@@ -215,8 +217,11 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
         config = BADI_AUTH_CONFIG['register']
         if not config['is_active']:
             return Http404()
-        first_name = self.request.data.get('first_name')
-        last_name = self.request.data.get('last_name')
+
+        serializer = UserRegisterSerializer(data=self.request.data)
+        serializer.password = make_password(self.request.data['password'])
+        if config.get('picture'):
+            self.request._files.get(config.get('picture'))
         username = self.request.data.get(config.get('user_key'))
         mobile_number = self.request.data.get('mobile_number')
         email = self.request.data.get('email')
@@ -238,6 +243,7 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             if not config['email_validator'](email):
                 return Response({'email': ['Invalid mobile number']},
                                 status=status.HTTP_400_BAD_REQUEST)
+        serializer.is_valid(raise_exception=True)
         if config.get('code-required'):
             token = self.request.data.get('token')
             last_token = Token.objects.filter(phone=mobile_number, is_accepted=False, is_forgot=False).last()
@@ -257,9 +263,8 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             if last_token.token == token:
                 last_token.is_accepted = True
                 last_token.save()
-                user = User()
-                user.first_name = first_name
-                user.last_name = last_name
+                serializer.save()
+                user = serializer.instance
                 user.password = make_password(password)
                 user.username = username
                 user.mobile_number = mobile_number
@@ -269,7 +274,6 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                     'password': password,
                     'username': username,
                 })
-                serializer.is_valid(raise_exception=True)
                 if BADI_AUTH_CONFIG['login'].get('login_to_django'):
                     login(request, user)
                 log(user, 1, 1, True)
@@ -277,9 +281,8 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             else:
                 return Response({'token': [_('Invalid Code!')]}, status=status.HTTP_400_BAD_REQUEST)
         else:
-            user = User()
-            user.first_name = first_name
-            user.last_name = last_name
+            serializer.save()
+            user = serializer.instance
             user.password = make_password(password)
             user.username = username
             token = Token()
@@ -292,13 +295,18 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             user.save()
             token.token = random_with_N_digits(5)
             token.last_send = timezone.now()
-            if config['sms_panel']:
+            if config.get('sms_panel'):
                 config['sms_panel'](mobile_number).send_verify_code(token.token)
-            if config['email_panel']:
+            if config.get('email_panel'):
                 config['email_panel'](email).send_verify_code(token.email)
             token.save()
             user.token = token
             user.save()
+            refresh = RefreshToken.for_user(user)
+            return ResponseOk(data={
+                'refresh': str(refresh),
+                'access': str(refresh.access_token),
+            })
         return ResponseOk()
 
     @action(methods=['post'], detail=False)
