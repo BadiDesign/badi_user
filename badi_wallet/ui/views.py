@@ -7,7 +7,7 @@ from badi_wallet.models import Transaction, BankTransaction
 
 class TransActionsView(DynamicListView):
     model = Transaction
-    datatable_cols = ['#', 'مبلغ', 'نوع', 'زمان ثبت', 'موضوع']
+    datatable_cols = ['#', 'مبلغ', 'نوع', 'زمان ثبت', 'موضوع', 'توضیحات']
 
 
 class AdminTransActionsView(DynamicListView):

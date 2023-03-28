@@ -260,6 +260,11 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                 config['sms_panel'](mobile_number).send_verify_code(token_obj.token)
                 token_obj.save()
                 return Response({'token': [_('Code sent')]})
+            if not last_token:
+                return Response(
+                    {'token': [_('Please try again')]},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
             if last_token.token == token:
                 last_token.is_accepted = True
                 last_token.save()
@@ -270,14 +275,14 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                 user.mobile_number = mobile_number
                 user.token = last_token
                 user.save()
-                serializer = TokenObtainPairSerializer(data={
-                    'password': password,
-                    'username': username,
-                })
                 if BADI_AUTH_CONFIG['login'].get('login_to_django'):
                     login(request, user)
                 log(user, 1, 1, True)
-                return Response(serializer.validated_data, status=status.HTTP_200_OK)
+                token_for_user = RefreshToken.for_user(user)
+                return Response({
+                    'refresh': str(token_for_user),
+                    'access': str(token_for_user.access_token),
+                }, status=status.HTTP_200_OK)
             else:
                 return Response({'token': [_('Invalid Code!')]}, status=status.HTTP_400_BAD_REQUEST)
         else:

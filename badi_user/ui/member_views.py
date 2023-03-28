@@ -10,6 +10,7 @@ User = get_user_model()
 class MemberListView(DynamicListView):
     model = User
     model_name = _('Member')
+    api_url = '/api/v1/member/'
     datatable_cols = User.get_datatable_cols('MemberListView')
     template_name = 'member/member_list.html'
 

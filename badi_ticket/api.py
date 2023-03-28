@@ -1,5 +1,6 @@
 from badi_utils.sms import IpPanelSms
 from django.conf import settings
+from django.core.paginator import Paginator
 from django.http import JsonResponse, Http404
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
@@ -47,7 +48,6 @@ class TicketViewSet(DynamicModelApi):
     serializer_class = TicketCreateSerializer
     custom_perms = {
         'datatable': True,
-        'create': True,
     }
 
     def render_column(self, row, column):
@@ -163,6 +163,25 @@ class TicketViewSet(DynamicModelApi):
         else:
             Ticket(user=self.request.user, title=title).save()
             return ResponseOk()
+
+    @action(methods=['get'], detail=False)
+    def select2(self, request, *args, **kwargs):
+        request_get = request._request.GET
+        page = request_get.get('page', 1)
+        search = request_get.get('search')
+        thing = User.objects.all()
+        if search is not None and len(search.strip()) > 0:
+            thing = thing.filter(**{self.text + '__contains': search})
+        paginator = Paginator(thing, 10)
+        results = paginator.page(int(page)).object_list
+        results_bitten = results
+        results_bitten = [{'id': x.id, 'text': x.__str__()} for x in results_bitten]
+        return JsonResponse({
+            'results': results_bitten,
+            "pagination": {
+                "more": paginator.page(page).has_next()
+            }
+        }, safe=False)
 
 
 class MessageViewSet(DynamicModelApi):

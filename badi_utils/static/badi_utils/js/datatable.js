@@ -39,7 +39,11 @@ window.datatable_simple_show = function (options, settings) {
     window_options["ajax"] = {
         url: options['url'],
         method: 'POST',
-        'beforeSend': (request) => request.setRequestHeader("Authorization", localStorage.getItem('session_key')),
+        'beforeSend': (request) => {
+            request.setRequestHeader("Authorization", localStorage.getItem('session_key'))
+            request.setRequestHeader("X-CSRFToken", csrftoken)
+            return request
+        },
         data: function (d) {
             if (!options['disable_search'])
                 $(`${searchForm} input, ${searchForm} select`).each(function (i, e) {
@@ -118,7 +122,7 @@ window.datatable_simple_show = function (options, settings) {
     if (!options["no_action_nutton"]) {
         var action_url = options['ac_url'];
         var delete_url = options['del_url'];
-        delete_url = delete_url.substr(0, delete_url.length - 1);
+        delete_url = delete_url;
     }
     // on redraw re listen to delete and edit buttons
     oTable.on('draw.dt', function () {

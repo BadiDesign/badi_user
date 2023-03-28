@@ -18,8 +18,8 @@ User = get_user_model()
 
 class TransactionViewSet(DynamicModelReadOnlyApi):
     permission_classes = [permissions.IsAuthenticated]
-    columns = ['id', 'amount', 'type', 'date_time', 'subject']
-    order_columns = ['id', 'amount', 'type', 'date_time', 'subject']
+    columns = ['id', 'amount', 'type', 'date_time', 'subject', 'info']
+    order_columns = ['id', 'amount', 'type', 'date_time', 'subject', 'info']
     model = Transaction
     queryset = Transaction.objects.all()
     serializer_class = TransactionSerializer
@@ -99,7 +99,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
 
     def get_columns(self):
         if self.action == 'all_transactions':
-            return ['id', 'user', 'amount', 'type', 'date_time', 'subject']
+            return ['id', 'user', 'amount', 'type', 'info', 'date_time', 'subject']
         return super(TransactionViewSet, self).get_columns()
 
     def render_column(self, row, column):

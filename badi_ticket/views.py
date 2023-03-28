@@ -23,7 +23,7 @@ class TicketCreateView(DynamicCreateView):
     # updateURL = '/ticket/ticket/update/0'
 
     def get_extra_context(self, context):
-        context['form'].fields['writer'].queryset = User.members()
+        context['form'].fields['writer'].queryset = User.objects.none()
         return super().get_extra_context(context)
 
 
@@ -33,7 +33,7 @@ class TicketUpdateView(DynamicUpdateView):
     form_fields = ['title', 'writer', 'is_closed']
 
     def get_extra_context(self, context):
-        context['form'].fields['writer'].queryset = User.members()
+        context['form'].fields['writer'].queryset = User.objects.none()
         context['api_url'] = '/api/v1/ticket/'
         context['successURL'] = self.success_url
         return super().get_extra_context(context)

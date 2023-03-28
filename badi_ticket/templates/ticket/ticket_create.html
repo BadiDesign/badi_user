@@ -83,7 +83,9 @@
         </div>
         <!--end::Container-->
     </div>
-
+<script>
+	document.getElementById('id_writer').classList.add('no-select2');
+</script>
 
 {% endblock %}
 {% block script %}
@@ -91,13 +93,11 @@
 	<script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
 
     <script>
-        {% if not request.user.is_admin %}
-            window.data_table_cool_options['columnDefs'].push({
-                "targets": [1],
-                "visible": false,
-                "searchable": false
-            })
-        {% endif %}
+		window.data_table_cool_options['columnDefs'].push({
+			"targets": [1],
+			"visible": false,
+			"searchable": false
+		})
         var table = datatable_simple_show({
             url: '{{ api_url }}datatable/',
             real_cols: {{cols|length}},
@@ -154,6 +154,20 @@
                 file: true,
             })
         });
+		$('#id_writer').select2({
+				dir: "rtl",
+				ajax: {
+					url: "{{ api_url }}select2/",
+					data: function (params) {
+						var query = {
+							search: params.term,
+							page: params.page || 1
+						};
 
+						// Query parameters will be ?search=[term]&page=[page]
+						return query;
+					}
+				}
+			});
     </script>
 {% endblock %}

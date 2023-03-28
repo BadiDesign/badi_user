@@ -7,6 +7,7 @@ ORIGINATOR = getenv('SMS__IP_PANEL_ORGINATOR')
 SMS_ENABLE = getenv('SMS__ENABLE')
 SMS__IPPANEL_F_NUM_VERIFY_CODE = getenv('SMS__IPPANEL_F_NUM_VERIFY_CODE')
 SMS__IPPANEL_P_ID_VERIFY_CODE = getenv('SMS__IPPANEL_P_ID_VERIFY_CODE')
+SMS__IPPANEL_PARAM_NAME = getenv('SMS__IPPANEL_PARAM_NAME', "v-code")
 
 
 class IpPanelSms:
@@ -50,7 +51,7 @@ class IpPanelSms:
                         "fnum": SMS__IPPANEL_F_NUM_VERIFY_CODE,
                         "tnum": self.phone_number,
                         "pid": SMS__IPPANEL_P_ID_VERIFY_CODE,
-                        "p1": "v-code",
+                        "p1": SMS__IPPANEL_PARAM_NAME,
                         "v1": text
                     }, headers={
                         "Content-Type": "application/json",
