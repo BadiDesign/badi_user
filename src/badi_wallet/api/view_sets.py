@@ -30,7 +30,8 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         'update', 'create', 'list', 'retrieve', 'destroy', 'delete'
     ]
     custom_perms = {
-        'datatable': True
+        'datatable': True,
+        'info': True,
     }
 
     @action(methods=['post'], detail=False)
@@ -114,6 +115,29 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         Transaction(user=user, amount=amount, type='6',
                     subject='شارژ توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
         return ResponseOk()
+
+    @action(methods=['get'], detail=False, url_path='info/(?P<pk>[^/.]+)')
+    def info(self, request, pk, *args, **kwargs):
+        instance = get_object_or_404(Transaction, pk=pk)
+        user = self.request.user
+        if not user.is_admin and instance.user != user:
+            return self.permission_denied(request)
+        data = {
+            'user': instance.user.__str__(),
+            'amount': instance.amount,
+            'date_time': instance.date_time,
+            'subject': instance.subject,
+            'info': instance.info,
+            'ref_id': '',
+            'card_hash': '',
+            'is_verified': False,
+        }
+        if instance.bank_transaction:
+            data['ref_id'] = instance.bank_transaction.ref_id
+            data['card_hash'] = instance.bank_transaction.card_hash
+            data['is_verified'] = instance.bank_transaction.is_verified
+
+        return Response(data)
 
     @action(methods=['post'], detail=False)
     def all_transactions(self, request, *args, **kwargs):
