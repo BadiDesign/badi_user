@@ -2,6 +2,7 @@ from django.views import View
 from django.utils.translation import gettext_lazy as _
 from badi_utils.dynamic import DynamicListView
 from badi_wallet.action import MERCHANT, ZP_API_VERIFY, ZPBankAction
+from badi_wallet.filter import TransactionFilter
 from badi_wallet.models import Transaction, BankTransaction
 
 
@@ -15,6 +16,14 @@ class AdminTransActionsView(DynamicListView):
     datatable_cols = Transaction().get_datatable_verbose_names(['bank transaction'])
     datatableURL = '/api/v1/transaction/all_transactions/'
     template_name = 'transaction/all_transaction_list.html'
+
+
+class ReportTransActionsView(DynamicListView):
+    model = Transaction
+    template_name = 'transaction/all_transaction_report.html'
+    extra_context = {
+        'form': TransactionFilter().form
+    }
 
 
 class ZPVerifyTransActionsView(View):

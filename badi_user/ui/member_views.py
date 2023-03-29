@@ -10,7 +10,6 @@ User = get_user_model()
 class MemberListView(DynamicListView):
     model = User
     model_name = _('Member')
-    api_url = '/api/v1/member/'
     datatable_cols = User.get_datatable_cols('MemberListView')
     template_name = 'member/member_list.html'
 
@@ -45,6 +44,7 @@ class MemberSelfUpdateView(DynamicUpdateView):
     model_name = _('Member')
     form = user_form(User.get_form_fields('member_self_update'), update=True)
     success_url = '/user/member/list'
+    api_url = '/api/v1/member/'
     template_name = 'member/member_self_update.html'
 
     def get_object(self, queryset=None):

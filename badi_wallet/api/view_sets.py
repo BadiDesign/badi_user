@@ -1,10 +1,13 @@
+import datetime
 import json
-from django.db.models import Q
+from django.db.models import Q, Sum
 from django.http import Http404
 from django_datatables_view.mixins import LazyEncoder
 from rest_framework import permissions
 from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
+from rest_framework.response import Response
+
 from badi_utils.dynamic_api import CustomValidation, DynamicModelReadOnlyApi
 from badi_wallet.action import ZPBankAction
 from badi_utils.responses import ResponseOk
@@ -41,6 +44,40 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
     def verify(self, request, *args, **kwargs):
         res = ZPBankAction().verify(request=request)
         return res
+
+    @action(methods=['get'], detail=False)
+    def report(self, request, *args, **kwargs):
+        results = []
+        today = datetime.date.today()
+        start = today - datetime.timedelta(days=30)
+        start_date = request._request.GET.get('date_saved__gt', str(start))
+        end_date = request._request.GET.get('date_saved__lt', str(today))
+        start_date = datetime.datetime.strptime(start_date, '%Y-%m-%d')
+        end_date = datetime.datetime.strptime(end_date + ' 23:59:59', '%Y-%m-%d %H:%M:%S')
+
+        current_date = start_date
+        qs = Transaction.objects.filter(date_time__gte=start_date, date_time__lte=end_date)
+        print('Count :', qs.count())
+        while current_date <= end_date:
+            date_qs = qs.filter(date_time__gte=current_date, date_time__lt=current_date + datetime.timedelta(days=1))
+            qs_sum = date_qs.aggregate(Sum('amount'))['amount__sum']
+            results.append({
+                'date': current_date,
+                'count': date_qs.count(),
+                'amount': qs_sum or 0,
+            })
+            current_date += datetime.timedelta(days=1)
+        return Response({
+            'results': results,
+            'chart': {
+                'series': [{
+                    'name': 'درآمد',
+                    'data': [x.get('amount') for x in results],
+                    'type': 'line'
+                }, ],
+                'x_titles': [x.get('date') for x in results],
+            }
+        })
 
     @action(methods=['put'], detail=False, url_path='increase_wallet/(?P<pk>[^/.]+)')
     def increase_wallet(self, request, pk, *args, **kwargs):
