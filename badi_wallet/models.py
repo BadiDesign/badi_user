@@ -56,9 +56,9 @@ class Transaction(models.Model, BadiModel):
     user = models.ForeignKey(User, related_name='transactions', on_delete=models.PROTECT, verbose_name=_("User"))
     amount = models.BigIntegerField(default=0, verbose_name=_("Amount"))
     type = models.CharField(max_length=2, choices=TYPES, verbose_name=_("Type"))
-    info = models.TextField(blank=True)
+    info = models.TextField(blank=True, verbose_name=_("Info"))
     date_time = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Time"))
-    subject = models.CharField(max_length=255, verbose_name=_("Subject"), null=True, blank=True)
+    subject = models.CharField(max_length=255, verbose_name=_("Transaction Subject"), null=True, blank=True)
     bank_transaction = models.ForeignKey(BANK_TRANSACTION_MODEL, related_name='transactions', null=True, blank=True,
                                          on_delete=models.PROTECT)
 

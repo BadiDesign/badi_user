@@ -33,13 +33,13 @@
 											<input type="text" class="form-control date" name="date_saved__lt">
 										</div>
 									</div>
-									<div class="col-12 text-right mb-5 d-flex justify-content-between">
-										<button type="button"
-												onclick="tableToExcel('vue-app', new Date().toLocaleDateString('fa') + ' invoice', new Date().toLocaleDateString('fa') + ' invoice')"
-												class="btn btn-primary btn-sm btn-icon-sm">
-											دریافت اکسل
-											<i class="fa fa-file-excel ml-2"></i>
-										</button>
+									<div class="col-12 text-right mb-5 d-flex justify-content-end">
+{#										<button type="button"#}
+{#												onclick="tableToExcel('vue-app', new Date().toLocaleDateString('fa') + ' invoice', new Date().toLocaleDateString('fa') + ' invoice')"#}
+{#												class="btn btn-primary btn-sm btn-icon-sm">#}
+{#											دریافت اکسل#}
+{#											<i class="fa fa-file-excel ml-2"></i>#}
+{#										</button>#}
 										<button type="submit"
 												class="btn btn-primary btn-sm btn-icon-sm">
 											جستجو
@@ -57,7 +57,7 @@
 								</thead>
 								<tbody>
 								<tr v-for="item in dateList">
-									<td>[[getDate(item)]]</td>
+									<td class="tableexport-string target">[[getDate(item)]]</td>
 									<td>[[item.count]]</td>
 									<td>[[item.amount]]</td>
 								</tr>
@@ -82,6 +82,8 @@
 
 {% block script %}
 	<script src="{% static 'badi_utils/js/apexchart.js' %}"></script>
+	<script src="{% static 'badi_utils/js/xlsx.mini.min.js' %}"></script>
+	<script src="{% static 'badi_utils/js/tableexport.js' %}"></script>
 	<script>
         let transactionChart = null;
         const vueNotifApp = new Vue({
@@ -188,6 +190,7 @@
                                 });
                                 transactionChart.render();
                             }
+                            table_export.reset()
                         }
                     })
                 },
@@ -196,6 +199,19 @@
                 },
             },
         });
-
+        const table_export = TableExport(document.getElementById('vue-app'), {
+            headers: true,                      // (Boolean), display table headers (th or td elements) in the <thead>, (default: true)
+            footers: true,                      // (Boolean), display table footers (th or td elements) in the <tfoot>, (default: false)
+            formats: ["xlsx", "csv", "txt"],    // (String[]), filetype(s) for the export, (default: ['xlsx', 'csv', 'txt'])
+            filename: toEnglishDigit(new Date().toLocaleDateString('fa')) + ' invoice',                     // (id, String), filename for the downloaded file, (default: 'id')
+            bootstrap: true,                   // (Boolean), style buttons using bootstrap, (default: true)
+            exportButtons: true,                // (Boolean), automatically generate the built-in export buttons for each of the specified formats (default: true)
+            position: "bottom",                 // (top, bottom), position of the caption element relative to table, (default: 'bottom')
+            ignoreRows: null,                   // (Number, Number[]), row indices to exclude from the exported file(s) (default: null)
+            ignoreCols: null,                   // (Number, Number[]), column indices to exclude from the exported file(s) (default: null)
+            trimWhitespace: true,               // (Boolean), remove all leading/trailing newlines, spaces, and tabs from cell text in the exported file(s) (default: false)
+            RTL: true,                         // (Boolean), set direction of the worksheet to right-to-left (default: false)
+            sheetname: "id"                     // (id, String), sheet name for the exported spreadsheet, (default: 'id')
+        });
 	</script>
 {% endblock %}
