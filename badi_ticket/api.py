@@ -41,22 +41,30 @@ def send_sms(users, message_title, message_text, sender):
 
 
 class TicketViewSet(DynamicModelApi):
-    columns = ['id', 'writer', 'title', 'created_at', 'is_closed', ]
-    order_columns = ['id', 'writer', 'title', 'created_at', 'is_closed', ]
+    columns = ['id', 'writer', 'title', 'is_closed', 'created_at', ]
+    order_columns = ['id', 'writer', 'title', 'is_closed', 'created_at', ]
     model = Ticket
     queryset = Ticket.objects.all()
     serializer_class = TicketCreateSerializer
     custom_perms = {
         'datatable': True,
+        'create': True,
     }
 
     def render_column(self, row, column):
-        if column == 'title':
+        if column == 'is_closed':
             if self.request.user.is_admin:
                 count = row.messages.filter(is_seen_by_admin=False).count()
             else:
                 count = row.messages.filter(is_seen=False).count()
-            return '{0} ({1} {2})'.format(row.title, count, _("New message")) if count else row.title
+            first = row.messages.all().order_by('-pk').first()
+            last_message = -1
+            if first:
+                if first.writer.is_admin and self.request.user.is_admin:
+                    last_message = 0
+                else:
+                    last_message = 1
+            return [row.is_closed, count, last_message]
         return super().render_column(row, column)
 
     def filter_queryset(self, qs):

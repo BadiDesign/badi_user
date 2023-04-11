@@ -34,12 +34,12 @@
 										</div>
 									</div>
 									<div class="col-12 text-right mb-5 d-flex justify-content-end">
-{#										<button type="button"#}
-{#												onclick="tableToExcel('vue-app', new Date().toLocaleDateString('fa') + ' invoice', new Date().toLocaleDateString('fa') + ' invoice')"#}
-{#												class="btn btn-primary btn-sm btn-icon-sm">#}
-{#											دریافت اکسل#}
-{#											<i class="fa fa-file-excel ml-2"></i>#}
-{#										</button>#}
+										{#										<button type="button"#}
+										{#												onclick="tableToExcel('vue-app', new Date().toLocaleDateString('fa') + ' invoice', new Date().toLocaleDateString('fa') + ' invoice')"#}
+										{#												class="btn btn-primary btn-sm btn-icon-sm">#}
+										{#											دریافت اکسل#}
+										{#											<i class="fa fa-file-excel ml-2"></i>#}
+										{#										</button>#}
 										<button type="submit"
 												class="btn btn-primary btn-sm btn-icon-sm">
 											جستجو
@@ -190,7 +190,9 @@
                                 });
                                 transactionChart.render();
                             }
-                            table_export.reset()
+                            setTimeout(() => {
+                                table_export.reset()
+                            }, 1000)
                         }
                     })
                 },

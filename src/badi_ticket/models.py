@@ -26,8 +26,8 @@ class Ticket(models.Model, BadiModel):
     writer = models.ForeignKey(User, null=True, related_name='tickets', on_delete=models.CASCADE,
                                verbose_name=_('Member'))
     title = models.CharField(max_length=255, verbose_name=_('Title'))
-    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Created at"))
     is_closed = models.BooleanField(default=False, verbose_name=_('is Closed'))
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Created at"))
 
     def __str__(self):
         return self.title + ' (' + self.writer.__str__() + ')'

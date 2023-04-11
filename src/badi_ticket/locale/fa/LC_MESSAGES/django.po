@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-03-30 08:43+0330\n"
+"POT-Creation-Date: 2023-04-11 08:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,27 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-#: .\badi_ticket\api.py:59
-msgid "New message"
-msgstr "پیام های جدید"
 
-#: .\badi_ticket\api.py:82 .\badi_ticket\api.py:124
+#: .\badi_ticket\api.py:90 .\badi_ticket\api.py:132
 msgid "Please fill title and text fields"
 msgstr "لطفا عنوان و متن را وارد کنید"
 
-#: .\badi_ticket\api.py:96 .\badi_ticket\api.py:138
+#: .\badi_ticket\api.py:104 .\badi_ticket\api.py:146
 msgid "SomeThing Happened! No message sent!"
 msgstr "مشکلی پیش آمده است! پیامی ارسال نشد!"
 
-#: .\badi_ticket\api.py:102 .\badi_ticket\api.py:144
+#: .\badi_ticket\api.py:110 .\badi_ticket\api.py:152
 msgid "Your Ticket and Message sent to #0 User successfully!"
 msgstr "تیکت و پیام های شما به #0 کاربر ارسال شد"
 
-#: .\badi_ticket\api.py:109 .\badi_ticket\api.py:151
+#: .\badi_ticket\api.py:117 .\badi_ticket\api.py:159
 msgid "Select a member!"
 msgstr "یک عضو را انتخاب کنید!"
 
-#: .\badi_ticket\api.py:112 .\badi_ticket\api.py:154
+#: .\badi_ticket\api.py:120 .\badi_ticket\api.py:162
 msgid "You dont have permission to Send Ticket!"
 msgstr "شما به ارسال تیکت دسترسی ندارید!"
 
@@ -50,6 +47,7 @@ msgstr "مدیریت تیکت ها"
 
 #: .\badi_ticket\models.py:27
 #: .\badi_ticket\templates\ticket\message_list.html:26
+#: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
 msgid "Member"
 msgstr "عضو"
 
@@ -57,20 +55,24 @@ msgstr "عضو"
 #: .\badi_ticket\templates\ticket\message_list.html:21
 #: .\badi_ticket\templates\ticket\ticket_create.html:32
 #: .\badi_ticket\templates\ticket\ticket_create.html:34
+#: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
 msgid "Title"
 msgstr "عنوان"
 
 #: .\badi_ticket\models.py:29
-msgid "Created at"
-msgstr "زمان ثبت"
-
-#: .\badi_ticket\models.py:30
 msgid "is Closed"
 msgstr "بسته شده"
 
+#: .\badi_ticket\models.py:30 .\badi_ticket\views.py:13
+#: .\badi_ticket\views.py:20
+msgid "Created at"
+msgstr "زمان ثبت"
+
 #: .\badi_ticket\models.py:63
 #: .\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\badi_ticket\templates\ticket\ticket_create.html:49
 #: .\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\badi_ticket\templates\ticket\ticket_create.html:154
 msgid "Ticket"
 msgstr "تیکت"
 
@@ -124,6 +126,7 @@ msgstr "پیام"
 
 #: .\badi_ticket\templates\ticket\message_list.html:102
 #: .\badi_ticket\templates\ticket\ticket_create.html:49
+#: .\badi_ticket\templates\ticket\ticket_create.html:59
 msgid "Submit"
 msgstr "ارسال"
 
@@ -145,7 +148,6 @@ msgid "List"
 msgstr "لیست"
 
 #: .\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\badi_ticket\templates\ticket\ticket_create.html:59
 msgid "Create"
 msgstr "ساخت"
 
@@ -157,7 +159,29 @@ msgstr "لغو"
 msgid "Messages"
 msgstr "پیام ها"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:153
+#: .\badi_ticket\templates\ticket\ticket_create.html:144
+#, fuzzy
+#| msgid "Message Text"
+msgid "no message yet"
+msgstr "متن پیام"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:146
+msgid "waiting to answer"
+msgstr "در انتظار پاسخ"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:149
+msgid "answered"
+msgstr "پاسخ داده شده"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:154
+msgid "close"
+msgstr "بسته"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:154
+msgid "open"
+msgstr "باز"
+
+#: .\badi_ticket\templates\ticket\ticket_create.html:173
 msgid "Done Successfully"
 msgstr "با موفقیت انجام شد"
 
@@ -165,3 +189,12 @@ msgstr "با موفقیت انجام شد"
 #: .\badi_ticket\templates\ticket\ticket_update.html:33
 msgid "Update"
 msgstr "بروزرسانی"
+
+#: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
+#, fuzzy
+#| msgid "Sent at"
+msgid "Status"
+msgstr "وضیعت"
+
+#~ msgid "New message"
+#~ msgstr "پیام های جدید"

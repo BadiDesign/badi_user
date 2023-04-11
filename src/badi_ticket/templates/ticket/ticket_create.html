@@ -41,12 +41,12 @@
 												{{form.writer}}
 												{% endif %}
 											</div>
-											<div class="card-footer">
-												<button type="button" class="btn btn-light-primary font-weight-bold"
+											<div class="card-footer p-2">
+												<button type="button" class="btn mx-2 btn-light-primary font-weight-bold"
 														data-dismiss="modal">{% trans "Cancel" %}
 												</button>
 												<button class="btn btn-primary">
-													{% trans "Submit" %}
+													{% trans "Submit" %} {% trans "Ticket" %}
 												</button>
 											</div>
 										</form>
@@ -56,7 +56,7 @@
                             <div class="card-toolbar">
                                 <button type="button" class="btn btn-primary" data-toggle="modal"
                                         data-target="#ticketModal">
-                                    {% trans "Create" %} {% trans "Ticket" %}
+                                    {% trans "Submit" %} {% trans "Ticket" %}
                                 </button>
                             </div>
 
@@ -135,6 +135,26 @@
             `
     <a href="messages/${data[0]}" data-skin="dark" data-toggle="tooltip" data-placement="top" title="" data-original-title="{% trans 'Messages' %}" class="btn btn-sm btn-light-primary btn-icon"><span class="svg-icon svg-icon-md">{% include 'svg/message.html' %}</span></button>
                 `)
+				const status_list = data[3]
+				const is_closed = status_list[0]
+				const count = status_list[1]
+				let last_message = status_list[2]
+				let color = 'dark'
+				if(last_message === -1){
+                    last_message = '{% trans "no message yet" %}'
+                } else if(last_message === 0){
+                    last_message = '{% trans "waiting to answer" %}'
+					color = 'danger'
+                } else if(last_message === 1){
+                    last_message = '{% trans "answered" %}'
+					color = 'success'
+                }
+				$(`td:eq(1)`, row).html(
+                    `<label class="label label-xl label-inline font-weight-bold label-light-${color}">
+						<span class="label label-xl mr-2 label-dot label-${color}"></span> {% trans "Ticket" %}: ${is_closed ? '{% trans "close" %}' : '{% trans "open" %}'} - ${last_message}
+					</label>
+`
+				)
 
             },
 
