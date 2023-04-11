@@ -116,17 +116,10 @@
 
         }, {
             rowCallback: function (row, data) {
-                {% if not request.user.is_admin %}
-                    if (data[4] === "bool-true")
-                        $(`td:eq(2)`, row).html(`<label class="label label-xl label-primary"><i class="fa text-white fa-check"></i></label>`)
-                    else if (data[4] === "bool-false")
-                        $(`td:eq(2)`, row).html(`<label class="label label-xl label-primary"><i class="fa text-white fa-times"></i></label>`)
-                    boldCol(0, row, data[2])
-                    $(`td:eq(3)`, row)
-                {% else %}
-                    defaultDrawCallBack(row, data)
-                    $(`td:eq(4)`, row)
-                {% endif %}
+                {% if request.user.is_admin %}
+                $('td:eq(0)',row).prepend(data[1] +' - ')
+                {%endif%}
+				$(`td:last`, row)
             {% if request.user.is_admin %}
                 .prepend(
                 {% else %}
@@ -135,6 +128,7 @@
             `
     <a href="messages/${data[0]}" data-skin="dark" data-toggle="tooltip" data-placement="top" title="" data-original-title="{% trans 'Messages' %}" class="btn btn-sm btn-light-primary btn-icon"><span class="svg-icon svg-icon-md">{% include 'svg/message.html' %}</span></button>
                 `)
+                console.log('DATA',data)
 				const status_list = data[3]
 				const is_closed = status_list[0]
 				const count = status_list[1]

@@ -60,10 +60,10 @@ class TicketViewSet(DynamicModelApi):
             first = row.messages.all().order_by('-pk').first()
             last_message = -1
             if first:
-                if first.writer.is_admin and self.request.user.is_admin:
-                    last_message = 0
-                else:
+                if first.writer.is_admin:
                     last_message = 1
+                else:
+                    last_message = 0
             return [row.is_closed, count, last_message]
         return super().render_column(row, column)
 
