@@ -19,6 +19,8 @@ def file_size(value):  # add this to some file where you can import it from
 
 class Ticket(models.Model, BadiModel):
     class Meta:
+        verbose_name = _('Ticket')
+        verbose_name_plural = _('Ticket')
         permissions = (
             ('can_ticket', _('Manage Tickets')),
         )

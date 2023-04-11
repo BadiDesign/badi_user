@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 08:26+0330\n"
+"POT-Creation-Date: 2023-04-11 09:46+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,10 +160,8 @@ msgid "Messages"
 msgstr "پیام ها"
 
 #: .\badi_ticket\templates\ticket\ticket_create.html:144
-#, fuzzy
-#| msgid "Message Text"
-msgid "no message yet"
-msgstr "متن پیام"
+msgid "empty ticket"
+msgstr "فاقد پیام"
 
 #: .\badi_ticket\templates\ticket\ticket_create.html:146
 msgid "waiting to answer"
@@ -191,10 +189,5 @@ msgid "Update"
 msgstr "بروزرسانی"
 
 #: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
-#, fuzzy
-#| msgid "Sent at"
 msgid "Status"
 msgstr "وضیعت"
-
-#~ msgid "New message"
-#~ msgstr "پیام های جدید"

@@ -141,7 +141,7 @@
 				let last_message = status_list[2]
 				let color = 'dark'
 				if(last_message === -1){
-                    last_message = '{% trans "no message yet" %}'
+                    last_message = '{% trans "empty ticket" %}'
                 } else if(last_message === 0){
                     last_message = '{% trans "waiting to answer" %}'
 					color = 'danger'
