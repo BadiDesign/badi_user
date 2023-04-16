@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-11 09:46+0330\n"
+"POT-Creation-Date: 2023-04-16 12:37+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,68 +41,69 @@ msgstr "شما به ارسال تیکت دسترسی ندارید!"
 msgid "File must be less than 1 mb!"
 msgstr "فایل باید کمتر از 1 مگ باشد!"
 
-#: .\badi_ticket\models.py:23 .\badi_ticket\models.py:58
+#: .\badi_ticket\models.py:22 .\badi_ticket\models.py:23
+#: .\badi_ticket\models.py:65
+#: .\badi_ticket\templates\ticket\ticket_create.html:24
+#: .\badi_ticket\templates\ticket\ticket_create.html:51
+#: .\badi_ticket\templates\ticket\ticket_create.html:61
+#: .\badi_ticket\templates\ticket\ticket_create.html:150
+msgid "Ticket"
+msgstr "تیکت"
+
+#: .\badi_ticket\models.py:25 .\badi_ticket\models.py:60
 msgid "Manage Tickets"
 msgstr "مدیریت تیکت ها"
 
-#: .\badi_ticket\models.py:27
+#: .\badi_ticket\models.py:29
 #: .\badi_ticket\templates\ticket\message_list.html:26
 #: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
 msgid "Member"
 msgstr "عضو"
 
-#: .\badi_ticket\models.py:28
+#: .\badi_ticket\models.py:30
 #: .\badi_ticket\templates\ticket\message_list.html:21
-#: .\badi_ticket\templates\ticket\ticket_create.html:32
-#: .\badi_ticket\templates\ticket\ticket_create.html:34
+#: .\badi_ticket\templates\ticket\ticket_create.html:33
+#: .\badi_ticket\templates\ticket\ticket_create.html:35
 #: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
 msgid "Title"
 msgstr "عنوان"
 
-#: .\badi_ticket\models.py:29
+#: .\badi_ticket\models.py:31
 msgid "is Closed"
 msgstr "بسته شده"
 
-#: .\badi_ticket\models.py:30 .\badi_ticket\views.py:13
+#: .\badi_ticket\models.py:32 .\badi_ticket\views.py:13
 #: .\badi_ticket\views.py:20
 msgid "Created at"
 msgstr "زمان ثبت"
 
-#: .\badi_ticket\models.py:63
-#: .\badi_ticket\templates\ticket\ticket_create.html:23
-#: .\badi_ticket\templates\ticket\ticket_create.html:49
-#: .\badi_ticket\templates\ticket\ticket_create.html:59
-#: .\badi_ticket\templates\ticket\ticket_create.html:154
-msgid "Ticket"
-msgstr "تیکت"
-
-#: .\badi_ticket\models.py:64
+#: .\badi_ticket\models.py:66
 msgid "Message Text"
 msgstr "متن پیام"
 
-#: .\badi_ticket\models.py:66
+#: .\badi_ticket\models.py:68
 msgid "Writer"
 msgstr "نویسنده"
 
-#: .\badi_ticket\models.py:67
+#: .\badi_ticket\models.py:69
 msgid "File"
 msgstr "فایل"
 
-#: .\badi_ticket\models.py:69
+#: .\badi_ticket\models.py:71
 msgid "Is seen by user"
 msgstr "دیده شده توسط کاربر"
 
-#: .\badi_ticket\models.py:70
+#: .\badi_ticket\models.py:72
 msgid "Is seen by admin"
 msgstr "دیده شده توسط مدیر"
 
-#: .\badi_ticket\models.py:71
+#: .\badi_ticket\models.py:73
 msgid "Sent at"
 msgstr "زمان ارسال"
 
 #: .\badi_ticket\templates\ticket\admin_tickets.html:35
 #: .\badi_ticket\templates\ticket\my_tickets.html:55
-#: .\badi_ticket\templates\ticket\ticket_create.html:72
+#: .\badi_ticket\templates\ticket\ticket_create.html:74
 msgid "Action"
 msgstr "عملیات"
 
@@ -125,8 +126,8 @@ msgid "Message"
 msgstr "پیام"
 
 #: .\badi_ticket\templates\ticket\message_list.html:102
-#: .\badi_ticket\templates\ticket\ticket_create.html:49
-#: .\badi_ticket\templates\ticket\ticket_create.html:59
+#: .\badi_ticket\templates\ticket\ticket_create.html:51
+#: .\badi_ticket\templates\ticket\ticket_create.html:61
 msgid "Submit"
 msgstr "ارسال"
 
@@ -147,39 +148,39 @@ msgstr "پیوست فایل"
 msgid "List"
 msgstr "لیست"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:23
+#: .\badi_ticket\templates\ticket\ticket_create.html:24
 msgid "Create"
 msgstr "ساخت"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:46
+#: .\badi_ticket\templates\ticket\ticket_create.html:48
 msgid "Cancel"
 msgstr "لغو"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:136
+#: .\badi_ticket\templates\ticket\ticket_create.html:131
 msgid "Messages"
 msgstr "پیام ها"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:144
+#: .\badi_ticket\templates\ticket\ticket_create.html:140
 msgid "empty ticket"
 msgstr "فاقد پیام"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:146
+#: .\badi_ticket\templates\ticket\ticket_create.html:142
 msgid "waiting to answer"
 msgstr "در انتظار پاسخ"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:149
+#: .\badi_ticket\templates\ticket\ticket_create.html:145
 msgid "answered"
 msgstr "پاسخ داده شده"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:154
+#: .\badi_ticket\templates\ticket\ticket_create.html:150
 msgid "close"
 msgstr "بسته"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:154
+#: .\badi_ticket\templates\ticket\ticket_create.html:150
 msgid "open"
 msgstr "باز"
 
-#: .\badi_ticket\templates\ticket\ticket_create.html:173
+#: .\badi_ticket\templates\ticket\ticket_create.html:169
 msgid "Done Successfully"
 msgstr "با موفقیت انجام شد"
 

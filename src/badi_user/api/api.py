@@ -29,7 +29,6 @@ from badi_user.api.serializers import UserSerializer, GroupSerializer, MemberSer
 from badi_user.filter import UserListFilter, MemberListFilter, LogFilter
 from badi_user.models import Token, Log
 from django.utils.translation import gettext_lazy as _
-from badi_utils.sms import IpPanelSms
 from django.contrib.auth import get_user_model
 from django.conf import settings
 
@@ -398,40 +397,31 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
 
     @action(methods=['post'], detail=False)
     def forgot_password(self, req, *args, **kwargs):
-        mobile_number = self.request.data.get('mobile_number')
-        user = User.objects.filter(mobile_number=mobile_number).first()
+        config = BADI_AUTH_CONFIG['forgot']
+        mobile_email = self.request.data.get(config.get('user_find_key'))
+        user = User.objects.filter(**{config.get('user_find_key'): mobile_email}).first()
         if not user:
-            return JsonResponse({'mobile_number': ['کاربری با شماره تماس وارد شده وجود ندارد!']},
+            return JsonResponse({config.get('user_find_key'): [_('There is no user with this specifications!')]},
                                 status=HTTP_400_BAD_REQUEST)
+        HTTP_ORIGIN = config.get('site_url') or req.META.get('HTTP_ORIGIN')
+        if user.token and user.token.is_enabled():
+            return JsonResponse({'mobile_number': ['شما به تازگی درخواست داده اید!']},
+                                status=HTTP_400_BAD_REQUEST)
+        hash_code = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
+        token = Token()
+        token.phone = user.username
+        token.last_send = datetime.datetime.now()
+        token.is_forgot = True
+        token.token = hash_code
+        token.save()
+        user.token = token
+        user.save()
+        token_id_hash = token.pk * 8569 - 1330
+        text = f'{HTTP_ORIGIN}/forgot_password/{token_id_hash}/{hash_code}'
+        print(f'لینک تغییر رمز عبور: %0D%0A {text}')
 
-        phone_number = self.request.data.get('mobile_number')
-        HTTP_ORIGIN = req.META.get('HTTP_ORIGIN')
-        if phone_number and len(phone_number) == 11:
-            user = User.objects.filter(mobile_number=phone_number).first()
-            if user:
-                if user.token and user.token.is_enabled():
-                    return JsonResponse({'mobile_number': ['شما به تازگی درخواست داده اید!']},
-                                        status=HTTP_400_BAD_REQUEST)
-                hash_code = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(30))
-                token = Token()
-                token.user = user
-                token.last_send = datetime.datetime.now()
-                token.is_forgot = True
-                token.token = hash_code
-                token.save()
-                user.token = token
-                user.save()
-                token_id_hash = token.pk * 8569 - 1330
-                text = f'{HTTP_ORIGIN}/forgot_password/{token_id_hash}/{hash_code}'
-                print(f'لینک تغییر رمز عبور: %0D%0A {text}')
-                Sms.link(user.mobile_number, token_id_hash, hash_code)
-                return ResponseOk({})
-
-            else:
-                return JsonResponse({'mobile_number': ['کاربری با شماره تماس وارد شده وجود ندارد!']},
-                                    status=HTTP_400_BAD_REQUEST)
-
-        return JsonResponse({'mobile_number': ['مشکلی پیش آمده است!']}, status=HTTP_400_BAD_REQUEST)
+        config.get('class')(getattr(user, config.get('user_find_key'))).send_forgot_link(token_id_hash, hash_code)
+        return ResponseOk({})
 
     @action(methods=['post'], detail=False)
     def refresh(self, request, *args, **kwargs):

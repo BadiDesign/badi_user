@@ -28,11 +28,17 @@ const app = new Vue({
                 },
                 error: function (e) {
                     swalFireError();
+                    this.loading = false;
                 }
             })
         },
         sendMessage() {
             const pk = document.getElementById('id_tickt').value;
+            let fileEl = document.getElementById('id_file');
+            if ((fileEl.files[0]) && fileEl.files[0].size / 1024 / 1024 > 1) {
+                swalFireError(badiConfig.fileSizeError.replace('#size', '1mb'))
+                return
+            }
             this.loading = true;
             ApiAjax({
                 url: MESSAGES_API_URL,
@@ -43,8 +49,8 @@ const app = new Vue({
                     document.getElementById('id_tickt').value = pk;
                     this.getMessages()
                 },
-                error: function (e) {
-                    swalFireError();
+                error: (e) => {
+                    this.getMessages()
                 }
             })
         },

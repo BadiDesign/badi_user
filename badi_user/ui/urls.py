@@ -11,7 +11,7 @@ User = get_user_model()
 urlpatterns = [
     path('login/', UserLoginView.as_view(), name='custom_login'),
     path('logout/', UserLogout.as_view(), name='user_logout'),
-    path('change_password/', ChangePasswordViewTemplateView.as_view(), name="forgot_password"),
+    path('change_password/', ChangePasswordViewTemplateView.as_view(), name="change_password"),
     path('forgot_password/<str:token_id>/<str:hash_code>', ChangePasswordForgot.as_view(),
          name="forgot_password"),
     generate_url(User(), create=UserCreateView),
