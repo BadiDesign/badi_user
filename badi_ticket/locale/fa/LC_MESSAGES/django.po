@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 12:37+0330\n"
+"POT-Creation-Date: 2023-04-16 15:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,12 +37,17 @@ msgstr "یک عضو را انتخاب کنید!"
 msgid "You dont have permission to Send Ticket!"
 msgstr "شما به ارسال تیکت دسترسی ندارید!"
 
-#: .\badi_ticket\models.py:15
+#: .\badi_ticket\models.py:15 .\badi_ticket\models.py:16
+#, python-format
+msgid "File must be less than %(limit_value)d mb!"
+msgstr "فایل باید کمتر از %(limit_value)d mb باشد!"
+
+#: .\badi_ticket\models.py:32
 msgid "File must be less than 1 mb!"
 msgstr "فایل باید کمتر از 1 مگ باشد!"
 
-#: .\badi_ticket\models.py:22 .\badi_ticket\models.py:23
-#: .\badi_ticket\models.py:65
+#: .\badi_ticket\models.py:39 .\badi_ticket\models.py:40
+#: .\badi_ticket\models.py:82
 #: .\badi_ticket\templates\ticket\ticket_create.html:24
 #: .\badi_ticket\templates\ticket\ticket_create.html:51
 #: .\badi_ticket\templates\ticket\ticket_create.html:61
@@ -50,17 +55,17 @@ msgstr "فایل باید کمتر از 1 مگ باشد!"
 msgid "Ticket"
 msgstr "تیکت"
 
-#: .\badi_ticket\models.py:25 .\badi_ticket\models.py:60
+#: .\badi_ticket\models.py:42 .\badi_ticket\models.py:77
 msgid "Manage Tickets"
 msgstr "مدیریت تیکت ها"
 
-#: .\badi_ticket\models.py:29
+#: .\badi_ticket\models.py:46
 #: .\badi_ticket\templates\ticket\message_list.html:26
 #: .\badi_ticket\views.py:13 .\badi_ticket\views.py:20
 msgid "Member"
 msgstr "عضو"
 
-#: .\badi_ticket\models.py:30
+#: .\badi_ticket\models.py:47
 #: .\badi_ticket\templates\ticket\message_list.html:21
 #: .\badi_ticket\templates\ticket\ticket_create.html:33
 #: .\badi_ticket\templates\ticket\ticket_create.html:35
@@ -68,36 +73,36 @@ msgstr "عضو"
 msgid "Title"
 msgstr "عنوان"
 
-#: .\badi_ticket\models.py:31
+#: .\badi_ticket\models.py:48
 msgid "is Closed"
 msgstr "بسته شده"
 
-#: .\badi_ticket\models.py:32 .\badi_ticket\views.py:13
+#: .\badi_ticket\models.py:49 .\badi_ticket\views.py:13
 #: .\badi_ticket\views.py:20
 msgid "Created at"
 msgstr "زمان ثبت"
 
-#: .\badi_ticket\models.py:66
+#: .\badi_ticket\models.py:83
 msgid "Message Text"
 msgstr "متن پیام"
 
-#: .\badi_ticket\models.py:68
+#: .\badi_ticket\models.py:85
 msgid "Writer"
 msgstr "نویسنده"
 
-#: .\badi_ticket\models.py:69
+#: .\badi_ticket\models.py:86
 msgid "File"
 msgstr "فایل"
 
-#: .\badi_ticket\models.py:71
+#: .\badi_ticket\models.py:88
 msgid "Is seen by user"
 msgstr "دیده شده توسط کاربر"
 
-#: .\badi_ticket\models.py:72
+#: .\badi_ticket\models.py:89
 msgid "Is seen by admin"
 msgstr "دیده شده توسط مدیر"
 
-#: .\badi_ticket\models.py:73
+#: .\badi_ticket\models.py:90
 msgid "Sent at"
 msgstr "زمان ارسال"
 

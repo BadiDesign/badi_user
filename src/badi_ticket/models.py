@@ -1,11 +1,28 @@
+from django.utils.deconstruct import deconstructible
+
 from badi_utils.dynamic_models import BadiModel
-from django.core.validators import MaxLengthValidator
+from django.core.validators import MaxLengthValidator, BaseValidator
 from django.db import models
 from rest_framework.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
+from django.utils.translation import gettext_lazy as _, ngettext_lazy
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+
+
+@deconstructible
+class MaxFileLengthValidator(BaseValidator):
+    message = ngettext_lazy(_('File must be less than %(limit_value)d mb!'),
+                            _('File must be less than %(limit_value)d mb!'),
+                            'limit_value',
+                            )
+    code = 'max_size'
+
+    def compare(self, a, b):
+        return a > (b * 1024 * 1024)
+
+    def clean(self, x):
+        return x.size if x else 0
 
 
 def file_size(value):  # add this to some file where you can import it from
@@ -67,7 +84,7 @@ class Message(models.Model, BadiModel):
     writer = models.ForeignKey(User, related_name='messages', null=True, on_delete=models.CASCADE,
                                verbose_name=_("Writer"))
     file = models.FileField(upload_to='messages/', blank=True, null=True, verbose_name=_("File"),
-                            validators=[file_size])
+                            validators=[MaxFileLengthValidator(1)])
     is_seen = models.BooleanField(default=False, verbose_name=_("Is seen by user"))
     is_seen_by_admin = models.BooleanField(default=False, verbose_name=_("Is seen by admin"))
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Sent at"))

@@ -35,7 +35,6 @@ const badiConfig = {
         select2_direction: 'rtl',
         select2_active: true,
         select2_searching_text: 'درحال جستجو',
-        fileSizeError: 'File size must be less than #size',
         select2_no_result_text: 'موردی یافت نشد',
         element_image_404: '/static/assets/media/users/default.jpg',
         currency_append: " تومان",

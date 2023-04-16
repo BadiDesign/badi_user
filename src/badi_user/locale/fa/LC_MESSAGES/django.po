@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 12:37+0330\n"
+"POT-Creation-Date: 2023-04-16 15:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,41 +18,45 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\badi_user\api\api.py:174 .\badi_user\api\api.py:262
+#: .\badi_user\api\api.py:173 .\badi_user\api\api.py:261
 #, fuzzy
 #| msgid "Code sent to "
 msgid "Code sent"
 msgstr "کد ارسال شد به"
 
-#: .\badi_user\api\api.py:174
+#: .\badi_user\api\api.py:173
 msgid "to"
-msgstr ""
+msgstr "به"
 
-#: .\badi_user\api\api.py:231 .\badi_user\api\api.py:241
+#: .\badi_user\api\api.py:230 .\badi_user\api\api.py:240
 msgid "This mobile number already registered"
 msgstr "این شماره تماس قبلا ثبت شده است"
 
-#: .\badi_user\api\api.py:236
+#: .\badi_user\api\api.py:235
 msgid "Invalid username"
 msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_user\api\api.py:238
+#: .\badi_user\api\api.py:237
 msgid "This username already taken"
 msgstr "این نام کاربری قبلا ثبت شده است"
 
-#: .\badi_user\api\api.py:252
+#: .\badi_user\api\api.py:251
 msgid "You request code recently, please try again later"
 msgstr "شما به تازگی درخواست کد داده اید! لطفا بعدا تلاش کنید"
 
-#: .\badi_user\api\api.py:265
+#: .\badi_user\api\api.py:264
 msgid "Please try again"
-msgstr ""
+msgstr "لطفا دوباره تلاش کنید"
 
-#: .\badi_user\api\api.py:287
+#: .\badi_user\api\api.py:286
 #, fuzzy
 #| msgid "Invalid username"
 msgid "Invalid Code!"
 msgstr "نام کاربری غیر معتبر"
+
+#: .\badi_user\api\api.py:404
+msgid "There is no user with this specifications!"
+msgstr "کاربری با مشخصات مورد نظر پیدا نشد!"
 
 #: .\badi_user\models.py:14
 msgid "code"
@@ -133,7 +137,7 @@ msgstr "سندیکا"
 
 #: .\badi_user\models.py:126
 msgid "Notifications"
-msgstr ""
+msgstr "اعلانات"
 
 #: .\badi_user\models.py:133
 #, fuzzy
@@ -155,15 +159,15 @@ msgstr "تاریخ تولد"
 
 #: .\badi_user\models.py:136
 msgid "Is Seen"
-msgstr ""
+msgstr "دیده شده"
 
 #: .\badi_user\models.py:144
 msgid "Log"
-msgstr ""
+msgstr "لاگ"
 
 #: .\badi_user\models.py:145
 msgid "Logs"
-msgstr ""
+msgstr "لاگ ها"
 
 #: .\badi_user\models.py:151 .\badi_user\models.py:168
 msgid "Title"
@@ -171,7 +175,7 @@ msgstr "عنوان"
 
 #: .\badi_user\models.py:154 .\badi_user\models.py:168
 msgid "Priority"
-msgstr ""
+msgstr "سطح اهمیت"
 
 #: .\badi_user\models.py:155 .\badi_user\models.py:168
 #, fuzzy
@@ -270,9 +274,6 @@ msgstr "باید بین 2 و 20 حرف باشد"
 #: .\badi_user\templates\member\member_create.html:147
 #: .\badi_user\templates\member\member_update.html:89
 #: .\badi_user\templates\member\member_update.html:101
-#: .\badi_user\templates\user\change_password.html:75
-#: .\badi_user\templates\user\change_password.html:87
-#: .\badi_user\templates\user\change_password.html:94
 #: .\badi_user\templates\user\user_create.html:92
 #: .\badi_user\templates\user\user_create.html:104
 #: .\badi_user\templates\user\user_create.html:116
@@ -283,7 +284,6 @@ msgid "This Field is required"
 msgstr "این فیلد ضروری است"
 
 #: .\badi_user\templates\member\member_create.html:137
-#: .\badi_user\templates\user\change_password.html:84
 #: .\badi_user\templates\user\user_create.html:113
 msgid "must be between 6 and 20 character"
 msgstr "باید بین 6 تا 20 حرف باشد"
@@ -296,7 +296,6 @@ msgstr "با موفقیت فعال شد"
 
 #: .\badi_user\templates\member\member_create.html:182
 #: .\badi_user\templates\member\member_update.html:131
-#: .\badi_user\templates\user\change_password.html:132
 #: .\badi_user\templates\user\user_create.html:160
 #: .\badi_user\templates\user\user_update.html:123
 msgid "Seems some error exists"
@@ -304,7 +303,7 @@ msgstr "بنظر می رسد تعدادی خطا وجود دارد"
 
 #: .\badi_user\templates\member\member_create.html:184
 #: .\badi_user\templates\member\member_update.html:133
-#: .\badi_user\templates\user\change_password.html:134
+#: .\badi_user\templates\user\change_password.html:89
 #: .\badi_user\templates\user\user_create.html:162
 #: .\badi_user\templates\user\user_update.html:125
 msgid "Got it"
@@ -403,7 +402,7 @@ msgstr "بله، شارژش کن"
 
 #: .\badi_user\templates\member\member_list.html:414
 msgid "Cancel"
-msgstr ""
+msgstr "لغو"
 
 #: .\badi_user\templates\member\member_list.html:421
 #: .\badi_user\templates\member\member_list.html:452
@@ -437,14 +436,17 @@ msgstr "رمز فعلی"
 msgid "New Password"
 msgstr "رمز جدید"
 
-#: .\badi_user\templates\user\change_password.html:97
+#: .\badi_user\templates\user\change_password.html:83
+msgid "Password changed successfully"
+msgstr "رمز عبور با موفقیت بروزرسانی شد"
+
+#: .\badi_user\templates\user\change_password.html:87
+msgid "new Password and repeat password must be equal!"
+msgstr "رمز جدید و تکرار رمز عبور باید یکسان باشند!"
+
 #: .\badi_user\templates\user\user_create.html:126
 msgid "Repeat Password and New Password are not equal"
 msgstr "تکرار رمز عبور با رمز عبور مطابقت ندارد"
-
-#: .\badi_user\templates\user\change_password.html:128
-msgid "Password changed successfully"
-msgstr "رمز عبور با موفقیت بروزرسانی شد"
 
 #: .\badi_user\templates\user\user_update.html:119
 msgid "Updated Successfully"

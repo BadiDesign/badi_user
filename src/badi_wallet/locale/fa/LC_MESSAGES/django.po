@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 12:37+0330\n"
+"POT-Creation-Date: 2023-04-16 15:52+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,105 +17,105 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\src\badi_wallet\action.py:28 .\src\badi_wallet\ui\views.py:30
+#: .\badi_wallet\action.py:28 .\badi_wallet\ui\views.py:30
 msgid ""
 "The operation encountered an error. Please try again. If the amount is "
 "deducted from your account, it will be returned to your account within 72 "
 "hours."
 msgstr ""
 
-#: .\src\badi_wallet\action.py:123
+#: .\badi_wallet\action.py:123
 msgid "Invalid Data"
 msgstr "فرمت تاریخ صحیح نمی باشد"
 
-#: .\src\badi_wallet\action.py:150 .\src\badi_wallet\models.py:52
+#: .\badi_wallet\action.py:150 .\badi_wallet\models.py:52
 msgid "Charge"
 msgstr "شارژ"
 
-#: .\src\badi_wallet\action.py:185
+#: .\badi_wallet\action.py:185
 msgid "Transaction canceled"
 msgstr "تراکنش لغو شد"
 
-#: .\src\badi_wallet\apps.py:8
+#: .\badi_wallet\apps.py:8
 msgid "Wallet"
 msgstr "کیف پول"
 
-#: .\src\badi_wallet\models.py:16 .\src\badi_wallet\models.py:17
+#: .\badi_wallet\models.py:16 .\badi_wallet\models.py:17
 msgid "Bank Transaction"
 msgstr "تراکنش بانکی"
 
-#: .\src\badi_wallet\models.py:19 .\src\badi_wallet\models.py:47
+#: .\badi_wallet\models.py:19 .\badi_wallet\models.py:47
 msgid "Manage"
 msgstr "مدیریت"
 
-#: .\src\badi_wallet\models.py:22
+#: .\badi_wallet\models.py:22
 msgid "Authority"
 msgstr "کد احراز"
 
-#: .\src\badi_wallet\models.py:23 .\src\badi_wallet\models.py:56
+#: .\badi_wallet\models.py:23 .\badi_wallet\models.py:56
 msgid "User"
 msgstr "کاربر"
 
-#: .\src\badi_wallet\models.py:24
+#: .\badi_wallet\models.py:24
 msgid "Description"
 msgstr "توضیحات"
 
-#: .\src\badi_wallet\models.py:25
+#: .\badi_wallet\models.py:25
 msgid "is Verified"
 msgstr "تایید شده"
 
-#: .\src\badi_wallet\models.py:26
+#: .\badi_wallet\models.py:26
 msgid "RefID"
 msgstr "کد رهگیری"
 
-#: .\src\badi_wallet\models.py:27
+#: .\badi_wallet\models.py:27
 msgid "Card Hash"
 msgstr "شماره کارت"
 
-#: .\src\badi_wallet\models.py:29 .\src\badi_wallet\models.py:57
+#: .\badi_wallet\models.py:29 .\badi_wallet\models.py:57
 msgid "Amount"
 msgstr "مقدار"
 
-#: .\src\badi_wallet\models.py:30 .\src\badi_wallet\models.py:59
+#: .\badi_wallet\models.py:30 .\badi_wallet\models.py:59
 msgid "Info"
 msgstr "جزئیات"
 
-#: .\src\badi_wallet\models.py:31
+#: .\badi_wallet\models.py:31
 msgid "Bank Response"
 msgstr "پاسخ بانک"
 
-#: .\src\badi_wallet\models.py:44
+#: .\badi_wallet\models.py:44
 msgid "Transaction"
 msgstr "تراکنش"
 
-#: .\src\badi_wallet\models.py:45
+#: .\badi_wallet\models.py:45
 msgid "Transactions"
 msgstr "تراکنش ها"
 
-#: .\src\badi_wallet\models.py:51
+#: .\badi_wallet\models.py:51
 msgid "Buy"
 msgstr "خرید"
 
-#: .\src\badi_wallet\models.py:53
+#: .\badi_wallet\models.py:53
 msgid "Return"
 msgstr "بازگشت"
 
-#: .\src\badi_wallet\models.py:58
+#: .\badi_wallet\models.py:58
 msgid "Type"
 msgstr "نوع"
 
-#: .\src\badi_wallet\models.py:60
+#: .\badi_wallet\models.py:60
 msgid "Time"
 msgstr "زمان"
 
-#: .\src\badi_wallet\models.py:61
+#: .\badi_wallet\models.py:61
 msgid "Transaction Subject"
 msgstr "عنوان تراکنش"
 
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:13
+#: .\badi_wallet\templates\transaction\transaction_result.html:13
 msgid "Payment done Successfully"
 msgstr "پرداخت با موفقیت انجام شد"
 
-#: .\src\badi_wallet\templates\transaction\transaction_result.html:15
+#: .\badi_wallet\templates\transaction\transaction_result.html:15
 msgid "Payment Failed"
 msgstr "پرداخت به خطا خورد"
