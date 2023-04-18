@@ -26,7 +26,7 @@ class Token(models.Model):
 
     def is_possible_resend(self):
         if self.last_send:
-            return self.last_send > datetime.now() - timedelta(minutes=5)
+            return self.last_send < datetime.now() - timedelta(minutes=5)
         return True
 
 

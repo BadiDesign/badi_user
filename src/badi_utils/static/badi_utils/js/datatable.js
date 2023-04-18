@@ -165,22 +165,20 @@ window.datatable_simple_show = function (options, settings) {
             e.preventDefault();
             var id = getId(oTable, $(this));
             var deleting_process = function (callback) {
-                if (options['extra_del_params']) {
-                    if (!options['disable_extra_del_params']) {
-                        $.ajax(delete_url + id, {
-                            method: 'delete',
-                            headers: {
-                                "Authorization": localStorage.getItem('session_key')
-                            },
-                            error: (options['deleteError']) ? options['deleteError'] : () => {
-                                swalFireError('قابل Delete نمی باشد!')
-                            }
-                        }).done(function (res) {
-                            oTable.draw();
-                            if (callback) callback();
-                        });
-                        return
-                    }
+                if (!options['disable_extra_del_params']) {
+                    $.ajax(delete_url + id, {
+                        method: 'delete',
+                        headers: {
+                            "Authorization": localStorage.getItem('session_key')
+                        },
+                        error: (options['deleteError']) ? options['deleteError'] : () => {
+                            swalFireError('قابل Delete نمی باشد!')
+                        }
+                    }).done(function (res) {
+                        oTable.draw();
+                        if (callback) callback();
+                    });
+                    return
                 }
                 if (callback) callback();
                 window.location.href = delete_url + id;
