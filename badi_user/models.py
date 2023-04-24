@@ -81,13 +81,19 @@ class BadiAbstractUser(AbstractUser):
         if action == 'member_update':
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
         if action == 'member_self_update':
-            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number']
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'mobile_number']
+        if action == 'user_create':
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number', 'email']
+        if action == 'user_update':
+            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number', 'email']
         return ['first_name', 'last_name', 'mobile_number', 'picture']
 
     @classmethod
     def get_datatable_cols(cls, class_name, *args):
         if class_name == 'MemberListView':
             return ['#', _("Select"), "", _("Username"), _("FirstName"), _("LastName"), _("Amount")]
+        if class_name == 'UserListView':
+            return ['#', '', _("Mobile Number"), _("is admin"), _("active")]
         return [_("FirstName"), _("LastName"), _("Mobile Number"), _("Picture")]
 
     @staticmethod

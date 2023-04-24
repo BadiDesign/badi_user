@@ -19,7 +19,7 @@ from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
-from badi_utils.dynamic_api import DynamicModelApi, InCaseSensitiveTokenObtainPairSerializer
+from badi_utils.dynamic_api import DynamicModelApi, InCaseSensitiveTokenObtainPairSerializer, CustomValidation
 from badi_utils.logging import log
 from badi_utils.responses import ResponseOk, ResponseNotOk
 from badi_utils.utils import random_with_N_digits, permissions_json
@@ -51,8 +51,8 @@ class UserViewSet(DynamicModelApi):
     }
     switches = {
         'is_active': {
-            'true': ' ',
-            'false': ' ',
+            'true': '/api/v1/user/change_state/0',
+            'false': '/api/v1/user/change_state/0',
         }
     }
 
@@ -80,9 +80,12 @@ class UserViewSet(DynamicModelApi):
     @action(methods=['put'], detail=False, url_path='change_state/(?P<pk>[^/.]+)')
     def change_state(self, request, pk, *args, **kwargs):
         user = User.objects.get(pk=pk)
+        if user.is_superuser or user == self.request.user:
+            raise CustomValidation('user', _('You are not allowed to disable this user!'))
         user.is_active = not user.is_active
         user.save()
-
+        log(self.request.user, 3, 4, True,
+            text=f'User {self.request.user.__str__()} {"Activated" if user.is_active else "Disabled"}!')
         return JsonResponse({
             'message': 'با موفقیت {0} شد'.format('فعال' if user.is_active else 'غیرفعال')
         })
