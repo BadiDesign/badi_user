@@ -10,16 +10,16 @@ class TicketListView(DynamicListView):
     # permission_required = ROLES_ADMIN_TEACHER
     permission_required = True
     model = Ticket
-    datatable_cols = ['#', _('Member'), _('Title'), _('Status'), _("Created at")]
+    datatable_cols = ['#', _('Member'), _('Title'), _('Category'), _('Status'), _("Created at")]
 
 
 class TicketCreateView(DynamicCreateView):
     model = Ticket
     success_url = '/ticket/ticket/list'
     permission_required = True
-    datatable_cols = ['#', _('Member'), _('Title'), _('Status'), _("Created at")]
+    datatable_cols = ['#', _('Member'), _('Title'), _('Category'), _('Status'), _("Created at")]
     # permission_required = ROLES_ADMIN_TEACHER
-    form_fields = ['title', 'writer']
+    form_fields = ['title', 'writer', 'category']
 
     # updateURL = '/ticket/ticket/update/0'
 

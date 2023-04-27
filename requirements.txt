@@ -19,3 +19,4 @@ build
 badi-utils
 python_gettext
 django_resized
+django-phonenumber-field[phonenumberslite]

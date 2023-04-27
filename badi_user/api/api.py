@@ -85,7 +85,7 @@ class UserViewSet(DynamicModelApi):
         user.is_active = not user.is_active
         user.save()
         log(self.request.user, 3, 4, True,
-            text=f'User {self.request.user.__str__()} {"Activated" if user.is_active else "Disabled"}!')
+            text=f'User {user.__str__()} {"Activated" if user.is_active else "Disabled"}!')
         return JsonResponse({
             'message': 'با موفقیت {0} شد'.format('فعال' if user.is_active else 'غیرفعال')
         })

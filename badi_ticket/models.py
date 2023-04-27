@@ -1,3 +1,5 @@
+from random import choices
+
 from django.utils.deconstruct import deconstructible
 
 from badi_utils.dynamic_models import BadiModel
@@ -42,14 +44,32 @@ class Ticket(models.Model, BadiModel):
             ('can_ticket', _('Manage Tickets')),
         )
 
+    TICKET_CHOICES = (
+        ('sell', _('Sell')),
+        ('public_question', _('Public question')),
+        ('technical_question', _('Technical question')),
+        ('authentication', _('Authentication')),
+        ('complaint', _('Complaint')),
+        ('financial', _('Financial')),
+        ('other', _('Other')),
+    )
     writer = models.ForeignKey(User, null=True, related_name='tickets', on_delete=models.CASCADE,
                                verbose_name=_('Member'))
     title = models.CharField(max_length=255, verbose_name=_('Title'))
+    category = models.CharField(max_length=50, choices=TICKET_CHOICES, default="public_question", )
     is_closed = models.BooleanField(default=False, verbose_name=_('is Closed'))
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Created at"))
 
     def __str__(self):
         return self.title + ' (' + self.writer.__str__() + ')'
+
+    def unread_count(self, user=None):
+        count = 0
+        if user.is_admin:
+            count = self.messages.filter(is_seen_by_admin=False).count()
+        else:
+            count = self.messages.filter(is_seen=False).count()
+        return count
 
     def unread_messages(self, user):
         if user.is_admin:

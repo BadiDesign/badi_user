@@ -41,12 +41,13 @@ def send_sms(users, message_title, message_text, sender):
 
 
 class TicketViewSet(DynamicModelApi):
-    columns = ['id', 'writer', 'title', 'is_closed', 'created_at', ]
-    order_columns = ['id', 'writer', 'title', 'is_closed', 'created_at', ]
+    columns = ['id', 'writer', 'title', 'category', 'is_closed', 'created_at', ]
+    order_columns = ['id', 'writer', 'title', 'category', 'is_closed', 'created_at', ]
     model = Ticket
     queryset = Ticket.objects.all()
     serializer_class = TicketCreateSerializer
     custom_perms = {
+        'list': True,
         'datatable': True,
         'create': True,
     }
@@ -227,6 +228,7 @@ class MessageViewSet(DynamicModelApi):
         return JsonResponse({'response': res, 'ticket': {
             'fullname': ticket.writer.get_full_name(),
             'title': ticket.title,
+            'category': ticket.category,
             'is_closed': ticket.is_closed,
             'created_at': custom_change_date(ticket.created_at, 4),
         }})

@@ -1,3 +1,5 @@
+from rest_framework import serializers
+
 from badi_utils.dynamic_api import api_error_creator, CustomValidation
 from badi_utils.dynamic_api import DynamicSerializer
 from badi_ticket.models import Ticket, Message
@@ -6,15 +8,16 @@ from badi_ticket.models import Ticket, Message
 class TicketCreateSerializer(DynamicSerializer):
     remove_field_view = {
     }
+    unread_messages = serializers.SerializerMethodField()
 
     class Meta:
         model = Ticket
         extra_kwargs = api_error_creator(Ticket,
-                                         ['writer', 'title', 'created_at', 'is_closed', ],
+                                         ['writer', 'title', 'category', 'created_at', 'is_closed', ],
                                          blank_fields=['writer'],
                                          required_fields=[])
         depth = 2
-        fields = ['id', 'writer', 'title', 'created_at', 'is_closed', ]
+        fields = ['id', 'writer', 'title', 'created_at', 'category', 'is_closed', 'unread_messages', ]
 
     def create(self, validated_data):
         creator = self.context['request'].user
@@ -22,6 +25,9 @@ class TicketCreateSerializer(DynamicSerializer):
             validated_data['writer'] = creator
         validated_data['is_closed'] = False
         return super().create(validated_data)
+
+    def get_unread_messages(self, obj):
+        return obj.unread_count(self.context['request'].user)
 
 
 class MessageCreateSerializer(DynamicSerializer):

@@ -14,7 +14,7 @@ class Token(models.Model):
     token = models.CharField(max_length=250, verbose_name=_('code'))
     is_forgot = models.BooleanField(default=False)
     is_accepted = models.BooleanField(default=False)
-    phone = models.CharField(max_length=11, blank=True, null=True)
+    phone = models.CharField(max_length=15, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     last_send = models.DateTimeField(blank=True, null=True)
 
