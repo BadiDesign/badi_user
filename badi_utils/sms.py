@@ -72,3 +72,25 @@ class IpPanelSms:
             except Exception as e:
                 print(e)
         return False
+
+    def send_custom(self, params):
+        print(f'Send send_custom', params)
+        if not SMS_ENABLE:
+            return
+        for i in range(10):
+            try:
+                default_params = {
+                    "apikey": ORIGINATOR,
+                    "fnum": SMS__IPPANEL_F_NUM_VERIFY_CODE,
+                    "tnum": self.phone_number,
+                }
+                default_params.update(params)
+                result = requests.get(
+                    SMS_SEND_URL,
+                    params=default_params, headers={
+                        "Content-Type": "application/json",
+                    })
+                return True
+            except Exception as e:
+                print(e)
+        return False

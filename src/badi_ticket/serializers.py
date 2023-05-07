@@ -53,4 +53,9 @@ class MessageCreateSerializer(DynamicSerializer):
             validated_data['is_seen'] = True
         else:
             validated_data['is_seen_by_admin'] = True
-        return super().create(validated_data)
+        instance = super().create(validated_data)
+        if instance.is_seen_by_admin and instance.tickt.messages.filter(is_seen=False).count() == 1:
+            user = instance.tickt.writer
+            if user and hasattr(user, 'new_ticket'):
+                user.new_ticket(instance, instance.tickt)
+        return instance

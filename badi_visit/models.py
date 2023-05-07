@@ -10,7 +10,7 @@ class AddressVisit(models.Model):
         verbose_name = 'Address Visit'
         verbose_name_plural = 'Address Visits'
         permissions = (
-            ('can_address', 'Manage Address Visit'),
+            # ('can_address', 'Manage Address Visit'),
         )
 
     address = models.CharField(max_length=200, blank=True, null=True, verbose_name='Address')

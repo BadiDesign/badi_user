@@ -94,7 +94,6 @@ class Ticket(models.Model, BadiModel):
 class Message(models.Model, BadiModel):
     class Meta:
         permissions = (
-            ('can_ticket', _('Manage Tickets')),
         )
         ordering = ['-created_at']
 
