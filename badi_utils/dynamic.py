@@ -313,7 +313,7 @@ class DynamicListView(LoginRequiredMixin, CustomPermissionRequiredMixin, Templat
             return str(self.model._meta).split('.')[1] + '/' + str(self.model._meta).split('.')[1] + '_list.html'
 
     def get_datatable_cols(self):
-        return self.datatable_cols or self.model().get_datatable_columns()
+        return self.datatable_cols or self.model().get_datatable_verbose_names()
 
     def get_success_url(self):
         return self.success_url or ""
@@ -404,7 +404,7 @@ class DynamicCreateView(LoginRequiredMixin, CustomPermissionRequiredMixin, Creat
             return str(self.model._meta).split('.')[1] + '/' + str(self.model._meta).split('.')[1] + '_create.html'
 
     def get_datatable_cols(self):
-        return self.datatable_cols if self.datatable_cols else self.model().get_datatable_columns()
+        return self.datatable_cols if self.datatable_cols else self.model().get_datatable_verbose_names()
 
     def get_success_url(self):
         if self.success_url:

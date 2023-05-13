@@ -412,7 +412,7 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                                 status=HTTP_400_BAD_REQUEST)
         hash_code = ''.join(random.choice(string.ascii_letters + string.digits) for x in range(10))
         token = Token()
-        token.phone = user.username
+        token.phone = user.mobile_number
         token.last_send = datetime.datetime.now()
         token.is_forgot = True
         token.token = hash_code
@@ -423,7 +423,10 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
         text = f'{HTTP_ORIGIN}/forgot_password/{token_id_hash}/{hash_code}'
         print(f'لینک تغییر رمز عبور: %0D%0A {text}')
 
-        config.get('class')(getattr(user, config.get('user_find_key'))).send_forgot_link(token_id_hash, hash_code)
+        attr = getattr(user, config.get('user_find_key'))
+        if hasattr(user.mobile_number,'national_number'):
+            attr = '0' + str(user.mobile_number.national_number)
+        config.get('class')(attr).send_forgot_link(token_id_hash, hash_code)
         return ResponseOk({})
 
     @action(methods=['post'], detail=False)

@@ -1,6 +1,7 @@
 from datetime import timedelta, datetime
 
 from django.contrib.auth import get_user_model
+from django.utils import timezone
 from django_resized import ResizedImageField
 
 from badi_utils.dynamic_models import BadiModel
@@ -19,14 +20,14 @@ class Token(models.Model):
     last_send = models.DateTimeField(blank=True, null=True)
 
     def is_enabled(self):
-        return self.created_at > datetime.now() - timedelta(minutes=30)
+        return self.created_at > timezone.now() - timedelta(minutes=30)
 
     def is_active(self):
-        return self.last_send > datetime.now() - timedelta(minutes=30)
+        return self.last_send > timezone.now() - timedelta(minutes=30)
 
     def is_possible_resend(self):
         if self.last_send:
-            return self.last_send < datetime.now() - timedelta(minutes=5)
+            return self.last_send < timezone.now() - timedelta(minutes=5)
         return True
 
 
