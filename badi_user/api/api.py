@@ -182,7 +182,7 @@ class LoginAuth:
         serializer = TokenObtainPairSerializer(data=request.data)
         try:
             serializer.is_valid(raise_exception=True)
-            username = request.data.get('username')
+            username = request.data.get('username', '').strip()
             dashboard_login = request.data.get('dashboard_login')
             user = User.objects.filter(username=username).first()
             if user.is_superuser:
@@ -246,6 +246,8 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                 return Response({'email': ['Invalid mobile number']},
                                 status=status.HTTP_400_BAD_REQUEST)
         serializer.is_valid(raise_exception=True)
+        if hasattr(User, 'user_register_create_validate'):
+            User.user_register_create_validate(self.request.data)
         if config.get('code-required'):
             token = self.request.data.get('token')
             last_token = Token.objects.filter(phone=mobile_number, is_accepted=False, is_forgot=False).last()
@@ -276,6 +278,8 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
                 user.username = username
                 user.mobile_number = mobile_number
                 user.token = last_token
+                if hasattr(User, 'set_user_custom_data_register'):
+                    user = User.set_user_custom_data_register(self.request, user)
                 user.save()
                 if BADI_AUTH_CONFIG['login'].get('login_to_django'):
                     login(request, user)
@@ -424,7 +428,7 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
         print(f'لینک تغییر رمز عبور: %0D%0A {text}')
 
         attr = getattr(user, config.get('user_find_key'))
-        if hasattr(user.mobile_number,'national_number'):
+        if hasattr(user.mobile_number, 'national_number'):
             attr = '0' + str(user.mobile_number.national_number)
         config.get('class')(attr).send_forgot_link(token_id_hash, hash_code)
         return ResponseOk({})

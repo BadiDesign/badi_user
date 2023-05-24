@@ -22,7 +22,7 @@ class UserRegisterSerializer(DynamicSerializer):
 
 
 class UserSerializer(DynamicSerializer):
-    remove_field_view = {
+    remove_field_view = User.get_remove_fields('UserSerializer') if hasattr(User, 'remove_field_view') else {
         'retrieve': ['password', ],
         'update_self': ['mobile_number', ],
         'self': ['password', ]
@@ -30,16 +30,12 @@ class UserSerializer(DynamicSerializer):
 
     class Meta:
         model = User
-        extra_kwargs = api_error_creator(User,
-                                         ['username', 'password', 'picture', 'first_name', 'last_name', 'mobile_number',
-                                          'picture', ],
+        extra_kwargs = api_error_creator(User, User.get_form_fields('UserSerializer'),
                                          blank_fields=['username', 'password'],
                                          required_fields=['first_name', 'last_name',
                                                           'mobile_number'])
         depth = 5
-        fields = ['id', 'username', 'password', 'picture', 'first_name', 'last_name', 'mobile_number',
-                  'is_admin', 'mobile_number',
-                  ]
+        fields = ['id', ] + User.get_form_fields('UserSerializer')
 
     def create(self, validated_data):
         validated_data['is_admin'] = True
@@ -82,7 +78,7 @@ class AuthSerializer(serializers.ModelSerializer):
 
 
 class MemberSerializer(DynamicSerializer):
-    remove_field_view = {
+    remove_field_view = User.get_remove_fields('MemberSerializer') if hasattr(User, 'remove_field_view') else {
         'retrieve': ['password', ],
         'update_self': ['password', 'username', 'mobile_number', 'amount'],
         'update': ['password', 'amount'],

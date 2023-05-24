@@ -1,7 +1,6 @@
 from datetime import timedelta, datetime
 
 from django.contrib.auth import get_user_model
-from django.utils import timezone
 from django_resized import ResizedImageField
 
 from badi_utils.dynamic_models import BadiModel
@@ -15,19 +14,19 @@ class Token(models.Model):
     token = models.CharField(max_length=250, verbose_name=_('code'))
     is_forgot = models.BooleanField(default=False)
     is_accepted = models.BooleanField(default=False)
-    phone = models.CharField(max_length=15, blank=True, null=True)
+    phone = models.CharField(max_length=11, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     last_send = models.DateTimeField(blank=True, null=True)
 
     def is_enabled(self):
-        return self.created_at > timezone.now() - timedelta(minutes=30)
+        return self.created_at > datetime.now() - timedelta(minutes=30)
 
     def is_active(self):
-        return self.last_send > timezone.now() - timedelta(minutes=30)
+        return self.last_send > datetime.now() - timedelta(minutes=30)
 
     def is_possible_resend(self):
         if self.last_send:
-            return self.last_send < timezone.now() - timedelta(minutes=5)
+            return self.last_send > datetime.now() - timedelta(minutes=5)
         return True
 
 
@@ -85,16 +84,15 @@ class BadiAbstractUser(AbstractUser):
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'mobile_number']
         if action == 'user_create':
             return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number', 'email']
-        if action == 'user_update':
-            return ['username', 'password', 'first_name', 'picture', 'last_name', 'is_admin', 'mobile_number', 'email']
+        if action == 'UserSerializer':
+            return ['id', 'username', 'password', 'picture', 'first_name', 'last_name', 'mobile_number', 'is_admin',
+                    'mobile_number', ]
         return ['first_name', 'last_name', 'mobile_number', 'picture']
 
     @classmethod
     def get_datatable_cols(cls, class_name, *args):
         if class_name == 'MemberListView':
             return ['#', _("Select"), "", _("Username"), _("FirstName"), _("LastName"), _("Amount")]
-        if class_name == 'UserListView':
-            return ['#', '', _("Mobile Number"), _("is admin"), _("active")]
         return [_("FirstName"), _("LastName"), _("Mobile Number"), _("Picture")]
 
     @staticmethod
