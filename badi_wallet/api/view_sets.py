@@ -8,15 +8,27 @@ from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from badi_utils.dynamic_api import CustomValidation, DynamicModelReadOnlyApi
+from badi_utils.dynamic_api import CustomValidation, DynamicModelReadOnlyApi, DynamicModelApi
 from badi_wallet.action import ZPBankAction
 from badi_utils.responses import ResponseOk
 from badi_utils.date_calc import custom_change_date
-from badi_wallet.api.serializers import TransactionSerializer
-from badi_wallet.models import Transaction
+from badi_wallet.api.serializers import TransactionSerializer, DiscountCodeSerializer
+from badi_wallet.models import Transaction, DiscountCode
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+
+
+class DiscountCodeViewSet(DynamicModelApi):
+    model = DiscountCode
+    queryset = DiscountCode.objects.all()
+    serializer_class = DiscountCodeSerializer
+    custom_perms = {
+        'create': 'badi_wallet.can_discount_code',
+        'update': 'badi_wallet.can_discount_code',
+        'destroy': 'badi_wallet.can_discount_code',
+        'datatable': 'badi_wallet.can_discount_code',
+    }
 
 
 class TransactionViewSet(DynamicModelReadOnlyApi):

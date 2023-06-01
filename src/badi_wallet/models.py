@@ -1,6 +1,8 @@
+import datetime
+
 from badi_utils.dynamic_models import BadiModel
 from django.conf import settings
-from django.core.validators import MaxLengthValidator
+from django.core.validators import MaxLengthValidator, MaxValueValidator, MinValueValidator
 from django.db import models
 
 from badi_utils.utils import random_with_N_digits
@@ -9,6 +11,41 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 BANK_TRANSACTION_MODEL = getattr(settings, "BANK_TRANSACTION_MODEL", "badi_wallet.BankTransaction")
+
+
+class DiscountCode(models.Model, BadiModel):
+    class Meta:
+        verbose_name = _("DiscountCode")
+        verbose_name_plural = _("DiscountCodes")
+        permissions = (
+            ('can_discount_code', _("Manage") + ' ' + verbose_name_plural),
+        )
+
+    CODE_TYPES = (
+        ('$', _("Money")),
+        ('%', _("Percent")),
+    )
+
+    type = models.CharField(max_length=10, choices=CODE_TYPES, verbose_name=_("Type"))
+    code = models.CharField(max_length=10, unique=True, verbose_name=_("Code"))
+    amount = models.BigIntegerField(default=0, verbose_name=_("Amount"), validators=[MinValueValidator(0)])
+    percent = models.IntegerField(default=0, verbose_name=_("Percent"),
+                                  validators=[MaxValueValidator(101), MinValueValidator(-1)])
+    use_count = models.IntegerField(default=1, verbose_name=_("Use count"))
+    use_max = models.IntegerField(default=1, verbose_name=_("Use max"))
+    expire_date = models.DateField(verbose_name=_("Expire Date"))
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Created at"))
+
+    def use(self):
+        self.use_count += 1
+        self.save()
+
+    def usable(self):
+        if self.use_count > self.use_max:
+            return False
+        if datetime.date.today() > self.expire_date:
+            return False
+        return True
 
 
 class BankTransaction(models.Model, BadiModel):
@@ -61,6 +98,8 @@ class Transaction(models.Model, BadiModel):
     subject = models.CharField(max_length=255, verbose_name=_("Transaction Subject"), null=True, blank=True)
     bank_transaction = models.ForeignKey(BANK_TRANSACTION_MODEL, related_name='transactions', null=True, blank=True,
                                          on_delete=models.PROTECT)
+    discount_code = models.ForeignKey(DiscountCode, related_name='transactions', null=True, blank=True,
+                                      verbose_name=_("Bank Transaction"), on_delete=models.PROTECT)
 
     @staticmethod
     def for_user(user):

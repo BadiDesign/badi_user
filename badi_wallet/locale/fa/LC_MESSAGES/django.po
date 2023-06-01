@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-04-16 15:52+0330\n"
+"POT-Creation-Date: 2023-06-01 09:07+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,7 +28,7 @@ msgstr ""
 msgid "Invalid Data"
 msgstr "فرمت تاریخ صحیح نمی باشد"
 
-#: .\badi_wallet\action.py:150 .\badi_wallet\models.py:52
+#: .\badi_wallet\action.py:150 .\badi_wallet\models.py:95
 msgid "Charge"
 msgstr "شارژ"
 
@@ -40,77 +40,138 @@ msgstr "تراکنش لغو شد"
 msgid "Wallet"
 msgstr "کیف پول"
 
-#: .\badi_wallet\models.py:16 .\badi_wallet\models.py:17
-msgid "Bank Transaction"
-msgstr "تراکنش بانکی"
+#: .\badi_wallet\models.py:18
+msgid "DiscountCode"
+msgstr "کد تخفیف"
 
-#: .\badi_wallet\models.py:19 .\badi_wallet\models.py:47
+#: .\badi_wallet\models.py:19
+msgid "DiscountCodes"
+msgstr "کد های تخفیف"
+
+#: .\badi_wallet\models.py:21 .\badi_wallet\models.py:62
+#: .\badi_wallet\models.py:90
 msgid "Manage"
 msgstr "مدیریت"
 
-#: .\badi_wallet\models.py:22
-msgid "Authority"
-msgstr "کد احراز"
-
-#: .\badi_wallet\models.py:23 .\badi_wallet\models.py:56
-msgid "User"
-msgstr "کاربر"
-
-#: .\badi_wallet\models.py:24
-msgid "Description"
-msgstr "توضیحات"
-
 #: .\badi_wallet\models.py:25
-msgid "is Verified"
-msgstr "تایید شده"
+msgid "Money"
+msgstr "پول"
 
-#: .\badi_wallet\models.py:26
-msgid "RefID"
-msgstr "کد رهگیری"
+#: .\badi_wallet\models.py:26 .\badi_wallet\models.py:32
+msgid "Percent"
+msgstr "درصد"
 
-#: .\badi_wallet\models.py:27
-msgid "Card Hash"
-msgstr "شماره کارت"
-
-#: .\badi_wallet\models.py:29 .\badi_wallet\models.py:57
-msgid "Amount"
-msgstr "مقدار"
-
-#: .\badi_wallet\models.py:30 .\badi_wallet\models.py:59
-msgid "Info"
-msgstr "جزئیات"
-
-#: .\badi_wallet\models.py:31
-msgid "Bank Response"
-msgstr "پاسخ بانک"
-
-#: .\badi_wallet\models.py:44
-msgid "Transaction"
-msgstr "تراکنش"
-
-#: .\badi_wallet\models.py:45
-msgid "Transactions"
-msgstr "تراکنش ها"
-
-#: .\badi_wallet\models.py:51
-msgid "Buy"
-msgstr "خرید"
-
-#: .\badi_wallet\models.py:53
-msgid "Return"
-msgstr "بازگشت"
-
-#: .\badi_wallet\models.py:58
+#: .\badi_wallet\models.py:29 .\badi_wallet\models.py:101
 msgid "Type"
 msgstr "نوع"
 
-#: .\badi_wallet\models.py:60
+#: .\badi_wallet\models.py:30
+msgid "Code"
+msgstr "کد"
+
+#: .\badi_wallet\models.py:31 .\badi_wallet\models.py:72
+#: .\badi_wallet\models.py:100
+msgid "Amount"
+msgstr "مقدار"
+
+#: .\badi_wallet\models.py:34
+msgid "Use count"
+msgstr "تعداد استفاده"
+
+#: .\badi_wallet\models.py:35
+msgid "Use max"
+msgstr "حداکثر استفاده"
+
+#: .\badi_wallet\models.py:36
+msgid "Expire Date"
+msgstr "تاریخ انقضا"
+
+#: .\badi_wallet\models.py:37
+msgid "Created at"
+msgstr "زمان ثبت"
+
+#: .\badi_wallet\models.py:59 .\badi_wallet\models.py:60
+#: .\badi_wallet\models.py:108
+msgid "Bank Transaction"
+msgstr "تراکنش بانکی"
+
+#: .\badi_wallet\models.py:65
+msgid "Authority"
+msgstr "کد احراز"
+
+#: .\badi_wallet\models.py:66 .\badi_wallet\models.py:99
+msgid "User"
+msgstr "کاربر"
+
+#: .\badi_wallet\models.py:67
+msgid "Description"
+msgstr "توضیحات"
+
+#: .\badi_wallet\models.py:68
+msgid "is Verified"
+msgstr "تایید شده"
+
+#: .\badi_wallet\models.py:69
+msgid "RefID"
+msgstr "کد رهگیری"
+
+#: .\badi_wallet\models.py:70
+msgid "Card Hash"
+msgstr "شماره کارت"
+
+#: .\badi_wallet\models.py:73 .\badi_wallet\models.py:102
+msgid "Info"
+msgstr "جزئیات"
+
+#: .\badi_wallet\models.py:74
+msgid "Bank Response"
+msgstr "پاسخ بانک"
+
+#: .\badi_wallet\models.py:87
+msgid "Transaction"
+msgstr "تراکنش"
+
+#: .\badi_wallet\models.py:88
+msgid "Transactions"
+msgstr "تراکنش ها"
+
+#: .\badi_wallet\models.py:94
+msgid "Buy"
+msgstr "خرید"
+
+#: .\badi_wallet\models.py:96
+msgid "Return"
+msgstr "بازگشت"
+
+#: .\badi_wallet\models.py:103
 msgid "Time"
 msgstr "زمان"
 
-#: .\badi_wallet\models.py:61
+#: .\badi_wallet\models.py:104
 msgid "Transaction Subject"
 msgstr "عنوان تراکنش"
+
+#: .\badi_wallet\templates\discountcode\discountcode_create.html:17
+msgid "List"
+msgstr "لیست"
+
+#: .\badi_wallet\templates\discountcode\discountcode_create.html:39
+msgid "Action"
+msgstr "عملیات"
+
+#: .\badi_wallet\templates\discountcode\discountcode_create.html:81
+#: .\badi_wallet\templates\discountcode\discountcode_update.html:52
+msgid "Done Successfully"
+msgstr "با موفقیت انجام شد"
+
+#: .\badi_wallet\templates\discountcode\discountcode_update.html:17
+#: .\badi_wallet\templates\discountcode\discountcode_update.html:33
+msgid "Update"
+msgstr "بروزرسانی"
+
+#: .\badi_wallet\templates\discountcode\discountcode_update.html:32
+msgid "Back"
+msgstr "بازگشت"
 
 #: .\badi_wallet\templates\transaction\transaction_result.html:13
 msgid "Payment done Successfully"
