@@ -1,4 +1,5 @@
 import re
+from copy import deepcopy
 
 from django.contrib import admin
 from django.contrib.sites import apps
@@ -19,10 +20,11 @@ class BadiModel:
         fields = [field.attname.replace('_id', '') for field in self._meta.fields]
         many_2_many = [x.name for x in self._meta.many_to_many]
         all_fields = fields + many_2_many
+        return_fields = deepcopy(all_fields)
         for f in all_fields:
             if f in excludes:
-                all_fields.remove(f)
-        return all_fields
+                return_fields.remove(f)
+        return return_fields
 
     def get_columns(self, excludes=None):
         return self.get_all_fields(excludes)
@@ -38,10 +40,11 @@ class BadiModel:
         fields = [field.verbose_name for field in self._meta.fields]
         many_2_many = [x.verbose_name for x in self._meta.many_to_many]
         all_fields = fields + many_2_many
+        return_fields = deepcopy(all_fields)
         for f in all_fields:
             if f in excludes:
-                all_fields.remove(f)
-        return all_fields
+                return_fields.remove(f)
+        return return_fields
 
 
 class PersianDateField(models.DateField):

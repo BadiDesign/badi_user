@@ -104,9 +104,9 @@ class Transaction(models.Model, BadiModel):
     date_time = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Time"))
     subject = models.CharField(max_length=255, verbose_name=_("Transaction Subject"), null=True, blank=True)
     bank_transaction = models.ForeignKey(BANK_TRANSACTION_MODEL, related_name='transactions', null=True, blank=True,
-                                         on_delete=models.PROTECT)
+                                         on_delete=models.PROTECT, verbose_name=_("Bank Transaction"))
     discount_code = models.ForeignKey(DiscountCode, related_name='transactions', null=True, blank=True,
-                                      verbose_name=_("Bank Transaction"), on_delete=models.PROTECT)
+                                      verbose_name=_("DiscountCode"), on_delete=models.PROTECT)
 
     @staticmethod
     def for_user(user):

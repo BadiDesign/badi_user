@@ -155,7 +155,7 @@
                     'خرید': 'danger',
                     'عودت وجه': 'warning',
                     'شارژ توسط مدیریت': 'primary',
-                };
+                }
                 boldCol(0, row, formatNumber(data[1]) + ' ' + badiConfig["price_text"] + ' ', colors[data[2]])
                 $(`td:last`, row).html(`
 <button type="button" onclick="showTransactionDetail(${data[0]})" data-skin="dark" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit" class="btn btn-sm btn-light-primary btn-hover-text-primary btn-icon mx-2"><span class="svg-icon svg-icon-md">{% include 'svg/info.html' %}</span></button>
