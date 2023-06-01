@@ -94,7 +94,7 @@ class Transaction(models.Model, BadiModel):
         ('1', _("Buy")),
         ('+', _("Charge")),
         ('m', _("Charge by Management")),
-        ('-', _("Return")),
+        ('-', _("Refund")),
     )
 
     user = models.ForeignKey(User, related_name='transactions', on_delete=models.PROTECT, verbose_name=_("User"))

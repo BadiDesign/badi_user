@@ -145,7 +145,7 @@ class ZPBankAction:
                     if not Transaction.objects.filter(bank_transaction=trans).first():
                         transAction = Transaction(
                             user=trans.user,
-                            amount=trans.amount,
+                            amount=trans.amount / 10,
                             type='+',
                             subject=_("Charge"),
                             bank_transaction=trans,
