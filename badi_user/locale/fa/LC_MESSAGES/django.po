@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-06-01 09:07+0330\n"
+"POT-Creation-Date: 2023-06-01 10:58+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,7 +26,7 @@ msgstr ""
 #, fuzzy
 #| msgid "Code sent to "
 msgid "Code sent"
-msgstr "کد ارسال شد به"
+msgstr "کد ارسال شد"
 
 #: .\badi_user\api\api.py:176
 msgid "to"

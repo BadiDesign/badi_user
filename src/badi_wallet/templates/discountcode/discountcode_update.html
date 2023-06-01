@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block body %}
+
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<div class="card-header">
+							<h3 class="card-title">
+								{% trans "Update" %}
+								{{ object }}
+							</h3>
+						</div>
+						<form class="form" id="form" method="POST">
+							{% csrf_token %}
+							<div class="card-body">
+								<div class="row">
+									{% for field in form %}
+										{% include 'component/input.html' with lg=3 input=field %}
+									{% endfor %}
+								</div>
+							</div>
+
+							<div class="card-footer">
+								<a href="../create" class="btn mr-2 btn-secondary">{% trans "Back" %}</a>
+								<button type="submit" class="btn btn-primary">{% trans "Update" %}</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!--end::Container-->
+	</div>
+{% endblock %}
+{% block script %}
+	<script>
+        $('#form').on('submit', function (e) {
+            e.preventDefault();
+            ApiAjax({
+                url: '{{api_url}}',
+                pk: getUrlPk(),
+                method: 'PUT',
+                form: '#form',
+                success_message: '{% trans "Done Successfully" %}',
+                success_url: '../create',
+                error: function (e) {
+                    swalFireError();
+                }
+            })
+        })
+	</script>
+{% endblock %}

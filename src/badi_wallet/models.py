@@ -31,7 +31,7 @@ class DiscountCode(models.Model, BadiModel):
     amount = models.BigIntegerField(default=0, verbose_name=_("Amount"), validators=[MinValueValidator(0)])
     percent = models.IntegerField(default=0, verbose_name=_("Percent"),
                                   validators=[MaxValueValidator(101), MinValueValidator(-1)])
-    use_count = models.IntegerField(default=1, verbose_name=_("Use count"))
+    use_count = models.IntegerField(default=0, verbose_name=_("Use count"))
     use_max = models.IntegerField(default=1, verbose_name=_("Use max"))
     expire_date = models.DateField(verbose_name=_("Expire Date"))
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name=_("Created at"))
@@ -40,12 +40,18 @@ class DiscountCode(models.Model, BadiModel):
         self.use_count += 1
         self.save()
 
-    def usable(self):
+    def is_usable(self):
         if self.use_count > self.use_max:
             return False
         if datetime.date.today() > self.expire_date:
             return False
         return True
+
+    def calc(self, amount):
+        if self.type == '$':
+            return amount - self.amount
+        else:
+            return amount - (amount * self.percent / 100)
 
 
 class BankTransaction(models.Model, BadiModel):
@@ -87,6 +93,7 @@ class Transaction(models.Model, BadiModel):
     TYPES = (
         ('1', _("Buy")),
         ('+', _("Charge")),
+        ('m', _("Charge by Management")),
         ('-', _("Return")),
     )
 

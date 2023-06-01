@@ -93,6 +93,7 @@ class Transaction(models.Model, BadiModel):
     TYPES = (
         ('1', _("Buy")),
         ('+', _("Charge")),
+        ('m', _("Charge by Management")),
         ('-', _("Return")),
     )
 

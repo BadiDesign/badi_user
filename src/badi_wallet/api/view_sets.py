@@ -8,15 +8,27 @@ from rest_framework.decorators import action
 from rest_framework.generics import get_object_or_404
 from rest_framework.response import Response
 
-from badi_utils.dynamic_api import CustomValidation, DynamicModelReadOnlyApi
+from badi_utils.dynamic_api import CustomValidation, DynamicModelReadOnlyApi, DynamicModelApi
 from badi_wallet.action import ZPBankAction
 from badi_utils.responses import ResponseOk
 from badi_utils.date_calc import custom_change_date
-from badi_wallet.api.serializers import TransactionSerializer
-from badi_wallet.models import Transaction
+from badi_wallet.api.serializers import TransactionSerializer, DiscountCodeSerializer
+from badi_wallet.models import Transaction, DiscountCode
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
+
+
+class DiscountCodeViewSet(DynamicModelApi):
+    model = DiscountCode
+    queryset = DiscountCode.objects.all()
+    serializer_class = DiscountCodeSerializer
+    custom_perms = {
+        'create': 'badi_wallet.can_discount_code',
+        'update': 'badi_wallet.can_discount_code',
+        'destroy': 'badi_wallet.can_discount_code',
+        'datatable': 'badi_wallet.can_discount_code',
+    }
 
 
 class TransactionViewSet(DynamicModelReadOnlyApi):
@@ -92,8 +104,8 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         user.amount += amount
         user.save()
         get = self.request.data.get('description', 'بدون توضیحات')
-        Transaction(user=user, amount=amount, type='1',
-                    subject='برداشت توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
+        Transaction(user=user, amount=amount, type='m',
+                    subject='شارژ حساب توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
         return ResponseOk()
 
     @action(methods=['put'], detail=False, url_path='decease_wallet/(?P<pk>[^/.]+)')
@@ -113,7 +125,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         user.save()
         get = self.request.data.get('description', 'بدون توضیحات')
         Transaction(user=user, amount=amount, type='6',
-                    subject='شارژ توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
+                    subject='بازگشت وجه توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
         return ResponseOk()
 
     @action(methods=['get'], detail=False, url_path='info/(?P<pk>[^/.]+)')

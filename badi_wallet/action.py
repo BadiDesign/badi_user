@@ -34,8 +34,8 @@ class ZPBankAction:
         baseUrl = request._request.META.get('HTTP_ORIGIN') if request._request.META.get(
             'HTTP_ORIGIN') else BaseUrl
         amount = int(amount) * 10
-        if amount < 10000:
-            raise CustomValidation('amount', 'حداقل مبلغ قابل شارژ 10,000 تومان می باشد')
+        if amount < 100:
+            raise CustomValidation('amount', 'حداقل مبلغ قابل شارژ 100 تومان می باشد')
 
         req_data = {
             "merchant_id": MERCHANT,

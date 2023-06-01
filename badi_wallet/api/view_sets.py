@@ -104,8 +104,8 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         user.amount += amount
         user.save()
         get = self.request.data.get('description', 'بدون توضیحات')
-        Transaction(user=user, amount=amount, type='1',
-                    subject='برداشت توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
+        Transaction(user=user, amount=amount, type='m',
+                    subject='شارژ حساب توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
         return ResponseOk()
 
     @action(methods=['put'], detail=False, url_path='decease_wallet/(?P<pk>[^/.]+)')
@@ -125,7 +125,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         user.save()
         get = self.request.data.get('description', 'بدون توضیحات')
         Transaction(user=user, amount=amount, type='6',
-                    subject='شارژ توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
+                    subject='بازگشت وجه توسط ' + self.request.user.get_full_name() + ' : ' + get).save()
         return ResponseOk()
 
     @action(methods=['get'], detail=False, url_path='info/(?P<pk>[^/.]+)')

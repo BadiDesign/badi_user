@@ -1,9 +1,9 @@
 from django.views import View
 from django.utils.translation import gettext_lazy as _
-from badi_utils.dynamic import DynamicListView
+from badi_utils.dynamic import DynamicListView, DynamicCreateView, DynamicUpdateView
 from badi_wallet.action import MERCHANT, ZP_API_VERIFY, ZPBankAction
 from badi_wallet.filter import TransactionFilter
-from badi_wallet.models import Transaction, BankTransaction
+from badi_wallet.models import Transaction, BankTransaction, DiscountCode
 
 
 class TransActionsView(DynamicListView):
@@ -34,3 +34,12 @@ class ZPVerifyTransActionsView(View):
         t_status = request.GET.get('Status')
         t_authority = request.GET.get('Authority')
         return ZPBankAction().get_bank_response(request, t_status, t_authority)
+
+
+class DiscountCodeCreateView(DynamicCreateView):
+    model = DiscountCode
+    datatable_cols = model().get_datatable_verbose_names()
+
+
+class DiscountCodeUpdateView(DynamicUpdateView):
+    model = DiscountCode
