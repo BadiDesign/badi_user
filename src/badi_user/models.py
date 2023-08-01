@@ -14,7 +14,7 @@ class Token(models.Model):
     token = models.CharField(max_length=250, verbose_name=_('code'))
     is_forgot = models.BooleanField(default=False)
     is_accepted = models.BooleanField(default=False)
-    phone = models.CharField(max_length=11, blank=True, null=True)
+    phone = models.CharField(max_length=128, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True)
     last_send = models.DateTimeField(blank=True, null=True)
 
@@ -26,7 +26,7 @@ class Token(models.Model):
 
     def is_possible_resend(self):
         if self.last_send:
-            return self.last_send > datetime.now() - timedelta(minutes=5)
+            return self.last_send < datetime.now() - timedelta(minutes=5)
         return True
 
 
@@ -144,7 +144,7 @@ class Notification(models.Model):
         return "{0} - {1}".format(self.subject, self.user)
 
 
-class Log(models.Model):
+class Log(models.Model, BadiModel):
     class Meta:
         verbose_name = _('Log')
         verbose_name_plural = _('Logs')

@@ -11,6 +11,7 @@ from django.contrib.auth import get_user_model
 
 User = get_user_model()
 BANK_TRANSACTION_MODEL = getattr(settings, "BANK_TRANSACTION_MODEL", "badi_wallet.BankTransaction")
+DISCOUNT_CODE_WORKS = getattr(settings, "DISCOUNT_CODE_WORKS", (('all', 'all'),))
 
 
 class DiscountCode(models.Model, BadiModel):
@@ -27,6 +28,7 @@ class DiscountCode(models.Model, BadiModel):
     )
 
     type = models.CharField(max_length=10, choices=CODE_TYPES, verbose_name=_("Type"))
+    work_on = models.CharField(default='all', max_length=100, choices=DISCOUNT_CODE_WORKS, verbose_name=_("Work on"))
     code = models.CharField(max_length=10, unique=True, verbose_name=_("Code"))
     amount = models.BigIntegerField(default=0, verbose_name=_("Amount"), validators=[MinValueValidator(0)])
     percent = models.IntegerField(default=0, verbose_name=_("Percent"),

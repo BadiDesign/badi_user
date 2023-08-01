@@ -103,7 +103,7 @@ def permissions_json():
 
 def assignable_app_names():
     if settings.DATABASES['default']['ENGINE'] != 'django.db.backends.sqlite3':
-        apps1 = ContentType.objects.filter().distinct('app_label')
+        apps1 = ContentType.objects.filter()
     else:
         apps1 = ContentType.objects.filter().values('app_label').distinct()
     return apps1

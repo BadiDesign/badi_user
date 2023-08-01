@@ -20,6 +20,7 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .logging import log
 from .dynamic_models import custom_change_date
 from django.contrib.auth import get_user_model
+from django.utils.translation import gettext_lazy as _
 
 User = get_user_model()
 
@@ -438,16 +439,16 @@ def api_error_creator(model, error_fields: list, extra=None, required_fields=Non
         if field.attname.replace('_id', '') in error_fields:
             response[field.attname.replace('_id', '')] = {"error_messages":
                 {
-                    "blank": "{0} را وارد کنید!".format(field.verbose_name),
-                    "required": "{0} را وارد کنید!".format(field.verbose_name),
-                    "invalid": "{0} وارد شده صحیح نمی باشد!".format(field.verbose_name),
-                    "invalid_choice": "{0} وارد شده صحیح نمی باشد!".format(field.verbose_name),
-                    "invalid_pk_value": "{0} وارد شده صحیح نمی باشد!".format(field.verbose_name),
-                    "incorrect_type": "{0} وارد شده صحیح نمی باشد!".format(field.verbose_name),
-                    "does_not_exist": "{0} وارد شده صحیح نمی باشد!".format(field.verbose_name),
-                    "null": "{0} را وارد کنید!".format(field.verbose_name),
-                    "empty": "{0} را وارد کنید!".format(field.verbose_name),
-                    "unique": "این {0} قبلا ثبت شده است!".format(field.verbose_name)
+                    "blank": _("enter {0}!").format(field.verbose_name),
+                    "required": _("{0} is required!").format(field.verbose_name),
+                    "invalid": _("invalid {0}!").format(field.verbose_name),
+                    "invalid_choice": _("invalid choice for {0}!").format(field.verbose_name),
+                    "invalid_pk_value": _("invalid {0}!").format(field.verbose_name),
+                    "incorrect_type": _("invalid {0}!").format(field.verbose_name),
+                    "does_not_exist": _("invalid {0}!").format(field.verbose_name),
+                    "null": _("enter {0}!").format(field.verbose_name),
+                    "empty": _("enter {0}!").format(field.verbose_name),
+                    "unique": _("this {0} already submitted!").format(field.verbose_name),
                 },
             }
             if field.attname.replace('_id', '') in required_fields:
