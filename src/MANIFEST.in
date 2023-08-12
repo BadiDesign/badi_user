@@ -15,5 +15,8 @@ recursive-include badi_utils/locale *.mo
 recursive-include badi_visit/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
 recursive-include badi_visit/templates *.html schema.js
 recursive-include badi_visit/locale *.mo
+recursive-include badi_blog/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_blog/templates *.html schema.js
+recursive-include badi_blog/locale *.mo
 global-exclude __pycache__
 global-exclude *.py[co]

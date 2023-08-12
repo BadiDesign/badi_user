@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--begin::Card-->
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                Update
+                                {{ model_name }}
+                            </h3>
+                        </div>
+                        <form>
+                            {% csrf_token %}
+                            <div class="card-body">
+                                {% for field in form %}
+                                    <div class="form-group">
+                                        <label>{{ field.label }}:</label>
+                                        {{ field }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" id="submitter" class="btn btn-primary">
+                                    Update
+                                    {{ model_name }}
+                                </button>
+                                <a href="{{ back }}" class="btn mr-2 btn-secondary">Back to List</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        $('#submitter').click(function (e) {
+            const button = this;
+            ApiAjax({
+                url: '{{ api_url }}',
+                pk: getUrlPk(),
+                form: 'form',
+                method: 'PUT',
+                button: button,
+                file: true,
+                success_url: '{{ successURL }}',
+                success_message: '{{ model_name }} Updated Successfully!',
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+        })
+
+    </script>
+{% endblock %}

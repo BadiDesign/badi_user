@@ -6,19 +6,19 @@
 
     <div class="d-flex flex-column-fluid">
         <!--begin::Container-->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <!--begin::Card-->
                     <div class="card card-custom">
                         <div class="card-header">
                             <h3 class="card-title">
-                                جدول
+                                list
                                 {{ model_name }}
                             </h3>
                             <div class="card-toolbar">
                                 <div class="justify-content-center">
-                                    {% include 'component/svg-button-with-text.html' with a='create' title='افزودن خبر' color='primary' svg='plus' %}
+                                    {% include 'component/svg-button-with-text.html' with a='create' title='Add Banner' color='primary' svg='plus' %}
                                 </div>
                             </div>
                         </div>
@@ -31,7 +31,7 @@
                                     {% for field in cols %}
                                         <th>{{ field }}</th>
                                     {% endfor %}
-                                    <th>عملیات</th>
+                                    <th>Action</th>
                                     </thead>
                                     <tbody>
 
@@ -61,7 +61,7 @@
             loading_all: true,
             responsive: true,
             datable_id: '#table',
-            del_url: '{{api_url}}',
+            del_url: '{{api_url}}/',
             up_url: 'update/0',
             extra_del_params: {
                 ajax: true,
@@ -72,19 +72,9 @@
         }, {
             rowCallback: (row, data) => {
                 defaultDrawCallBack(row, data);
-                breakCol(1, row, data[2]);
-                if (data[5])
-                    $(`td:eq(4)`, row).html(`
-                        <label class="label label-xl label-primary"><i class="fa text-white fa-check"></i></label>
-                        `)
-                if (data[1] && data[1] !== 'file-null') {
-                    $(`td:eq(0)`, row).html(`<span class="symbol symbol-lg-50 symbol-40 symbol-light-primary">
-                                    <span class="symbol-label" style="background-size: cover !important;background-position: center ;background: url(${data[1]});"></span>
-                                </span>`)
-                }
-                boldCol(2, row, data[3]);
-
-            }
+            },
+            lengthChange: false,
+            searching: false
         });
     </script>
 {% endblock %}
