@@ -77,7 +77,7 @@ class ZPBankAction:
         t_status = request.GET.get('Status')
         t_authority = request.GET.get('Authority')
         trans = BankTransaction.objects.filter(authority=t_authority).first()
-        if not trans or t_authority:
+        if not trans or not t_authority:
             return ResponseNotOk(reason={
                 'error': self.bankError})
         if t_status == 'OK':
@@ -105,7 +105,7 @@ class ZPBankAction:
                     trans.message = req.json()['data']['message']
                     trans.save()
                     return ResponseNotOk(reason={
-                        'error': req.json()['errors']['message']})
+                        'error': req.json()['errors']['message'] if req.json()['errors'] else ''})
                 else:
                     return ResponseNotOk(reason={
                         'error': self.bankError})
