@@ -39,13 +39,51 @@ def replace_star(key, dictionary):
     return dictionary
 
 
-class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
+class ViewSetPermission:
     permission_classes = [permissions.IsAuthenticated]
     custom_perms = {}
+    permission_required = None
+
+    def check_permissions(self, request):
+        request_user = self.request.user
+        if request_user.is_authenticated:
+            request_user.update_action()
+            if request_user.is_admin:
+                return True
+        if self.custom_perms:
+            if self.custom_perms.get(self.action) is None:
+                if request_user.is_authenticated and request_user.is_admin:
+                    return True
+                else:
+                    self.permission_denied(
+                        request, message=getattr('Login Required', 'message', None)
+                    )
+
+            elif self.custom_perms.get(self.action) is False:
+                return True
+
+            elif self.custom_perms.get(self.action) is True and request_user.is_authenticated:
+                return True
+
+            elif self.custom_perms.get(self.action) is True and not request_user.is_authenticated:
+                self.permission_denied(
+                    request, message=getattr('Login Required', 'message', None)
+                )
+            elif self.custom_perms.get(self.action) and not request_user.has_perm(
+                    self.custom_perms.get(self.action)):
+                self.permission_denied(
+                    request, message=getattr('Login Required', 'message', None)
+                )
+        else:
+            self.permission_denied(
+                request, message=getattr('Login Required', 'message', None)
+            )
+
+
+class DynamicModelApi(ViewSetPermission, viewsets.ModelViewSet, BaseDatatableView):
     model = None
     columns = None
     order_columns = None
-    permission_required = None
     disables_views = []
     ordering_field = None
     switches = None
@@ -129,41 +167,6 @@ class DynamicModelApi(viewsets.ModelViewSet, BaseDatatableView):
 
         dump = json.dumps(response, cls=LazyEncoder)
         return self.render_to_response(dump)
-
-    def check_permissions(self, request):
-        request_user = self.request.user
-        if request_user.is_authenticated:
-            request_user.update_action()
-            if request_user.is_admin:
-                return True
-        if self.custom_perms:
-            if self.custom_perms.get(self.action) is None:
-                if request_user.is_authenticated and request_user.is_admin:
-                    return True
-                else:
-                    self.permission_denied(
-                        request, message=getattr('Login Required', 'message', None)
-                    )
-
-            elif self.custom_perms.get(self.action) is False:
-                return True
-
-            elif self.custom_perms.get(self.action) is True and request_user.is_authenticated:
-                return True
-
-            elif self.custom_perms.get(self.action) is True and not request_user.is_authenticated:
-                self.permission_denied(
-                    request, message=getattr('Login Required', 'message', None)
-                )
-            elif self.custom_perms.get(self.action) and not request_user.has_perm(
-                    self.custom_perms.get(self.action)):
-                self.permission_denied(
-                    request, message=getattr('Login Required', 'message', None)
-                )
-        else:
-            self.permission_denied(
-                request, message=getattr('Login Required', 'message', None)
-            )
 
     def create(self, request, *args, **kwargs):
         if 'create' in self.disables_views:

@@ -4,8 +4,10 @@ from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
 from badi_visit.models import Visit
 
+from badi_utils.dynamic_api import DynamicModelApi, ViewSetPermission
 
-class VisitViewSet(viewsets.ViewSet):
+
+class VisitViewSet(ViewSetPermission, viewsets.ViewSet):
     permission_classes = [permissions.IsAuthenticated]
     custom_perms = {
         'all': 'badi_visit.can_visit',
