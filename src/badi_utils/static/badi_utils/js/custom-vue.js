@@ -2,6 +2,16 @@ Vue.filter('toSince', function (value) {
         return timeSince(new Date(value).getTime())
     }
 )
+Vue.filter('toSinceFa', function (value) {
+        return timeSince(new Date(value).getTime())
+            .replace('years', 'سال')
+            .replace('months', 'ماه')
+            .replace('days', 'روز')
+            .replace('hours', 'ساعت')
+            .replace('minutes', 'دقیقه')
+            .replace('seconds', 'ثانیه')
+    }
+)
 Vue.filter('separate', function (value) {
         return Number(value).toLocaleString()
     }
