@@ -32,7 +32,7 @@ class Visit(models.Model):
         )
 
     address = models.ForeignKey(AddressVisit, blank=True, verbose_name='Address', related_name='visits',
-                                on_delete=models.PROTECT)
+                                on_delete=models.CASCADE)
     ip = models.CharField(max_length=200, verbose_name='ip')
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='Visit Time')
 
@@ -43,6 +43,9 @@ class Visit(models.Model):
     def visit(request, title):
         visit = Visit()
         visit.ip = get_client_ip(request)
-        visit.address, is_created = AddressVisit.objects.get_or_create(title=title)
+        visit.address, is_created = AddressVisit.objects.get_or_create(title=title, )
+        if is_created or not visit.address.address:
+            visit.address.address = request.path
+            visit.address.save()
         visit.save()
         return visit

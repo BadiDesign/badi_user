@@ -51,12 +51,12 @@ class BlogCommentViewSet(DynamicModelApi):
     }
     switches = {
         'is_accepted': {
-            'true': '/api/v1/comment/change_state_accepted/0',
-            'false': '/api/v1/comment/change_state_accepted/0',
+            'true': '/api/v1/blogcomment/change_state_accepted/0',
+            'false': '/api/v1/blogcomment/change_state_accepted/0',
         },
         'is_rejected': {
-            'true': '/api/v1/comment/change_state_rejected/0',
-            'false': '/api/v1/comment/change_state_rejected/0',
+            'true': '/api/v1/blogcomment/change_state_rejected/0',
+            'false': '/api/v1/blogcomment/change_state_rejected/0',
         },
     }
 
