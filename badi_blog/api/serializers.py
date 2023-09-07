@@ -15,11 +15,11 @@ class BlogPostSerializer(DynamicSerializer):
 
     class Meta:
         model = BlogPost
-        extra_kwargs = api_error_creator(BlogPost, BlogPost.get_all_fields(),
+        extra_kwargs = api_error_creator(BlogPost, BlogPost().get_all_fields(),
                                          blank_fields=[],
                                          required_fields=[])
         # depth = 1
-        fields = ['id'] + BlogPost.get_all_fields()
+        fields = ['id'] + BlogPost().get_all_fields()
 
     def create(self, validated_data):
         validated_data['writer'] = self.context['request'].user

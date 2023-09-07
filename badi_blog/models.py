@@ -10,7 +10,7 @@ from badi_utils.validations import BadiValidators
 User = get_user_model()
 
 
-class MetaTagsBase(models.Model):
+class MetaTagModel(models.Model):
     class Meta:
         abstract = True
 
@@ -24,7 +24,7 @@ class MetaTagsBase(models.Model):
     google_analytics_details = models.TextField(null=True, blank=True, verbose_name="google analytics Details")
 
 
-class BlogCategory(models.Model, BadiModel, MetaTagsBase):
+class BlogCategory(MetaTagModel, BadiModel):
     class Meta:
         verbose_name = 'دسته بندی'
         verbose_name_plural = 'دسته بندی ها'
@@ -86,7 +86,7 @@ class BlogTag(models.Model, BadiModel):
         return self.title
 
 
-class BlogPost(models.Model, BadiModel, MetaTagsBase):
+class BlogPost(MetaTagModel, BadiModel, ):
     class Meta:
         verbose_name = 'خبر'
         verbose_name_plural = 'اخبار'
