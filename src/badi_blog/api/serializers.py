@@ -74,7 +74,7 @@ class BlogCommentSerializer(DynamicSerializer):
 class BlogCategorySerializer(DynamicSerializer):
     class Meta:
         model = BlogCategory
-        extra_kwargs = api_error_creator(BlogCategory, ['title'],
+        extra_kwargs = api_error_creator(BlogCategory, BlogCategory().get_all_fields(),
                                          blank_fields=[],
                                          required_fields=['title'])
         fields = ['id'] + BlogCategory().get_all_fields()

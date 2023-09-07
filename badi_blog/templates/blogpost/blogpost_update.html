@@ -128,6 +128,14 @@
 										</div>
 									</div>
 									<hr>
+									{% include 'component/input.html' with md=6 input=form.meta_title %}
+									{% include 'component/input.html' with md=6 input=form.meta_keywords %}
+									{% include 'component/input.html' with md=6 input=form.meta_author %}
+									{% include 'component/input.html' with md=6 input=form.meta_copyright %}
+									{% include 'component/input.html' with md=12 input=form.meta_description %}
+									{% include 'component/input.html' with md=12 input=form.extra_header %}
+									{% include 'component/input.html' with md=12 input=form.extra_scripts %}
+									{% include 'component/input.html' with md=12 input=form.google_analytics_details %}
 								</div>
 							</div>
 
@@ -165,7 +173,7 @@
                 method: 'PUT',
                 file: true,
                 form: '#form',
-				button,
+                button,
                 success_message: 'با موفقیت آپدیت شد',
                 success_url: '../list',
                 error: function (e) {

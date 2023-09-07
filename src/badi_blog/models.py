@@ -24,7 +24,7 @@ class MetaTagsBase(models.Model):
     google_analytics_details = models.TextField(null=True, blank=True, verbose_name="google analytics Details")
 
 
-class BlogCategory(models.Model, BadiModel):
+class BlogCategory(models.Model, BadiModel, MetaTagsBase):
     class Meta:
         verbose_name = 'دسته بندی'
         verbose_name_plural = 'دسته بندی ها'
@@ -49,6 +49,10 @@ class BlogCategory(models.Model, BadiModel):
                                        null=True)
     post_show_type = models.CharField(max_length=2, verbose_name="چیدمان پست ها", choices=SHOW_TYPES, blank=True,
                                       null=True)
+    picture = models.ImageField(upload_to='blog_post/%Y/%m/%d/', blank=True, null=True, verbose_name="تصویر")
+    slug = models.CharField(max_length=256, null=True, blank=True, verbose_name="متن Slug دسته بندی",
+                            validators=[BadiValidators.slug])
+    description = models.TextField(verbose_name="شرح دسته بندی", blank=True, validators=[])
     # ads = models.ForeignKey(Ads, related_name='categories', on_delete=models.SET_NULL, blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='زمان ایجاد')
 
