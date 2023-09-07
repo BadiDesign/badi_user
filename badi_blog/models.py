@@ -10,6 +10,20 @@ from badi_utils.validations import BadiValidators
 User = get_user_model()
 
 
+class MetaTagsBase(models.Model):
+    class Meta:
+        abstract = True
+
+    meta_keywords = models.CharField("Keywords meta tag", max_length=255, blank=True, null=True, )
+    meta_description = models.CharField("Description meta tag", max_length=255, blank=True, null=True, )
+    meta_author = models.CharField("Author meta tag", max_length=255, blank=True, null=True, )
+    meta_copyright = models.CharField("Copyright meta tag", max_length=255, blank=True, null=True, )
+    meta_title = models.CharField(max_length=225, blank=True, null=True, verbose_name="title meta tag")
+    extra_header = models.TextField(blank=True, null=True, verbose_name="Extra header html")
+    extra_scripts = models.TextField(blank=True, null=True, verbose_name="Extra script html")
+    google_analytics_details = models.TextField(null=True, blank=True, verbose_name="google analytics Details")
+
+
 class BlogCategory(models.Model, BadiModel):
     class Meta:
         verbose_name = 'دسته بندی'
@@ -68,7 +82,7 @@ class BlogTag(models.Model, BadiModel):
         return self.title
 
 
-class BlogPost(models.Model, BadiModel):
+class BlogPost(models.Model, BadiModel, MetaTagsBase):
     class Meta:
         verbose_name = 'خبر'
         verbose_name_plural = 'اخبار'
@@ -79,10 +93,11 @@ class BlogPost(models.Model, BadiModel):
 
     title = models.CharField(max_length=200, verbose_name="تیتر")
     pre_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="پیش تیتر")
-    picture = models.FileField(upload_to='blog_post/', blank=True, null=True, verbose_name="تصویر")
+    picture = models.ImageField(upload_to='blog_post/%Y/%m/%d/', blank=True, null=True, verbose_name="تصویر")
     slug = models.CharField(max_length=256, verbose_name="متن Slug خبر", validators=[BadiValidators.slug])
     slider_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="تیتر اسلایدر")
-    slider_picture = models.FileField(upload_to='blog_post/', blank=True, null=True, verbose_name="تصویر اسلایدر")
+    slider_picture = models.ImageField(upload_to='blog_post/%Y/%m/%d/slider/', blank=True, null=True,
+                                       verbose_name="تصویر اسلایدر")
     breaking_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="تیتر فوری")
     categories = models.ManyToManyField(BlogCategory, related_name='news', verbose_name="دسته بندی ها")
     tags = models.ManyToManyField(BlogTag, related_name='news', verbose_name="تگ ها")
@@ -160,10 +175,10 @@ class BlogBanner(models.Model, BadiModel):
         ordering = ['-pk', ]
 
     title = models.CharField(max_length=200, verbose_name="title")
-    picture = models.FileField(upload_to='banner/', blank=True, null=True, verbose_name="Picture",
+    picture = models.FileField(upload_to='blog_banner/%Y/%m/%d/', blank=True, null=True, verbose_name="Picture",
                                # validators=[file_size]
                                )
-    picture_sm = models.FileField(upload_to='banner/', blank=True, null=True, verbose_name="Picture sm",
+    picture_sm = models.FileField(upload_to='blog_banner/%Y/%m/%d/', blank=True, null=True, verbose_name="Picture sm",
                                   # validators=[file_size]
                                   )
     lang = models.CharField(max_length=10, default="fa", blank=True, null=True, choices=LANGUAGES)

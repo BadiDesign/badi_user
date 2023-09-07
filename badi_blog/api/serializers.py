@@ -15,18 +15,11 @@ class BlogPostSerializer(DynamicSerializer):
 
     class Meta:
         model = BlogPost
-        extra_kwargs = api_error_creator(BlogPost,
-                                         ['title', 'picture', 'slug', 'slider_title', 'slider_picture',
-                                          'breaking_title', 'categories', 'is_recommend', 'short', 'description',
-                                          'view', 'source_title', 'source_link', 'writer',
-                                          ],
+        extra_kwargs = api_error_creator(BlogPost, BlogPost.get_all_fields(),
                                          blank_fields=[],
                                          required_fields=[])
         # depth = 1
-        fields = ['title', 'picture', 'slug', 'slider_title', 'slider_picture',
-                  'breaking_title', 'categories', 'is_recommend', 'short', 'description',
-                  'view', 'source_title', 'source_link', 'writer',
-                  ]
+        fields = ['id'] + BlogPost.get_all_fields()
 
     def create(self, validated_data):
         validated_data['writer'] = self.context['request'].user
@@ -46,22 +39,6 @@ class BlogPostSerializer(DynamicSerializer):
             tag_ids.append(obj.id)
         validated_data['tags'] = BlogTag.objects.filter(id__in=tag_ids)
         return super().update(instance, validated_data)
-
-    def validate_password(self, value):
-        if self.context['view'].action == 'create':
-            data = self.get_initial()
-            password = data.get('password')
-            if password is None or password == '':
-                raise serializers.ValidationError('رمز عبور باید وارد شود')
-
-        return make_password(value)
-
-    def validate_mobile_number(self, value):
-        if self.context['view'].action == 'create':
-            data = self.get_initial()
-            if value is None or value == '':
-                raise serializers.ValidationError('شماره همراه باید وارد شود')
-        return value
 
 
 class BlogCommentSerializer(DynamicSerializer):
