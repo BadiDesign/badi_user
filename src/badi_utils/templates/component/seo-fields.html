@@ -1,0 +1,35 @@
+<div class="card card-custom ltr border-primary seo-card text-right bg-light-primary">
+	<div class="card-header bg-primary rounded-0 ">
+		<h3 class="text-white card-title">
+			Seo Tags
+		</h3>
+	</div>
+	<div class="card-body">
+		<div class="row {{ extra_class }}">
+			{% if form.meta_keywords %}
+				{% include 'component/input.html' with xl=xl_size|default:3 input=form.meta_keywords %}
+			{% endif %}
+			{% if form.meta_author %}
+				{% include 'component/input.html' with xl=xl_size|default:3 input=form.meta_author %}
+			{% endif %}
+			{% if form.meta_copyright %}
+				{% include 'component/input.html' with xl=xl_size|default:3 input=form.meta_copyright %}
+			{% endif %}
+			{% if form.meta_title %}
+				{% include 'component/input.html' with xl=xl_size|default:3 input=form.meta_title %}
+			{% endif %}
+			{% if form.meta_description %}
+				{% include 'component/input.html' with xl=xl_size|default:6 input=form.meta_description %}
+			{% endif %}
+			{% if form.extra_header %}
+				{% include 'component/input.html' with xl=xl_size|default:6 input=form.extra_header %}
+			{% endif %}
+			{% if form.extra_scripts %}
+				{% include 'component/input.html' with xl=xl_size|default:6 input=form.extra_scripts %}
+			{% endif %}
+			{% if form.google_analytics_details %}
+				{% include 'component/input.html' with xl=xl_size|default:6 input=form.google_analytics_details %}
+			{% endif %}
+		</div>
+	</div>
+</div>

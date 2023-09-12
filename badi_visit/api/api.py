@@ -1,8 +1,11 @@
 import datetime
+
+from badi_blog.api.api import CustomPagination
+from badi_visit.api.serializers import AddressVisitSerializer
 from django.http import JsonResponse
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
-from badi_visit.models import Visit
+from badi_visit.models import Visit, AddressVisit
 
 from badi_utils.dynamic_api import DynamicModelApi, ViewSetPermission
 
@@ -64,3 +67,13 @@ class VisitViewSet(ViewSetPermission, viewsets.ViewSet):
         data['info']['all']['visit'] = all_objects.count()
         data['info']['all']['visitor'] = all_objects.values('ip').distinct().count()
         return JsonResponse(data)
+
+
+class AddressVisitViewSet(DynamicModelApi):
+    model = AddressVisit
+    serializer_class = AddressVisitSerializer
+    queryset = model.objects.all()
+    pagination_class = CustomPagination
+    custom_perms = {
+        'list': 'badi_visit.can_visit',
+    }

@@ -21,3 +21,9 @@ def get_film(new, default=""):
 @register.filter(name='get_film_link')
 def get_film_link(new, default=""):
     return new.film.url if new.film else new.link or default
+
+
+@register.simple_tag()
+def get_seo_fields():
+    return ['meta_keywords', 'meta_description', 'meta_author', 'meta_copyright', 'meta_title', 'extra_header',
+            'extra_scripts', 'google_analytics_details', ]
