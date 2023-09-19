@@ -6,3 +6,4 @@ class BadiErrorCodes:
     expired = 'EXPIRED'
     wrong_code = 'WRONG_CODE'
     permission_denied = "NO_PERMISSION"
+    weak_password = "WEAK_PASSWORD"

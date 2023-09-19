@@ -15,7 +15,7 @@ from django.utils import timezone
 from rest_framework import status, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED
+from rest_framework.status import HTTP_400_BAD_REQUEST, HTTP_401_UNAUTHORIZED, HTTP_404_NOT_FOUND
 from rest_framework_simplejwt.exceptions import InvalidToken, TokenError
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenRefreshSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
@@ -432,6 +432,56 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             attr = '0' + str(user.mobile_number.national_number)
         config.get('class')(attr).send_forgot_link(token_id_hash, hash_code)
         return ResponseOk({})
+
+    @action(methods=['post'], detail=False)
+    def forgot_password_code(self, req, *args, **kwargs):
+        config = BADI_AUTH_CONFIG.get('forgot_code')
+        if not config or not config.get('is_active'):
+            return JsonResponse({'error': ['404']}, status=HTTP_404_NOT_FOUND)
+        mobile_email = self.request.data.get(config.get('user_find_key'))
+        user = User.objects.filter(**{config.get('user_find_key'): mobile_email}).first()
+        if not user:
+            return JsonResponse({config.get('user_find_key'): [_('There is no user with this specifications!')]},
+                                status=HTTP_400_BAD_REQUEST)
+        code_receive = req.data.get('token', None)
+        user_attr = getattr(user, config['user_find_key'])
+        token = Token.objects.filter(**{config.get('token_key', 'phone'): user_attr}, is_forgot=True,
+                                     is_accepted=False).last()
+        if not token or not token.is_active():
+            token = Token()
+            token.token = random_with_N_digits(5)
+            token.phone = user.mobile_number
+            token.last_send = datetime.datetime.now()
+            token.is_forgot = True
+            token.save()
+            user.token = token
+            user.save()
+            print(f'کد تغییر رمز عبور:  {token.token}')
+            attr = getattr(user, config.get('user_find_key'))
+            if hasattr(user.mobile_number, 'national_number'):
+                attr = '0' + str(user.mobile_number.national_number)
+            config.get('class')(attr).send_forgot_code(token.token)
+            return ResponseOk({})
+        if token and token.is_active() and not code_receive:
+            if token and token.is_active():
+                if token.is_possible_resend():
+                    config['class'](user_attr).send_verify_code(token.token)
+                    token.last_send = datetime.datetime.now()
+                    token.save()
+                else:
+                    return ResponseNotOk(reason=_(BadiErrorCodes.sms_send_recently))
+        if code_receive:
+            if code_receive != token.token:
+                return ResponseNotOk(reason=_(BadiErrorCodes.wrong_code))
+            new_password = req.data.get('new_password')
+            if not new_password or len(new_password) < 6:
+                return ResponseNotOk(reason=_(BadiErrorCodes.weak_password))
+            user.password = make_password(new_password)
+            user.save()
+            token.is_accepted = True
+            token.save()
+            return Response({'is_changed': True})
+        return ResponseNotOk(reason='کد را وارد کنید!')
 
     @action(methods=['post'], detail=False)
     def refresh(self, request, *args, **kwargs):

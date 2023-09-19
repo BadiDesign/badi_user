@@ -102,6 +102,7 @@ SMS__PANNEL = getenv('SMS__PANNEL')
 SMS__TOKEN = getenv('SMS__TOKEN')
 SMS__FORGET_TEMPLATE_ID = getenv('SMS__FORGET_TEMPLATE_ID', 'forget')
 SMS__VERIFY_TEMPLATE_ID = getenv('SMS__VERIFY_TEMPLATE', 'entry')
+SMS__FORGET_CODE_TEMPLATE_ID = getenv('SMS__FORGET_CODE_TEMPLATE_ID', 'forgetcode')
 
 
 class KavenegarSms:
@@ -156,6 +157,30 @@ class KavenegarSms:
                 print(e)
         return False
 
+    def send_forgot_code(self, text):
+        print(f'Send Forgot code {str(text)}')
+        if not SMS_ENABLE:
+            return
+        for i in range(10):
+            try:
+                response = requests.get(
+                    SMS__PANNEL.format(key=SMS__TOKEN),
+                    params={
+                        "type": 'sms',
+                        "template": SMS__FORGET_CODE_TEMPLATE_ID,
+                        "receptor": self.phone_number,
+                        "token": text,
+                    }, headers={
+                        "Content-Type": "application/json",
+                    }
+                )
+                print(response, response.ok)
+                if response.ok:
+                    return True
+            except Exception as e:
+                print(e)
+        return False
+
     def send_custom(self, params):
         print(f'Send send_custom', params)
         if not SMS_ENABLE:
@@ -179,6 +204,7 @@ class KavenegarSms:
         return False
 
 
+print('SMS_PANNEL_TYPE got:', SMS_PANNEL_TYPE)
 if SMS_PANNEL_TYPE == 'kavenegar':
     SmsManager = KavenegarSms
 else:
