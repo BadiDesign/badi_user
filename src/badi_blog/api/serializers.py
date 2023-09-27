@@ -9,8 +9,8 @@ from badi_utils.validations import PersianValidations
 
 class BlogPostSerializer(DynamicSerializer):
     remove_field_view = {
-        'create': ['writer', ],
-        'update': ['writer', ],
+        'create': ['writer', 'tags'],
+        'update': ['writer', 'tags'],
     }
 
     class Meta:

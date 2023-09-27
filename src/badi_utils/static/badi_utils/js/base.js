@@ -698,3 +698,7 @@ class FormValidationMessages {
         return `${x} and ${y} are not Equal!`;
     }
 }
+
+$('body img').on('error', function () {
+    $(this).attr('src', '/static/assets/media/image-404.png')
+})

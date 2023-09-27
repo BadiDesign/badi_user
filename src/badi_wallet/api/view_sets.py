@@ -1,5 +1,7 @@
 import datetime
 import json
+
+from badi_wallet.filter import TransactionFilter
 from django.db.models import Q, Sum
 from django.http import Http404
 from django_datatables_view.mixins import LazyEncoder
@@ -166,7 +168,11 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
                 response['result'] = 'error'
         else:
             response = func_val
-
+        qs = self.get_initial_queryset(*args, **kwargs)
+        qs = self.filter_queryset(qs)
+        response['sum'] = qs.aggregate(Sum('amount'))['amount__sum']
+        response['charge'] = qs.filter(subject__startswith='شارژ').aggregate(Sum('amount'))['amount__sum']
+        response['not_charge'] = qs.exclude(subject__startswith='شارژ').aggregate(Sum('amount'))['amount__sum']
         dump = json.dumps(response, cls=LazyEncoder)
         return self.render_to_response(dump)
 
@@ -185,7 +191,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
 
     def filter_queryset(self, qs):
         if self.action == 'all_transactions':
-            qs = Transaction.objects.all()
+            qs = TransactionFilter(self.request.data).qs
         else:
             qs = Transaction.for_user(self.request.user)
         search = self.request.POST.get('search[value]', None)

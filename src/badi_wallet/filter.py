@@ -7,7 +7,9 @@ class TransactionFilter(filters.FilterSet):
     class Meta:
         model = Transaction
         fields = [
+            'user'
         ]
 
-    user = TextIn(field_name='user')
-    date_time = filters.DateFromToRangeFilter()
+    # date_time = filters.DateFromToRangeFilter(label='تاریخ')
+    # amount = filters.NumericRangeFilter(label='مبلغ')
+    subject = TextIn(field_name='subject')

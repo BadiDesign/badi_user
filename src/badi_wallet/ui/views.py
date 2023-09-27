@@ -16,6 +16,9 @@ class AdminTransActionsView(DynamicListView):
     datatable_cols = Transaction().get_datatable_verbose_names([_("Bank Transaction"), _("DiscountCode"), ])
     datatableURL = '/api/v1/transaction/all_transactions/'
     template_name = 'transaction/all_transaction_list.html'
+    extra_context = {
+        'filter_form': TransactionFilter().form
+    }
 
 
 class ReportTransActionsView(DynamicListView):
