@@ -171,8 +171,8 @@ window.datatable_simple_show = function (options, settings) {
                         headers: {
                             "Authorization": localStorage.getItem('session_key')
                         },
-                        error: (options['deleteError']) ? options['deleteError'] : () => {
-                            swalFireError('قابل Delete نمی باشد!')
+                        error: (options['deleteError']) ? options['deleteError'] : (err) => {
+                            swal.fire('قابل حذف نمی باشد!', err.responseText, 'error')
                         }
                     }).done(function (res) {
                         oTable.draw();

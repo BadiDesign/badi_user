@@ -180,10 +180,9 @@
 <button type="button" onclick="showTransactionDetail(${data[0]})" data-skin="dark" data-toggle="tooltip" data-placement="top" title="" data-original-title="edit" class="btn btn-sm btn-light-primary btn-hover-text-primary btn-icon mx-2"><span class="svg-icon svg-icon-md">{% include 'svg/info.html' %}</span></button>
 				`)
                 }, drawCallback: function (e) {
-
-                    $('#table_sum').html(formatNumber(e.json['sum'].toString()))
-                    $('#table_charge').html(formatNumber(e.json['charge'].toString()))
-                    $('#table_not_charge').html(formatNumber(e.json['not_charge'].toString()))
+                    $('#table_sum').html(e.json['sum'] ? formatNumber(e.json['sum'].toString()) : '0')
+                    $('#table_charge').html(e.json['charge'] ? formatNumber(e.json['charge'].toString()) : '0')
+                    $('#table_not_charge').html(e.json['not_charge'] ? formatNumber(e.json['not_charge'].toString()) : '0')
                 }
             },
         );
