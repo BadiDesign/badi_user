@@ -225,8 +225,8 @@ const code_meli_valid = (input) => {
 const bodyLoading = (qs = 'body') => document.querySelector(qs).classList.add('loading');
 const bodyLoadingDisable = (qs = 'body') => document.querySelector(qs).classList.remove('loading');
 const toEnglishDigit = (replaceString) => {
-    var find = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
-    var replace = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    var find = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹', '٠', '١', '٢', '٣', '٤', '٥', '٦', '٧', '٨', '٩', '‏'];
+    var replace = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ''];
     var regex;
     for (var i = 0; i < find.length; i++) {
         regex = new RegExp(find[i], "g");
@@ -234,7 +234,6 @@ const toEnglishDigit = (replaceString) => {
     }
     return replaceString;
 };
-
 const toPersianDigit = (replaceString) => {
     var replace = ['۰', '۱', '۲', '۳', '۴', '۵', '۶', '۷', '۸', '۹'];
     var find = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
@@ -599,6 +598,89 @@ JalaliDate.jalaliToGregorian = function (j_y, j_m, j_d) {
 
     return [gy, gm, gd];
 };
+
+const gregorianToJulian = (year, month, day) => {
+    if (month < 3) {
+        year -= 1;
+        month += 12;
+    }
+
+    const a = Math.floor(year / 100.0);
+    const b = year === 1582 && (month > 10 || (month === 10 && day > 4))
+        ? -10 :
+        year === 1582 && month === 10
+            ? 0 :
+            year < 1583
+                ? 0 :
+                2 - a + Math.floor(a / 4.0);
+
+    return Math.floor(365.25 * (year + 4716)) + Math.floor(30.6001 * (month + 1)) + day + b - 1524;
+};
+
+const julianToHijri = (julianDay) => {
+    const y = 10631.0 / 30.0;
+    const epochAstro = 1948084;
+    const shift1 = 8.01 / 60.0;
+
+    let z = julianDay - epochAstro;
+    const cyc = Math.floor(z / 10631.0);
+    z -= 10631 * cyc;
+    const j = Math.floor((z - shift1) / y);
+    z -= Math.floor(j * y + shift1);
+
+    const year = 30 * cyc + j;
+    let month = Math.floor(parseInt((z + 28.5001) / 29.5));
+    if (month === 13) {
+        month = 12;
+    }
+
+    const day = z - Math.floor(29.5001 * month - 29);
+
+    return {year: parseInt(year), month: parseInt(month), day: parseInt(day)};
+};
+
+JalaliDate.HijriToGregorian = function (j_y, j_m, j_d) {
+    const julianDay = gregorianToJulian(j_y, j_m, j_d - 1);
+    return julianToHijri(julianDay);
+}
+
+function dateDiff(startingDate, endingDate) {
+    let startDate = new Date(new Date(startingDate).toISOString().substr(0, 10));
+    if (!endingDate) {
+        endingDate = new Date().toISOString().substr(0, 10); // need date in YYYY-MM-DD format
+    }
+    let endDate = new Date(endingDate);
+    if (startDate > endDate) {
+        const swap = startDate;
+        startDate = endDate;
+        endDate = swap;
+    }
+    const startYear = startDate.getFullYear();
+    const february = (startYear % 4 === 0 && startYear % 100 !== 0) || startYear % 400 === 0 ? 29 : 28;
+    const daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+
+    let yearDiff = endDate.getFullYear() - startYear;
+    let monthDiff = endDate.getMonth() - startDate.getMonth();
+    if (monthDiff < 0) {
+        yearDiff--;
+        monthDiff += 12;
+    }
+    let dayDiff = endDate.getDate() - startDate.getDate();
+    if (dayDiff < 0) {
+        if (monthDiff > 0) {
+            monthDiff--;
+        } else {
+            yearDiff--;
+            monthDiff = 11;
+        }
+        dayDiff += daysInMonth[startDate.getMonth()];
+    }
+    return {
+        days: dayDiff,
+        months: monthDiff,
+        years: yearDiff
+    }
+}
 
 const clockPicker = (inputSelectors, title = undefined, defaultValue = undefined) => {
     for (const inputSelector of document.querySelectorAll(inputSelectors)) {
