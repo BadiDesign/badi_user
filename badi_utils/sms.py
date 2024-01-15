@@ -28,6 +28,7 @@ class IpPanelSms:
     def send_forgot_link(self, token_id_hash, hash_code):
         print(f'Send send_forgot_link', token_id_hash, hash_code)
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -53,6 +54,7 @@ class IpPanelSms:
     def send_verify_code(self, text):
         print(f'Send code {str(text)}')
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -78,6 +80,7 @@ class IpPanelSms:
     def send_custom(self, params):
         print(f'Send send_custom', params)
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -113,6 +116,7 @@ class KavenegarSms:
     def send_forgot_link(self, token_id_hash, hash_code):
         print(f'Send send_forgot_link', token_id_hash, hash_code)
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -136,6 +140,7 @@ class KavenegarSms:
     def send_verify_code(self, text):
         print(f'Send code {str(text)}')
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -160,6 +165,7 @@ class KavenegarSms:
     def send_forgot_code(self, text):
         print(f'Send Forgot code {str(text)}')
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
@@ -184,17 +190,18 @@ class KavenegarSms:
     def send_custom(self, params):
         print(f'Send send_custom', params)
         if not SMS_ENABLE:
+            print('SMS DISABLED')
             return
         for i in range(10):
             try:
                 default_params = {
-                    "apikey": ORIGINATOR,
-                    "fnum": SMS__IPPANEL_F_NUM_VERIFY_CODE,
-                    "tnum": self.phone_number,
+                    "type": 'sms',
+                    "template": SMS__FORGET_CODE_TEMPLATE_ID,
+                    "receptor": self.phone_number,
                 }
                 default_params.update(params)
                 result = requests.get(
-                    SMS_SEND_URL,
+                    SMS__PANNEL.format(key=SMS__TOKEN),
                     params=default_params, headers={
                         "Content-Type": "application/json",
                     })
