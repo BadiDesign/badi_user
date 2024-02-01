@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser, Group
 from django.db import models
 
 from badi_utils.utils import get_client_ip
+from django.apps import apps as django_apps
 
 
 class AddressVisit(models.Model, BadiModel):
@@ -65,3 +66,46 @@ class Visit(models.Model):
         super().save(force_insert, force_update, using, update_fields)
         if not self.address.updated_at or self.address.updated_at < (datetime.now() - timedelta(minutes=1)):
             self.address.update_visits()
+
+
+class Like(models.Model):
+    class Meta:
+        verbose_name = 'Like'
+        verbose_name_plural = 'Likes'
+        permissions = (
+            ('can_like', 'Manage Like'),
+        )
+
+    model = models.CharField(max_length=120)
+    model_pk = models.IntegerField(default=0)
+    ip = models.CharField(max_length=200, verbose_name='ip')
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='Visit Time')
+
+    def __str__(self):
+        return f'{self.ip} - {self.model_pk}'
+
+    @staticmethod
+    def like(request, obj):
+        client_ip = get_client_ip(request)
+        model = obj.model
+        id = obj.id
+        has_liked = Like.objects.filter(ip=client_ip, model=model, id=id).exists()
+        if has_liked:
+            return None
+        like = Like(ip=client_ip, model=model, id=id)
+        like.save()
+        Like.update_like(like)
+        return like
+
+    def delete(self, using=None, keep_parents=False):
+        res = super().delete(using, keep_parents)
+        self.update_like()
+        return res
+
+    def update_like(self):
+        model = django_apps.get_model(self.model)
+        if model and hasattr(model, 'like_count'):
+            model_obj = model.objects.get(pk=self.model_pk)
+            model_obj.like_count = Like.objects.filter(model=self.model, model_pk=self.model_pk).count()
+            model_obj.save()
+        print(self.model, ' Has no LikeCount Field')
