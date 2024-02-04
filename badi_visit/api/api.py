@@ -1,11 +1,11 @@
 import datetime
 
 from badi_blog.api.api import CustomPagination
-from badi_visit.api.serializers import AddressVisitSerializer
+from badi_visit.api.serializers import AddressVisitSerializer, RedirectUrlSerializer
 from django.http import JsonResponse
 from rest_framework import viewsets, permissions
 from rest_framework.decorators import action
-from badi_visit.models import Visit, AddressVisit
+from badi_visit.models import Visit, AddressVisit, RedirectUrl
 
 from badi_utils.dynamic_api import DynamicModelApi, ViewSetPermission
 
@@ -76,4 +76,14 @@ class AddressVisitViewSet(DynamicModelApi):
     pagination_class = CustomPagination
     custom_perms = {
         'list': 'badi_visit.can_visit',
+    }
+
+
+class RedirectUrlViewSet(DynamicModelApi):
+    model = RedirectUrl
+    serializer_class = RedirectUrlSerializer
+    queryset = model.objects.all()
+    pagination_class = CustomPagination
+    custom_perms = {
+        'list': 'badi_visit.can_redirect',
     }

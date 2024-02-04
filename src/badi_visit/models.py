@@ -35,7 +35,7 @@ class AddressVisit(models.Model, BadiModel):
         self.save()
 
 
-class Visit(models.Model):
+class Visit(models.Model, BadiModel):
     class Meta:
         verbose_name = 'Visit'
         verbose_name_plural = 'Visits'
@@ -68,7 +68,7 @@ class Visit(models.Model):
             self.address.update_visits()
 
 
-class Like(models.Model):
+class Like(models.Model, BadiModel):
     class Meta:
         verbose_name = 'Like'
         verbose_name_plural = 'Likes'
@@ -109,3 +109,20 @@ class Like(models.Model):
             model_obj.like_count = Like.objects.filter(model=self.model, model_pk=self.model_pk).count()
             model_obj.save()
         print(self.model, ' Has no LikeCount Field')
+
+
+class RedirectUrl(models.Model, BadiModel):
+    class Meta:
+        verbose_name = 'RedirectUrl'
+        verbose_name_plural = 'RedirectUrls'
+        permissions = (
+            ('can_redirect', 'Manage Redirects'),
+        )
+
+    from_url = models.TextField(blank=True)
+    to_url = models.TextField(blank=True)
+    is_regax = models.BooleanField(default=False, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='created at')
+
+    def __str__(self):
+        return f'{self.from_url}'

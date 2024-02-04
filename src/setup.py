@@ -5,7 +5,7 @@ from setuptools import find_packages
 
 setup(
     name='badi_users',
-    version='2.1.9',
+    version='2.2.0',
     author='Mohammad Shekari Badi',
     author_email='Ad.BadiDesign@gmail.com',
     packages=find_packages(),
