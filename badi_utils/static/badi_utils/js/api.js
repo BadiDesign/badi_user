@@ -64,6 +64,9 @@ const getFormData = (qs = 'form') => {
             res[inputEl.name] = inputEl.checked ? 'on' : 'off'
         } else if (inputEl.classList.contains('date')) {
             res[inputEl.name] = toEnglishDate($(inputEl).val())
+        } else if (inputEl.classList.contains('date-time')) {
+            let val = $(inputEl).val()
+            res[inputEl.name] = toEnglishDate(val.split(' ')[0]) + ' ' + toEnglishDigit(val.split(' ')[1])
         } else if (inputEl.classList.contains('currency')) {
             res[inputEl.name] = deFormatNumber($(inputEl).val())
         } else if (inputEl.type === "file") {
@@ -98,6 +101,12 @@ const getFormDataWithFile = (qs = 'form') => {
             res.delete(inputEl.name);
             if ($(inputEl).val() !== '')
                 res.append(inputEl.name, toEnglishDate($(inputEl).val()))
+        }
+        if (inputEl.classList.contains('date-time')) {
+            let val = $(inputEl).val()
+            res.delete(inputEl.name);
+            if ($(inputEl).val() !== '')
+                res.append(inputEl.name, toEnglishDate(val.split(' ')[0]) + ' ' + toEnglishDigit(val.split(' ')[1]))
         } else if (inputEl.classList.contains('currency')) {
             res.delete(inputEl.name);
             res.append(inputEl.name, deFormatNumber($(inputEl).val()))

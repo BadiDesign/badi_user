@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 12:18+0330\n"
+"POT-Creation-Date: 2024-02-05 16:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,25 +34,25 @@ msgstr "با موفقیت بروز شد"
 msgid "Update"
 msgstr "بروزرسانی"
 
-#: .\badi_utils\dynamic_api.py:443 .\badi_utils\dynamic_api.py:457
-#: .\badi_utils\dynamic_api.py:459
+#: .\badi_utils\dynamic_api.py:445 .\badi_utils\dynamic_api.py:452
+#: .\badi_utils\dynamic_api.py:453
 msgid "enter {0}!"
 msgstr "{0} را وارد کنید!"
 
-#: .\badi_utils\dynamic_api.py:445
+#: .\badi_utils\dynamic_api.py:446
 msgid "{0} is required!"
 msgstr "{0} الزامی است!"
 
-#: .\badi_utils\dynamic_api.py:447 .\badi_utils\dynamic_api.py:451
-#: .\badi_utils\dynamic_api.py:453 .\badi_utils\dynamic_api.py:455
+#: .\badi_utils\dynamic_api.py:447 .\badi_utils\dynamic_api.py:449
+#: .\badi_utils\dynamic_api.py:450 .\badi_utils\dynamic_api.py:451
 msgid "invalid {0}!"
 msgstr "{0} وارد شده صحیح نمی باشد!"
 
-#: .\badi_utils\dynamic_api.py:449
+#: .\badi_utils\dynamic_api.py:448
 msgid "invalid choice for {0}!"
 msgstr "{0} وارد شده صحیح نمی باشد!"
 
-#: .\badi_utils\dynamic_api.py:461
+#: .\badi_utils\dynamic_api.py:454
 msgid "this {0} already submitted!"
 msgstr "این {0} قبلا ثبت شده است!"
 
@@ -99,6 +99,18 @@ msgstr "حذف"
 #: .\badi_utils\logging.py:40
 msgid "Removed"
 msgstr "حذف"
+
+#: .\badi_utils\templates\component\createModal.html:41
+msgid "Submit"
+msgstr ""
+
+#: .\badi_utils\templates\component\createModal.html:44
+msgid "Close"
+msgstr ""
+
+#: .\badi_utils\templates\component\filter-form.html:22
+msgid "Search"
+msgstr ""
 
 #: .\badi_utils\utils.py:35
 msgid "NO_PERMISSION"

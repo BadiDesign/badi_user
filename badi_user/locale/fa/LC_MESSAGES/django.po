@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 12:18+0330\n"
+"POT-Creation-Date: 2024-02-05 16:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,7 +58,7 @@ msgstr "لطفا دوباره تلاش کنید"
 msgid "Invalid Code!"
 msgstr "نام کاربری غیر معتبر"
 
-#: .\badi_user\api\api.py:411
+#: .\badi_user\api\api.py:411 .\badi_user\api\api.py:444
 msgid "There is no user with this specifications!"
 msgstr "کاربری با مشخصات مورد نظر پیدا نشد!"
 

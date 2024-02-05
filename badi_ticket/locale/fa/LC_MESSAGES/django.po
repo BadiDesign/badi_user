@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-07-18 12:18+0330\n"
+"POT-Creation-Date: 2024-02-05 16:26+0330\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,31 +61,31 @@ msgstr "مدیریت تیکت ها"
 
 #: .\badi_ticket\models.py:48
 msgid "Sell"
-msgstr ""
+msgstr "فروش"
 
 #: .\badi_ticket\models.py:49
 msgid "Public question"
-msgstr ""
+msgstr "سوال عمومی"
 
 #: .\badi_ticket\models.py:50
 msgid "Technical question"
-msgstr ""
+msgstr "سوال تخصصی"
 
 #: .\badi_ticket\models.py:51
 msgid "Authentication"
-msgstr ""
+msgstr "احراز هویت"
 
 #: .\badi_ticket\models.py:52
 msgid "Complaint"
-msgstr ""
+msgstr "شکایت"
 
 #: .\badi_ticket\models.py:53
 msgid "Financial"
-msgstr ""
+msgstr "مالی"
 
 #: .\badi_ticket\models.py:54
 msgid "Other"
-msgstr ""
+msgstr "غیره"
 
 #: .\badi_ticket\models.py:57
 #: .\badi_ticket\templates\ticket\message_list.html:26
