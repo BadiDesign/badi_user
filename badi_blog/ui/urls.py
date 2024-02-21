@@ -8,6 +8,7 @@ partner_urls = multi_generator_url(BlogPartner(), create=BlogPartnerCreateView, 
 urlpatterns = [
                   generate_url(BlogPost(), create=BlogPostCreateView),
                   generate_url(BlogPost(), view=BlogPostListView),
+                  generate_url(BlogImage(), view=BlogImageListView),
                   generate_url(BlogPost(), update=BlogPostUpdateView),
                   generate_url(BlogComment(), list=BlogCommentList),
                   generate_url(BlogBanner(), list=BlogBannerListView),

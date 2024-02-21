@@ -110,3 +110,21 @@ class BlogPartnerSerializer(DynamicSerializer):
                                          blank_fields=[],
                                          required_fields=[])
         fields = ['id', ] + model.get_serializer_fields()
+
+
+class BlogImageSerializer(DynamicSerializer):
+    remove_field_view = {
+        'create': [],
+        'update': [],
+    }
+
+    class Meta:
+        model = BlogImage
+        extra_kwargs = api_error_creator(model, model().get_all_fields(),
+                                         blank_fields=[],
+                                         required_fields=[])
+        fields = model().get_all_fields()
+
+    def create(self, validated_data):
+        res = super().create(validated_data)
+        return res

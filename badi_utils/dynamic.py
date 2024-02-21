@@ -33,7 +33,8 @@ def get_model_api_url(model: Model, view):
     return '/api/v1/' + meta_string.replace('.', '/') + '/'
 
 
-def multi_generator_url(model: Model, create=None, datatable=None, update=None, delete=None, add_model_to_url=True):
+def multi_generator_url(model: Model, create=None, datatable=None, update=None, delete=None, list=None,
+                        add_model_to_url=True):
     # Use:
     #     urlpatterns = [] + multi_generator_url(Model,create=CreateView,update=UpdateView)
     response = []
@@ -49,6 +50,9 @@ def multi_generator_url(model: Model, create=None, datatable=None, update=None, 
     if datatable:
         response.append(
             path(model_name + "/datatable", datatable.as_view(), name=model_name + "_datatable"))
+    if list:
+        response.append(
+            path(model_name + "/list", list.as_view(), name=model_name + "_list"))
     return response
 
 

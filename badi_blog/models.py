@@ -235,3 +235,28 @@ class BlogPartner(models.Model, BadiModel):
     @staticmethod
     def get_datatable_fields():
         return ['id', 'picture', 'name', 'created_at', ]
+
+
+class BlogImage(models.Model, BadiModel):
+    class Meta:
+        verbose_name = 'تصویر'
+        verbose_name_plural = 'تصویر ها'
+        permissions = (
+        )
+        ordering = ['-pk']
+
+    image = models.ImageField(blank=True, null=True, upload_to='uploads/%Y/%m/', verbose_name='کاور',
+                              validators=[file_size])
+    url = models.TextField(blank=True, null=True, verbose_name='url', )
+    alt = models.CharField(max_length=200, null=True, blank=True)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='تاریخ ایجاد')
+
+    def __str__(self):
+        if self.image:
+            return self.image.url
+        return self.url or ''
+
+    def get_url(self):
+        if self.image:
+            return self.image.url
+        return self.url or None

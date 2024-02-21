@@ -17,101 +17,101 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: .\src\badi_utils\dynamic.py:333 .\src\badi_utils\dynamic.py:436
+#: .\badi_utils\dynamic.py:333 .\badi_utils\dynamic.py:436
 msgid "Created Successfully"
 msgstr "با موفقیت ساخته شد"
 
-#: .\src\badi_utils\dynamic.py:349 .\src\badi_utils\dynamic.py:350
+#: .\badi_utils\dynamic.py:349 .\badi_utils\dynamic.py:350
 msgid "List"
 msgstr "لیست"
 
-#: .\src\badi_utils\dynamic.py:580
+#: .\badi_utils\dynamic.py:580
 msgid "Updated Successfully"
 msgstr "با موفقیت بروز شد"
 
-#: .\src\badi_utils\dynamic.py:596 .\src\badi_utils\dynamic.py:597
-#: .\src\badi_utils\logging.py:36
+#: .\badi_utils\dynamic.py:596 .\badi_utils\dynamic.py:597
+#: .\badi_utils\logging.py:36
 msgid "Update"
 msgstr "بروزرسانی"
 
-#: .\src\badi_utils\dynamic_api.py:445 .\src\badi_utils\dynamic_api.py:452
-#: .\src\badi_utils\dynamic_api.py:453
+#: .\badi_utils\dynamic_api.py:445 .\badi_utils\dynamic_api.py:452
+#: .\badi_utils\dynamic_api.py:453
 msgid "enter {0}!"
 msgstr "{0} را وارد کنید!"
 
-#: .\src\badi_utils\dynamic_api.py:446
+#: .\badi_utils\dynamic_api.py:446
 msgid "{0} is required!"
 msgstr "{0} الزامی است!"
 
-#: .\src\badi_utils\dynamic_api.py:447 .\src\badi_utils\dynamic_api.py:449
-#: .\src\badi_utils\dynamic_api.py:450 .\src\badi_utils\dynamic_api.py:451
+#: .\badi_utils\dynamic_api.py:447 .\badi_utils\dynamic_api.py:449
+#: .\badi_utils\dynamic_api.py:450 .\badi_utils\dynamic_api.py:451
 msgid "invalid {0}!"
 msgstr "{0} وارد شده صحیح نمی باشد!"
 
-#: .\src\badi_utils\dynamic_api.py:448
+#: .\badi_utils\dynamic_api.py:448
 msgid "invalid choice for {0}!"
 msgstr "{0} وارد شده صحیح نمی باشد!"
 
-#: .\src\badi_utils\dynamic_api.py:454
+#: .\badi_utils\dynamic_api.py:454
 msgid "this {0} already submitted!"
 msgstr "این {0} قبلا ثبت شده است!"
 
-#: .\src\badi_utils\logging.py:17
+#: .\badi_utils\logging.py:17
 msgid "custom"
 msgstr "سفارشی"
 
-#: .\src\badi_utils\logging.py:23
+#: .\badi_utils\logging.py:23
 msgid "User"
 msgstr "کاربر"
 
-#: .\src\badi_utils\logging.py:25
+#: .\badi_utils\logging.py:25
 msgid "login"
 msgstr "ورود"
 
-#: .\src\badi_utils\logging.py:26
+#: .\badi_utils\logging.py:26
 msgid "Logged in"
 msgstr "ورود"
 
-#: .\src\badi_utils\logging.py:28
+#: .\badi_utils\logging.py:28
 msgid "logout"
 msgstr "خروج"
 
-#: .\src\badi_utils\logging.py:29
+#: .\badi_utils\logging.py:29
 msgid "Logged out"
 msgstr "خروج"
 
-#: .\src\badi_utils\logging.py:33
+#: .\badi_utils\logging.py:33
 msgid "Create"
 msgstr "ساختن"
 
-#: .\src\badi_utils\logging.py:34
+#: .\badi_utils\logging.py:34
 msgid "Added"
 msgstr "اضافه کردن"
 
-#: .\src\badi_utils\logging.py:37
+#: .\badi_utils\logging.py:37
 msgid "Updated"
 msgstr "بروزرسانی"
 
-#: .\src\badi_utils\logging.py:39
+#: .\badi_utils\logging.py:39
 msgid "Delete"
 msgstr "حذف"
 
-#: .\src\badi_utils\logging.py:40
+#: .\badi_utils\logging.py:40
 msgid "Removed"
 msgstr "حذف"
 
-#: .\src\badi_utils\templates\component\createModal.html:41
+#: .\badi_utils\templates\component\createModal.html:41
 msgid "Submit"
 msgstr ""
 
-#: .\src\badi_utils\templates\component\createModal.html:44
+#: .\badi_utils\templates\component\createModal.html:44
 msgid "Close"
 msgstr ""
 
-#: .\src\badi_utils\templates\component\filter-form.html:22
+#: .\badi_utils\templates\component\filter-form.html:22
 msgid "Search"
 msgstr ""
 
-#: .\src\badi_utils\utils.py:35
+#: .\badi_utils\utils.py:35
 msgid "NO_PERMISSION"
 msgstr "عدم دسترسی"

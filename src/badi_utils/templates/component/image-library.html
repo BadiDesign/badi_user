@@ -1,0 +1,86 @@
+{% load static %}
+<div class="modal fade" id="image-library-modal" tabindex="-1" role="dialog" aria-labelledby="searchModalTitle"
+	 aria-hidden="true">
+	<div class="modal-dialog modal-xl" role="document">
+		<div class="modal-content border-modal" id="image-library">
+			<div class="modal-header">
+				<h5 class="modal-title" id="searchModalTitle">کتابخانه تصاویر</h5>
+				<button @click="showForm=true" type="button" class="btn btn-primary">افزودن تصویر</button>
+			</div>
+			<div class="modal-body" :class="loading ? 'loading' : ''">
+				<div class="form-group">
+					<label for="">عنوان جستجو:</label>
+					<input type="text" v-model="alt" class="form-control" >
+				</div>
+				{% include 'component/loader.html' %}
+				<div :class="[showForm ? '' : 'd-none']">
+					<form id="image-form" @submit.prevent="addImage" class="bg-light-primary p-5"
+					>
+						<div class="row">
+							<div class="col-md-4">
+								<img @click.prevent="fileSelect" :src="src || '/static/assets/media/image-404.png'"
+									 class="w-100 mb-4 rounded cursor-pointer" alt="img">
+								<a @click.prevent="fileSelect" href="#" class="text-primary font-weight-bolder mx-2">آپلود
+									تصویر</a>
+								<a v-if="src" @click.prevent="resetForm" href="#"
+								   class="text-danger mx-2 font-weight-bolder">حذف تصویر</a>
+							</div>
+							<div class="col-md-8">
+								<div class="form-group">
+									<label class="col-form-label">عنوان:</label>
+									<input type="text" required placeholder="نام مربوط به تصویر..." name="image"
+										   class="form-control">
+								</div>
+								<div class="d-none">
+									<input type="file" id="id_image_library" @change="imageChanged" name="image"
+										   class="form-control">
+								</div>
+								<div class="form-group">
+									<label class="col-form-label">آدرس:</label>
+									<textarea name="url" placeholder="آدرس فایل..." class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+						<div class="form-group text-right">
+							<button class="btn px-5 mx-2 btn-danger" @click="showForm=false" type="button">لغو</button>
+							<button class="btn px-5 btn-primary" type="submit">آپلود</button>
+						</div>
+					</form>
+				</div>
+				<hr>
+				<div class="row">
+					<div
+							class="w-200px text-center d-flex justify-content-center p-2 m-1 rounded cursor-pointer border"
+							v-for="img in images"
+							@click="selectedImage=img;"
+							:class="[selectedImage === img ? 'bg-light-primary border-primary' : '']"
+					>
+						<img :src="img.image || img.url" width="180" height="180" class="rounded" alt="img.alt">
+					</div>
+				</div>
+				<div class="row mt-5" v-if="count">
+					<Pagination
+							:count="count"
+							:current="currentPage"
+							:limit="limit"
+							@page-changed="getImages"
+					>
+					</Pagination>
+					<div class="ml-auto text-right align-self-center">
+						صفحه [[currentPage]]
+						-
+						نمایش [[images.length]] از [[count]]
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button @click.prevent="setImage" type="button"
+						:disabled="!selectedImage || !selectedImage.id" class="btn btn-primary">
+					[[ !selectedImage || !selectedImage.id ? 'تصویری انتخاب نشده' : 'انتخاب']]
+				</button>
+				<button class="btn mx-3 btn-danger" type="button" data-dismiss="modal" aria-label="Close">لغو عملیات
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

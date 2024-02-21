@@ -19,9 +19,11 @@ class BlogDetailView(DetailView):
         context = super().get_context_data(**kwargs)
         context['related_videos'] = context['object'].categories.first().news.exclude(id=context['object'].id)[:4]
         context['object_comments_count'] = context['object'].comments.filter(is_accepted=True).count()
-        context['seo_title'] = CONFIG_JSON.get('site_title') + ' | وبلاگ | ' + self.object.title
-        context['seo_desc'] = self.object.short
-        context['seo_tags'] = ','.join([tag.title for tag in self.object.tags.all()])
+        context['seo_title'] = self.object.title + ' | ' + CONFIG_JSON.get('site_title')
+        if self.object.short:
+            context['seo_desc'] = self.object.short
+        if self.object.tags.first():
+            context['seo_tags'] = ','.join([tag.title for tag in self.object.tags.all()])
         return context
 
     def get_object(self, queryset=None):
@@ -34,6 +36,7 @@ class BlogDetailView(DetailView):
 class BlogView(ListView):
     extra_context = {
         'title': 'وبلاگ',
+        'seo_title': 'وبلاگ | ' + CONFIG_JSON.get('site_title'),
         'categories': BlogCategory.objects.all()
     }
     paginate_by = 12
@@ -63,4 +66,7 @@ class BlogView(ListView):
             context['url_page'] = '/blog/tag/' + str(tag.id) + '/' + slugify(tag.title, True) + '/page/'
         else:
             context['url_page'] = '/blog/page/'
+        if self.request.GET.get('page'):
+            context['seo_title'] = 'وبلاگ | صفحه ' + self.request.GET.get('page') + ' | ' + CONFIG_JSON.get(
+                'site_title')
         return context

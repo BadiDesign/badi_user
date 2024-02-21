@@ -7,5 +7,6 @@ router.register('blogcomment', BlogCommentViewSet, basename='blogcomment')
 router.register('blogcategory', BlogCategoryViewSet, basename='blogcategory')
 router.register('blogbanner', BlogBannerViewSet, basename='blogbanner')
 router.register('blogpartner', BlogPartnerViewSet, basename='blogpartner')
+router.register('blogimage', BlogImageViewSet, basename='blogimage')
 
 urlpatterns = router.urls

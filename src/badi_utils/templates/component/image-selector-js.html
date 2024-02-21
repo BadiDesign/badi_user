@@ -1,0 +1,25 @@
+<script>
+    $('#id_image').change(() => {
+        document.getElementById('id_post').value = '{{ object.id }}';
+        const button = document.querySelector('#image-form button')
+        ApiAjax({
+            url: '/api/v1/cover/',
+            method: 'POST',
+            form: '#image-form',
+            success_message: 'با موفقیت ثبت شد.',
+            success_url: false,
+            file: true,
+            button,
+            error: function (e) {
+                swalFireError();
+            },
+            success: function (res) {
+                $('#image-form img').attr('src', res.image)
+            }
+        })
+    });
+    window['imageSelected'] = (image) => {
+        $('#picture').attr('src', (image.image || image.url))
+        $('#id_picture').val(image.id)
+    }
+</script>

@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django_filters import rest_framework as filters
 from badi_blog.models import *
 from badi_user.filter import TextIn
@@ -36,6 +37,7 @@ class BlogBannerFilter(filters.FilterSet):
             'lang',
         ]
 
+
 class BlogPartnerFilter(filters.FilterSet):
     class Meta:
         model = BlogPartner
@@ -43,3 +45,20 @@ class BlogPartnerFilter(filters.FilterSet):
         ]
 
     name = TextIn(field_name='name')
+
+
+class BlogImageTextIn(TextIn):
+
+    def filter(self, qs, value):
+        if value:
+            qs = qs.filter(Q(alt__icontains=value) | Q(url__icontains=value) | Q(image__icontains=value))
+        return qs
+
+
+class BlogImageFilter(filters.FilterSet):
+    class Meta:
+        model = BlogImage
+        fields = [
+        ]
+
+    alt = BlogImageTextIn(field_name='alt')

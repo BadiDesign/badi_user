@@ -3,6 +3,13 @@ from badi_blog.filter import *
 from badi_blog.models import *
 
 
+class BlogImageListView(DynamicListView):
+    model = BlogImage
+
+    def get_extra_context(self, context):
+        return super().get_extra_context(context)
+
+
 class BlogPostListView(DynamicListView):
     model = BlogPost
     datatable_cols = ['#', 'تصویر', 'عنوان', 'دسته بندی ها', 'نویسنده', 'اسلایدر', 'پیشنهادی', 'بازدید', 'زمان ثبت']

@@ -3,7 +3,7 @@
 <div class="text-left ltr d-flex align-items-center justify-content-center ml-2 my-2">
 	{% get_query_string as QUERY_STRING %}
 	{% if page_obj.has_previous %}
-	<a href="{{ url_page }}?page={{ page_obj.previous_page_number }}{{ QUERY_STRING|remove_page }}"
+	<a href="{{ url_page }}?page={{ page_obj.previous_page_number }}&{{ QUERY_STRING|remove_page }}"
 	   class="btn btn-sm btn-icon ml-2 btn-secondary"><i
 			class="fa fa-angle-left"></i>
 	</a>
@@ -26,10 +26,10 @@
 	{% for num in page_obj.paginator.page_range %}
 	{% if page_obj.number == num %}
 	<a class="btn btn-sm btn-icon ml-2 btn-primary noHover" data-param="page" data-value="{{ num }}"
-	   href="{{ url_page }}?page={{ num }}{{ QUERY_STRING|remove_page }}">{{ num }}</a>
+	   href="{{ url_page }}?page={{ num }}&{{ QUERY_STRING|remove_page }}">{{ num }}</a>
 	{% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
 	<a class="btn btn-sm btn-icon ml-2 btn-secondary" data-param="page" data-value="{{ num }}"
-	   href="{{ url_page }}?page={{ num }}{{ QUERY_STRING|remove_page }}">{{ num }}</a>
+	   href="{{ url_page }}?page={{ num }}&{{ QUERY_STRING|remove_page }}">{{ num }}</a>
 	{% endif %}
 	{% endfor %}
 	{% if page_obj.has_next %}
@@ -37,15 +37,15 @@
 	<span>...</span>
 	<a class="btn btn-sm btn-icon ml-2 btn-secondary"
 	   data-param="page" data-value="{{ page_obj.paginator.num_pages }}"
-	   href="{{ url_page }}?page={{ page_obj.paginator.num_pages }}{{ QUERY_STRING|remove_page }}">
+	   href="{{ url_page }}?page={{ page_obj.paginator.num_pages }}&{{ QUERY_STRING|remove_page }}">
 		{{ page_obj.paginator.num_pages }}</a>
 	{% elif page_obj.number < page_obj.paginator.num_pages|add:'-2' %}
 	<a class="btn btn-sm btn-icon ml-2 btn-secondary"
 	   data-param="page" data-value="{{ page_obj.paginator.num_pages }}"
-	   href="{{ url_page }}?page={{ page_obj.paginator.num_pages }}{{ QUERY_STRING|remove_page }}">
+	   href="{{ url_page }}?page={{ page_obj.paginator.num_pages }}&{{ QUERY_STRING|remove_page }}">
 		{{ page_obj.paginator.num_pages }}</a>
 	{% endif %}
-	<a href="{{ url_page }}?page={{ page_obj.next_page_number }}{{ QUERY_STRING|remove_page }}"
+	<a href="{{ url_page }}?page={{ page_obj.next_page_number }}&{{ QUERY_STRING|remove_page }}"
 	   class="btn btn-secondary btn-sm ml-2 btn-icon btn-secondary"
 	   data-param="page" data-value="{{ page_obj.next_page_number }}">
 		<i class="fa fa-angle-right"></i>

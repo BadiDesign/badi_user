@@ -1,0 +1,14 @@
+{% load post_filters %}
+<div class="w-300px text-center">
+	<img width="250" height="250" class="fit-cover rounded" id="picture"
+		 src="{{ object|get_music_picture|default:'/static/assets/media/image-404.png' }}"
+		 alt="">
+	<div class="d-none">
+		<input type="text" name="{{ name|default:'picture' }}" id="id_picture"
+			   value="{{ object.picture.id }}">
+	</div>
+	<button type="button" data-toggle="modal"
+			data-target="#image-library-modal" class="btn mt-2 btn-primary w-100">
+		انتخاب تصویر
+	</button>
+</div>

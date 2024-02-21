@@ -116,3 +116,19 @@ class BlogPartnerViewSet(DynamicModelApi):
         'datatable': 'blog.can_blog_partner',
         'list': False,
     }
+
+
+class BlogImageViewSet(DynamicModelApi):
+    model = BlogImage
+    queryset = BlogImage.objects.all()
+    serializer_class = BlogImageSerializer
+    pagination_class = CustomPagination
+    custom_perms = {
+    }
+    columns = model().get_all_fields()
+    filterset_class = BlogImageFilter
+
+    def filter_queryset(self, qs):
+        if self.action == 'list':
+            return BlogImageFilter(self.request.query_params).qs
+        return super().filter_queryset(qs)

@@ -60,18 +60,9 @@
 
         {% if not disableTable %}
             window.data_table_cool_options["rowCallback"] = function (row, data) {
-                console.log('row', row)
-                console.log('data', data)
-                for (let value in data) {
-                    if (data[value] === "bool-true")
-                        $(`td:eq(${value - 1})`, row).html(`<button type="button" class="btn btn-success-reverce noHover btn-circle btn-icon"><i class="fa fa-check"></i></button>`)
-                    else if (data[value] === "bool-false")
-                        $(`td:eq(${value - 1})`, row).html(`<button type="button" class="btn btn-danger noHover btn-circle btn-icon"><i class="fa fa-times"></i></button>`)
-                    if (data[value] === "file-null")
-                        $(`td:eq(${value - 1})`, row).html(`<label class="btn btn-secondary btn-sm btn-pill noHover">ندارد</label>`)
-                    else if (data[value].startsWith('/media/'))
-                        $(`td:eq(${value - 1})`, row).html(`<a download href="${data[value]}" class="btn btn-success-reverce btn-circle btn-icon" title="جهت دریافت فایل کلیک کنید"><i class="fa fa-download"></i></a>`)
-                }
+				defaultDrawCallBack(row,data);
+                $(`td:eq(0)`, row).addClass('ltr text-wrap')
+                $(`td:eq(1)`, row).addClass('ltr text-wrap')
             }
             var table = datatable_simple_show({
                 {#extras: [naviItem('ارسال پیامک تایید', 'fas fa-info', 'send_sms', "test/0")],#}
