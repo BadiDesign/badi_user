@@ -115,6 +115,7 @@ class BlogPost(MetaTagModel, BadiModel, ):
     source_title = models.CharField(max_length=200, null=True, blank=True, verbose_name="عنوان منبع")
     source_link = models.URLField(null=True, blank=True, verbose_name="لینک منبع")
     writer = models.ForeignKey(User, verbose_name='نویسنده', related_name='news', on_delete=models.SET_NULL, null=True)
+    picture_alt = models.CharField(max_length=255, null=True, verbose_name="آلت تصویر")
     created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='زمان ایجاد')
     updated_at = models.DateTimeField(auto_now=True, blank=True, verbose_name='زمان آخرین ویرایش')
 

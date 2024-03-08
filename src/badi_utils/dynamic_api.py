@@ -9,9 +9,11 @@ from django.utils.encoding import force_text
 from django_datatables_view.base_datatable_view import BaseDatatableView
 from django_datatables_view.mixins import LazyEncoder
 from rest_framework import serializers, viewsets, permissions, status, exceptions
+from rest_framework.authentication import BasicAuthentication, SessionAuthentication
 from rest_framework.decorators import action
 from rest_framework.exceptions import APIException
 from rest_framework.response import Response
+from rest_framework_simplejwt.authentication import JWTAuthentication
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer, TokenObtainSerializer, login_rule, \
     user_eligible_for_login
 from rest_framework_simplejwt.settings import api_settings
@@ -41,6 +43,7 @@ def replace_star(key, dictionary):
 
 class ViewSetPermission:
     permission_classes = [permissions.IsAuthenticated]
+    authentication_classes = [SessionAuthentication, BasicAuthentication, JWTAuthentication]
     custom_perms = {}
     permission_required = None
 

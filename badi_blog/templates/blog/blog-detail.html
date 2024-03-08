@@ -47,7 +47,7 @@
 									</div>
 									<div class="col-md-5">
 										<img class="w-100 rounded" src="{{ object|get_cover }}"
-											 alt="{{ object.title }}">
+											 alt="{{ object.picture_alt|default:object.title }}">
 									</div>
 									{#									<div class="col-xl-12 col-md-12 d-none">#}
 									{#										<div class="row px-2 justify-content-between my-2 align-items-center">#}

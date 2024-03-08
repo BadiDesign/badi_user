@@ -188,11 +188,12 @@ class LoginAuth:
             if user.is_superuser:
                 user.is_admin = True
                 user.save()
-            if dashboard_login and not user.is_admin:
-                log(user, 1, 1, False)
-                return ResponseNotOk(reason='You dont have Permission to access Dashboard!')
-            else:
-                login(request, user)
+            if dashboard_login:
+                if not config.get('login_to_django') and not user.is_admin:
+                    log(user, 1, 1, False)
+                    return ResponseNotOk(reason='You dont have Permission to access Dashboard!')
+                else:
+                    login(request, user)
             log(user, 1, 1, True)
         except TokenError as e:
             raise InvalidToken(e.args[0])
