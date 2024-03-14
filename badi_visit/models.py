@@ -126,3 +126,21 @@ class RedirectUrl(models.Model, BadiModel):
 
     def __str__(self):
         return f'{self.from_url}'
+
+
+class SearchQuery(models.Model, BadiModel):
+    class Meta:
+        verbose_name = 'SearchQuery'
+        verbose_name_plural = "SearchQueries"
+        permissions = (
+            ('can_searchquery', 'Manage SearchQuery'),
+        )
+
+    value = models.CharField(max_length=200, )
+    type = models.CharField(max_length=200, )
+    url = models.CharField(max_length=250, )
+    ip = models.CharField(max_length=200, )
+    created_at = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return f'{self.value} - {self.type} - {self.url}'
