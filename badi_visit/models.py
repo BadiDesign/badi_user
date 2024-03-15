@@ -42,6 +42,7 @@ class Visit(models.Model, BadiModel):
         permissions = (
             ('can_visit', 'Manage Visit'),
         )
+        ordering = ['-pk']
 
     address = models.ForeignKey(AddressVisit, blank=True, verbose_name='Address', related_name='visits',
                                 on_delete=models.CASCADE)
@@ -75,6 +76,7 @@ class Like(models.Model, BadiModel):
         permissions = (
             ('can_like', 'Manage Like'),
         )
+        ordering = ['-pk']
 
     model = models.CharField(max_length=120)
     model_pk = models.IntegerField(default=0)
@@ -118,6 +120,7 @@ class RedirectUrl(models.Model, BadiModel):
         permissions = (
             ('can_redirect', 'Manage Redirects'),
         )
+        ordering = ['-pk']
 
     from_url = models.TextField(blank=True)
     to_url = models.TextField(blank=True)
@@ -135,6 +138,7 @@ class SearchQuery(models.Model, BadiModel):
         permissions = (
             ('can_searchquery', 'Manage SearchQuery'),
         )
+        ordering = ['-pk']
 
     value = models.CharField(max_length=200, )
     type = models.CharField(max_length=200, )
