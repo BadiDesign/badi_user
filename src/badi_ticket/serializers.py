@@ -21,10 +21,19 @@ class TicketCreateSerializer(DynamicSerializer):
 
     def create(self, validated_data):
         creator = self.context['request'].user
+        message = self.initial_data.get('message', None)
         if creator.is_member():
             validated_data['writer'] = creator
         validated_data['is_closed'] = False
-        return super().create(validated_data)
+        res = super().create(validated_data)
+        if message:
+            Message(
+                tickt=res,
+                text=message,
+                writer=creator,
+                is_seen=True,
+            ).save()
+        return res
 
     def get_unread_messages(self, obj):
         return obj.unread_count(self.context['request'].user)
