@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'badi_user',
     'badi_wallet',
     'badi_visit',
+    'badi_blog',
 ]
 
 MIDDLEWARE = [

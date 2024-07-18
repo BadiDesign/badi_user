@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+
+    <div class="d-flex flex-column-fluid">
+        <!--begin::Container-->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card card-custom">
+                        <div class="card-header">
+                            <h3 class="card-title">
+                                {% trans "List" %}
+                                {{ model_name }}
+                            </h3>
+                            <div class="card-toolbar">
+                                <div class="example-tools justify-content-center">
+                                    {% if form|length is 1 %}
+                                        {% include 'component/createTitle.html' %}
+                                    {% else %}
+                                        {% include 'component/createModal.html' %}
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        <!--begin::Form-->
+                        <div class="card-body">
+
+                            <form class="filters no-form-text">
+                                <div class="d-flex gutter-b align-items-center">
+                                    <div class="mx-2">
+                                        <label class="col-form-label">{{ filters.form.name.label }}:</label>
+                                    </div>
+                                    <div class="w-200px mx-2">
+                                        {% render_field filters.form.name class='form-control' %}
+                                    </div>
+                                    <div>
+                                        <button type="submit"
+                                                class="btn btn-primary btn-sm btn-icon">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            {% if not disableTable %}
+                                <table class="table table-striped table-custom-border text-center table-rounded table-borderless table-thead-primary"
+                                       id="table">
+                                    <thead>
+                                    {% for field in cols %}
+                                        <th>{{ field }}</th>
+                                    {% endfor %}
+                                    <th>Action</th>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            {% endif %}
+                        </div>
+                        <!--end::Form-->
+                    </div>
+                    <!--end::Card-->
+                </div>
+            </div>
+        </div>
+        <!--end::Container-->
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
+    <script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
+    <script>
+
+        {% if not disableTable %}
+            var table = datatable_simple_show({
+                url: "{{ api_url }}datatable/",
+                real_cols: {{cols|length}},
+                hide_id: true,
+                loading_all: true,
+                responsive: true,
+                datable_id: '#table',
+                {#ac_url: 'send_sms/',#}
+                {% if not deleteShow %}
+                    not_delete_able: true,
+                    del_url: '',
+                {% else %}
+                    del_url: '{{ api_url }}0',
+                {% endif %}
+                {% if not editShow %}
+                    not_edit_able: true,
+                    up_url: '',
+                {% else %}
+                    up_url: "{{editURL}}",
+                {% endif %}
+                {% if not deleteShow and not editShow %}
+                    no_action_nutton: true,
+                {% endif %}
+                extra_del_params: {
+                    ajax: true,
+                },
+            }, {
+                rowCallback: (row, data) => {
+                    defaultDrawCallBack(row, data)
+                },
+            });
+
+        {% endif %}
+    </script>
+    <script>
+        $('#modal_here').on('submit', function (e) {
+            e.preventDefault()
+            const button = document.getElementById('submitter');
+            ApiAjax({
+                url: '{{ api_url }}',
+                form: '.modal form',
+                method: 'POST',
+                button: button,
+                file: true,
+                table: table,
+                modal: '#modal_here',
+                success_message: '{{ model_name }} Created Successfully!'
+            })
+        })
+
+    </script>
+{% endblock %}

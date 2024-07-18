@@ -1,0 +1,554 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block body %}
+	{% load widget_tweaks %}
+
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container-fluid">
+			<div class="card card-custom gutter-b">
+				<div class="card-header">
+					<h3 class="card-title">
+						{% trans "Search in List" %}
+					</h3>
+					<div class="card-toolbar">
+						<a class="btn btn-icon" data-toggle="collapse" href="#collapse" role="button"
+						   aria-expanded="false" aria-controls="collapseExample">
+							<i class="fa fa-angle-down"></i>
+						</a>
+					</div>
+				</div>
+				<div id="collapse" class="card-body collapse">
+
+					<form class="filters">
+						<div class="row gutter-b">
+							{% for field in filters.form %}
+								<div class="col-md-6 col-lg-3">
+									<div class="form-group ">
+										<label class="col-form-label">{{ field.label }}</label>
+										<div class="col-12">
+											{% render_field field class='form-control' %}
+										</div>
+									</div>
+								</div>
+							{% endfor %}
+							<div class="col-md-12 align-self-center">
+								<div class="">
+									<div class="col-12 text-right">
+										<button type="button"
+												class="btn btn-primary btn-sm btn-icon-sm"
+												id="btn_filter">
+											{% trans "Search" %}
+											<i class="flaticon-search ml-2"></i>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+			<div class="card card-custom">
+				<div class="card-header">
+					<h3 class="card-title">
+						{% trans "Member" %}
+						{% trans "List" %}
+					</h3>
+					<div class="card-toolbar">
+						<a href="{% url 'member_create' %}" class="btn btn-transparent-primary mr-2">
+							<i class="fa fa-plus"></i>
+							{% trans 'Create' %}
+						</a>
+						<div class="dropdown dropdown-inline mr-2">
+
+							<button type="button" id="board-actions"
+									class="btn btn-light-primary font-weight-bolder dropdown-toggle"
+									data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								<span class="svg-icon svg-icon-md">
+									<!--begin::Svg Icon | path:/metronic/theme/html/demo9/dist/assets/media/svg/icons/Design/PenAndRuller.svg-->
+									<svg xmlns="http://www.w3.org/2000/svg"
+										 width="24px"
+										 height="24px" viewBox="0 0 24 24" version="1.1">
+										<g stroke="none" stroke-width="1" fill="none"
+										   fill-rule="evenodd">
+											<rect x="0" y="0" width="24" height="24"></rect>
+											<path d="M3,16 L5,16 C5.55228475,16 6,15.5522847 6,15 C6,14.4477153 5.55228475,14 5,14 L3,14 L3,12 L5,12 C5.55228475,12 6,11.5522847 6,11 C6,10.4477153 5.55228475,10 5,10 L3,10 L3,8 L5,8 C5.55228475,8 6,7.55228475 6,7 C6,6.44771525 5.55228475,6 5,6 L3,6 L3,4 C3,3.44771525 3.44771525,3 4,3 L10,3 C10.5522847,3 11,3.44771525 11,4 L11,19 C11,19.5522847 10.5522847,20 10,20 L4,20 C3.44771525,20 3,19.5522847 3,19 L3,16 Z"
+												  fill="#000000" opacity="0.3"></path>
+											<path d="M16,3 L19,3 C20.1045695,3 21,3.8954305 21,5 L21,15.2485298 C21,15.7329761 20.8241635,16.200956 20.5051534,16.565539 L17.8762883,19.5699562 C17.6944473,19.7777745 17.378566,19.7988332 17.1707477,19.6169922 C17.1540423,19.602375 17.1383289,19.5866616 17.1237117,19.5699562 L14.4948466,16.565539 C14.1758365,16.200956 14,15.7329761 14,15.2485298 L14,5 C14,3.8954305 14.8954305,3 16,3 Z"
+												  fill="#000000"></path>
+										</g>
+									</svg>
+									<!--end::Svg Icon-->
+								</span>
+								{% trans "Action" %}
+							</button>
+							<!--begin::Dropdown Menu-->
+							<div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
+								<!--begin::Navigation-->
+								<ul class="navi flex-column navi-hover py-2">
+									<li class="navi-header justify-content-start font-weight-bolder text-uppercase font-size-sm text-primary pb-2">
+										{% trans "on" %}
+										<span class="selected_count mx-2"></span>
+										{% trans "record" %}
+									</li>
+									<li class="navi-item">
+										<a href="#" class="navi-link modal_ticket">
+											<span class="navi-icon">
+												<i class="far fa-comments"></i>
+											</span>
+											<span class="navi-text">{% trans "Send ticket" %}</span>
+										</a>
+										<a href="#" class="navi-link modal_sms">
+											<span class="navi-icon">
+												<i class="far fa-comments"></i>
+											</span>
+											<span class="navi-text">{% trans "Send Sms" %}</span>
+										</a>
+									</li>
+								</ul>
+								<!--end::Navigation-->
+							</div>
+							<!--end::Dropdown Menu-->
+						</div>
+
+						<button class="btn btn-primary" id="select_all" type="button">
+							{% trans "Select All" %}
+						</button>
+					</div>
+				</div>
+				<div class="card-body">
+					{% if not disableTable %}
+						<table class="table table-striped table-custom-border text-center table-rounded table-borderless table-thead-primary"
+							   id="table">
+							<thead>
+							{% for field in cols %}
+								<th>{{ field }}</th>
+							{% endfor %}
+							<th>{% trans "Action" %}</th>
+							</thead>
+							<tbody>
+
+							</tbody>
+						</table>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal_ticket" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content border-modal">
+				{% include 'component/loader.html' %}
+				<div class="modal-header">
+					<h5 class="modal-title">{% trans "Send Ticket" %}</h5>
+				</div>
+				<form class="kt-form" method="post" id="ticket-form">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label class="col-form-label font-weight-bolder">عنوان پیام سیستمی</label>
+									<input required type="text" id="id_ticket_title" name="ticket_title"
+										   class="form-control"/>
+								</div>
+								<div class="form-group">
+									<label class="col-form-label font-weight-bolder">متن پیام سیستمی</label>
+									<textarea required rows="5" id="id_ticket_text" name="ticket_text"
+											  class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer p-1">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">بستن
+						</button>
+						<button type="button" id="submit_tickets" class="btn btn-primary">ارسال پیام سیستمی</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal_sms" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content border-modal">
+				{% include 'component/loader.html' %}
+				<div class="modal-header">
+					<h5 class="modal-title">ارسال پیامک</h5>
+				</div>
+				<form method="post" id="sms-form">
+					<div class="modal-body">
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label class="col-form-label font-weight-bolder">متن پیامک</label>
+									<textarea required rows="5" id="id_sms_text" name="sms_text"
+											  class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer p-1">
+						<button type="button" class="btn btn-secondary" data-dismiss="modal">بستن
+						</button>
+						<button type="button" id="submit_sms" class="btn btn-primary">ارسال پیامک</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade" id="modal_increase_member" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content border-modal">
+				{% include 'component/loader.html' %}
+				<div class="modal-header text-center">
+					<h5 class="modal-title font-weight-bolder text-center mx-auto text-success">
+						{% trans "Charge account" %}
+						<span class="fullname"></span>
+					</h5>
+				</div>
+				<form id="increase_member" method="post">
+					<div class="modal-body pt-0">
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label class="col-form-label font-weight-bolder">{% trans "amount" %}:</label>
+									<input required type="text" name="amount" class="form-control currency"/>
+								</div>
+								<div class="form-group">
+									<label class="col-form-label font-weight-bolder">{% trans "Description" %}:</label>
+									<textarea required rows="5" name="description" class="form-control"></textarea>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer p-1">
+						<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">{% trans "Close" %}</button>
+						<button type="submit" class="btn btn-success">{% trans "Charge" %}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade" id="modal_decrease_member" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+		 aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content border-modal">
+				{% include 'component/loader.html' %}
+				<div class="modal-header text-center">
+					<h5 class="modal-title font-weight-bolder text-center mx-auto text-danger">
+						{% trans "Decrease Charge account" %}
+						<span class="fullname"></span>
+					</h5>
+				</div>
+				<form id="decrease_member" method="post">
+					<div class="modal-body pt-0">
+						<div class="form-group">
+							<label class="col-form-label font-weight-bolder">{% trans "amount" %}::</label>
+							<input required type="text" name="amount" class="form-control currency"/>
+						</div>
+						<div class="form-group">
+							<label class="col-form-label font-weight-bolder">{% trans "Description" %}:</label>
+							<textarea required rows="5" name="description" class="form-control"></textarea>
+						</div>
+					</div>
+					<div class="modal-footer p-1">
+						<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">{% trans "Close" %}</button>
+						<button type="submit" class="btn btn-danger">{% trans "Submit" %}</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block script %}
+	<script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
+	<script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
+
+	<script>
+
+        function open_change_password(user_id) {
+            $("#id_user").val(user_id)
+            $("#change_password").modal("show")
+        }
+
+        $('#select_all').click(function (e) {
+            states.exclude = [];
+            states.selected = [];
+            states.is_all_select = !states.is_all_select;
+
+            set_selected_count()
+            if (states.is_all_select) {
+                $(this).html('{% trans "DeSelect All" %}');
+                $('table input[type=checkbox]').prop('checked', true).change().closest('tr').addClass('bg-primary-o-10')
+            } else {
+                $(this).html('{% trans "Select All" %}');
+                $('table input[type=checkbox]').prop('checked', false).change().closest('tr').removeClass('bg-primary-o-10')
+            }
+        });
+        let states = {
+            selected: [],
+            exclude: [],
+            is_all_select: false
+        };
+        const select = (id) => {
+            id = parseInt(id);
+            if (!states.is_all_select) {
+                states.selected.push(id)
+            } else {
+                removeItemAll(states.exclude, id)
+            }
+            set_selected_count()
+        };
+        const deselect = (id) => {
+            id = parseInt(id);
+            if (states.is_all_select) {
+                states.exclude.push(id)
+            }
+            removeItemAll(states.selected, id)
+            set_selected_count()
+        };
+        const is_selected = (id) => {
+            set_selected_count()
+            id = parseInt(id);
+            if (states.is_all_select) {
+                return !states.exclude.find((index) => index === id);
+            } else return (states.selected.find((index) => index === id))
+        };
+        const set_selected_count = () => {
+            let val = 0
+            if (states.is_all_select) {
+                val = table.ajax.json()['recordsFiltered'] - states.exclude.length
+            } else {
+                val = states.selected.length
+            }
+            $('.selected_count').html(val);
+            if (val > 0) {
+                $('#board-actions').prop('disabled', false)
+            } else {
+                $('#board-actions').prop('disabled', true)
+            }
+            return val
+        };
+        window.data_table_cool_options['lengthChange'] = false
+        window.data_table_cool_options['searching'] = false
+        var table = datatable_simple_show({
+            url: '{{ api_url }}datatable/',
+            real_cols: {{cols|length}},
+            hide_id: true,
+            loading_all: true,
+            responsive: true,
+            datable_id: '#table',
+            del_url: '{{ api_url }}',
+            up_url: 'update/0',
+            extra_del_params: {
+                ajax: true,
+            },
+            do_before_initializing: function (e) {
+                $('table input[type=checkbox]').change(function (e) {
+                    if ($(this).prop('checked')) {
+                        $(this).closest('tr').addClass('bg-primary-o-10')
+                        select($(this).val())
+                    } else {
+                        $(this).closest('tr').removeClass('bg-primary-o-10')
+                        deselect($(this).val())
+                    }
+                });
+                set_selected_count()
+            },
+            extra_filters: function (d) {
+                $('.filters input, .filters select').each(function (i, e) {
+                    d[e.getAttribute('name')] = $(e).val();
+                })
+            },
+
+        }, {
+            rowCallback: function (row, data) {
+                defaultDrawCallBack(row, data);
+                console.log(data[2])
+                if (data[2] && data[2] !== 'file-null') {
+                    $(`td:eq(1)`, row).html(`<span class="symbol symbol-lg-50 symbol-25 symbol-light-primary">
+                                    <span class="symbol-label datatable-symbol" style="background: url(${data[2]});"></span>
+                                </span>`)
+                }
+                boldCol(2, row, data[3]);
+
+                if (is_selected(data[0])) {
+                    $(`td:eq(0)`, row).html(`<span><label class="checkbox checkbox-lg justify-content-center checkbox-single"><input checked type="checkbox" value="${data[0]}"><span></span></label></span>`)
+                        .closest('tr').addClass('bg-primary-o-10')
+                } else {
+                    $(`td:eq(0)`, row).html(`<span><label class="checkbox checkbox-lg justify-content-center checkbox-single"><input type="checkbox" value="${data[0]}"><span></span></label></span>`)
+                        .closest('tr').removeClass('bg-primary-o-10')
+                }
+                boldCol(5, row, formatNumber(data[6]) + ' {% trans "$" %} ')
+                $(`td:eq(5)`, row)
+                    .find('div').addClass('d-flex justify-content-between')
+                    .append(` <button onclick="increaseCharge(${data[0]})" data-toggle="tooltip" data-theme="dark" title="شارژ"   class="btn btn-icon btn-xs ml-2 btn-light-success"> <i class="fa fa-plus"></i>  </button>`)
+                    .prepend(`<button onclick="reduceCharge(${data[0]})"   data-toggle="tooltip" data-theme="dark" title="برداشت" class="btn btn-icon btn-xs mr-2 btn-light-danger">  <i class="fas fa-minus"></i> </button>`)
+            }
+        });
+
+        $('.modal select').select2({
+            dir: "rtl"
+        });
+        $('#btn_filter').click(function () {
+            table.draw();
+        });
+        var table_trans = null;
+        const increaseCharge = (pk) => {
+            $('#modal_increase_member').modal('show');
+            $('#increase_member').on('submit', function (e) {
+                e.preventDefault();
+                swal.fire({
+                    title: '{% trans "Are you Sure?" %}',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: '{% trans "Yes, Charge it" %}',
+                    cancelButtonText: '{% trans "Cancel" %}',
+                }).then(function (result) {
+                    if (result.value) {
+                        ApiAjax({
+                            url: '/api/v1/transaction/increase_wallet/0',
+                            method: 'PUT',
+                            pk,
+                            success_message: '{% trans "Done Successfully" %}',
+                            form: '#increase_member',
+                            table: table,
+                            button: document.querySelector('#increase_member button[type="submit"]'),
+                            modal: '#modal_increase_member',
+                            success: function (result) {
+                            },
+                            error: function (result) {
+                                swalFireError();
+                            }
+                        });
+                    }
+                });
+            })
+        };
+        const reduceCharge = (pk) => {
+            $('#modal_decrease_member').modal('show');
+            $('#decrease_member').off().on('submit', function (e) {
+                e.preventDefault();
+                swal.fire({
+                    title: 'از برداشت وجه مطمئن هستید؟',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'بله! برداشت کن',
+                    cancelButtonText: 'بازگشت',
+                }).then(function (result) {
+                    if (result.value) {
+                        ApiAjax({
+                            url: '/api/v1/transaction/decease_wallet/0',
+                            method: 'PUT',
+                            pk,
+                            success_message: '{% trans "Done Successfully" %}',
+                            form: '#decrease_member',
+                            button: document.querySelector('#decrease_member button[type="submit"]'),
+                            table: table,
+                            modal: '#modal_decrease_member',
+                            success: function (result) {
+                            },
+                            error: function (result) {
+                                swalFireError();
+                            }
+                        });
+                    }
+                });
+            })
+        };
+	</script>
+	<script>
+        $('.modal_ticket').click(function (e) {
+            e.preventDefault();
+            $('#modal_ticket').modal('show')
+        });
+        $('.modal_sms').click(function (e) {
+            e.preventDefault();
+            $('#modal_sms').modal('show')
+        });
+        $('#submit_tickets').click(function (e) {
+            e.preventDefault();
+            $('#modal_ticket').addClass('loading');
+            states['message_title'] = $('#id_ticket_title').val();
+            states['message_text'] = $('#id_ticket_text').val();
+            $('.filters input, .filters select').each(function (i, e) {
+                states[e.getAttribute('name')] = $(e).val();
+            })
+            ApiAjax({
+                url: '/api/v1/ticket/send_ticket/',
+                method: 'POST',
+                success_message: false,
+                data: states,
+                success: function (result) {
+                    if (result.done) {
+                        swalFireSuccess(result.message);
+                        $('#modal_ticket').modal('hide')
+                    } else {
+                        swalFireError(result.message);
+                    }
+                    $('#modal_ticket').removeClass('loading');
+                },
+                error: function (result) {
+                    swalFireError();
+                    $('#modal_ticket').removeClass('loading');
+                }
+
+            });
+        });
+        $('#submit_sms').click(function (e) {
+            e.preventDefault();
+            $('#modal_ticket').addClass('loading');
+            states['message_text'] = $('#id_sms_text').val();
+            $('.filters input, .filters select').each(function (i, e) {
+                states[e.getAttribute('name')] = $(e).val();
+            })
+            ApiAjax({
+                url: '/api/v1/ticket/send_sms/',
+                method: 'POST',
+                success_message: false,
+                data: states,
+                success: function (result) {
+                    if (result.done) {
+                        swalFireSuccess(result.message);
+                        $('#modal_sms').modal('hide')
+                    } else {
+                        swalFireError(result.message);
+                    }
+                    $('#modal_sms').removeClass('loading');
+                },
+                error: function (result) {
+                    swalFireError();
+                    $('#modal_sms').removeClass('loading');
+                }
+
+            });
+        });
+	</script>
+
+	<script>
+        $('#change_password').on('submit', function (e) {
+            e.preventDefault();
+            const button = document.getElementById('password_submitter');
+            ApiAjax({
+                url: MEMBER_ADMIN_CHANGE_PASSWORD_URL,
+                form: '#password_form',
+                method: 'PUT',
+                button: button,
+                table: table,
+                modal: '#change_password',
+                success_message: '{% trans "Done Successfully" %}'
+            })
+        })
+
+	</script>
+	<script>
+	</script>
+{% endblock %}

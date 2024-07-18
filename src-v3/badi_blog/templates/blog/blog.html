@@ -1,0 +1,61 @@
+{% extends 'base-ui.html' %}
+{% load static %}
+{% load appfilter %}
+{% load humanize %}
+{% block body %}
+	<div class="">
+		{#		<div class="d-block position-relative text-center gutter-b pt-5 bg-000">#}
+		{#			<img src="{% static 'assets/media/arad-videos.png' %}" width="35%" class="my-5" alt="">#}
+		{#			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none"#}
+		{#				 class="max-h-25px mb-n7 w-100 left-0 position-absolute bottom-0">#}
+		{#				<path fill="#000" d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7#}
+		{#        c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4#}
+		{#        c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z" class="elementor-shape-fill"></path>#}
+		{#			</svg>#}
+		{#		</div>#}
+		<div class="container mt-10">
+			<div class="row">
+				<div class="col-xl-3 col-lg-3 col-md-4 col-12">
+					<div class="card card-custom gutter-t border-bottom border-warning border-3 rounded-lg shadow-sm">
+						<div class="card-body">
+							<h5>
+								دسته بندی ها :
+							</h5>
+							<div class="p-2">
+								{% for category in categories %}
+									<div class="pt-2 font-size-lg text-dark ">
+										{% if category.id == category_pk %}
+											<a href="/blog/category/{{ category.id }}/{{ category.title |slugify_utf8 }}"
+											   class="border-left my-1 pl-4 text-warning border-warning">
+												{{ category }}
+											</a>
+										{% else %}
+											<a href="/blog/category/{{ category.id }}/{{ category.title |slugify_utf8 }}"
+											   class="border-left my-1 pl-4 text-dark text-hover-warning">
+												{{ category }}
+											</a>
+										{% endif %}
+									</div>
+								{% endfor %}
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xl-9 col-lg-9 col-md-8 col-12">
+					<div class="row mb-5">
+						{% for object in object_list %}
+							<div class="col-xl-4 col-lg-6 col-md-6 col-12">
+								{% include 'shared/film-object.html' %}
+							</div>
+						{% endfor %}
+					</div>
+					{% include 'components/pagination.html' with url_page=url_page %}
+				</div>
+			</div>
+		</div>
+	</div>
+
+{% endblock %}
+{% block script %}
+
+{% endblock %}

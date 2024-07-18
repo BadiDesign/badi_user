@@ -105,8 +105,7 @@ class BlogPost(MetaTagModel, BadiModel, ):
     slider_picture = models.ImageField(upload_to='blog_post/%Y/%m/%d/slider/', blank=True, null=True,
                                        verbose_name="تصویر اسلایدر")
     breaking_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="تیتر فوری")
-    categories = models.ManyToManyField((BLOG_CONFIG.get('BlogCategory') or 'BlogCategory'),
-                                        related_name='news', verbose_name="دسته بندی ها")
+    categories = models.ManyToManyField(BlogCategory, related_name='news', verbose_name="دسته بندی ها")
     tags = models.ManyToManyField(BlogTag, related_name='news', verbose_name="تگ ها")
     is_recommend = models.BooleanField(default=False, verbose_name='پیشنهادی', blank=True)
     short = models.TextField(verbose_name="خلاصه خبر", validators=[MaxLengthValidator(1200)])

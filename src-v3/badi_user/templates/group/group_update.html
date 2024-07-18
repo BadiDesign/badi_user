@@ -1,0 +1,161 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block body %}
+
+
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<div class="card-header">
+							<h3 class="card-title">
+								{% trans "Update" %}
+								{{ object.name }}
+							</h3>
+						</div>
+						<form class="kt-form" method="post">
+							<!--begin::Form-->
+							<div class="card-body" id="vue-app">
+								<div class="row">
+									<div class="col-md-12">
+										<div class="form-group">
+											<label class="col-form-label">{{ form.name.label }}:</label>
+											{{ form.name }}
+										</div>
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<label class="col-form-label">{{ form.permissions.label }}:</label>
+											<div class="d-none">
+												{{ form.permissions }}
+											</div>
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="" v-for="(group,app) in permissions" :key="app">
+														<button @click.prevent="selected_group = app"
+																:class="[selected_group === app ? 'bg-light-primary' : 'btn-light', hasSelectedClass(app)]"
+																class="btn text-right w-100 font-weight-bolder border px-2 mb-2 rounded py-3">
+															<i class="fa fa-circle"
+															   :class="[hasSelectedClass(app)]"></i>
+															[[app]]
+														</button>
+													</div>
+												</div>
+												<div class="col-sm-8">
+													<div class="row">
+														<div
+																v-for="(permission,index) in permissions[selected_group]"
+																:key="index"
+																class="col-lg-6">
+															<button @click.prevent="togglePermission(permission.id)"
+																	:class="[isSelected(permission.id) ? 'btn-success' : 'btn-danger']"
+																	class="btn w-100 font-weight-bolder px-2 mb-2 rounded py-3">
+																[[permission.name]]
+															</button>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<button type="submit" class="btn btn-primary">
+									{% trans "Update" %}
+									{{ model_name }}
+								</button>
+								<a href="../create" class="btn mr-2 btn-secondary">Back to List</a>
+							</div>
+							<!--end::Form-->
+						</form>
+					</div>
+					<!--end::Card-->
+				</div>
+			</div>
+		</div>
+		<!--end::Container-->
+	</div>
+
+{% endblock %}
+
+{% block script %}
+	<script>
+        const vueApp = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#vue-app',
+            data() {
+                return {
+                    permissions: [],
+                    selected_permissions: [{% for x in object.permissions.all %}{{ x.id }}, {% endfor %}],
+                    selected_group: 'Tickets',
+                }
+            },
+            watch: {
+                // whenever question changes, this function will run
+                selected_permissions(newVal, oldVal) {
+                    $('#id_permissions').val(newVal)
+                }
+            },
+            created: function () {
+                this.getTransactions()
+            },
+            methods: {
+                getTransactions: function (pk) {
+                    ApiAjaxReader({
+                        method: 'GET',
+                        url: '{{ api_url }}permissions',
+                        pk,
+                        success: (data) => {
+                            this.permissions = data;
+                        },
+                    });
+                },
+                isSelected: function (perm) {
+                    return this.selected_permissions.includes(perm)
+                },
+                hasSelectedClass: function (group) {
+                    group = this.permissions[group]
+                    let selected_count = 0;
+                    for (const perm of group)
+                        if (this.isSelected(perm.id))
+                            selected_count++;
+                    if (selected_count === group.length)
+                        return 'text-success'
+                    if (selected_count === 0)
+                        return 'text-danger'
+                    return 'text-warning'
+                },
+                togglePermission: function (perm) {
+                    if (this.selected_permissions.includes(perm)) {
+                        this.selected_permissions = removeItemAll(this.selected_permissions, perm)
+                    } else {
+                        this.selected_permissions.push(perm)
+                    }
+                },
+            },
+        });
+
+        $('form').submit(function (e) {
+            e.preventDefault();
+            ApiAjax({
+                url: '{{ api_url }}',
+                pk: getUrlPk(),
+                form: 'form',
+                method: 'PUT',
+                success_url: '../create',
+                success_message: '{{ model_name }} Updated Successfully!',
+                error: function (e) {
+                    console.log(e)
+                }
+            })
+        })
+
+
+	</script>
+{% endblock %}

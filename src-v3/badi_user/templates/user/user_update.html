@@ -1,0 +1,136 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+{% block body %}
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-md-12">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<div class="card-header">
+							<h3 class="card-title">
+								{% trans "Update" %}
+								{{ object }}
+							</h3>
+						</div>
+						<form id="form" method="post">
+							{% csrf_token %}
+							<div class="card-body">
+								<div class="row">
+									<div class="col-lg-3">
+										{% include 'component/image-field.html' with field=form.picture label='Picture' %}
+									</div>
+									<div class="col-lg-9">
+										<div class="row">
+											{% include 'component/input.html' with md=6 input=form.username %}
+											<div class="col-md-6 no-form-text">
+												<div class="form-group">
+													<label class="col-form-label font-weight-bolder">{% trans "Password" %}:</label>
+													<input type="password" class="form-control" disabled
+														   value="*****************">
+												</div>
+											</div>
+											{% include 'component/input.html' with md=6 input=form.first_name %}
+											{% include 'component/input.html' with md=6 input=form.last_name %}
+											{% if form.mobile_number %}
+												{% include 'component/input.html' with md=6 input=form.mobile_number %}
+											{% endif %}
+											{% if form.email %}
+												{% include 'component/input.html' with md=6 input=form.email %}
+											{% endif %}
+											{% include 'component/input.html' with md=12 input=form.is_admin %}
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-footer">
+								<a href="../list" class="btn ml-2 btn-secondary">{% trans "Back" %}</a>
+								<button id="submitter" class="btn btn-primary">{% trans "Submit" %}</button>
+							</div>
+						</form>
+						<!--end::Form-->
+					</div>
+					<!--end::Card-->
+				</div>
+			</div>
+		</div>
+		<!--end::Container-->
+	</div>
+
+
+{% endblock %}
+
+{% block script %}
+	<script src="{% static 'badi_utils/js/image-field.js' %}"></script>
+	<script>
+
+        const formV = FormValidation.formValidation(
+            document.getElementById('form'),
+            {
+                fields: {
+                    first_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message: '{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    },
+                    last_name: {
+                        validators: {
+                            stringLength: {
+                                max: 20,
+                                min: 2,
+                                message: '{% trans "must be between 2 and 20 character" %}'
+                            },
+                            notEmpty: {
+                                message: '{% trans "This Field is required" %}'
+                            },
+                        }
+                    }
+                },
+                plugins: {
+                    trigger: new FormValidation.plugins.Trigger(),
+                    bootstrap: new FormValidation.plugins.Bootstrap()
+                },
+
+            }
+        );
+
+        $('#form').submit(function (e) {
+            e.preventDefault()
+            const button = $(this).find('button');
+            formV.validate().then(function (status) {
+                if (status === 'Valid') {
+                    ApiAjax({
+                        success_url: '../list',
+                        url: '{{ api_url }}',
+                        form: 'form',
+                        file: true,
+                        method: 'PUT',
+                        pk: '{{object.id}}',
+                        button: button,
+                        success_message: '{% trans "User" %} ({{ form.first_name.value }} {{ form.last_name.value }}) {% trans "Updated Successfully" %}!',
+                    })
+                } else {
+                    Swal.fire({
+                        text: '{% trans "Seems some error exists" %}',
+                        icon: "error",
+                        confirmButtonText: '{% trans "Got it" %}',
+                        customClass: {
+                            confirmButton: "btn font-weight-bold btn-secondary"
+                        }
+                    }).then(function () {
+                        KTUtil.scrollTop();
+                    });
+                }
+            });
+        });
+	</script>
+{% endblock %}

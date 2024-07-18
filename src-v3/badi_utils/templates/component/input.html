@@ -1,0 +1,59 @@
+{% load static %}
+{% load widget_tweaks %}
+<div class="
+{% if xl %}col-xl-{{ xl }}{% endif %}
+{% if lg %}col-lg-{{ lg }}{% endif %}
+{% if md %}col-md-{{ md }}{% endif %}
+{% if sm %}col-sm-{{ sm }}{% endif %}
+">
+    {% if as_picture %}
+        <div class="image-field-1 mb-3">
+            {% if input.value %}
+                <span class="switch switch-sm switch-outline switch-icon switch-danger position-absolute top-0 left-0">
+                    <label data-toggle="tooltip" data-theme="dark" title="Delete Picture" class="ml-n5">
+                        <input type="checkbox" name="{{ input.name }}_delete">
+                        <span></span>
+                    </label>
+                </span>
+            {% endif %}
+            <div class="image-field-1-img-holder">
+                <img id="image_field" class="image-field-img"
+                     src="{% static picture %}">
+            </div>
+            <div class="image-field-hover">
+                <div><i class="fa fa-upload large"></i></div>
+            </div>
+            <div class="d-none">
+                {{ input }}
+            </div>
+        </div>
+    {% else %}
+        {% if input.widget_type == 'checkbox' %}
+            {% if checkbox_show %}
+                <div class="form-group">
+                    <label class="checkbox checkbox-lg">
+                        {{ input }}
+                        <span class="ml-2"></span>
+                        {{ input.label }}
+                    </label>
+                </div>
+            {% else %}
+                <div class="form-group {{ extra_class }}">
+                    <label class="col-form-label font-weight-bolder col-12"></label>
+                    <span class="switch switch-outline font-weight-bolder switch-icon switch-primary">
+                    {{ input.label }}:
+                    <label>
+                        {{ input }}
+                        <span class="mx-3"></span>
+                    </label>
+                </span>
+                </div>
+            {% endif %}
+        {% else %}
+            <div class="form-group {{ extra_class }}">
+                <label class="col-form-label font-weight-bolder">{{ input.label }}:</label>
+                {{ input }}
+            </div>
+        {% endif %}
+    {% endif %}
+</div>

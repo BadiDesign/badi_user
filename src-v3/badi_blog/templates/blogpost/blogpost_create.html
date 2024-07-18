@@ -1,0 +1,227 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load appfilter %}
+{% load widget_tweaks %}
+
+{% block body %}
+
+
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<div class="card-header">
+							<h3 class="card-title">
+								افزودن
+								{{ model_name }}
+							</h3>
+						</div>
+						<!--begin::Form-->
+						<form class="form" id="form" method="POST">
+							{% csrf_token %}
+							<div class="card-body">
+								<div class="row">
+									<div class="col-md-4">
+										<div class="form-group">
+											{% include 'component/image-field.html' with label='تصویر' field=form.picture default_image='/static/assets/media/image.png' holder_img_class='rounded' image_field_hover_class='rounded-lg' holder_class='rounded-lg' image_field_class='rounded-lg' %}
+											{% include 'component/input.html' with md=12 input=form.picture_alt extra_class='mb-1' %}
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="row">
+											{% include 'component/input.html' with md=6 input=form.title extra_class='mb-1' %}
+											{% include 'component/input.html' with md=6 input=form.categories extra_class='mb-1' %}
+											<div class="col-12">
+												<div class="form-group">
+													<label class="col-form-label">{{ form.short.label }}:</label>
+													{% render_field form.short rows="4" %}
+												</div>
+											</div>
+											<div class="col-12">
+												<div class="form-group">
+													<label class="col-form-label">{{ form.tags.label }}:</label>
+													<select class="form-control no-select2" name="tags" id="id_tags"
+															multiple>
+
+													</select>
+												</div>
+											</div>
+
+										</div>
+									</div>
+									{% include 'component/input.html' with md=12 input=form.description %}
+									<div class="col-12">
+										<div class="form-group">
+											<label class="checkbox">
+												<input type="checkbox" data-show="#pre-title-change" data-clear="1">
+												<span class="mr-2"></span>
+												پیش تیتر
+											</label>
+										</div>
+										<div class="gutter-b d-none row border-1 border rounded" id="pre-title-change">
+											{% include 'component/input.html' with md=12 input=form.pre_title %}
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label class="checkbox">
+												<input type="checkbox" data-show="#slider-data">
+												<span class="mr-2"></span>
+												افزودن به اسلایدر
+											</label>
+										</div>
+										<div class="gutter-b row d-none border-1 border rounded" id="slider-data">
+											<div class="col-12 bg-light rounded p-4 font-size-h6">
+												<i class="fa text-primary fa-exclamation-triangle"></i>
+												در صورت عدم افزودن تصویر اسلایدر، تصویر خبر به عنوان تصویر اسلایدر قرار
+												می گیرد.
+											</div>
+											<div class="col-12">
+												<div class="row">
+													{% include 'component/input.html' with md=6 input=form.slider_title %}
+													{% include 'component/input.html' with md=6 input=form.slider_picture %}
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label class="checkbox">
+												<input type="checkbox" data-show="#breaking_title-data">
+												<span class="mr-2"></span>
+												افزودن به اخبار فوری
+											</label>
+										</div>
+										<div class="gutter-b d-none row border-1 border rounded"
+											 id="breaking_title-data">
+											{% include 'component/input.html' with md=12 input=form.breaking_title %}
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label class="checkbox">
+												<input type="checkbox" data-show="#source-change" data-clear="1">
+												<span class="mr-2"></span>
+												منبع
+											</label>
+										</div>
+										<div class="gutter-b d-none row border-1 border rounded" id="source-change">
+											{% include 'component/input.html' with md=6 input=form.source_title %}
+											{% include 'component/input.html' with md=6 input=form.source_link %}
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label class="checkbox">
+												<input type="checkbox" data-show="#slug-data">
+												<span class="mr-2"></span>
+												تغییر Slug
+											</label>
+										</div>
+										<div class="gutter-b d-none row border-1 border rounded" id="slug-data">
+											{% include 'component/input.html' with md=12 input=form.slug %}
+										</div>
+									</div>
+									{% include 'component/input.html' with md=12 input=form.is_recommend checkbox_show=1 %}
+									<hr>
+									{% include 'component/seo-fields.html' %}
+								</div>
+							</div>
+
+							<div class="card-footer">
+								<a href="{{ back }}" class="btn ml-2 btn-secondary">بازگشت</a>
+								<button type="submit" class="btn btn-primary">ثبت خبر</button>
+							</div>
+						</form>
+					</div>
+					<!--end::Card-->
+				</div>
+			</div>
+		</div>
+		<!--end::Container-->
+	</div>
+{% endblock %}
+
+{% block script %}
+	<script src="{% static 'assets/plugins/custom/datatables/datatables.bundle.js' %}" type="text/javascript"></script>
+	<script src="{% static 'badi_utils/js/datatable.js' %}" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/custom/tinymce/tinymce.bundle.js' %}" type="text/javascript"></script>
+	<script src="{% static 'assets/plugins/custom/tinymce/fa.js' %}" type="text/javascript"></script>
+	<script src="{% static 'badi_utils/js/image-field.js' %}"></script>
+	<script>
+        $('#id_title').on('keyup', function () {
+            if ($('#slug-data').hasClass('d-none'))
+                $('#id_slug').val(convertToSlug($(this).val()))
+        });
+        $('#form').on('submit', function (e) {
+            e.preventDefault();
+            $('#id_description').val(tinyMCE.activeEditor.getContent())
+            const button = document.querySelector('#form button[type="submit"]')
+            ApiAjax({
+                url: "{{api_url}}",
+                method: 'POST',
+                file: true,
+                form: '#form',
+                button,
+                success_message: 'با موفقیت ایجاد شد',
+                success_url: 'list',
+                error: function (e) {
+                }
+            })
+        })
+        $('[data-show="#slider-data"]').change(function (e) {
+            if ($(this).is(':checked'))
+                $('#id_slider_title').val($('#id_title').val())
+            else {
+                $('#id_slider_title, #id_slider_picture').val('')
+            }
+        })
+	</script>
+	<script>
+
+        $('.modal select').select2({
+            dir: "rtl"
+        });
+        $('#id_tags').select2({
+            placeholder: "جهت انتخاب کلیک کنید!",
+            dir: "rtl",
+            tags: true,
+            ajax: {
+                url: '/api/v1/select2/blogtag',
+                data: function (params) {
+                    var query = {
+                        search: params.term,
+                        page: params.page || 1
+                    };
+
+                    // Query parameters will be ?search=[term]&page=[page]
+                    return query;
+                }
+            }
+        });
+	</script>
+	<script>
+        tinymce.init({
+            selector: '#id_description',
+            directionality: "rtl",
+            language: 'fa',
+            toolbar: 'formatselect | bold italic | alignleft aligncenter alignright alignjustify | indent outdent | bullist numlist | redo undo',
+            plugins: 'table lists wordcount autosave image imagetools hr emoticons charmap anchor autolink autoresize link nonbreaking preview print searchreplace tabfocus',
+            content_style: `
+            @font-face {
+    font-family: 'IRANSans';
+    src: url('/static/assets/css/fonts/IRANSansWeb.eot');
+    src: url('/static/assets/css/fonts/IRANSansWeb.eot?#iefix') format('embedded-opentype'),
+    url('/static/assets/css/fonts/IRANSansWeb.woff2') format('woff2'),
+    url('/static/assets/css/fonts/IRANSansWeb.woff') format('woff'),
+    url('/static/assets/css/fonts/IRANSansWeb.ttf') format('truetype');
+}
+            body {font-family: IRANSans;}`,
+            font_formats:
+                "IRAN Sans=IRANSans"
+        });
+	</script>
+{% endblock %}

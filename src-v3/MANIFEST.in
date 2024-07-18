@@ -1,0 +1,22 @@
+include README.md
+include LICENSE.md
+recursive-include badi_user/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_user/templates *.html schema.js
+recursive-include badi_user/locale *.mo
+recursive-include badi_ticket/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_ticket/templates *.html schema.js
+recursive-include badi_ticket/locale *.mo
+recursive-include badi_wallet/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_wallet/templates *.html schema.js
+recursive-include badi_wallet/locale *.mo
+recursive-include badi_utils/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_utils/templates *.html schema.js
+recursive-include badi_utils/locale *.mo
+recursive-include badi_visit/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_visit/templates *.html schema.js
+recursive-include badi_visit/locale *.mo
+recursive-include badi_blog/static *.js *.css *.map *.png *.ico *.eot *.svg *.ttf *.woff *.woff2
+recursive-include badi_blog/templates *.html schema.js
+recursive-include badi_blog/locale *.mo
+global-exclude __pycache__
+global-exclude *.py[co]

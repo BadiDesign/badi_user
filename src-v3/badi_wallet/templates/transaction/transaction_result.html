@@ -1,0 +1,104 @@
+{% load static %}
+{% load humanize %}
+{% load i18n %}
+<!doctype html>
+<html lang="fa" style="direction: rtl" dir="rtl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport"
+		  content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link href="{% static 'assets/css/style.bundle.rtl.css' %}" rel="stylesheet" type="text/css"/>
+	{% if state %}
+		<title>{% trans "Payment done Successfully" %}</title>
+	{% else %}
+		<title>{% trans "Payment Failed" %}</title>
+	{% endif %}
+</head>
+<body class="bg-white">
+<div class="container">
+	{% if state %}
+		<div class="h-300px mt-15 text-center">
+			<img src="{% static 'assets/media/push-success.svg' %}" class="h-100" alt="Success">
+		</div>
+		<div class="row justify-content-center w-100 mt-20">
+			<div class="col-12 my-5">
+				<h1 class="text-success text-center font-weight-bolder m-auto">پرداخت مورد نظر با موفقیت انجام شد!</h1>
+			</div>
+			<div class="col-12 my-5">
+				<h4 class="text-success text-center font-weight-bolder m-auto">
+					پرداخت موفق به مبلغ
+					{{ transaction.amount|intcomma:0 }}
+					ریال
+				</h4>
+			</div>
+		</div>
+		<div class="row flex-column justify-content-center">
+			<div class="col-md-8 mx-auto col-lg-6 my-7">
+				<div class="d-flex my-5 justify-content-between">
+					<div>
+						<h4 class="text-dark font-weight-bolder m-auto">کد پیگیری:</h4>
+					</div>
+					<div>
+						<h4 class="text-dark m-auto">{{ transaction.ref_id }}</h4>
+					</div>
+				</div>
+				{% if transaction.card %}
+					<div class="d-flex my-5 justify-content-between">
+						<div>
+							<h4 class="text-dark font-weight-bolder m-auto">شماره کارت:</h4>
+						</div>
+						<div>
+							<h4 class="text-dark m-auto">{{ transaction.card }}</h4>
+						</div>
+					</div>
+				{% endif %}
+				<div class="d-flex my-5 justify-content-between">
+					<div>
+						<h4 class="text-dark font-weight-bolder m-auto">حساب کاربری:</h4>
+					</div>
+					<div>
+						<h4 class="text-dark m-auto">{{ transaction.user }}</h4>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-8 mx-auto col-lg-6 my-7 text-center">
+				<a href="/" class="w-100 btn btn-success">بازگشت</a>
+			</div>
+		</div>
+	{% else %}
+		<div class="h-300px mt-15 text-center">
+			<img src="{% static 'assets/media/push-failed.svg' %}" class="h-100" alt="Failed">
+		</div>
+		<div class="row justify-content-center w-100 mt-20">
+			<div class="col-12 my-5">
+				<h1 class="text-danger text-center font-weight-bolder m-auto">پرداخت با مشکل مواجه شد!</h1>
+			</div>
+			<div class="col-12 my-5">
+				<h4 class="text-danger text-center font-weight-bolder m-auto">
+					در صورت کسر مبلغ، طی 72 ساعت به حساب شما
+					برمیگردد.
+				</h4>
+			</div>
+		</div>
+		<div class="row flex-column justify-content-center">
+			<div class="col-md-8 mx-auto col-lg-6 my-7">
+				{% if error %}
+					<div class="">
+						<div class="pb-5">
+							<h6 class="text-dark font-weight-bolder m-auto">متن خطا:</h6>
+						</div>
+						<div>
+							<h6 class="text-dark m-auto">{{ error }}</h6>
+						</div>
+					</div>
+				{% endif %}
+			</div>
+			<div class="col-md-8 mx-auto col-lg-6 my-7 text-center">
+				<a href="/" class="w-100 btn btn-danger">بازگشت</a>
+			</div>
+		</div>
+	{% endif %}
+</div>
+</body>
+</html>

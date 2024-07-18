@@ -1,0 +1,392 @@
+{% extends 'base-ui.html' %}
+{% load static %}
+{% load appfilter %}
+{% load humanize %}
+{% load blog_filter %}
+{% block body %}
+	<div class="">
+		<div class="container overflow-hidden mt-10">
+			<div class="row">
+				<div class="col-lg-9">
+					<div class="col-md-12">
+						<div class="card card-custom border-bottom border-3 rounded-lg shadow-sm gutter-b">
+							<div class="card-body">
+								<div class="row pt-5">
+									<div class="col-md-7">
+										<div class="d-flex">
+											<h2 class="text-primary col font-weight-normal mb-0 px-0">
+												{{ object.title }}
+											</h2>
+										</div>
+										<div class="d-flex align-items-center mt-2 py-2">
+											<p class="text-muted col line-break mb-0 px-0">
+												نویسنده:
+												{{ object.writer|default:"مدیر" }}
+											</p>
+											{#											<div class="mt-n1">#}
+											{#												<button data-toggle="tooltip" data-theme="dark" title="+ دنبال کردن"#}
+											{#														class="btn btn-secondary btn-sm btn-icon"#}
+											{#														onclick="$(this).addClass('btn-primary').removeClass('btn-secondary'); swal.fire('بزودی...','','info')">#}
+											{#													<i class="fa fa-bell"></i>#}
+											{#												</button>#}
+											{#											</div>#}
+										</div>
+										<p class="font-size-lg line-height-xl">
+											{{ object.short }}
+										</p>
+										<hr>
+										{#										<div class="d-flex justify-content-between">#}
+										{#											<p>#}
+										{#												اشتراک گذاری در:#}
+										{#											</p>#}
+										{#											<p>#}
+										{#												<i class="fa fa-paper-plane"></i>#}
+										{#												<i class="fa fa-paper-plane"></i>#}
+										{#											</p>#}
+										{#										</div>#}
+									</div>
+									<div class="col-md-5">
+										<img class="w-100 rounded" src="{{ object|get_cover }}"
+											 alt="{{ object.picture_alt|default:object.title }}">
+									</div>
+									{#									<div class="col-xl-12 col-md-12 d-none">#}
+									{#										<div class="row px-2 justify-content-between my-2 align-items-center">#}
+									{#											<div class="">#}
+									{#												<div class="d-flex">#}
+									{#													<div class="d-flex my-2 vote-container justify-content-between">#}
+									{#														<i data-value="1" data-toggle="tooltip" data-theme="dark"#}
+									{#														   title="ضعیف"#}
+									{#														   class="vote fa{% if object.rate > 0 %} text-warning{% endif %} fa-star fa-xl ml-1 cursor-pointer"></i>#}
+									{#														<i data-value="2" data-toggle="tooltip" data-theme="dark"#}
+									{#														   title="متوسط"#}
+									{#														   class="vote fa{% if object.rate > 1 %} text-warning{% endif %} fa-star fa-xl ml-1 cursor-pointer"></i>#}
+									{#														<i data-value="3" data-toggle="tooltip" data-theme="dark"#}
+									{#														   title="خوب"#}
+									{#														   class="vote fa{% if object.rate > 2 %} text-warning{% endif %} fa-star fa-xl ml-1 cursor-pointer"></i>#}
+									{#														<i data-value="4" data-toggle="tooltip" data-theme="dark"#}
+									{#														   title="عالی"#}
+									{#														   class="vote fa{% if object.rate > 3 %} text-warning{% endif %} fa-star fa-xl ml-1 cursor-pointer"></i>#}
+									{#														<i data-value="5" data-toggle="tooltip" data-theme="dark"#}
+									{#														   title="فوق العاده"#}
+									{#														   class="vote fa{% if object.rate > 4 %} text-warning{% endif %} fa-star fa-xl ml-1 cursor-pointer"></i>#}
+									{#													</div>#}
+									{#												</div>#}
+									{#											</div>#}
+									{#											<div class="col min-w-300px px-0">#}
+									{#												<p class="mb-0 my-2 ml-2">#}
+									{#													امتیاز:#}
+									{#													<strong> {{ object.rate }} / 5 </strong>#}
+									{#													|#}
+									{#													آرا:#}
+									{#													<strong> {{ object.rate_count }} </strong>#}
+									{#													|#}
+									{#													بازدید:#}
+									{#													<strong> {{ object.view|intcomma }} </strong>#}
+									{##}
+									{#												</p>#}
+									{#											</div>#}
+									{#										</div>#}
+									{#									</div>#}
+									<div class="col-12 mt-3">
+										<p class="font-size-lg text-dark-75 line-height-xl">
+											{{ object.description|safe }}
+										</p>
+									</div>
+									<hr class="col-12">
+									<div class="col-12 mt-3">
+										هشتگ ها:
+										{% for tag in object.tags.all %}
+											<a href="/blog/tag/{{ tag.id }}/{{ tag.title|slugify_utf8 }}"
+											   class="btn btn-secondary px-3 py-1 mx-1 rounded"># {{ tag }}</a>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-12" id="comment-vue">
+						<div class="card card-custom border-bottom border-3 rounded-lg shadow-sm gutter-b d-flex">
+							<div class="card-body max-w-800px w-100 m-auto">
+								<h5 class="text-primary text-left w-100 font-weight-normal mb-0 px-2">
+									ارسال نظرات
+									<span class="text-dark-50 font-size-sm">
+										(
+										{{ object_comments_count }}
+										نظر
+										)
+									</span>
+								</h5>
+								<form id="submit-comment" @submit.prevent="submitComment(0)" class="row gutter-t">
+									<input type="hidden" value="{{ object.id }}" name="film">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-form-label">نام و نام خانوادگی:</label>
+											<input type="text" class="form-control" name="writer_name"
+												   placeholder="نام و نام خانوادگی را وارد کنید">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label class="col-form-label">شماره همراه:
+												<span class="text-dark-50 font-weight-light font-size-sm">
+													(شماره همراه شما منتشر نخواهد شد.)
+												</span>
+											</label>
+											{% if request.user.is_authenticated %}
+												<input type="text" class="form-control" name="writer_phone" disabled
+													   v-model="form.writer_phone"
+													   value="{{ request.user.mobile_number }}"
+													   placeholder="شماره تماس را وارد کنید">
+											{% else %}
+												<input type="text" class="form-control" name="writer_phone"
+													   v-model="form.writer_phone"
+													   placeholder="شماره تماس را وارد کنید">
+											{% endif %}
+										</div>
+									</div>
+									<div class="col-12">
+										<div class="form-group">
+											<label class="col-form-label">متن دیدگاه:</label>
+											<textarea type="text" class="form-control" rows="7" name="description"
+													  v-model="description"
+													  placeholder="متن دیدگاه را وارد کنید"
+											></textarea>
+											<div class="text-right mt-2"
+												 :class="[form.description.length > 500 ? 'text-danger' : 'text-muted']">
+												[[ description.length ]] / 500
+											</div>
+										</div>
+									</div>
+									<div class="col-12">
+										<button class="btn btn-warning px-10 rounded-lg"> ارسال نظر</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="card card-custom border-bottom border-3 rounded-lg shadow-sm gutter-b d-flex">
+							<div class="card-body max-w-800px w-100 m-auto">
+								<div v-for="comment in comments">
+									<h6 class="text-dark-50 font-weight-light">
+										[[ comment.writer_name ]]
+									</h6>
+									<p class="font-size-lg line-height-lg text-justify">
+										[[ comment.description ]]
+									</p>
+									<div>
+										<button @click="activeReplyComment=comment" type="button"
+												v-if="activeReplyComment.id != comment.id"
+												class="btn btn-outline-warning border-2 font-weight-bold btn-sm py-2 px-5">
+											پاسخ
+										</button>
+										<button v-if="comment.replies.length && activeReplyComment.id!=comment.id"
+												type="button"
+												@click="comment.show_replies = !comment.show_replies"
+												class="btn btn-outline-secondary border-2 font-weight-bold btn-sm py-2 px-5">
+											<template v-if="comment.show_replies">
+												عدم نمایش پاسخ ها
+											</template>
+											<template v-else>
+												مشاهده
+												[[comment.replies.length]]
+												پاسخ
+											</template>
+										</button>
+									</div>
+									<div class="position-relative overflow-hidden">
+										<Transition>
+											<div v-if="activeReplyComment.id === comment.id">
+												<form id="reply-comment-form" class="row gutter-t"
+													  @submit.prevent="submitComment(1)">
+													<input type="hidden" v-model="activeReplyComment.id" name="replay">
+													<input type="hidden" value="{{ object.id }}" name="film">
+													<div class="col-6">
+														<div class="form-group">
+															<label class="col-form-label">نام و نام خانوادگی:</label>
+															<input type="text" class="form-control" name="writer_name"
+																   v-model="form.writer_name"
+																   placeholder="نام و نام خانوادگی را وارد کنید">
+														</div>
+													</div>
+													<div class="col-6">
+														<div class="form-group">
+															<label class="col-form-label">شماره همراه:
+																<span class="text-dark-50 font-weight-light font-size-sm">
+																	(شماره همراه شما منتشر نخواهد شد.)
+																</span>
+															</label>
+															<input type="text" class="form-control" name="writer_phone"
+																   v-model="form.writer_phone"
+																   placeholder="شماره تماس را وارد کنید">
+														</div>
+													</div>
+													<div class="col-12">
+														<div class="form-group">
+															<label class="col-form-label">متن دیدگاه:</label>
+															<textarea type="text" class="form-control" rows="7"
+																	  name="description"
+																	  v-model="form.description"
+																	  placeholder="متن دیدگاه را وارد کنید"
+															></textarea>
+															<div class="text-right mt-2"
+																 :class="[form.description.length > 500 ? 'text-danger' : 'text-muted']">
+																[[ form.description.length ]] / 500
+															</div>
+														</div>
+													</div>
+													<div class="col-12 mb-5">
+														<button type="button"
+																@click.prevent="activeReplyComment={}"
+																class="btn btn-sm btn-secondary px-10 rounded-lg"> لغو
+														</button>
+														<button type="submit"
+																class="btn btn-sm btn-warning px-10 rounded-lg">
+															ارسال نظر
+														</button>
+													</div>
+												</form>
+											</div>
+										</Transition>
+									</div>
+									<div v-for="reply in comment.replies"
+										 v-if="comment.show_replies && activeReplyComment.id!=comment.id"
+										 class="mr-5 mt-5 border-left border-warning border-2 p-3">
+										<h6 class="text-dark-50 font-weight-light">
+											[[ reply.writer_name ]]
+											<span class="font-size-sm text-warning">
+												(در پاسخ به
+												[[comment.writer_name]])
+											</span>
+										</h6>
+										<p class="font-size-lg mb-0 line-height-lg text-justify">
+											[[ reply.description ]]
+										</p>
+									</div>
+									<hr class="hr-comment mx-5">
+								</div>
+								<div class="row" v-if="count">
+									<Pagination
+											:count="count"
+											:current="currentPage"
+											:limit="limit"
+											@page-changed="getComments"
+									>
+									</Pagination>
+									<div class="ml-auto text-right align-self-center">
+										صفحه [[currentPage]]
+										-
+										نمایش [[comments.length]] از [[count]]
+									</div>
+								</div>
+								<div v-else class="bg-light-warning py-5  rounded-lg">
+									<h5 class="text-warning mb-0 text-center">نظر ثبت نشده است! شما اولین باشید.</h5>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg-3">
+					<div class="card card-custom bg-transparent rounded-lg shadow-none gutter-b">
+						<div class="card-body py-0">
+							<div class="d-flex mx-auto max-w-500px justify-content-center align-items-center">
+								<hr class="col mr-5 border-2">
+								<h3 class="mb-0 text-center text-primary">
+									اخبار مرتبط
+								</h3>
+								<hr class="col ml-5 border-2">
+							</div>
+						</div>
+					</div>
+					{% for object in related_videos %}
+						{% include 'blog/blog-object.html' %}
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</div>
+	{% include 'components/pagination-vue.html' %}
+{% endblock %}
+{% block script %}
+	<script src="{% static 'badi_utils/js/pagination-vue.js' %}"></script>
+	<script>
+        const commentApp = new Vue({
+            delimiters: ['[[', ']]'],
+            el: '#comment-vue',
+            data() {
+                return {
+                    description: '',
+                    comments: [],
+                    currentPage: 1,
+                    count: 0,
+                    limit: 10,
+                    activeReplyComment: {},
+                    form: {
+                        writer_name: '',
+                        writer_phone: '{% if request.user.is_authenticated %}{{ request.user.mobile_number }}{% endif %}',
+                        description: '',
+                        show_error: false,
+                    }
+                }
+            },
+            created: function () {
+                this.getComments();
+            },
+            methods: {
+                getComments: function (data = {page: null}) {
+                    console.log('HERE', data['page'])
+                    let SLUG = 'film={{ object.pk }}&limit=' + this.limit;
+                    if (data['page']) {
+                        this.currentPage = data['page'];
+                        SLUG += `&page=${data['page']}`
+                    }
+                    ApiAjaxReader({
+                        url: '/api/v1/blogcomment/?' + SLUG,
+                        method: 'GET',
+                        success_message: false,
+                        success: (res) => {
+                            this.comments = res.results.map(obj => {
+                                obj['show_replies'] = false
+                                return obj
+                            });
+                            this.count = res.count;
+                        }
+                    })
+                },
+                submitComment: function (has_reply = 0) {
+                    let $form = '#submit-comment'
+                    if (has_reply) {
+                        $form = '#reply-comment-form'
+                    }
+                    const $writerPhone = $($form).find('input[name="writer_phone"]')
+                    $writerPhone.val(toEnglishDigit($writerPhone.val()))
+                    ApiAjax({
+                        token: {% if request.user.is_authenticated %}true{% else %}false{% endif %},
+                        form: $form,
+                        clearForm: true,
+                        url: '/api/v1/blogcomment/',
+                        method: 'POST',
+                        success_message: false,
+                        success: (res) => {
+                            swal.fire(
+                                "با موفقیت ثبت شد!",
+                                "از ثبت دیدگاه تان متشکریم! پس از تایید مدیر، دیدگاه در همین صفحه نمایان می شود.",
+                                'success',
+                            )
+                            this.activeReplyComment = {};
+                            this.form = {
+                                writer_name: '',
+                                writer_phone: '{% if request.user.is_authenticated %}{{ request.user.mobile_number }}{% endif %}',
+                                description: '',
+                                show_error: false,
+                            };
+                            this.description = '';
+                            $(`input[name="film"]`).val('{{ object.id }}')
+                        },
+                        before_error: function (er) {
+                            formErrorHandler(er.responseJSON, document.querySelector($form))
+                        }
+                    })
+                },
+            },
+        });
+	</script>
+{% endblock %}

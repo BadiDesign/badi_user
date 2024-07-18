@@ -1,0 +1,10 @@
+<a href="javascript:;" class="menu-link menu-toggle">
+    <span class="svg-icon menu-icon">
+        {% with 'svg/'|add:svg|add:".html" as template %}
+            {% include template %}
+        {% endwith %}
+    </span>
+    <span class="menu-text">{{ title }}</span>
+    <span class="menu-desc">{{ subtitle }}</span>
+    <i class="menu-arrow"></i>
+</a>

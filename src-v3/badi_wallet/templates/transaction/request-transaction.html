@@ -1,0 +1,39 @@
+<div class="modal fade" id="charge-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document">
+        <div class="modal-content border-modal">
+            <div class="modal-header border-0 pb-0">
+                <h5 class="modal-title mx-auto font-weight-bolder" id="exampleModalLabel">شارژ حساب کاربری</h5>
+            </div>
+            <form id="request-charge-form" method="post">
+                <div class="modal-body ">
+                    <div class="form-group">
+                        <label class="col-form-label font-weight-bolder">مبلغ (تومان):</label>
+                        <div class="col-md-12">
+                            <input name="amount" type="text" required class="form-control currency"
+                                   placeholder="مبلغ را اینجا وارد کنید...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">شماره تماس:</label>
+                        <div class="col-md-12">
+                            <input name="mobile_number" type="text" value="{{ request.user.mobile_number }}" class="form-control only-number"
+                                   placeholder="شماره تماس را اینجا وارد کنید...">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-form-label">ایمیل:</label>
+                        <div class="col-md-12">
+                            <input name="email" type="email" class="form-control"
+                                   placeholder="ایمیل را اینجا وارد کنید...">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer p-1">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">لغو</button>
+                    <button type="submit" class="btn btn-primary">پرداخت</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

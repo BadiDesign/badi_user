@@ -1,0 +1,24 @@
+<script type="text/x-template" id="pagination-template">
+    <div class="text-left ltr d-flex justify-content-center justify-content-sm-start">
+        <button class="btn  btn-sm btn-icon"
+                :class="[isPageActive(current-1) ? 'btn-light-primary' : 'disabled btn-light noHover']"
+                @click="goPage(current - 1)">
+            <i class="fa fa-angle-left"></i>
+        </button>
+        <template v-for="page in pageList">
+            <button class="btn btn-sm btn-icon mr-1"
+                    @click="goPage(page.number)"
+                    :class="[page.active ? '' : 'disabled btn-light-primary noHover',
+                    page.number === current ? 'btn-primary' : 'btn-light-primary']"
+            >
+                [[page.number]]
+            </button>
+        </template>
+        <button class="btn btn-light-primary btn-sm mr-1 btn-icon"
+                :class="[isPageActive(current + 1) ? 'btn-light-primary' : 'disabled btn-light noHover']"
+                @click="goPage(current + 1)">
+            <i class="fa fa-angle-right"> </i>
+
+        </button>
+    </div>
+</script>
