@@ -1,3 +1,5 @@
+from django.db.models import F
+
 from badi_utils.utils import file_size
 from django.conf.global_settings import LANGUAGES
 from django.contrib.auth import get_user_model
@@ -121,6 +123,9 @@ class BlogPost(MetaTagModel, BadiModel, ):
 
     def __str__(self):
         return self.title
+
+    def visited(self):
+        self._meta.model.objects.filter(id=self.id).update(view=F('view') + 1)
 
 
 class BlogQuestionAnswer(models.Model, BadiModel, ):
