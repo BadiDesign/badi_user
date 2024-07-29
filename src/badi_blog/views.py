@@ -28,8 +28,7 @@ class BlogDetailView(DetailView):
 
     def get_object(self, queryset=None):
         obj = super().get_object(queryset)
-        obj.view += 1
-        obj.save()
+        obj.visited()
         return obj
 
 
@@ -37,11 +36,11 @@ class BlogView(ListView):
     extra_context = {
         'title': 'وبلاگ',
         'seo_title': 'وبلاگ | ' + CONFIG_JSON.get('site_title'),
-        'categories': BlogCategory.objects.all()
+        'categories': BlogCategory.objects.all().select_related('father')
     }
     paginate_by = 12
     template_name = "blog.html"
-    queryset = BlogPost.objects.filter()
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
     page_kwarg = 'page'
 
     def get_queryset(self):

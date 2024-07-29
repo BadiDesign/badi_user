@@ -105,7 +105,8 @@ class BlogPost(MetaTagModel, BadiModel, ):
     slider_picture = models.ImageField(upload_to='blog_post/%Y/%m/%d/slider/', blank=True, null=True,
                                        verbose_name="تصویر اسلایدر")
     breaking_title = models.CharField(max_length=200, blank=True, null=True, verbose_name="تیتر فوری")
-    categories = models.ManyToManyField(BlogCategory, related_name='news', verbose_name="دسته بندی ها")
+    categories = models.ManyToManyField((BLOG_CONFIG.get('BlogCategory') or 'BlogCategory'),
+                                        related_name='news', verbose_name="دسته بندی ها")
     tags = models.ManyToManyField(BlogTag, related_name='news', verbose_name="تگ ها")
     is_recommend = models.BooleanField(default=False, verbose_name='پیشنهادی', blank=True)
     short = models.TextField(verbose_name="خلاصه خبر", validators=[MaxLengthValidator(1200)])
@@ -120,6 +121,23 @@ class BlogPost(MetaTagModel, BadiModel, ):
 
     def __str__(self):
         return self.title
+
+
+class BlogQuestionAnswer(models.Model, BadiModel, ):
+    class Meta:
+        verbose_name = 'سوالات متداول'
+        verbose_name_plural = 'سوالات متداول'
+        permissions = (
+            ('can_blog_question_answer', 'مدیریت سوالات متداول'),
+        )
+        ordering = ['-pk', ]
+
+    question = models.TextField(verbose_name="عنوان سوال", blank=True, max_length=300)
+    answer = models.TextField(verbose_name="پاسخ سوال", blank=True, max_length=5000)
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='زمان ایجاد')
+
+    def __str__(self):
+        return self.question
 
 
 class BlogComment(models.Model, BadiModel):

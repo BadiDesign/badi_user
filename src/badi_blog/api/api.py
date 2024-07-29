@@ -14,7 +14,7 @@ class BlogPostViewSet(DynamicModelApi):
     order_columns = ['id', 'picture', 'title', 'categories', 'writer', 'slider_title', 'is_recommend', 'view',
                      'created_at']
     model = BlogPost
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
     serializer_class = BlogPostSerializer
     filterset_class = BlogPostFilter
     custom_perms = {
@@ -26,9 +26,9 @@ class BlogPostViewSet(DynamicModelApi):
 
     def filter_queryset(self, qs):
         if self.action == 'datatable':
-            return BlogPostFilter(self.request.POST).qs
+            return BlogPostFilter(self.request.POST).qs.select_related('writer').prefetch_related('comments')
         if self.action in ['list', 'retrieve']:
-            return BlogPostFilter(self.request.POST).qs
+            return BlogPostFilter(self.request.POST).qs.select_related('writer').prefetch_related('comments')
         return super().filter_queryset(qs)
 
 
@@ -98,6 +98,15 @@ class BlogBannerViewSet(DynamicModelApi):
     model = BlogBanner
     queryset = BlogBanner.objects.all()
     serializer_class = BlogBannerSerializer
+    custom_perms = {
+        'list': False
+    }
+
+
+class BlogQuestionAnswerViewSet(DynamicModelApi):
+    model = BlogQuestionAnswer
+    queryset = BlogQuestionAnswer.objects.all()
+    serializer_class = BlogQuestionAnswerSerializer
     custom_perms = {
         'list': False
     }
