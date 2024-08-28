@@ -38,6 +38,8 @@ ALLOWED_HOSTS = ["*"]
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'badi_user',
+    'account',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -47,11 +49,11 @@ INSTALLED_APPS = [
     'widget_tweaks',
     'badi_utils',
     'badi_ticket',
-    'badi_user',
     'badi_wallet',
     'badi_visit',
     'badi_blog',
 ]
+AUTH_USER_MODEL = 'account.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -146,7 +148,6 @@ STATIC_URL = '/static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
-AUTH_USER_MODEL = 'badi_user.User'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = reverse_lazy('custom_login')

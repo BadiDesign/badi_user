@@ -89,6 +89,7 @@ class BlogCategoryViewSet(DynamicModelApi):
     model = BlogCategory
     queryset = BlogCategory.objects.all()
     serializer_class = BlogCategorySerializer
+    columns = model().get_datatable_columns()
     custom_perms = {
         'list': False
     }

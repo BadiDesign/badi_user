@@ -22,6 +22,8 @@ class AddressVisit(models.Model, BadiModel):
     visits_count = models.IntegerField(default=0, verbose_name='Visits count')
     visitors_count = models.IntegerField(default=0, verbose_name='Visitors count')
     updated_at = models.DateTimeField(auto_now=True, null=True, blank=True, verbose_name='Last Updated')
+    title2 = models.CharField(max_length=200, blank=True, null=True, verbose_name='Title')
+    created_at = models.DateTimeField(auto_now_add=True, blank=True, verbose_name='created_at')
 
     def __str__(self):
         return self.title if self.title else self.address

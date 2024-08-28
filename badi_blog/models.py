@@ -63,6 +63,12 @@ class BlogCategory(MetaTagModel, BadiModel):
     def __str__(self):
         return self.father.__str__() + ' ' + self.title if self.father else self.title
 
+    def get_datatable_columns(self, excludes=None):
+        return ['id', 'title', 'father', 'index_order', 'picture', 'slug', 'created_at', ]
+
+    def get_datatable_verbose_names(self, excludes=None):
+        return ['#', 'عنوان', 'زیرمجموعه', 'ترتیب نمایش', 'تصویر', 'slug', 'زمان ایجاد', ]
+
     def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
         if self.father:
             father = self.father

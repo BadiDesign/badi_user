@@ -30,10 +30,11 @@ class Token(models.Model):
         return True
 
 
-class BadiAbstractUser(AbstractUser):
+class User(AbstractUser):
     class Meta:
         verbose_name = _('User')
         abstract = True
+        swappable = 'AUTH_USER_MODEL'
         verbose_name_plural = _('Users')
         permissions = (
             ('can_user', _("Manage") + ' ' + _(verbose_name)),
@@ -111,18 +112,6 @@ class BadiAbstractUser(AbstractUser):
         # transAction.save()
         # trans.user.amount += trans.amount
         print("SUCCESS_TRANSACTION", self, trans, request)
-
-
-class User(BadiAbstractUser):
-    """
-    Users within the Django authentication system are represented by this
-    model.
-
-    Username and password are required. Other fields are optional.
-    """
-
-    class Meta(AbstractUser.Meta):
-        swappable = 'AUTH_USER_MODEL'
 
 
 class Notification(models.Model):
