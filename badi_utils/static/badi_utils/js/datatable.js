@@ -117,6 +117,10 @@ window.datatable_simple_show = function (options, settings) {
         });
     }
     // create datatable
+    const urlSearchParams = new URLSearchParams(location.search)
+    if (urlSearchParams.get('p')) {
+        window_options.displayStart = (window_options.pageLength || 10) * (parseInt(urlSearchParams.get('p')) - 1)
+    }
     var oTable = $(options['datable_id']).DataTable(window_options);
     // a returns id of a column
     if (!options["no_action_nutton"]) {
@@ -126,6 +130,15 @@ window.datatable_simple_show = function (options, settings) {
     }
     // on redraw re listen to delete and edit buttons
     oTable.on('draw.dt', function () {
+        let href = location.origin + location.pathname;
+        if ((oTable.page() + 1) !== parseInt(new URLSearchParams(location.search).get('p')))
+            history.pushState({urlPath: href + '?p=' + (oTable.page() + 1)}, "", href + '?p=' + (oTable.page() + 1));
+        window.onpopstate = function (e) {
+            const newURL = new URLSearchParams(location.search)
+            if (newURL.get('p')) {
+                oTable.page(parseInt(newURL.get('p')) - 1).draw(false)
+            }
+        };
         // edit button
         $('.filters button.spinner').removeClass('spinner spinner-white spinner-right spinner-left')
         if (!options["no_loading"]) {
@@ -226,7 +239,6 @@ window.datatable_simple_show = function (options, settings) {
             });
 
     });
-
     var timer = null;
     var last_input = null;
 
