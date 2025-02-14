@@ -145,8 +145,10 @@ class LoginAuth:
             defaults = {"username": data}
             user, is_created = User.objects.get_or_create(**{user_key: data}, defaults=defaults)
         else:
-            user = User.objects.filter(mobile_number=data)
+            user = User.objects.filter(mobile_number=data).first()
             if not user:
+                return ResponseNotOk(reason=_(BadiErrorCodes.not_found))
+            if not config.get("allow_admins") and (user.is_admin or user.is_superuser):
                 return ResponseNotOk(reason=_(BadiErrorCodes.not_found))
         if code:
             if user.token and user.token.is_enabled():
@@ -402,6 +404,13 @@ class AuthViewSet(viewsets.ViewSet, LoginAuth):
             errors['old_password'].append('رمز عبور فعلی اشتباه است')
 
         return JsonResponse(errors, status=HTTP_400_BAD_REQUEST)
+
+    @action(methods=['post'], detail=False)
+    def two_step_login(self, request, *args, **kwargs):
+        config = BADI_AUTH_CONFIG.get('two_step')
+        if not config or not config.get('is_active'):
+            return JsonResponse({'error': ['404']}, status=HTTP_404_NOT_FOUND)
+        return self._login_with_sms_token(request, config)
 
     @action(methods=['post'], detail=False)
     def forgot_password(self, req, *args, **kwargs):
