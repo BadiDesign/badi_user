@@ -369,6 +369,11 @@ const date_picker_config = {
     altFormat: 'X',
     calendarType: 'persian',
     initialValueType: 'gregorian',
+    calendar: {
+        persian: {
+            leapYearMode: 'astronomical'
+        }
+    },
     persianDigit: false,
     format: 'YYYY/MM/D',
     observer: true,
@@ -403,6 +408,11 @@ const datetime_picker_config = {
     initialValueType: 'gregorian',
     persianDigit: false,
     format: 'YYYY/MM/D HH:mm:ss',
+    calendar: {
+        persian: {
+            leapYearMode: 'astronomical'
+        }
+    },
     observer: true,
     initialValue: true,
     timePicker: {
@@ -800,8 +810,13 @@ const setProgress = (qs = '.progress-upload', percent, uploaded, total) => {
     }
 };
 if (!badiConfig["disable_auto_menu_active"]) {
-    $(`.menu-item a[href="${CURRENT_URL}"]`).addClass('active').parent().addClass('menu-item-active')
+    let $menuItem = $(`.menu-item a[href="${CURRENT_URL}"]`);
+    $menuItem.addClass('active').parent().addClass('menu-item-active')
     $(`a.nav-link[href="${CURRENT_URL}"]`).addClass('active').parent().addClass('menu-item-active')
+    const activeMenuParent = $menuItem.parent().parent()
+    if (activeMenuParent.attr('class') === 'menu-subnav') {
+        activeMenuParent.parent().parent().addClass('menu-item-open')
+    }
 }
 $('input[data-show]').change(function () {
     let $target = $($(this).attr('data-show'));

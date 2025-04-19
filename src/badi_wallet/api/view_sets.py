@@ -185,7 +185,7 @@ class TransactionViewSet(DynamicModelReadOnlyApi):
         if column == 'user':
             if row.user.first_name and row.user.last_name:
                 return row.user.first_name + " " + row.user.last_name
-            return row.username
+            return row.user.username
 
         return super(TransactionViewSet, self).render_column(row, column)
 
