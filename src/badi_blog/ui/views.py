@@ -13,7 +13,7 @@ class BlogImageListView(DynamicListView):
 class BlogPostListView(DynamicListView):
     model = BlogPost
     queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
-    datatable_cols = ['#', 'تصویر', 'عنوان', 'دسته بندی ها', 'نویسنده', 'اسلایدر', 'پیشنهادی', 'بازدید', 'زمان ثبت']
+    datatable_cols = ['#', 'تصویر', 'عنوان', 'دسته بندی ها', 'نویسنده', 'منتشر شده', 'بازدید', 'زمان ثبت']
 
     def get_extra_context(self, context):
         context['filters'] = BlogPostFilter(self.request.POST)

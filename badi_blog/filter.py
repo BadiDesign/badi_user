@@ -8,8 +8,6 @@ class BlogPostFilter(filters.FilterSet):
     class Meta:
         model = BlogPost
         fields = [
-            'writer',
-            'categories',
             'is_recommend',
         ]
 

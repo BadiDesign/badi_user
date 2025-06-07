@@ -117,6 +117,7 @@ class BlogPost(MetaTagModel, BadiModel, ):
                                         related_name='news', verbose_name="دسته بندی ها")
     tags = models.ManyToManyField(BlogTag, related_name='news', verbose_name="تگ ها")
     is_recommend = models.BooleanField(default=False, verbose_name='پیشنهادی', blank=True)
+    is_published = models.BooleanField(default=True, verbose_name='منتشر شده', blank=True)
     short = models.TextField(verbose_name="خلاصه خبر", validators=[MaxLengthValidator(1200)])
     description = models.TextField(verbose_name="شرح خبر", blank=True, validators=[])
     view = models.IntegerField(default=0, verbose_name='تعداد بازدید')

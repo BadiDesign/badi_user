@@ -10,15 +10,21 @@ from badi_blog.models import *
 
 
 class BlogPostViewSet(DynamicModelApi):
-    columns = ['id', 'picture', 'title', 'categories', 'writer', 'slider_title', 'is_recommend', 'view', 'created_at']
-    order_columns = ['id', 'picture', 'title', 'categories', 'writer', 'slider_title', 'is_recommend', 'view',
+    columns = ['id', 'picture', 'title', 'categories', 'writer', 'is_published', 'view', 'created_at']
+    order_columns = ['id', 'picture', 'title', 'categories', 'writer', 'is_published', 'view',
                      'created_at']
     model = BlogPost
-    queryset = BlogPost.objects.all()
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
     serializer_class = BlogPostSerializer
     filterset_class = BlogPostFilter
     custom_perms = {
         'self': True
+    }
+    switches = {
+        'is_published': {
+            'true': '/api/v1/blogpost/change_state_published/0',
+            'false': '/api/v1/blogpost/change_state_published/0',
+        },
     }
 
     def create(self, request, *args, **kwargs):
@@ -26,10 +32,19 @@ class BlogPostViewSet(DynamicModelApi):
 
     def filter_queryset(self, qs):
         if self.action == 'datatable':
-            return BlogPostFilter(self.request.POST).qs
+            return BlogPostFilter(self.request.POST).qs.select_related('writer').prefetch_related('comments')
         if self.action in ['list', 'retrieve']:
-            return BlogPostFilter(self.request.POST).qs
+            return BlogPostFilter(self.request.POST).qs.select_related('writer').prefetch_related('comments')
         return super().filter_queryset(qs)
+
+    @action(methods=['put'], detail=False, url_path='change_state_published/(?P<pk>[^/.]+)')
+    def change_state_published(self, request, pk, *args, **kwargs):
+        post = self.model.objects.get(pk=pk)
+        post.is_published = not post.is_published
+        post.save()
+        return JsonResponse({
+            'message': 'وضیعت تغییر کرد به: {0}'.format('منتشر شده' if post.is_published else 'منتشر نشده')
+        })
 
 
 class CustomPagination(PageNumberPagination):
@@ -89,6 +104,7 @@ class BlogCategoryViewSet(DynamicModelApi):
     model = BlogCategory
     queryset = BlogCategory.objects.all()
     serializer_class = BlogCategorySerializer
+    columns = model().get_datatable_columns()
     custom_perms = {
         'list': False
     }
@@ -98,6 +114,15 @@ class BlogBannerViewSet(DynamicModelApi):
     model = BlogBanner
     queryset = BlogBanner.objects.all()
     serializer_class = BlogBannerSerializer
+    custom_perms = {
+        'list': False
+    }
+
+
+class BlogQuestionAnswerViewSet(DynamicModelApi):
+    model = BlogQuestionAnswer
+    queryset = BlogQuestionAnswer.objects.all()
+    serializer_class = BlogQuestionAnswerSerializer
     custom_perms = {
         'list': False
     }

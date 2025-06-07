@@ -80,6 +80,15 @@ class BlogCategorySerializer(DynamicSerializer):
         fields = ['id'] + BlogCategory().get_all_fields()
 
 
+class BlogQuestionAnswerSerializer(DynamicSerializer):
+    class Meta:
+        model = BlogQuestionAnswer
+        extra_kwargs = api_error_creator(model, model().get_all_fields(),
+                                         blank_fields=[],
+                                         required_fields=[])
+        fields = ['id'] + model().get_all_fields()
+
+
 class BlogBannerSerializer(DynamicSerializer):
     remove_field_view = {
         'list': [],

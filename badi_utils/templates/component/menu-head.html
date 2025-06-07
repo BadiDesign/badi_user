@@ -1,9 +1,14 @@
 <a href="javascript:;" class="menu-link menu-toggle">
 	<span class="svg-icon menu-icon">
 		{% with 'svg/'|add:svg|add:".html" as template %}
-		{% include template %}
+			{% include template %}
 		{% endwith %}
 	</span>
 	<span class="menu-text">{{ title }}</span>
+	{% if badge %}
+		<span class="menu-label">
+			<span class="label label-{{ badge_color|default:'danger' }} label-inline">{{ badge }}</span>
+		</span>
+	{% endif %}
 	<i class="fa menu-arrow fa-angle-down "></i>
 </a>

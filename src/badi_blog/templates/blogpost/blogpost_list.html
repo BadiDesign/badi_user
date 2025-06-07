@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block body %}
+
+
 	<div class="d-flex flex-column-fluid">
 		<!--begin::Container-->
 		<div class="container">
@@ -72,10 +74,6 @@
             rowCallback: (row, data) => {
                 defaultDrawCallBack(row, data);
                 breakCol(1, row, data[2]);
-                if (data[5])
-                    $(`td:eq(4)`, row).html(`
-                        <label class="label label-xl label-primary"><i class="fa text-white fa-check"></i></label>
-                        `)
                 if (data[1] && data[1] !== 'file-null') {
                     $(`td:eq(0)`, row).html(`<span class="symbol symbol-lg-50 symbol-40 symbol-light-primary">
                                     <span class="symbol-label" style="background-size: cover !important;background-position: center ;background: url(${data[1]});"></span>

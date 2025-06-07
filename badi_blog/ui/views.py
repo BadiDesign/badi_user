@@ -12,7 +12,8 @@ class BlogImageListView(DynamicListView):
 
 class BlogPostListView(DynamicListView):
     model = BlogPost
-    datatable_cols = ['#', 'تصویر', 'عنوان', 'دسته بندی ها', 'نویسنده', 'اسلایدر', 'پیشنهادی', 'بازدید', 'زمان ثبت']
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
+    datatable_cols = ['#', 'تصویر', 'عنوان', 'دسته بندی ها', 'نویسنده', 'منتشر شده', 'بازدید', 'زمان ثبت']
 
     def get_extra_context(self, context):
         context['filters'] = BlogPostFilter(self.request.POST)
@@ -21,6 +22,7 @@ class BlogPostListView(DynamicListView):
 
 class BlogPostCreateView(DynamicCreateView):
     model = BlogPost
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
     datatableEnable = False
 
     def get_extra_context(self, context):
@@ -30,6 +32,7 @@ class BlogPostCreateView(DynamicCreateView):
 
 class BlogPostUpdateView(DynamicUpdateView):
     model = BlogPost
+    queryset = BlogPost.objects.select_related('writer').prefetch_related('comments')
     success_url = '/dashboard/blogpost/list'
 
 
@@ -47,6 +50,14 @@ class BlogCategoryCreateView(DynamicCreateView):
 
 class BlogCategoryUpdateView(DynamicUpdateView):
     model = BlogCategory
+
+
+class BlogQuestionAnswerCreateView(DynamicCreateView):
+    model = BlogQuestionAnswer
+
+
+class BlogQuestionAnswerUpdateView(DynamicUpdateView):
+    model = BlogQuestionAnswer
 
 
 class BlogBannerListView(DynamicListView):

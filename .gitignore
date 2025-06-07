@@ -270,3 +270,7 @@ venv.bak/
 pip-selfcheck.json
 
 # End of https://www.gitignore.io/api/python,django,virtualenv,pycharm+all
+src/dist
+.lang
+info.txt
+info3.txt
